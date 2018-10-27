@@ -41,6 +41,14 @@ public class ControladorTurnos {
 		return new ModelAndView("elegir-especialidad", modelo);
 	}
 	
+	@RequestMapping("/reservar-turno")
+	public ModelAndView reservarTurno() {
+		ModelMap modelo = new ModelMap();
+		///toda la logica de reservar el turno
+		modelo.put("mensaje", "Su turno ha sido reservado con éxito!");
+		return new ModelAndView("turno-ok", modelo);
+	}
+	
 	/*@RequestMapping("/validar-especialidad")
 	public ModelAndView validarEspecialidad() {
 		
