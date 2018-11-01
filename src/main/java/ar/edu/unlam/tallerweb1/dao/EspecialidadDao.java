@@ -9,6 +9,6 @@ public interface EspecialidadDao {
 	
 	List <Especialidad> consultarEspecialidades();
 	
-	void cargarEspecialidades ();
+	//void cargarEspecialidades ();
 
 }

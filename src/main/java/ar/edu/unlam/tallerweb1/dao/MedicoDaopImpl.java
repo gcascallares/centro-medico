@@ -22,16 +22,6 @@ public class MedicoDaopImpl implements MedicoDao {
 		
 	final Session session = sessionFactory.getCurrentSession();
 	
-	Medico medico1 = new Medico();
-	
-	medico1.setNombre("Dr. Rodriguez Juan");
-	medico1.setHoraDesde(15);
-	medico1.setMinutoDesde(30);
-	medico1.setHoraHasta(16);
-	medico1.setMinutoHasta(30);
-	
-	session.save(medico1);
-
 	@SuppressWarnings("unchecked")
 	List <Medico> listaMedicos = session.createCriteria(Medico.class).list();
 	return listaMedicos;
