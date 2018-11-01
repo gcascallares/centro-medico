@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
@@ -23,18 +24,20 @@
 			<h3 class="form-signin-heading">Elija su especialidad</h3>
 			<hr class="colorgraph">
 			<br>
-			<%-- <sel:select autoSubmit="true" size="1">
-				<sel:option value="1">Cardiología</sel:option>
-				<sel:option value="2">Radiología</sel:option>
-				<sel:option value="2">Laboratorios</sel:option>
-			</sel:select> --%>
-			<select name="" id="">
-            	<option value="1">Cardiología</option>
-            	<option value="2">Radiología</option>
-            	<option value="3">Laboratorios</option>
-        	</select>
+  
+        	<select name="" id="">
+        	
+				<c:forEach items="${listaEsp}" var="Especialidad">
+				
+					<option value="">${Especialidad.nombreEspecialidad}</option>
+					<!-- El value despues va a ser el ID del medico -->
+				</c:forEach>
+				
+			</select>
 			<br>
-			<button class="btn btn-lg btn-primary btn-block" Type="Submit" />Siguiente</button>
+			
+			<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>
+			
 		</form:form>
 	</div>
 	<script

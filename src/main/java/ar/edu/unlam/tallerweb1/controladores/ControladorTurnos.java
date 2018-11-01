@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
+import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
 @Controller
@@ -16,6 +19,9 @@ public class ControladorTurnos {
 
 	@Inject
 	private ServicioTurnos servicioTurnos;
+	
+	@Inject
+	private ServicioEspecialidad servicioEspecialidad;
 	
 	
 	@RequestMapping("/obtener-turnos")
@@ -38,6 +44,10 @@ public class ControladorTurnos {
 	@RequestMapping("/elegir-especialidad")
 	public ModelAndView elegirEspecialidad() {
 		ModelMap modelo = new ModelMap();
+		List <Especialidad> listaEspecialidad = new ArrayList <Especialidad>();
+		servicioEspecialidad.cargarEspecialidades();
+		listaEspecialidad = servicioEspecialidad.consultarEspecialidades();
+		modelo.put("listaEsp",listaEspecialidad);
 		return new ModelAndView("elegir-especialidad", modelo);
 	}
 	
