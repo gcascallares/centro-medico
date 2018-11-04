@@ -7,10 +7,13 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
+import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
@@ -24,8 +27,8 @@ public class ControladorTurnos {
 	private ServicioEspecialidad servicioEspecialidad;
 	
 	
-	@RequestMapping("/obtener-turnos")
-	public ModelAndView obtenerListaDeTurnos() {
+	@RequestMapping(path="/obtener-turnos", method = RequestMethod.POST)
+	public ModelAndView obtenerListaDeTurnos(@ModelAttribute("Turno") Turno turno){
 		ModelMap modelo = new ModelMap();
 		List <String> listaDeTurnos = new ArrayList <String>();
 		int horaDesde = 15;
@@ -50,18 +53,15 @@ public class ControladorTurnos {
 		return new ModelAndView("elegir-especialidad", modelo);
 	}
 	
-	@RequestMapping("/reservar-turno")
-	public ModelAndView reservarTurno() {
+	
+	
+	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
+	public ModelAndView reservarTurno(@ModelAttribute("Turno") Turno turno) {
 		ModelMap modelo = new ModelMap();
+		modelo.put("turno", turno);
 		///toda la logica de reservar el turno
 		modelo.put("mensaje", "Su turno ha sido reservado con éxito!");
 		return new ModelAndView("turno-ok", modelo);
 	}
 	
-	/*@RequestMapping("/validar-especialidad")
-	public ModelAndView validarEspecialidad() {
-		
-		ModelMap modelo = new ModelMap();
-		return new ModelAndView("elegir-especialidad", modelo);
-	}*/
 }

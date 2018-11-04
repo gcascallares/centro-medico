@@ -7,6 +7,4 @@ import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 public interface ServicioEspecialidad {
 	
 	List <Especialidad> consultarEspecialidades();
-
-	void cargarEspecialidades();
 }

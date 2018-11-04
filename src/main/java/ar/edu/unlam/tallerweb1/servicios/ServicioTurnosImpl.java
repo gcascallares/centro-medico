@@ -9,13 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
+import ar.edu.unlam.tallerweb1.modelo.Medico;
 
 @Service("servicioTurnos")
 @Transactional
 public class ServicioTurnosImpl implements ServicioTurnos {
 
 	@Inject
-	private MedicoDao medicoDao;
+	private MedicoDao servicioMedicoDao;
 	
 	@Override
 	public List<String> consultarTurnos(int horaDesde, int minutoDesde, int horaHasta, int minutoHasta, int intervalo) {
@@ -31,4 +32,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		return listaHorarios;
 	}
 
+	public List<Medico> consultarMedico(){
+		return servicioMedicoDao.consultarMedico();
+	}
 }

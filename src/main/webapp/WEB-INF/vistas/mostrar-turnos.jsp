@@ -15,14 +15,13 @@
 	<div class="container">
 
 
-		<form:form action="reservar-turno" method="POST"
-			modelAttribute="">
+		<form:form action="reservar-turno" method="POST" modelAttribute="Turno">
 			<h3 class="form-signin-heading">Lista de turnos disponibles</h3>
 			<hr class="colorgraph">
 			<br>
 			<select name="" id="">
 				<c:forEach items="${listaDeTurnos}" var="t">
-					<option value="1">${t}- Dr/a. ${nombreMedico}</option>
+					<option value="1" path="medico.nombre">${t}- Dr/a. ${nombreMedico}</option>
 					<!-- El value despues va a ser el ID del medico -->
 				</c:forEach>
 			</select>

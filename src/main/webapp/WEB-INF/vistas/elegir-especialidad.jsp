@@ -19,8 +19,7 @@
 </head>
 <body>
 	<div class="container">
-		<form:form action="obtener-turnos" method="POST"
-			modelAttribute="">
+		<form:form action="obtener-turnos" method="POST" modelAttribute="Turno">
 			<h3 class="form-signin-heading">Elija su especialidad</h3>
 			<hr class="colorgraph">
 			<br>
@@ -29,7 +28,7 @@
         	
 				<c:forEach items="${listaEsp}" var="Especialidad">
 				
-					<option value="">${Especialidad.nombreEspecialidad}</option>
+					<option value="" path="medico.especilidad.nombreEspecialidad">${Especialidad.nombreEspecialidad}</option>
 					<!-- El value despues va a ser el ID del medico -->
 				</c:forEach>
 				
