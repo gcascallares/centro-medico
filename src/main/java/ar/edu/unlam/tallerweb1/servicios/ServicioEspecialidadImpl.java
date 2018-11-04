@@ -20,6 +20,6 @@ public class ServicioEspecialidadImpl implements ServicioEspecialidad {
 	
 	public List <Especialidad> consultarEspecialidades() {
 		return servicioEspecialidadDao.consultarEspecialidades();
-	}	
+	}
 	
 }
