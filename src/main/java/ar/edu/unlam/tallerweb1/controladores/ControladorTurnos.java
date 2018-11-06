@@ -8,8 +8,10 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
@@ -51,6 +53,13 @@ public class ControladorTurnos {
 		listaEspecialidad = servicioEspecialidad.consultarEspecialidades();
 		modelo.put("listaEsp",listaEspecialidad);
 		return new ModelAndView("elegir-especialidad", modelo);
+	}
+	
+	@RequestMapping(path = "/turno/{especialidadId}")
+	public ModelAndView elegirMedico(@PathVariable int especialidadId) {
+		ModelMap modelo = new ModelMap();
+		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
+		return new ModelAndView("", modelo);
 	}
 	
 	
