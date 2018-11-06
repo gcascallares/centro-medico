@@ -55,14 +55,24 @@ public class ControladorTurnos {
 		return new ModelAndView("elegir-especialidad", modelo);
 	}
 	
-	@RequestMapping(path = "/turno/{especialidadId}")
-	public ModelAndView elegirMedico(@PathVariable int especialidadId) {
+	@RequestMapping("/turno/{especialidadId}")
+	public ModelAndView elegirFiltro(@PathVariable int especialidadId) {
 		ModelMap modelo = new ModelMap();
 		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
-		return new ModelAndView("", modelo);
+		return new ModelAndView("filtro-medico-dia", modelo);
 	}
 	
+//	@RequestMapping(path= "/turno/{especialidadId}", method= RequestMethod.GET)
+//	public ModelAndView elegirFiltro(@ModelAttribute("especialidad") int especialidadId) {
+//		ModelMap modelo = new ModelMap();
+//		return new ModelAndView("filtro-medico-dia", modelo);
+//	}
 	
+	@RequestMapping("/botones")
+	public ModelAndView prueba() {
+		ModelMap modelo = new ModelMap();
+		return new ModelAndView("filtro-medico-dia", modelo);
+	}
 	
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(@ModelAttribute("Turno") Turno turno) {
