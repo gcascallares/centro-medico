@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,10 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
+import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
@@ -56,23 +57,21 @@ public class ControladorTurnos {
 	}
 	
 	@RequestMapping("/turno/{especialidadId}")
-	public ModelAndView elegirFiltro(@PathVariable int especialidadId) {
+	public ModelAndView elegirFiltro (@PathVariable Integer especialidadId , HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
+		modelo.put("especialidadId", especialidadId);
 		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
 		return new ModelAndView("filtro-medico-dia", modelo);
 	}
 	
-//	@RequestMapping(path= "/turno/{especialidadId}", method= RequestMethod.GET)
-//	public ModelAndView elegirFiltro(@ModelAttribute("especialidad") int especialidadId) {
+//	@RequestMapping("turno/medico/{especialidadId}")
+//	public ModelAndView fitroMedico (@PathVariable Integer especialidadId) {
 //		ModelMap modelo = new ModelMap();
-//		return new ModelAndView("filtro-medico-dia", modelo);
+//		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
+//		modelo.put("listaMedicos", listaMedicos);
+//		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
+//		return new ModelAndView("medicoTurnos", modelo);
 //	}
-	
-	@RequestMapping("/botones")
-	public ModelAndView prueba() {
-		ModelMap modelo = new ModelMap();
-		return new ModelAndView("filtro-medico-dia", modelo);
-	}
 	
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(@ModelAttribute("Turno") Turno turno) {
@@ -82,5 +81,4 @@ public class ControladorTurnos {
 		modelo.put("mensaje", "Su turno ha sido reservado con éxito!");
 		return new ModelAndView("turno-ok", modelo);
 	}
-	
 }

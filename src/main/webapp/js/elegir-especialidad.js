@@ -1,6 +1,8 @@
-$( document ).ready(function() {
+$(document).ready(function() {
+	
+	var id = $("#especialidad option:selected").val();
+	
 	$("#botonSiguienteEspecialidad").click(function(){
-		var id = $("#especialidad option:selected").val();
-		window.location.assign("/turno/"+id);
+		window.location.assign("/proyecto-limpio-spring/turno/"+ id);
 	});
 });

@@ -8,4 +8,6 @@ public interface MedicoDao {
 	
 	List <Medico> consultarMedico();
 
+	List<Medico> listaDeMedicosPorEspecialidad(Integer especialidadId);
+
 }

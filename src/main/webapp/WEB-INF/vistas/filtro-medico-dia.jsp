@@ -1,27 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="ISO-8859-1">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <style>
 	.container{
 		width: 60%;
 		margin: 0px auto;
-		margin-top: 30px;
 	}
 </style>
-<title>Elija medico o día</title>
+
+<title>Elija su especialidad</title>
+
 </head>
+
 <body>
-
-<div class="container">
-<button class="btn btn-lg btn-primary btn-block" id="botonMedico">Elegir por Medico</button>
-<button class="btn btn-lg btn-primary btn-block" id="botonDia">Elegir por Dia</button>
-</div>
-
+	<div class="container">
+	
+		<button class="btn btn-lg btn-primary btn-block" id="botonMedico">Elegir por Medico</button>
+		<input type="hidden" value="${especialidadId}" id="especialidadId">
+		<button class="btn btn-lg btn-primary btn-block" id="botonDia">Elegir por Dia</button>
+		
+	</div>
+	
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/filtro-medico-dia.js" type="text/javascript"></script>
+	
 </body>
+
 </html>

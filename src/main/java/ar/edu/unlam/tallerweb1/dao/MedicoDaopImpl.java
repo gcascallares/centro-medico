@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Medico;
@@ -23,6 +24,20 @@ public class MedicoDaopImpl implements MedicoDao {
 	
 	@SuppressWarnings("unchecked")
 	List <Medico> listaMedicos = session.createCriteria(Medico.class).list();
+	return listaMedicos;
+
+	}
+	
+	@Override
+	public List<Medico> listaDeMedicosPorEspecialidad (Integer especialidadId) {
+		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	@SuppressWarnings("unchecked")
+	List <Medico> listaMedicos = session.createCriteria(Medico.class)
+								 .createAlias("especialidad","especialidadBuscada")
+								 .add(Restrictions.eq("especialidadBuscada.id",especialidadId))
+								 .list();
 	return listaMedicos;
 
 	}
