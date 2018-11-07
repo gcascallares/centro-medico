@@ -30,20 +30,12 @@ public class ControladorTurnos {
 	private ServicioEspecialidad servicioEspecialidad;
 	
 	
-	@RequestMapping(path="/obtener-turnos", method = RequestMethod.POST)
-	public ModelAndView obtenerListaDeTurnos(@ModelAttribute("Turno") Turno turno){
+	@RequestMapping(path="/turno/medico/", method = RequestMethod.POST)
+	public ModelAndView obtenerListaDeTurnosDeMedico(@ModelAttribute("Medico") Medico medico){
 		ModelMap modelo = new ModelMap();
-		List <String> listaDeTurnos = new ArrayList <String>();
-		int horaDesde = 15;
-		int minutoDesde = 30;
-		int horaHasta = 16;
-		int minutoHasta = 30;
-		int intervalo = 15;
+		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medico); 
 		///faltan metodos para obtener los datos anteriores segun la especialidad y el medico.
-		String medico = "Natalia Natalia"; ///DESPUES SE CONSTRUYE EL OBJETO MEDICO Y SE PASA AL MODELO EN VEZ DE SOLO EL NOMBRE
-		listaDeTurnos = servicioTurnos.consultarTurnos(horaDesde, minutoDesde, horaHasta, minutoHasta, intervalo);
-		modelo.put("listaDeTurnos", listaDeTurnos);
-		modelo.put("nombreMedico", medico);
+		modelo.put("listaDeTurnos", listaTurnos);
 		return new ModelAndView("mostrar-turnos", modelo);
 	}
 	
@@ -64,14 +56,14 @@ public class ControladorTurnos {
 		return new ModelAndView("filtro-medico-dia", modelo);
 	}
 	
-//	@RequestMapping("turno/medico/{especialidadId}")
-//	public ModelAndView fitroMedico (@PathVariable Integer especialidadId) {
-//		ModelMap modelo = new ModelMap();
-//		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
-//		modelo.put("listaMedicos", listaMedicos);
-//		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
-//		return new ModelAndView("medicoTurnos", modelo);
-//	}
+	//Este controlador seria si funciona la vista que da error
+	@RequestMapping("turno/medico/{especialidadId}")
+	public ModelAndView fitroMedico (@PathVariable Integer especialidadId) {
+		ModelMap modelo = new ModelMap();
+		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
+		modelo.put("listaMedicos", listaMedicos);
+		return new ModelAndView("medicos", modelo);
+	}
 	
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(@ModelAttribute("Turno") Turno turno) {

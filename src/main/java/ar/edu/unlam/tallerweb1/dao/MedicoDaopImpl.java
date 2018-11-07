@@ -28,6 +28,8 @@ public class MedicoDaopImpl implements MedicoDao {
 
 	}
 	
+	
+	//Este funciona en caso de que se filtre por fecha
 	@Override
 	public List<Medico> listaDeMedicosPorEspecialidad (Integer especialidadId) {
 		
@@ -39,6 +41,19 @@ public class MedicoDaopImpl implements MedicoDao {
 								 .add(Restrictions.eq("especialidadBuscada.id",especialidadId))
 								 .list();
 	return listaMedicos;
+
+	}
+	
+	//En caso de que se filtre por medico
+	@Override
+	public Medico MedicoEspecifico (Medico medico) {
+		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	Medico medicoEspecifico = (Medico) session.createCriteria (Medico.class)
+							  .add(Restrictions.eq("id", medico.getId()))
+							  .uniqueResult();
+	return medicoEspecifico;
 
 	}
 

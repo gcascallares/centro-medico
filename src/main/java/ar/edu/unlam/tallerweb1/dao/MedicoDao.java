@@ -10,4 +10,6 @@ public interface MedicoDao {
 
 	List<Medico> listaDeMedicosPorEspecialidad(Integer especialidadId);
 
+	Medico MedicoEspecifico(Medico medico);
+
 }

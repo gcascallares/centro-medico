@@ -19,7 +19,17 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	private MedicoDao servicioMedicoDao;
 	
 	@Override
-	public List<String> consultarTurnos(int horaDesde, int minutoDesde, int horaHasta, int minutoHasta, int intervalo) {
+	public List <String> turnosDeMedicoEspecifico(Medico medico) {
+		
+		//guarda en medico el con lasespecificaciones elegidas pero desde la BD
+		medico = servicioMedicoDao.MedicoEspecifico(medico);
+		
+		Integer horaDesde = medico.getHoraDesde();
+		Integer horaHasta = medico.getHoraHasta();
+		Integer minutoDesde = medico.getMinutoDesde();
+		Integer minutoHasta = medico.getMinutoHasta();
+		Integer intervalo = medico.getEspecialidad().getIntervalo();
+		
 		List <String> listaHorarios = new ArrayList<String>();
 		while(horaDesde<horaHasta || (horaDesde==horaHasta && minutoDesde<=minutoHasta)) {
 			listaHorarios.add(horaDesde+":"+(minutoDesde<10?minutoDesde+"0":minutoDesde));

@@ -7,10 +7,10 @@ import ar.edu.unlam.tallerweb1.modelo.Medico;
 
 public interface ServicioTurnos {
 	
-	List<String> consultarTurnos(int horaDesde,int minutoDesde,int horaHasta,int minutoHasta,int intervalo);
-
 	List<Medico> consultarMedico();
 	
 	List <Medico> listaDeMedicosPorEspecialidad (Integer especialidadId);
+
+	List<String> turnosDeMedicoEspecifico(Medico medico);
 
 }
