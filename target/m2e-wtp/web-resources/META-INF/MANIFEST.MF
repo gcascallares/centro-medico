@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
-Built-By: Igna y Santi
-Build-Jdk: 1.8.0_171
+Built-By: aleji
+Build-Jdk: 1.8.0_181
 Created-By: Maven Integration for Eclipse
 
-=======
-Manifest-Version: 1.0
-Built-By: Igna y Santi
-Build-Jdk: 1.8.0_171
-Created-By: Maven Integration for Eclipse
-
->>>>>>> 111549871980b7a4922f97cbb1d492aec49d70c0

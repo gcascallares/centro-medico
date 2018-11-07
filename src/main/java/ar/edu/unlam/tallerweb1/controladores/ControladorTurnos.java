@@ -56,14 +56,14 @@ public class ControladorTurnos {
 		return new ModelAndView("filtro-medico-dia", modelo);
 	}
 	
-//	@RequestMapping("turno/medico/{especialidadId}")
-//	public ModelAndView fitroMedico (@PathVariable Integer especialidadId) {
-//		ModelMap modelo = new ModelMap();
-//		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
-//		modelo.put("listaMedicos", listaMedicos);
-//		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
-//		return new ModelAndView("medicoTurnos", modelo);
-//	}
+	//Este controlador seria si funciona la vista que da error
+	@RequestMapping("turno/medico/{especialidadId}")
+	public ModelAndView fitroMedico (@PathVariable Integer especialidadId) {
+		ModelMap modelo = new ModelMap();
+		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
+		modelo.put("listaMedicos", listaMedicos);
+		return new ModelAndView("medicos", modelo);
+	}
 	
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(@ModelAttribute("Turno") Turno turno) {
