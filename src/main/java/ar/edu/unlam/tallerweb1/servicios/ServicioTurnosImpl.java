@@ -35,4 +35,9 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public List<Medico> consultarMedico(){
 		return servicioMedicoDao.consultarMedico();
 	}
+	
+	public List<Medico> listaDeMedicosPorEspecialidad(Integer especialidadId){
+		return servicioMedicoDao.listaDeMedicosPorEspecialidad(especialidadId);
+	}
+	
 }
