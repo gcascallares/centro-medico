@@ -22,8 +22,7 @@ public class ServicioConsultoriosImpl implements ServicioConsultorio{
 	
 	@Override
 	public List<Consultorios> listaConsultorios() {
-	
-		return null;
+			return servicioConsultoriosDao.listaConsultorios();
 	}
 
 	

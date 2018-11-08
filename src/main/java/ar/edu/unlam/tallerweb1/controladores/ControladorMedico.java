@@ -9,12 +9,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ar.edu.unlam.tallerweb1.modelo.Consultorios;
-import ar.edu.unlam.tallerweb1.modelo.Especialidad;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioConsultorio;
-import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
+
 
 
 
@@ -34,8 +31,7 @@ public class ControladorMedico {
 //	}
 	
 	
-		
-	@RequestMapping("/indexMedico")
+	@RequestMapping("/index-medico")
 	public ModelAndView elegirConsultorio(){
 		
 		ModelMap modelo = new ModelMap();

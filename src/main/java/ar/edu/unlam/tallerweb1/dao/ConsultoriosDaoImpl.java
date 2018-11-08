@@ -20,6 +20,7 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 	@Override
 	public List<Consultorios> listaConsultorios() {
 		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
 		List <Consultorios> listaConsultorios = session.createCriteria(Consultorios.class).list();
 		return listaConsultorios;
 		
