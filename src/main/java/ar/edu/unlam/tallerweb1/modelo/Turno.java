@@ -20,7 +20,9 @@ public class Turno {
 	@OneToOne
 	private Paciente paciente;
 	
-	private Date fecha;
+	private String horario;
+	
+	private String dia;
 
 	public Long getId() {
 		return id;
@@ -46,12 +48,23 @@ public class Turno {
 		this.paciente = paciente;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public String getHorario() {
+		return horario;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setHorario(String horario) {
+		this.horario = horario;
 	}
+
+	public String getDia() {
+		return dia;
+	}
+
+	public void setDia(String dia) {
+		this.dia = dia;
+	}
+
+	
+
 	
 }
