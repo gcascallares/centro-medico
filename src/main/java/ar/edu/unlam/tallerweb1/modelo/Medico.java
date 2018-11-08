@@ -21,6 +21,7 @@ public class Medico {
 	private Integer minutoDesde;
 	private Integer horaHasta;
 	private Integer minutoHasta;
+	private Integer consultorio;
 	
 	public Long getId() {
 		return id;
@@ -64,5 +65,13 @@ public class Medico {
 	public void setMinutoHasta(Integer minutoHasta) {
 		this.minutoHasta = minutoHasta;
 	}
+	public Integer getConsultorio() {
+		return consultorio;
+	}
+	public void setConsultorio(Integer consultorio) {
+		this.consultorio = consultorio;
+	}
+	
+	
 	
 }
