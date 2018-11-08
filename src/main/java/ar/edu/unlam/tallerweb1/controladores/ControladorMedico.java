@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import ar.edu.unlam.tallerweb1.modelo.Consultorios;
 import ar.edu.unlam.tallerweb1.servicios.ServicioConsultorio;
 
 
-
+@Controller
 
 public class ControladorMedico {
 
