@@ -1,2 +1,3 @@
 insert into especialidad (id,intervalo,nombreEspecialidad) values (1,30,'Cardiología'),(2,45,'Radiología'),(3,15,'Laboratorio');
 insert into medico (id,horaDesde,horaHasta,minutoDesde,minutoHasta,nombre,especialidad_id) values (1,8,16,0,30,'Juan Perez',1),(2,12,16,0,30,'Daniela Martinez',2),(3,9,12,0,0,'Ernesto Baba',3);
+insert into consultorios (id,numero,medico_id) values (1,100,null),(2,101,null),(3,102,null),(4,103,null),(5,104,null);
