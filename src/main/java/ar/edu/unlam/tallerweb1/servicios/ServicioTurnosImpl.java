@@ -22,7 +22,6 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public List <String> turnosDeMedicoEspecifico(Medico medico) {
 		
 		//guarda en medico el con lasespecificaciones elegidas pero desde la BD
-		medico = servicioMedicoDao.MedicoEspecifico(medico);
 		
 		Integer horaDesde = medico.getHoraDesde();
 		Integer horaHasta = medico.getHoraHasta();
@@ -56,5 +55,12 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Medico buscarMedicoEspecifico(Long id) {
+		return servicioMedicoDao.MedicoEspecifico(id);
+	}
+
+	
 	
 }

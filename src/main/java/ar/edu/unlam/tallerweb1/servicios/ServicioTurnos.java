@@ -14,5 +14,8 @@ public interface ServicioTurnos {
 	List<String> turnosDeMedicoEspecifico(Medico medico);
 
 	List<String> listaDeDiasDisponibles(Long especialidadId);
+	
+	Medico buscarMedicoEspecifico(Long id);
+
 
 }
