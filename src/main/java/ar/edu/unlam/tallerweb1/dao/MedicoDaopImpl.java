@@ -31,7 +31,7 @@ public class MedicoDaopImpl implements MedicoDao {
 	
 	//Este funciona en caso de que se filtre por fecha
 	@Override
-	public List<Medico> listaDeMedicosPorEspecialidad (Integer especialidadId) {
+	public List<Medico> listaDeMedicosPorEspecialidad (Long especialidadId) {
 		
 	final Session session = sessionFactory.getCurrentSession();
 	

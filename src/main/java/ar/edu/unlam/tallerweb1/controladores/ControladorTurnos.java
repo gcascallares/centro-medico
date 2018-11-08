@@ -49,7 +49,7 @@ public class ControladorTurnos {
 	}
 	
 	@RequestMapping("/turno/{especialidadId}")
-	public ModelAndView elegirFiltro (@PathVariable Integer especialidadId , HttpServletRequest request) {
+	public ModelAndView elegirFiltro (@PathVariable Long especialidadId , HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
 		modelo.put("especialidadId", especialidadId);
 		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
@@ -58,7 +58,7 @@ public class ControladorTurnos {
 	
 	//Este controlador seria si funciona la vista que da error
 	@RequestMapping("/turno/{especialidadId}/medico")
-	public ModelAndView fitroMedico (@PathVariable Integer especialidadId) {
+	public ModelAndView fitroMedico (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
 		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
 		modelo.put("listaMedicos", listaMedicos);
@@ -66,7 +66,7 @@ public class ControladorTurnos {
 	}
 	
 	@RequestMapping("/turno/{especialidadId}/dia")
-	public ModelAndView fitroDia (@PathVariable Integer especialidadId) {
+	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
 		List <String> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
 		modelo.put("listaDias", listaDias);

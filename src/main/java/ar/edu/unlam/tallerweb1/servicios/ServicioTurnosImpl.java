@@ -46,12 +46,13 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		return servicioMedicoDao.consultarMedico();
 	}
 	
-	public List<Medico> listaDeMedicosPorEspecialidad(Integer especialidadId){
+	public List<Medico> listaDeMedicosPorEspecialidad(Long especialidadId){
 		return servicioMedicoDao.listaDeMedicosPorEspecialidad(especialidadId);
 	}
+	
 
 	@Override
-	public List<String> listaDeDiasDisponibles(Integer especialidadId) {
+	public List<String> listaDeDiasDisponibles(Long especialidadId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

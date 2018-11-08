@@ -26,7 +26,7 @@
   
         	<select id="">
 				<c:forEach items="${listaMedicos}" var="Medico">
-					<option value="${Medico.id}" path="">${Medico.nombre}</option>
+					<option value="${Medico.id}">${Medico.nombre}</option>
 				</c:forEach>			
 			</select>
 			<br>
@@ -35,8 +35,7 @@
  -->		</form:form>
 		
 	</div>
-	<script src="../js/jquery-3.3.1.min.js"></script>
-	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../js/filtro-medico-dia.js" type="text/javascript"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>
 </html>
