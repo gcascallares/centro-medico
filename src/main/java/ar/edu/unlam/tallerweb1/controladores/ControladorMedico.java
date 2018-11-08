@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +14,15 @@ import ar.edu.unlam.tallerweb1.modelo.Consultorios;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioConsultorio;
+import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
+
+
 
 public class ControladorMedico {
 
+	@Inject
+	private ServicioConsultorio servicioConsultorio;
+	
 //	@RequestMapping("/login-medico")
 //	public ModelAndView irALogin() {
 //
@@ -27,16 +35,16 @@ public class ControladorMedico {
 	
 	
 		
-//	@RequestMapping("/indexMedico/{medicoId}")
-//	public ModelAndView elegirConsultorio(@PathVariable Integer consultorio, @PathVariable Long medicoId){
-//		
-//		ModelMap modelo = new ModelMap();
-//		List <Consultorios> listaConsultorios = new ArrayList <Consultorios>();
-//		listaConsultorios = ServicioConsultorio
-//		
-//		return new ModelAndView("mostrar-consultorios", modelo);
-//	
-//	}
+	@RequestMapping("/indexMedico")
+	public ModelAndView elegirConsultorio(){
+		
+		ModelMap modelo = new ModelMap();
+		List <Consultorios> listaConsultorios = new ArrayList <Consultorios>();
+		listaConsultorios = servicioConsultorio.listaConsultorios();
+		modelo.put("listaConsultorios", listaConsultorios);
+		return new ModelAndView("mostrar-consultorios", modelo);
+	
+	}
 	
 	
 }
