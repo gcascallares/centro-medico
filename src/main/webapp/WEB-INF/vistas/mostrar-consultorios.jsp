@@ -15,7 +15,7 @@
 <body>
 
 <div class="container">
-		<form:form action="/turno/{especialidadId}" method="POST" modelAttribute="especialidad">
+		<form:form action="/index-medico" method="POST" modelAttribute="consultorio">
 		
 			<h3 class="form-signin-heading">Elija un consultorio</h3>
 			
@@ -27,7 +27,7 @@
         	
 				<c:forEach items="${listaConsultorios}" var="Consultorio">
 				
-					<option value="${Consultorio.id}" path="numeroConsultorio">${Consultorios.numero}</option>
+					<option value="${Consultorios.id}" path="numeroConsultorio">${Consultorios.numero}</option>
 					
 				</c:forEach>	
 						
@@ -35,7 +35,7 @@
 			
 			<br>
 			
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteEspecialidad">Siguiente con JS</a>
+			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteConsultorio">Siguiente con JS</a>
 			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
 			
  	</form:form>
