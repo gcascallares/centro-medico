@@ -6,8 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Turnos disponibles</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -16,10 +16,9 @@
 		<h3> <a href="elegir-especialidad">Volver</a> </h3>
 	</div>
 
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../js/filtro-medico-dia.js" type="text/javascript"></script>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>
 </html>

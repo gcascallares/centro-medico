@@ -49,5 +49,11 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public List<Medico> listaDeMedicosPorEspecialidad(Integer especialidadId){
 		return servicioMedicoDao.listaDeMedicosPorEspecialidad(especialidadId);
 	}
+
+	@Override
+	public List<String> listaDeDiasDisponibles(Integer especialidadId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
