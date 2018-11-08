@@ -82,12 +82,22 @@ public class ControladorTurnos {
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(TurnoViewModel turno) {
 		
-		System.out.println(turno.getEspecialidadId());
-		System.out.println(turno.getHorario());
-		System.out.println(turno.getMedicoId());
+		ModelMap modelo = new ModelMap();
+		
+		Long medicoId = turno.getMedicoId();
+		Long especialidadId = turno.getEspecialidadId();
+		String horario = turno.getHorario();
+		
+		servicioTurnos.guardarTurno(especialidadId, medicoId, horario);
 		
 		///hacer metodos para obtener MEDICO, ESPECIALIDAD, y llenar el objeto turno para despues 
 		/// asignarlo a la bdd
-		return null;
+		
+		modelo.put("medicoId", medicoId);
+		modelo.put("especialidadId", especialidadId);
+		modelo.put("horario", horario);
+		
+		return  new ModelAndView("turno-ok", modelo);
+		
 	}
 }

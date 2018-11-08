@@ -12,8 +12,9 @@
 </head>
 <body>
 	<div class="container">
-		<h1>${mensaje}</h1>
-		<h1>${turno}</h1>
+		<h1>${medicoId}</h1>
+		<h1>${especialidadId}</h1>
+		<h1>${horario}</h1>
 		<h3> <a href="elegir-especialidad">Volver</a> </h3>
 	</div>
 
