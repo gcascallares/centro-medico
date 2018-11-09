@@ -79,7 +79,7 @@ public class ControladorTurnos {
 		return new ModelAndView("dias", modelo);
 	}
 	
-	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
+	@RequestMapping(path="/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(TurnoViewModel turno) {
 		
 		ModelMap modelo = new ModelMap();
@@ -97,7 +97,7 @@ public class ControladorTurnos {
 		modelo.put("especialidadId", especialidadId);
 		modelo.put("horario", horario);
 		
-		return  new ModelAndView("turno-ok", modelo);
+		return new ModelAndView("turno-ok", modelo);
 		
 	}
 }
