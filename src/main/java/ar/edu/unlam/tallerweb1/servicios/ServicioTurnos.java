@@ -9,10 +9,15 @@ public interface ServicioTurnos {
 	
 	List<Medico> consultarMedico();
 	
-	List <Medico> listaDeMedicosPorEspecialidad (Integer especialidadId);
+	List <Medico> listaDeMedicosPorEspecialidad (Long especialidadId);
 
 	List<String> turnosDeMedicoEspecifico(Medico medico);
 
-	List<String> listaDeDiasDisponibles(Integer especialidadId);
-
+	List<String> listaDeDiasDisponibles(Long especialidadId);
+	
+	Medico buscarMedicoEspecifico(Long id);
+	
+	void guardarTurno(Long especialidadId, Long medicoId, String horario);
 }
+
+

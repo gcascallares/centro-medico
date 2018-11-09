@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
+import ar.edu.unlam.tallerweb1.dao.TurnoDao;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 
 @Service("servicioTurnos")
@@ -18,11 +19,13 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	@Inject
 	private MedicoDao servicioMedicoDao;
 	
+	@Inject
+	private TurnoDao servicioTurnoDao;
+	
 	@Override
 	public List <String> turnosDeMedicoEspecifico(Medico medico) {
 		
 		//guarda en medico el con lasespecificaciones elegidas pero desde la BD
-		medico = servicioMedicoDao.MedicoEspecifico(medico);
 		
 		Integer horaDesde = medico.getHoraDesde();
 		Integer horaHasta = medico.getHoraHasta();
@@ -46,14 +49,27 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		return servicioMedicoDao.consultarMedico();
 	}
 	
-	public List<Medico> listaDeMedicosPorEspecialidad(Integer especialidadId){
+	public List<Medico> listaDeMedicosPorEspecialidad(Long especialidadId){
 		return servicioMedicoDao.listaDeMedicosPorEspecialidad(especialidadId);
 	}
+	
 
 	@Override
-	public List<String> listaDeDiasDisponibles(Integer especialidadId) {
+	public List<String> listaDeDiasDisponibles(Long especialidadId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Medico buscarMedicoEspecifico(Long id) {
+		return servicioMedicoDao.MedicoEspecifico(id);
+	}
+
+	@Override
+	public void guardarTurno(Long especialidadId, Long medicoId, String horario) {
+		servicioTurnoDao.guardarTurno(especialidadId, medicoId, horario);
+	}
+
+	
 	
 }

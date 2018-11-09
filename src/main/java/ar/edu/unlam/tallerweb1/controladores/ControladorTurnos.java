@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
@@ -30,12 +32,15 @@ public class ControladorTurnos {
 	private ServicioEspecialidad servicioEspecialidad;
 	
 	
-	@RequestMapping(path="/turno/medico/", method = RequestMethod.POST)
-	public ModelAndView obtenerListaDeTurnosDeMedico(@ModelAttribute("Medico") Medico medico){
+	@RequestMapping(path="/turno/{especialidadId}/medico/{medicoId}")
+	public ModelAndView obtenerListaDeTurnosDeMedico(@PathVariable Long especialidadId,@PathVariable Long medicoId){
 		ModelMap modelo = new ModelMap();
-		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medico); 
-		///faltan metodos para obtener los datos anteriores segun la especialidad y el medico.
+		Medico medicoBuscado = servicioTurnos.buscarMedicoEspecifico(medicoId);
+		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado); 
 		modelo.put("listaDeTurnos", listaTurnos);
+		modelo.put("especialidadId", especialidadId);
+		modelo.put("medicoId", medicoId);
+		modelo.put("medico", medicoBuscado.getNombre());
 		return new ModelAndView("mostrar-turnos", modelo);
 	}
 	
@@ -49,7 +54,7 @@ public class ControladorTurnos {
 	}
 	
 	@RequestMapping("/turno/{especialidadId}")
-	public ModelAndView elegirFiltro (@PathVariable Integer especialidadId , HttpServletRequest request) {
+	public ModelAndView elegirFiltro (@PathVariable Long especialidadId , HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
 		modelo.put("especialidadId", especialidadId);
 		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
@@ -58,15 +63,16 @@ public class ControladorTurnos {
 	
 	//Este controlador busca a los medicos segun su especialidad
 	@RequestMapping("/turno/{especialidadId}/medico")
-	public ModelAndView fitroMedico (@PathVariable Integer especialidadId) {
+	public ModelAndView fitroMedico (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
 		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
+		modelo.put("especialidadId",especialidadId);
 		modelo.put("listaMedicos", listaMedicos);
 		return new ModelAndView("medicos", modelo);
 	}
 	
 	@RequestMapping("/turno/{especialidadId}/dia")
-	public ModelAndView fitroDia (@PathVariable Integer especialidadId) {
+	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
 		List <String> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
 		modelo.put("listaDias", listaDias);
@@ -74,11 +80,24 @@ public class ControladorTurnos {
 	}
 	
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
-	public ModelAndView reservarTurno(@ModelAttribute("Turno") Turno turno) {
+	public ModelAndView reservarTurno(TurnoViewModel turno) {
+		
 		ModelMap modelo = new ModelMap();
-		modelo.put("turno", turno);
-		///toda la logica de reservar el turno
-		modelo.put("mensaje", "Su turno ha sido reservado con éxito!");
-		return new ModelAndView("turno-ok", modelo);
+		
+		Long medicoId = turno.getMedicoId();
+		Long especialidadId = turno.getEspecialidadId();
+		String horario = turno.getHorario();
+		
+		servicioTurnos.guardarTurno(especialidadId, medicoId, horario);
+		
+		///hacer metodos para obtener MEDICO, ESPECIALIDAD, y llenar el objeto turno para despues 
+		/// asignarlo a la bdd
+		
+		modelo.put("medicoId", medicoId);
+		modelo.put("especialidadId", especialidadId);
+		modelo.put("horario", horario);
+		
+		return  new ModelAndView("turno-ok", modelo);
+		
 	}
 }
