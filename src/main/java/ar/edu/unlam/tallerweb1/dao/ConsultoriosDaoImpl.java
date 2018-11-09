@@ -8,20 +8,24 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.unlam.tallerweb1.modelo.Especialidad;
+import ar.edu.unlam.tallerweb1.modelo.Consultorios;
 
-@Repository("especialidadDao")
-public class EspecialidadDaoImpl implements EspecialidadDao {
+
+@Repository("consultoriosDao")
+public class ConsultoriosDaoImpl implements ConsultoriosDao {
 	
 	@Inject
     private SessionFactory sessionFactory;
-	
+
 	@Override
-	public List <Especialidad> consultarEspecialidades(){
+	public List<Consultorios> listaConsultorios() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List <Especialidad> listarEspecialidad = session.createCriteria(Especialidad.class).list();
-		return listarEspecialidad;
+		List <Consultorios> listaConsultorios = session.createCriteria(Consultorios.class).list();
+		return listaConsultorios;
+		
 	}
+	
+
 
 }
