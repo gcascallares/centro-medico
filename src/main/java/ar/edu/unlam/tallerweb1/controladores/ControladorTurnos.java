@@ -61,7 +61,7 @@ public class ControladorTurnos {
 		return new ModelAndView("filtro-medico-dia", modelo);
 	}
 	
-	//Este controlador seria si funciona la vista que da error
+	//Este controlador busca a los medicos segun su especialidad
 	@RequestMapping("/turno/{especialidadId}/medico")
 	public ModelAndView fitroMedico (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
