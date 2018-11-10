@@ -18,7 +18,7 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 	
 	@Override
 	public List <Paciente> listaPacientes(String apellido) {
-		Session session = sessionFactory.getCurrentSession();
+		final Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List <Paciente> listaPacientes = session.createCriteria(Paciente.class)
 		.add(Restrictions.like("apellido",apellido))

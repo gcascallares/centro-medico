@@ -31,10 +31,16 @@
 			<br>
 		<div class="search d-flex justify-content-center mt-4">
 		
-			<form:form action="buscarpacientes" method="POST">
+			<form:form action="buscarpacientespordni" method="POST">
 			
-				<form:input path="pacientebuscado" Type="text" /><br>
-				<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Buscar</button>
+				<form:input path="dni" name="dni" Type="number" /><br>
+				<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Buscar por dni</button>
+				
+ 			</form:form>
+ 			<form:form action="buscarpacientesporapellido" method="POST">
+			
+				<form:input path="apellido" name="apellido" Type="text" /><br>
+				<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Buscar por apellido</button>
 				
  			</form:form>
 		</div>

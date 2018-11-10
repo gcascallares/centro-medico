@@ -25,7 +25,7 @@ public class ControladorPacientes {
 		return new ModelAndView("buscadorPacientes", modelo);
 	}
 	
-	@RequestMapping("/buscarpacientes")
+	@RequestMapping("/buscarpacientesporapellido")
 	public ModelAndView buscarPacientes(@RequestParam(required=false) String apellido){
 		ModelMap modelo = new ModelMap();
 		List <Paciente> listaPacientes = servicioBuscadorPacientes.listaPacientes(apellido);
@@ -33,7 +33,7 @@ public class ControladorPacientes {
 		return new ModelAndView("listaPacientes", modelo);
 	}
 
-	@RequestMapping("/buscarpacientes")
+	@RequestMapping("/buscarpacientespordni")
 	public ModelAndView buscarPacientes(@RequestParam(required=false) Long dni){
 		ModelMap modelo = new ModelMap();
 		List <Turno> listaTurnoPaciente = servicioBuscadorPacientes.listaTurnoPaciente(dni);
