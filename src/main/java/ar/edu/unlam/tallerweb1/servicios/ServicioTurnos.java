@@ -16,6 +16,8 @@ public interface ServicioTurnos {
 	List<String> listaDeDiasDisponibles(Long especialidadId);
 	
 	Medico buscarMedicoEspecifico(Long id);
-
-
+	
+	void guardarTurno(Long especialidadId, Long medicoId, String horario);
 }
+
+

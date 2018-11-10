@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
+import ar.edu.unlam.tallerweb1.dao.TurnoDao;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 
 @Service("servicioTurnos")
@@ -17,6 +18,9 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 
 	@Inject
 	private MedicoDao servicioMedicoDao;
+	
+	@Inject
+	private TurnoDao servicioTurnoDao;
 	
 	@Override
 	public List <String> turnosDeMedicoEspecifico(Medico medico) {
@@ -59,6 +63,11 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	@Override
 	public Medico buscarMedicoEspecifico(Long id) {
 		return servicioMedicoDao.MedicoEspecifico(id);
+	}
+
+	@Override
+	public void guardarTurno(Long especialidadId, Long medicoId, String horario) {
+		servicioTurnoDao.guardarTurno(especialidadId, medicoId, horario);
 	}
 
 	
