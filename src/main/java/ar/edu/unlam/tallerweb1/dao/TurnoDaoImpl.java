@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hibernate.Session;
@@ -37,6 +39,14 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		session.save(turno);
 		
+	}
+
+	@Override
+	public List<Turno> listaTurnos() {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List <Turno> listaTurnos = session.createCriteria(Turno.class).list();
+		return listaTurnos;
 	}
 	
 	
