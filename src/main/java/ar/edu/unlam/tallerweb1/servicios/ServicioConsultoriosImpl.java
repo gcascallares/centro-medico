@@ -25,6 +25,14 @@ public class ServicioConsultoriosImpl implements ServicioConsultorio{
 			return servicioConsultoriosDao.listaConsultorios();
 	}
 
+
+	@Override
+	public void guardarConsultorio(Long consultorioId) {
+		
+		servicioConsultoriosDao.guardarConsultorio(consultorioId);
+		
+	}
+
 	
 	
 }

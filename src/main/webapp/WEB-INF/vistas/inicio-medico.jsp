@@ -6,46 +6,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${context}/css/inicio-medico.css" rel="stylesheet">
 <link href="${context}/css/bootstrap-theme.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Elija su consultorio</title>
+<title>Bienvenido "Medico"</title>
 </head>
 <body>
 
 <div class="container">
 
-		<form:form action="/index-medico/{consultorioId}" method="POST" modelAttribute="consultorio">
 		
-			<h3 class="form-signin-heading">Elija un consultorio</h3>
+		
+			<h2 class="form-signin-heading" id="titulo">Bienvenido "Medico"</h2>
 			
 			<hr class="colorgraph">
 			
 			<br>
   
-        	<select id="consultorio">
+  			<h3 class="form-signin-heading" id="sub-titulo">Turnos del dia</h3>
+			
         	
-				<c:forEach items="${listaConsultorios}" var="Consultorio">
-				
-					<option value="${Consultorio.id}">${Consultorio.numero}</option>
+				<c:forEach items="${listaTurnos}" var="Turnos">
 					
+					<h5>${Turnos.id}</h5>
+					<h5>${Turnos.paciente}</h5>
+					<h5>${Turnos.horario}</h5>
+					<h5>${Turnos.dia}</h5>
+					
+					<br>					
 				</c:forEach>	
 						
-			</select>
+			
+						<h1>${nombrePaciente}</h1>;
 			
 			<br>
 			
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteConsultorio">Siguiente con JS</a>
-			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
-			
- 	</form:form>
-		
 	</div>
-	
+
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>
 	<script src="${context}/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${context}/js/elegir-consultorio.js" type="text/javascript"></script>
+	<script src="${context}/js/inicio-medico.js" type="text/javascript"></script>
+
 
 </body>
 </html>
