@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
-@Repository("BuscadorPacientesDao")
+@Repository("buscadorPacientesDao")
 
 public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 	
