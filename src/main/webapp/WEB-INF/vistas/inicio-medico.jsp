@@ -34,13 +34,11 @@
 					<h5>${Turnos.horario}</h5>
 					<h5>${Turnos.dia}</h5>
 					
-					<br>
-					
-					
-					
+					<br>					
 				</c:forEach>	
 						
 			
+						<h1>${nombrePaciente}</h1>;
 			
 			<br>
 			
