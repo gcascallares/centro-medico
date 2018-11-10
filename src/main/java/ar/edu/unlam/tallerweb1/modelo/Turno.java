@@ -24,7 +24,7 @@ public class Turno {
 	
 	private String dia;
 
-	private Integer estado;
+	private String estado;
 
 	
 	public Long getId() {
@@ -67,15 +67,11 @@ public class Turno {
 		this.dia = dia;
 	}
 
-	public Integer getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Integer estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
-	
-
-	
 }
