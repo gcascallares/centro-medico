@@ -21,16 +21,6 @@ public class ControladorMedico {
 	@Inject
 	private ServicioConsultorio servicioConsultorio;
 	
-//	@RequestMapping("/login-medico")
-//	public ModelAndView irALogin() {
-//
-//		ModelMap modelo = new ModelMap();
-//		Usuario usuario = new Usuario();
-//		modelo.put("usuario", usuario);
-//		return new ModelAndView("login-medico", modelo);
-//		
-//	}
-	
 	
 	@RequestMapping("/index-medico")
 	public ModelAndView elegirConsultorio(){

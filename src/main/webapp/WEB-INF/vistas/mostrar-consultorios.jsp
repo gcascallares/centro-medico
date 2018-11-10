@@ -27,7 +27,7 @@
         	
 				<c:forEach items="${listaConsultorios}" var="Consultorio">
 				
-					<option value="${Consultorios.id}" path="numeroConsultorio">${Consultorios.numero}</option>
+					<option value="${Consultorio.id}">${Consultorio.numero}</option>
 					
 				</c:forEach>	
 						
