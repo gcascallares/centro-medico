@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Turno;
 
 
 public interface ServicioTurnos {
@@ -18,6 +19,8 @@ public interface ServicioTurnos {
 	Medico buscarMedicoEspecifico(Long id);
 	
 	void guardarTurno(Long especialidadId, Long medicoId, String horario);
+
+	List<Turno> listaTurnos();
 }
 
 

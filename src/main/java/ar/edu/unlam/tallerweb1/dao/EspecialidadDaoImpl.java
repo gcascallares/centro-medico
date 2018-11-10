@@ -20,8 +20,8 @@ public class EspecialidadDaoImpl implements EspecialidadDao {
 	public List <Especialidad> consultarEspecialidades(){
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List <Especialidad> listaEspecialidad = session.createCriteria(Especialidad.class).list();
-		return listaEspecialidad;
+		List <Especialidad> listarEspecialidad = session.createCriteria(Especialidad.class).list();
+		return listarEspecialidad;
 	}
 
 }

@@ -1,12 +1,9 @@
 package ar.edu.unlam.tallerweb1.dao;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
@@ -40,16 +37,6 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		session.save(turno);
 		
-	}
-
-	@Override
-	public List<Turno> listaTurnos() {
-		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List <Turno> listaTurnos = session.createCriteria(Turno.class).list();
-		//.add(Restrictions.like("Turno.medico", medicoId))
-		
-		return listaTurnos;
 	}
 	
 	

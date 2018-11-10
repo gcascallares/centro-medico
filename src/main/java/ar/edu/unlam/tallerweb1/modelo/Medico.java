@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Medico {
@@ -21,7 +22,9 @@ public class Medico {
 	private Integer minutoDesde;
 	private Integer horaHasta;
 	private Integer minutoHasta;
-	private Integer consultorio;
+	
+	@OneToOne
+	private Consultorios consultorio;
 	
 	public Long getId() {
 		return id;
@@ -65,10 +68,10 @@ public class Medico {
 	public void setMinutoHasta(Integer minutoHasta) {
 		this.minutoHasta = minutoHasta;
 	}
-	public Integer getConsultorio() {
+	public Consultorios getConsultorio() {
 		return consultorio;
 	}
-	public void setConsultorio(Integer consultorio) {
+	public void setConsultorio(Consultorios consultorio) {
 		this.consultorio = consultorio;
 	}
 	

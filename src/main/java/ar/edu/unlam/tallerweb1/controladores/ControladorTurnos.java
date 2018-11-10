@@ -47,9 +47,9 @@ public class ControladorTurnos {
 	@RequestMapping("/turno")
 	public ModelAndView elegirEspecialidad() {
 		ModelMap modelo = new ModelMap();
-		List <Especialidad> listaEspecialidad = new ArrayList <Especialidad>();
-		listaEspecialidad = servicioEspecialidad.consultarEspecialidades();
-		modelo.put("listaEsp",listaEspecialidad);
+		List <Especialidad> listarEspecialidad = new ArrayList <Especialidad>();
+		listarEspecialidad = servicioEspecialidad.consultarEspecialidades();
+		modelo.put("listaEsp",listarEspecialidad);
 		return new ModelAndView("elegir-especialidad", modelo);
 	}
 	
