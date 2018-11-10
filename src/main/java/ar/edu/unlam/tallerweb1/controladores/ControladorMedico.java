@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,5 +34,12 @@ public class ControladorMedico {
 	
 	}
 	
+	@RequestMapping("/index-medico/{consultorioId}")
+	public ModelAndView inicioMedico(@PathVariable Long consultorioId , HttpServletRequest request){
+		ModelMap modelo = new ModelMap();
+		
+		//servicioConsultorio
+		return new ModelAndView("inicio-medico", modelo);
+	}
 	
 }

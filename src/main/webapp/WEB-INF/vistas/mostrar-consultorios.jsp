@@ -15,7 +15,8 @@
 <body>
 
 <div class="container">
-		<form:form action="/index-medico" method="POST" modelAttribute="consultorio">
+
+		<form:form action="/index-medico/{consultorioId}" method="POST" modelAttribute="consultorio">
 		
 			<h3 class="form-signin-heading">Elija un consultorio</h3>
 			
