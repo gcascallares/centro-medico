@@ -28,8 +28,8 @@ public class ControladorMedico {
 	private ServicioTurnos servicioTurnos;
 	
 	
-	@RequestMapping("/index-medico")
-	public ModelAndView elegirConsultorio(){
+	@RequestMapping("/{medicoId}/index-medico")
+	public ModelAndView elegirConsultorio(@PathVariable Long medicoId , HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
 		List <Consultorios> listaConsultorios = new ArrayList <Consultorios>();

@@ -28,11 +28,14 @@
 			
         	
 				<c:forEach items="${listaTurnos}" var="Turnos">
-				
-					<h5>${Turno.paciente}</h5>
-					<h5>${Turno.hora}</h5>
-					<h5>${Turno.dia}</h5>
-					<h5>${Turno.estado}</h5>
+					
+					<h5>${Turnos.id}</h5>
+					<h5>${Turnos.paciente}</h5>
+					<h5>${Turnos.horario}</h5>
+					<h5>${Turnos.dia}</h5>
+					
+					<br>
+					
 					
 					
 				</c:forEach>	
