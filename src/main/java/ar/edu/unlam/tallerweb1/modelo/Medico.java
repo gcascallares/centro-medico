@@ -68,10 +68,10 @@ public class Medico {
 	public void setMinutoHasta(Integer minutoHasta) {
 		this.minutoHasta = minutoHasta;
 	}
-	public Consultorios getConsultorio() {
+	public Consultorio getConsultorio() {
 		return consultorio;
 	}
-	public void setConsultorio(Consultorios consultorio) {
+	public void setConsultorio(Consultorio consultorio) {
 		this.consultorio = consultorio;
 	}
 	

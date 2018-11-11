@@ -2,11 +2,11 @@ package ar.edu.unlam.tallerweb1.dao;
 
 import java.util.List;
 
-import ar.edu.unlam.tallerweb1.modelo.Consultorios;
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 
 public interface ConsultoriosDao {
 
-	List<Consultorios> listaConsultorios();
+	List<Consultorio> listaConsultorios();
 
 	void guardarConsultorio(Long consultorioId);
 	
