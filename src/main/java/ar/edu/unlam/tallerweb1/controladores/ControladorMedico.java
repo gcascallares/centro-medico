@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import ar.edu.unlam.tallerweb1.modelo.Consultorios;
+
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioConsultorio;
@@ -34,7 +35,7 @@ public class ControladorMedico {
 	public ModelAndView elegirConsultorio(@PathVariable Long medicoId , HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
-		List <Consultorios> listaConsultorios = new ArrayList <Consultorios>();
+		List <Consultorio> listaConsultorios = new ArrayList <Consultorio>();
 		listaConsultorios = servicioConsultorio.listaConsultorios();
 		modelo.put("listaConsultorios", listaConsultorios);
 		return new ModelAndView("mostrar-consultorios", modelo);

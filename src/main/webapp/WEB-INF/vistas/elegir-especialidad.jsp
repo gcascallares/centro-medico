@@ -46,7 +46,7 @@
 			
 			<br>
 			
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteEspecialidad">Siguiente con JS</a>
+			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteEspecialidad">Continuar</a>
 			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
 			
  	</form:form>

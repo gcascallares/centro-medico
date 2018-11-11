@@ -5,41 +5,52 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="ISO-8859-1">
 <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${context}/css/bootstrap-theme.min.css" rel="stylesheet">
+
 <style>
 	.container{
 		width: 60%;
 		margin: 0px auto;
+		background-color: grey;
 	}
 </style>
-<title>Elija su Medico</title>
+
+<title>Turnos del paciente</title>
+
 </head>
+
 <body>
 	<div class="container">
-		<form:form action="" method="POST">
-			<h3 class="form-signin-heading">Elija su Medico</h3>
+		<form:form action="modificarestadoturno" method="POST" modelAttribute="">
+		
+			<h3 class="form-signin-heading">Elija turno a gestionar</h3>
+			
 			<hr class="colorgraph">
+			
 			<br>
-  
-        	<select id="medicos">
-				<c:forEach items="${listaMedicos}" var="Medico">
-					<option value="${Medico.id}">${Medico.nombre}</option>
-				</c:forEach>			
-			</select>
+
+				<c:forEach items="${listaturnopaciente}" var="turno">
+				
+					<option value="${Turno.id}">${Turno.dia}${Turno.horario}${Turno.estado}</option>
+					
+				</c:forEach>	
+			
 			<br>
-			<input type="hidden" value="${especialidadId}" id="especialidadId">
-			<br>
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteMedico">Continuar</a>
-			<br>
-			<button class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
-		</form:form>
+			
+			<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Modificar Estado</button>
+			
+ 	</form:form>
 		
 	</div>
+	
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>
 	<script src="${context}/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${context}/js/medicos.js" type="text/javascript"></script>
+	
 </body>
+
 </html>
