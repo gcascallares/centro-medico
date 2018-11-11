@@ -24,7 +24,7 @@ public class Medico {
 	private Integer minutoHasta;
 	
 	@OneToOne
-	private Consultorios consultorio;
+	private Consultorio consultorio;
 	
 	public Long getId() {
 		return id;
