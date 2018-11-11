@@ -76,6 +76,12 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		return servicioTurnoDao.listaTurnos();
 	}
 
+	@Override
+	public List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha) {
+		// TODO Auto-generated method stub
+		return servicioTurnoDao.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
+	}
+
 	
 	
 }

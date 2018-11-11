@@ -51,6 +51,22 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		return listaTurnos;
 	}
+
+	@Override
+	public List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Turno> listaTurnosBD = session.createCriteria(Turno.class).list();
+		
+		for(Turno turno : listaTurnosBD) {
+			if(turno.getFecha() == fecha && turno.getMedico().getId() == medicoId &&
+					turno.getMedico().getEspecialidad().getId() == especialidadId) {
+				if(listaTurnos.contains(turno.getHorario())) {
+					listaTurnos.remove(turno.getHorario());
+				}
+			}
+		}
+		return listaTurnos;
+	}
 	
 	
 	

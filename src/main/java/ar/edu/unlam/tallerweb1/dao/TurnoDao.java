@@ -10,4 +10,6 @@ public interface TurnoDao {
 
 	List<Turno> listaTurnos();
 
+	List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha);
+
 }

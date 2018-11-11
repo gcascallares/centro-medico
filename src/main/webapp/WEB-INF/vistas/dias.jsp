@@ -11,7 +11,7 @@
 <meta charset="ISO-8859-1">
 <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${context}/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="${context}/js/jqueryui/jquery-ui.min.css" rel="stylesheet" >
+<link href="${context}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" >
 
 <style>
 	.container{
@@ -56,7 +56,6 @@
 	
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>
 	<script src="${context}/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${context}/js/jquery-ui/jquery.min.js"></script>
   	<script src="${context}/js/jquery-ui/jquery-ui.min.js"></script>
 	<script src="${context}/js/elegir-dia.js" type="text/javascript"></script>
 	<script src="${context}/js/moment.js" type="text/javascript"></script>
