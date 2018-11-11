@@ -81,8 +81,9 @@ public class ControladorTurnos {
 	public ModelAndView obtenerListaDeTurnosDeMedico(@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha ){
 		ModelMap modelo = new ModelMap();
 		Medico medicoBuscado = servicioTurnos.buscarMedicoEspecifico(medicoId);
-		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado); 
-		modelo.put("listaDeTurnos", listaTurnos);
+		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado);
+		List <String> listaTurnosDisponibles = servicioTurnos.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
+		modelo.put("listaDeTurnos", listaTurnosDisponibles);
 		modelo.put("especialidadId", especialidadId);
 		modelo.put("medicoId", medicoId);
 		modelo.put("fecha", fecha);
