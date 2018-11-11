@@ -31,7 +31,10 @@
 			</select>
 			<br>
 			<input type="hidden" value="${especialidadId}" id="especialidadId">
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteMedico">Siguiente con JS</a>
+			<br>
+			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteMedico">Continuar</a>
+			<br>
+			<button class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
 		</form:form>
 		
 	</div>

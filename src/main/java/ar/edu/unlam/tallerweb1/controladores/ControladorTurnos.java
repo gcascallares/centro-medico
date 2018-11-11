@@ -8,17 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
-import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
@@ -31,19 +28,7 @@ public class ControladorTurnos {
 	@Inject
 	private ServicioEspecialidad servicioEspecialidad;
 	
-	
-	@RequestMapping(path="/turno/{especialidadId}/medico/{medicoId}")
-	public ModelAndView obtenerListaDeTurnosDeMedico(@PathVariable Long especialidadId,@PathVariable Long medicoId){
-		ModelMap modelo = new ModelMap();
-		Medico medicoBuscado = servicioTurnos.buscarMedicoEspecifico(medicoId);
-		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado); 
-		modelo.put("listaDeTurnos", listaTurnos);
-		modelo.put("especialidadId", especialidadId);
-		modelo.put("medicoId", medicoId);
-		modelo.put("medico", medicoBuscado.getNombre());
-		return new ModelAndView("mostrar-turnos", modelo);
-	}
-	
+//	Paso 1 = selecciona la especialidad
 	@RequestMapping("/turno")
 	public ModelAndView elegirEspecialidad() {
 		ModelMap modelo = new ModelMap();
@@ -53,15 +38,15 @@ public class ControladorTurnos {
 		return new ModelAndView("elegir-especialidad", modelo);
 	}
 	
+//	Paso 2 = selecciona el filtro de busqueda
 	@RequestMapping("/turno/{especialidadId}")
 	public ModelAndView elegirFiltro (@PathVariable Long especialidadId , HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
 		modelo.put("especialidadId", especialidadId);
-		///ya consegui el id de especialidad, ahora buscar los medicos con esa especialidad
 		return new ModelAndView("filtro-medico-dia", modelo);
 	}
 	
-	//Este controlador busca a los medicos segun su especialidad
+//	Paso 3.a = filtra a todos los medicos segun la especialidad elegida
 	@RequestMapping("/turno/{especialidadId}/medico")
 	public ModelAndView fitroMedico (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
@@ -71,14 +56,41 @@ public class ControladorTurnos {
 		return new ModelAndView("medicos", modelo);
 	}
 	
-	@RequestMapping("/turno/{especialidadId}/dia")
-	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
+	
+//	Paso 4.a = selecciona la fecha del turno
+	@RequestMapping("/turno/{especialidadId}/medico/{medicoId}")
+	public ModelAndView elegirFecha (@PathVariable Long especialidadId, @PathVariable Long medicoId) {
 		ModelMap modelo = new ModelMap();
-		List <String> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
-		modelo.put("listaDias", listaDias);
+		modelo.put("medicoId", medicoId);
+		modelo.put("especialidadId",especialidadId);
 		return new ModelAndView("dias", modelo);
 	}
 	
+	
+//	Paso 3.b = seleccionaria la fecha en la cual desea solicitar el turno
+//	@RequestMapping("/turno/{especialidadId}/dia")
+//	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
+//		ModelMap modelo = new ModelMap();
+//		List <String> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
+//		modelo.put("listaDias", listaDias);
+//		return new ModelAndView("dias", modelo);
+//	}
+	
+//	Paso 5.a = lista los turnos disponibles del medico en la fecha seleccionada
+	@RequestMapping(path="/turno/{especialidadId}/medico/{medicoId}/{fecha}")
+	public ModelAndView obtenerListaDeTurnosDeMedico(@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha ){
+		ModelMap modelo = new ModelMap();
+		Medico medicoBuscado = servicioTurnos.buscarMedicoEspecifico(medicoId);
+		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado); 
+		modelo.put("listaDeTurnos", listaTurnos);
+		modelo.put("especialidadId", especialidadId);
+		modelo.put("medicoId", medicoId);
+		modelo.put("fecha", fecha);
+		modelo.put("medico", medicoBuscado.getNombre());
+		return new ModelAndView("mostrar-turnos", modelo);
+	}
+	
+//  Paso 6 = guarda el turno con todas las especificaciones seleccionadas
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(TurnoViewModel turno) {
 		
@@ -87,15 +99,14 @@ public class ControladorTurnos {
 		Long medicoId = turno.getMedicoId();
 		Long especialidadId = turno.getEspecialidadId();
 		String horario = turno.getHorario();
+		String fecha = turno.getFecha();
 		
 		servicioTurnos.guardarTurno(especialidadId, medicoId, horario);
-		
-		///hacer metodos para obtener MEDICO, ESPECIALIDAD, y llenar el objeto turno para despues 
-		/// asignarlo a la bdd
-		
+
 		modelo.put("medicoId", medicoId);
 		modelo.put("especialidadId", especialidadId);
 		modelo.put("horario", horario);
+		modelo.put("fecha", fecha);
 		
 		return  new ModelAndView("turno-ok", modelo);
 		

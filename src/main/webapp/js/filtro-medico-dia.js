@@ -8,6 +8,9 @@ $(document).ready(function() {
 	$("#botonDia").click(function(){
 		window.location.assign("/proyecto-limpio-spring/turno/"+ id + "/dia");
 	});
+	$("#atras").click(function(){
+		window.location.assign("/proyecto-limpio-spring/turno");
+	});
 	
 	
 });

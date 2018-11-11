@@ -25,10 +25,14 @@
 
 <body>
 	<div class="container">
-	
+		
+		<br>
 		<button class="btn btn-lg btn-primary btn-block" id="botonMedico">Elegir por Medico</button>
+		<br>
 		<input type="hidden" value="${especialidadId}" id="especialidadId">
 		<button class="btn btn-lg btn-primary btn-block" id="botonDia">Elegir por Dia</button>
+		<br>
+		<button class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
 		
 	</div>
 	

@@ -1,7 +1,5 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +20,7 @@ public class Turno {
 	
 	private String horario;
 	
-	private String dia;
+	private String fecha;
 
 	private String estado;
 
@@ -59,12 +57,12 @@ public class Turno {
 		this.horario = horario;
 	}
 
-	public String getDia() {
-		return dia;
+	public String getFecha() {
+		return fecha;
 	}
 
-	public void setDia(String dia) {
-		this.dia = dia;
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getEstado() {

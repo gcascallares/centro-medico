@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<<<<<<< HEAD
-=======
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
->>>>>>> a65e01169a55200349ee49adf90221cef22a62e8
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +15,7 @@
 		<h1>${medicoId}</h1>
 		<h1>${especialidadId}</h1>
 		<h1>${horario}</h1>
+		<h1>${fecha}</h1>
 		<h3> <a href="elegir-especialidad">Volver</a> </h3>
 	</div>
 

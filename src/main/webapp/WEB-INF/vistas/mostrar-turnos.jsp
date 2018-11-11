@@ -27,7 +27,10 @@
 			</select>
 			<input type="hidden" value="${medicoId}" name="medicoId">
 			<input type="hidden" value="${especialidadId}" name="especialidadId">
+			<br>
 			<button class="btn btn-primary" Type="Submit" />Reservar</button>
+			<br>
+			<button class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
 		</form:form>
 	</div>
 
