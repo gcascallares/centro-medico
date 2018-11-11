@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.unlam.tallerweb1.modelo.Consultorios;
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
@@ -21,11 +21,11 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public List<Consultorios> listaConsultorios() {
+	public List<Consultorio> listaConsultorios() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 	
-		List <Consultorios> listaConsultorios = session.createCriteria(Consultorios.class)
+		List <Consultorio> listaConsultorios = session.createCriteria(Consultorio.class)
 		//.createAlias("medico", "medicoBuscado")
 		//.add(Restrictions.like("medicoBuscado.consultorio", null))
 		.list();
@@ -40,7 +40,7 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 		
 		Medico medico = new Medico();
 		
-		Consultorios consultorio = new Consultorios();
+		Consultorio consultorio = new Consultorio();
 		
 		consultorio.getId();
 		
