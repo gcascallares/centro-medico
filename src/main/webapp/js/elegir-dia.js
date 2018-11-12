@@ -19,7 +19,10 @@ $(document).ready(function() {
 			 };
 			 $.datepicker.setDefaults($.datepicker.regional['es']);
 			$(function () {
-				$("#datepicker").datepicker();
+				$("#datepicker").datepicker({
+					beforeShowDay: $.datepicker.noWeekends 
+				});
+				
 			});
 		
 	var especialidadId = $("#especialidadId").val();
