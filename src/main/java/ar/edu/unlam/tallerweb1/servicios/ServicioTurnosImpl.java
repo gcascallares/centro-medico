@@ -67,13 +67,18 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void guardarTurno(Long especialidadId, Long medicoId, String horario) {
-		servicioTurnoDao.guardarTurno(especialidadId, medicoId, horario);
+	public void guardarTurno(Turno turno) {
+		servicioTurnoDao.guardarTurno(turno);
 	}
 
 	@Override
-	public List<Turno> listaTurnos() {
-		return servicioTurnoDao.listaTurnos();
+	public List<Turno> listaTurnosPorMedico(Medico medico) {
+		return servicioTurnoDao.listaTurnosPorMedico(medico);
+	}
+
+	@Override
+	public List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha) {
+		return servicioTurnoDao.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
 	}
 
 	

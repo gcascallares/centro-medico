@@ -16,7 +16,7 @@
 
 
 		<form:form action="${context}/reservar-turno" method="POST" modelAttribute = "turno">
-			<h3 class="form-signin-heading">Lista de turnos disponibles</h3>
+			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
 			<hr class="colorgraph">
 			<br>
 			<select name="horario" id="">
@@ -25,6 +25,7 @@
 					<!-- El value despues va a ser el ID del medico -->
 				</c:forEach>
 			</select>
+			<input type="hidden" value="${fecha}" name="fecha">
 			<input type="hidden" value="${medicoId}" name="medicoId">
 			<input type="hidden" value="${especialidadId}" name="especialidadId">
 			<br>

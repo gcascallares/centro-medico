@@ -10,8 +10,10 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String email;
 	private String clave;
+	
 	private Long dni;
 	private String nombre;
 	private String apellido;

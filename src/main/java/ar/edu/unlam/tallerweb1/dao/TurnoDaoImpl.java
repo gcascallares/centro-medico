@@ -20,35 +20,38 @@ public class TurnoDaoImpl implements TurnoDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public void guardarTurno(Long especialidadId, Long medicoId, String horario) {
+	public void guardarTurno (Turno turno) {
 		
 		final Session session = sessionFactory.getCurrentSession();
-		
-		Turno turno = new Turno();
-		
-		Especialidad especialidad = new Especialidad();
-		
-		Medico medico = new Medico();
-		
-		especialidad.setId(especialidadId);
-		
-		medico.setEspecialidad(especialidad);
-		medico.setId(medicoId);
-		
-		turno.setHorario(horario);
-		turno.setMedico(medico);
 		
 		session.save(turno);
 		
 	}
 
 	@Override
-	public List<Turno> listaTurnos() {
+	public List<Turno> listaTurnosPorMedico(Medico medico) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List <Turno> listaTurnos = session.createCriteria(Turno.class).list();
-		//.add(Restrictions.like("Turno.medico", medicoId))
+		List <Turno> listaTurnos = session.createCriteria(Turno.class)
+		.add(Restrictions.like("medico", medico))
+		.list();
 		
+		return listaTurnos;
+	}
+
+	@Override
+	public List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Turno> listaTurnosBD = session.createCriteria(Turno.class).list();
+		
+		for(Turno turno : listaTurnosBD) {
+			if(turno.getFecha().equals(fecha) && turno.getMedico().getId() == medicoId &&
+					turno.getMedico().getEspecialidad().getId() == especialidadId) {
+				if(listaTurnos.contains(turno.getHorario())) {
+					listaTurnos.remove(turno.getHorario());
+				}
+			}
+		}
 		return listaTurnos;
 	}
 	
