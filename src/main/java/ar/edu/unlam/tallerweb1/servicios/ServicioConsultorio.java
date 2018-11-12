@@ -8,6 +8,11 @@ public interface ServicioConsultorio {
 
 	List <Consultorio> listaConsultorios();
 	
-	void guardarConsultorio(Long consultorioId);
-	
+
+	Consultorio buscarConsultorioEspecifico(Long consultorioId);
+
+
+	void guardarConsultorio(Consultorio consultorio);
+
+
 }

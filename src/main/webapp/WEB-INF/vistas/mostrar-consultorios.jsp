@@ -34,6 +34,8 @@
 						
 			</select>
 			
+			<input type="hidden" value="${medicoId}" id="medicoId">
+			
 			<br>
 			
 			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteConsultorio">Siguiente con JS</a>

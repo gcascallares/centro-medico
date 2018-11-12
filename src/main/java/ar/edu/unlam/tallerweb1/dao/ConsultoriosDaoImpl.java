@@ -32,25 +32,28 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 		
 	}
 
+	
 	@Override
-	public void guardarConsultorio(Long consultorioId) {
+	public Consultorio buscarConsultorioEspecifico (Long consultorioId) {
 		
-		final Session session = sessionFactory.getCurrentSession();
-		
-		Medico medico = new Medico();
-		
-		Consultorio consultorio = new Consultorio();
-		
-		consultorio.getId();
-		
-		//medico.setConsultorio(consultorio.setId(consultorioId));
-		
-		
-		
-		
-		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	Consultorio consultorioEspecifico = (Consultorio) session.createCriteria (Consultorio.class)
+							  .add(Restrictions.eq("id",consultorioId))
+							  .uniqueResult();
+	return consultorioEspecifico;
+
 	}
 	
+	@Override
+	public void guardarConsultorio(Consultorio consultorio) {
+		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	session.save(consultorio);
+	
 
+	}
+	
 
 }

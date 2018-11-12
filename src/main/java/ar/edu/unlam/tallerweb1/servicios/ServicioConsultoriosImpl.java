@@ -26,13 +26,17 @@ public class ServicioConsultoriosImpl implements ServicioConsultorio{
 	}
 
 
+
 	@Override
-	public void guardarConsultorio(Long consultorioId) {
+	public Consultorio buscarConsultorioEspecifico(Long consultorioId) {
+		return servicioConsultoriosDao.buscarConsultorioEspecifico(consultorioId);
+	}
+
+	@Override
+	public void guardarConsultorio(Consultorio consultorio){
 		
-		servicioConsultoriosDao.guardarConsultorio(consultorioId);
+		servicioConsultoriosDao.guardarConsultorio(consultorio);
 		
 	}
 
-	
-	
 }
