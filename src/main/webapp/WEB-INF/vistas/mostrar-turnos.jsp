@@ -25,6 +25,7 @@
 					<!-- El value despues va a ser el ID del medico -->
 				</c:forEach>
 			</select>
+			<input type="hidden" value="${fecha}" name="fecha">
 			<input type="hidden" value="${medicoId}" name="medicoId">
 			<input type="hidden" value="${especialidadId}" name="especialidadId">
 			<br>

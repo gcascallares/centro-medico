@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
@@ -93,23 +94,28 @@ public class ControladorTurnos {
 	
 //  Paso 6 = guarda el turno con todas las especificaciones seleccionadas
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
-	public ModelAndView reservarTurno(TurnoViewModel turno) {
+	public ModelAndView reservarTurno(TurnoViewModel turnoViewModel) {
 		
 		ModelMap modelo = new ModelMap();
 		
-		Long medicoId = turno.getMedicoId();
-		Long especialidadId = turno.getEspecialidadId();
-		String horario = turno.getHorario();
-		String fecha = turno.getFecha();
+		Turno turno = new Turno();
+		Medico medico = new Medico();
+		Especialidad especialidad = new Especialidad();
 		
-		servicioTurnos.guardarTurno(especialidadId, medicoId, horario);
+		especialidad.setId(turnoViewModel.getEspecialidadId());
+		
+		medico.setId(turnoViewModel.getMedicoId());
+		medico.setEspecialidad(especialidad);
+		
+		turno.setFecha(turnoViewModel.getFecha());
+		turno.setHorario(turnoViewModel.getHorario());
+		turno.setMedico(medico);
+		
+		servicioTurnos.guardarTurno(turno);
 
-		modelo.put("medicoId", medicoId);
-		modelo.put("especialidadId", especialidadId);
-		modelo.put("horario", horario);
-		modelo.put("fecha", fecha);
+		modelo.put("turno",turno);
 		
-		return  new ModelAndView("turno-ok", modelo);
+		return new ModelAndView("turno-ok", modelo);
 		
 	}
 }

@@ -17,12 +17,12 @@ public interface ServicioTurnos {
 	List<String> listaDeDiasDisponibles(Long especialidadId);
 	
 	Medico buscarMedicoEspecifico(Long id);
-	
-	void guardarTurno(Long especialidadId, Long medicoId, String horario);
 
 	List<Turno> listaTurnos();
 
 	List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha);
+
+	void guardarTurno(Turno turno);
 }
 
 

@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
@@ -20,23 +19,9 @@ public class TurnoDaoImpl implements TurnoDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public void guardarTurno(Long especialidadId, Long medicoId, String horario) {
+	public void guardarTurno (Turno turno) {
 		
 		final Session session = sessionFactory.getCurrentSession();
-		
-		Turno turno = new Turno();
-		
-		Especialidad especialidad = new Especialidad();
-		
-		Medico medico = new Medico();
-		
-		especialidad.setId(especialidadId);
-		
-		medico.setEspecialidad(especialidad);
-		medico.setId(medicoId);
-		
-		turno.setHorario(horario);
-		turno.setMedico(medico);
 		
 		session.save(turno);
 		
