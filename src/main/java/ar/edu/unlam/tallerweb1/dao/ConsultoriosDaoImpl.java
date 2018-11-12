@@ -26,8 +26,7 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 		@SuppressWarnings("unchecked")
 	
 		List <Consultorio> listaConsultorios = session.createCriteria(Consultorio.class)
-		//.createAlias("medico", "medicoBuscado")
-		//.add(Restrictions.like("medicoBuscado.consultorio", null))
+		.add(Restrictions.isNull("medico"))
 		.list();
 		return listaConsultorios;
 		
