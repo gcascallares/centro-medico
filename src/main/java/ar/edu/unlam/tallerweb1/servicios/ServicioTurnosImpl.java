@@ -72,8 +72,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public List<Turno> listaTurnos() {
-		return servicioTurnoDao.listaTurnos();
+	public List<Turno> listaTurnosPorMedico(Medico medico) {
+		return servicioTurnoDao.listaTurnosPorMedico(medico);
 	}
 
 	@Override

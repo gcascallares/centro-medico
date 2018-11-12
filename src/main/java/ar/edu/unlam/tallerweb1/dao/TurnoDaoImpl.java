@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
@@ -28,11 +29,12 @@ public class TurnoDaoImpl implements TurnoDao {
 	}
 
 	@Override
-	public List<Turno> listaTurnos() {
+	public List<Turno> listaTurnosPorMedico(Medico medico) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
-		List <Turno> listaTurnos = session.createCriteria(Turno.class).list();
-		//.add(Restrictions.like("Turno.medico", medicoId))
+		List <Turno> listaTurnos = session.createCriteria(Turno.class)
+		.add(Restrictions.like("medico", medico))
+		.list();
 		
 		return listaTurnos;
 	}

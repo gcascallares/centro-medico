@@ -18,7 +18,7 @@ public interface ServicioTurnos {
 	
 	Medico buscarMedicoEspecifico(Long id);
 
-	List<Turno> listaTurnos();
+	List<Turno> listaTurnosPorMedico(Medico medico);
 
 	List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha);
 

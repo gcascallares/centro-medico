@@ -57,9 +57,23 @@ public class ControladorMedico {
 
 		List <Turno> listaTurnos = new ArrayList <Turno>();
 		
-		listaTurnos = servicioTurnos.listaTurnos();
+		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico);
 		modelo.put("listaTurnos", listaTurnos);
 		return new ModelAndView("inicio-medico", modelo);
 	}
+	
+	
+	//hacer en el servicio turno un metodo que obtenga el dia actual y que retorne a formato DD-MM-AAAA 
+	//en el dao listarTurnoPorMedico agregar Restriction de dia}
+	
+	//en el servicio turno en el metodo diaActual
+//	Calendar fecha = new GregorianCalendar();
+//    int ano = fecha.get(Calendar.YEAR);
+//    int mes = fecha.get(Calendar.MONTH);
+//    int dia = fecha.get(Calendar.DAY_OF_MONTH);
+//    String fechaActual = dia+"-"+mes+"-"+ano
+//	  return fechaActual
+	
+	//ademas restricction del estado del turno
 	
 }
