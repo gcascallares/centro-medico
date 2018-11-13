@@ -18,11 +18,13 @@ public interface ServicioTurnos {
 	
 	Medico buscarMedicoEspecifico(Long id);
 
-	List<Turno> listaTurnosPorMedico(Medico medico);
+	List<Turno> listaTurnosPorMedico(Medico medico, String diaActual);
 
 	List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha);
 
 	void guardarTurno(Turno turno);
+
+	String diaActual();
 }
 
 

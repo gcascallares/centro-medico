@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -72,8 +74,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public List<Turno> listaTurnosPorMedico(Medico medico) {
-		return servicioTurnoDao.listaTurnosPorMedico(medico);
+	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {
+		return servicioTurnoDao.listaTurnosPorMedico(medico, diaActual);
 	}
 
 	@Override
@@ -81,6 +83,15 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		return servicioTurnoDao.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
 	}
 
-	
+	public String diaActual(){
+
+		Calendar fecha = new GregorianCalendar();
+	    int ano = fecha.get(Calendar.YEAR);
+	    int mes = fecha.get(Calendar.MONTH);
+	    int dia = fecha.get(Calendar.DAY_OF_MONTH);
+	    String fechaActual = dia+"-"+mes+"-"+ano;
+		return fechaActual;
+		
+	}
 	
 }
