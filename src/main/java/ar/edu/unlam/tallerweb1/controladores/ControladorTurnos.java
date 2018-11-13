@@ -48,13 +48,22 @@ public class ControladorTurnos {
 	}
 	
 //	Paso 3.a = filtra a todos los medicos segun la especialidad elegida
-	@RequestMapping("/turno/{especialidadId}/medico")
+	@RequestMapping("/turno/{especialidadId}/medicos")
 	public ModelAndView fitroMedico (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
 		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
 		modelo.put("especialidadId",especialidadId);
 		modelo.put("listaMedicos", listaMedicos);
 		return new ModelAndView("medicos", modelo);
+	}
+	
+//	Paso 3.b = seleccionaria la fecha en la cual desea solicitar el turno
+	@RequestMapping("/turno/{especialidadId}/dias")
+	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
+		ModelMap modelo = new ModelMap();
+		List <String> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
+		modelo.put("listaDias", listaDias);
+		return new ModelAndView("dias", modelo);
 	}
 	
 	
@@ -66,16 +75,6 @@ public class ControladorTurnos {
 		modelo.put("especialidadId",especialidadId);
 		return new ModelAndView("dias", modelo);
 	}
-	
-	
-//	Paso 3.b = seleccionaria la fecha en la cual desea solicitar el turno
-//	@RequestMapping("/turno/{especialidadId}/dia")
-//	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
-//		ModelMap modelo = new ModelMap();
-//		List <String> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
-//		modelo.put("listaDias", listaDias);
-//		return new ModelAndView("dias", modelo);
-//	}
 	
 //	Paso 5.a = lista los turnos disponibles del medico en la fecha seleccionada
 	@RequestMapping(path="/turno/{especialidadId}/medico/{medicoId}/{fecha}")
