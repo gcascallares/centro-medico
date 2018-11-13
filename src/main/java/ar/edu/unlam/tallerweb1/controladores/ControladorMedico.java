@@ -49,15 +49,18 @@ public class ControladorMedico {
 	public ModelAndView inicioMedico(@PathVariable Long medicoId , @PathVariable Long consultorioId , HttpServletRequest request){
 		ModelMap modelo = new ModelMap();
 		
+		//Guarda el idMedico en el consultorio elejido
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
 		Consultorio consultorio = servicioConsultorio.buscarConsultorioEspecifico(consultorioId);
 		consultorio.setMedico(medico);
 		servicioConsultorio.guardarConsultorio(consultorio);
-
-
+		
+		//Trae el dia actual
+		String diaActual = servicioTurnos.diaActual();
+		
 		List <Turno> listaTurnos = new ArrayList <Turno>();
 		
-		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico);
+		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico, diaActual);
 		modelo.put("listaTurnos", listaTurnos);
 		return new ModelAndView("inicio-medico", modelo);
 	}

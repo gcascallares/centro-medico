@@ -29,11 +29,12 @@ public class TurnoDaoImpl implements TurnoDao {
 	}
 
 	@Override
-	public List<Turno> listaTurnosPorMedico(Medico medico) {
+	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.add(Restrictions.like("medico", medico))
+		.add(Restrictions.like("fecha", diaActual))
 		.list();
 		
 		return listaTurnos;

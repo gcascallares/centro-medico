@@ -38,7 +38,7 @@
 				</c:forEach>	
 						
 			
-						<h1>${nombrePaciente}</h1>;
+						<h1>${nombrePaciente}</h1>
 			
 			<br>
 			
@@ -46,7 +46,6 @@
 
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>
 	<script src="${context}/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${context}/js/inicio-medico.js" type="text/javascript"></script>
 
 
 </body>
