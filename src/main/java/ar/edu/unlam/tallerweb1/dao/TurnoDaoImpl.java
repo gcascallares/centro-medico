@@ -36,6 +36,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.add(Restrictions.like("medico", medico))
 		.add(Restrictions.like("fecha", diaActual))
+		.add(Restrictions.like("estado", "en_espera"))
 		.list();
 		
 		return listaTurnos;
