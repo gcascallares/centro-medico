@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
@@ -14,7 +15,7 @@ public interface ServicioTurnos {
 
 	List<String> turnosDeMedicoEspecifico(Medico medico);
 
-	List<String> listaDeDiasDisponibles(Long especialidadId);
+	List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId);
 	
 	Medico buscarMedicoEspecifico(Long id);
 

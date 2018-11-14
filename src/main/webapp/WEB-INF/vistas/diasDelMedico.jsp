@@ -66,7 +66,7 @@
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>
 	<script src="${context}/js/bootstrap.min.js" type="text/javascript"></script>
   	<script src="${context}/js/jquery-ui/jquery-ui.min.js"></script>
-	<script src="${context}/js/elegir-dia.js" type="text/javascript"></script>
+	<script src="${context}/js/elegir-dia-del-medico.js" type="text/javascript"></script>
 	<script src="${context}/js/moment.js" type="text/javascript"></script>
 	
 	

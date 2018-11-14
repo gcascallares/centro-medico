@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
@@ -55,6 +56,18 @@ public class TurnoDaoImpl implements TurnoDao {
 			}
 		}
 		return listaTurnos;
+	}
+
+	@Override
+	public List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId) {
+		//lista de los dias de los medicos que trabajan en esa especialidad
+		final Session session = sessionFactory.getCurrentSession();
+		List <DiasLaborales> lista = session.createCriteria(DiasLaborales.class)
+		.createAlias("Medicos", "Medicos")
+		.createAlias("Medicos.especialidad", "especialidadBuscada")
+		.add(Restrictions.eq("especialidadBuscada.id",especialidadId)).list();
+		
+		return lista;
 	}
 	
 	
