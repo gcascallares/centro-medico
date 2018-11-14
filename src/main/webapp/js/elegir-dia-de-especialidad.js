@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    
+var dayOfWeek = "";   
+var idDiaElegido;
 	$.datepicker.regional['es'] = {
 			 closeText: 'Cerrar',
 			 prevText: '< Ant',
@@ -20,14 +21,30 @@ $(document).ready(function() {
 			 $.datepicker.setDefaults($.datepicker.regional['es']);
 			$(function () {
 				$("#datepicker").datepicker({
+					dateFormat: "dd-mm-yy",
 					beforeShowDay: function(date) {
 				        var day = date.getDay();
 				        return [(day == window.dias[0] || day == window.dias[1] || 
 				        		day == window.dias[2] || day == window.dias[3]
 				        		|| day == window.dias[4])];
-				    } 
+				    },
+				    onSelect: function(dateText){
+				    	var seldate = $(this).datepicker('getDate');
+				        seldate = seldate.toDateString();
+				        seldate = seldate.split(' ');
+				        var weekday=new Array();
+				            weekday['Mon']="Lunes";
+				            weekday['Tue']="Martes";
+				            weekday['Wed']="Miércoles";
+				            weekday['Thu']="Jueves";
+				            weekday['Fri']="Viernes";
+				        dayOfWeek = weekday[seldate[0]];
+				    }
 						
 				});
+				
+				
+				
 				
 			});
 		
@@ -39,11 +56,23 @@ $(document).ready(function() {
 		});	
 	 
 	 $("#botonSiguiente").click(function(){
+		 switch(dayOfWeek){
+		 case "Lunes": idDiaElegido = 1;
+		 break;
+		 case "Martes": idDiaElegido = 2;
+		 break;
+		 case "Miércoles": idDiaElegido = 3;
+		 break;
+		 case "Jueves": idDiaElegido = 4;
+		 break;
+		 case "Viernes": idDiaElegido = 5;
+		 break;
+		 }
 		var fecha = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();;
 		fecha = fecha.replace("/","-");
 		fecha = fecha.replace("/","-");
 		fecha = fecha.replace("/","-");
-		 window.location.assign("/proyecto-limpio-spring/turno/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
+		 window.location.assign("/proyecto-limpio-spring/turno/"+ especialidadId + "/dia/"+ fecha + "/" + idDiaElegido);
 		});	
 	 
 	
