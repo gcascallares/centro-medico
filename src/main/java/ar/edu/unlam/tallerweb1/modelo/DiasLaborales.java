@@ -19,11 +19,8 @@ public class DiasLaborales {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String dia1;
-	private String dia2;
-	private String dia3;
-	private String dia4;
-	private String dia5;
+	private String nombre;
+
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "dias_medicos",
@@ -39,44 +36,12 @@ public class DiasLaborales {
 		this.id = id;
 	}
 
-	public String getDia1() {
-		return dia1;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setDia1(String dia1) {
-		this.dia1 = dia1;
-	}
-
-	public String getDia2() {
-		return dia2;
-	}
-
-	public void setDia2(String dia2) {
-		this.dia2 = dia2;
-	}
-
-	public String getDia3() {
-		return dia3;
-	}
-
-	public void setDia3(String dia3) {
-		this.dia3 = dia3;
-	}
-
-	public String getDia4() {
-		return dia4;
-	}
-
-	public void setDia4(String dia4) {
-		this.dia4 = dia4;
-	}
-
-	public String getDia5() {
-		return dia5;
-	}
-
-	public void setDia5(String dia5) {
-		this.dia5 = dia5;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public List<Medico> getMedicos() {

@@ -9,7 +9,7 @@ $(document).ready(function() {
 			 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
 			 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
 			 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-			 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+			 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
 			 weekHeader: 'Sm',
 			 dateFormat: 'dd/mm/yy',
 			 firstDay: 1,
@@ -20,7 +20,13 @@ $(document).ready(function() {
 			 $.datepicker.setDefaults($.datepicker.regional['es']);
 			$(function () {
 				$("#datepicker").datepicker({
-					beforeShowDay: $.datepicker.noWeekends 
+					beforeShowDay: function(date) {
+				        var day = date.getDay();
+				        return [(day == window.dias[0] || day == window.dias[1] || 
+				        		day == window.dias[2] || day == window.dias[3]
+				        		|| day == window.dias[4])];
+				    } 
+						
 				});
 				
 			});

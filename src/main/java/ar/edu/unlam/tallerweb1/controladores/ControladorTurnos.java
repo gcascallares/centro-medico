@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
+import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
 @Controller
@@ -28,6 +30,9 @@ public class ControladorTurnos {
 	
 	@Inject
 	private ServicioEspecialidad servicioEspecialidad;
+	
+	@Inject
+	private ServicioMedico servicioMedico;
 	
 //	Paso 1 = selecciona la especialidad
 	@RequestMapping("/turno")
@@ -71,8 +76,16 @@ public class ControladorTurnos {
 	@RequestMapping("/turno/{especialidadId}/medico/{medicoId}")
 	public ModelAndView elegirFecha (@PathVariable Long especialidadId, @PathVariable Long medicoId) {
 		ModelMap modelo = new ModelMap();
+		List <DiasLaborales> listaDeDias = new ArrayList<DiasLaborales>();
+		listaDeDias = servicioMedico.buscarDiasLaborales(medicoId);
+		List <Long> idDias = new ArrayList<Long>();
+		for(DiasLaborales dia : listaDeDias) {
+			idDias.add(dia.getId());
+		}
+		
 		modelo.put("medicoId", medicoId);
 		modelo.put("especialidadId",especialidadId);
+		modelo.put("dias", idDias);
 		return new ModelAndView("dias", modelo);
 	}
 	
@@ -117,4 +130,6 @@ public class ControladorTurnos {
 		return new ModelAndView("turno-ok", modelo);
 		
 	}
+	
+	
 }

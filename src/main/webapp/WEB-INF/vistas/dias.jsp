@@ -1,8 +1,12 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +16,6 @@
 <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${context}/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="${context}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" >
-
 <style>
 	.container{
 		width: 60%;
@@ -21,13 +24,19 @@
 	}
 </style>
 
+<script>
+///GUARDO LA LISTA CON LOS ID DE DIAS EN JAVASCRIPT
+	var dias = new Array();
+	<c:forEach items="${dias}" var="dia"> 
+	   dias.push(${dia});
+	</c:forEach> 
+</script>
 <title>Elija su Fecha</title>
 
 </head>
 
 <body>
 	<div class="container">
-		
 		<input type"hidden" value="${especialidadId}" id="especialidadId" hidden>
 		<input type"hidden" value="${medicoId}" id="medicoId" hidden>
 		<br>
