@@ -65,9 +65,11 @@ public class MedicoDaopImpl implements MedicoDao {
 	@Override
 	public List<DiasLaborales> buscarDiasLaborales(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
 		List <DiasLaborales> lista = session.createCriteria(DiasLaborales.class)
 		.createAlias("Medicos", "Medicos")
-		.add(Restrictions.eq("Medicos.id",id)).list();
+		.add(Restrictions.eq("Medicos.id",id))
+		.list();
 		
 		return lista;
 	}
