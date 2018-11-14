@@ -1,7 +1,9 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -66,9 +68,21 @@ public class ControladorTurnos {
 	@RequestMapping("/turno/{especialidadId}/dias")
 	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
 		ModelMap modelo = new ModelMap();
-		List <String> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
-		modelo.put("listaDias", listaDias);
-		return new ModelAndView("dias", modelo);
+		//busca la lista de los dias de los medicos con esa especialidad
+		List <DiasLaborales> listaDias = servicioTurnos.listaDeDiasDisponibles(especialidadId);
+		Set<DiasLaborales> hs = new HashSet<>();
+		//lo paso a set porque puede tocar valores repetidos, set los borra
+		hs.addAll(listaDias);
+		listaDias.clear();
+		listaDias.addAll(hs);
+		
+		//convierto a lista de id de dias para usarlo en el calendario
+		List <Long> idDias = new ArrayList<Long>();
+		for(DiasLaborales dia : listaDias) {
+			idDias.add(dia.getId());
+		}				
+		modelo.put("dias", idDias);
+		return new ModelAndView("diasDeEspecialidad", modelo);
 	}
 	
 	
@@ -78,6 +92,7 @@ public class ControladorTurnos {
 		ModelMap modelo = new ModelMap();
 		List <DiasLaborales> listaDeDias = new ArrayList<DiasLaborales>();
 		listaDeDias = servicioMedico.buscarDiasLaborales(medicoId);
+		//convierto a lista de id de dias para usarlo en el calendario
 		List <Long> idDias = new ArrayList<Long>();
 		for(DiasLaborales dia : listaDeDias) {
 			idDias.add(dia.getId());
@@ -86,7 +101,7 @@ public class ControladorTurnos {
 		modelo.put("medicoId", medicoId);
 		modelo.put("especialidadId",especialidadId);
 		modelo.put("dias", idDias);
-		return new ModelAndView("dias", modelo);
+		return new ModelAndView("diasDelMedico", modelo);
 	}
 	
 //	Paso 5.a = lista los turnos disponibles del medico en la fecha seleccionada
