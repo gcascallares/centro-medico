@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
 import ar.edu.unlam.tallerweb1.dao.TurnoDao;
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
@@ -58,9 +59,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	
 
 	@Override
-	public List<String> listaDeDiasDisponibles(Long especialidadId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId) {
+		return servicioTurnoDao.listaDeDiasDisponibles(especialidadId);
 	}
 
 	@Override
