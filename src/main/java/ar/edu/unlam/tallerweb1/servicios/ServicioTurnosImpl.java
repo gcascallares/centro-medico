@@ -94,4 +94,9 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 	}
 	
+	@Override
+	public List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId) {
+		return servicioTurnoDao.listaDeMedicosDisponibles(especialidadId, diaId);
+	}
+	
 }

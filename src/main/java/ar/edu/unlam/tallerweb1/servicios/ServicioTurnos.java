@@ -26,6 +26,8 @@ public interface ServicioTurnos {
 	void guardarTurno(Turno turno);
 
 	String diaActual();
+
+	List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId);
 }
 
 

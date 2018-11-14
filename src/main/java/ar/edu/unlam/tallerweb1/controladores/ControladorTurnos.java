@@ -104,7 +104,21 @@ public class ControladorTurnos {
 		return new ModelAndView("diasDelMedico", modelo);
 	}
 	
-//	Paso 5.a = lista los turnos disponibles del medico en la fecha seleccionada
+//	Paso 4.b = selecciona fecha segun el medico
+	@RequestMapping("/turno/{especialidadId}/dia/{fecha}/{diaId}")
+	public ModelAndView medicosDisponiblesPorDia (@PathVariable Long especialidadId, @PathVariable String fecha, @PathVariable Long diaId) {
+		ModelMap modelo = new ModelMap();
+		
+		modelo.put("especialidadId", especialidadId);
+		modelo.put("fecha", fecha);
+		
+		List <Medico> listaMedicosPorDia = servicioTurnos.listaDeMedicosDisponibles(especialidadId, diaId);
+		
+		modelo.put("listaDeMedicos",listaMedicosPorDia);
+		return new ModelAndView("mostrar-medicos-dia", modelo);
+	}
+	
+//	Paso 5.a = lista los turnos disponibles del medico en la fecha seleccionada a travez del filtro de Medico
 	@RequestMapping(path="/turno/{especialidadId}/medico/{medicoId}/{fecha}")
 	public ModelAndView obtenerListaDeTurnosDeMedico(@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha ){
 		ModelMap modelo = new ModelMap();
@@ -119,6 +133,24 @@ public class ControladorTurnos {
 		return new ModelAndView("mostrar-turnos", modelo);
 	}
 	
+//	Paso 5.b = lista los turnos disponibles del medico en la fecha seleccionada a travez del filtro de Dia
+	@RequestMapping(path="/turno/{especialidadId}/dia/{fecha}/{diaId}/{medicoId}")
+	public ModelAndView obtenerListaDeTurnosDeMedicoPorDia(@PathVariable Long especialidadId, @PathVariable String fecha, @PathVariable Long diaId, @PathVariable Long medicoId){
+		ModelMap modelo = new ModelMap();
+		
+		modelo.put("especialidadId", especialidadId);
+		modelo.put("fecha", fecha);
+		modelo.put("diaId", diaId);
+		
+		Medico medicoBuscado = servicioTurnos.buscarMedicoEspecifico(medicoId);
+		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado);
+		List <String> listaTurnosDisponibles = servicioTurnos.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
+		
+		modelo.put("listaDeTurnos", listaTurnosDisponibles);
+		
+		return new ModelAndView("mostrar-turnos", modelo);
+	}	
+
 //  Paso 6 = guarda el turno con todas las especificaciones seleccionadas
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
 	public ModelAndView reservarTurno(TurnoViewModel turnoViewModel) {
