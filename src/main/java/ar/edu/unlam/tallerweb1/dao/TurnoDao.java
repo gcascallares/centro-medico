@@ -16,4 +16,6 @@ public interface TurnoDao {
 
 	List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId);
 
+	List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId);
+
 }

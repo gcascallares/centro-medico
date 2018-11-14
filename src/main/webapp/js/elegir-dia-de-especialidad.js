@@ -72,8 +72,14 @@ var idDiaElegido;
 		fecha = fecha.replace("/","-");
 		fecha = fecha.replace("/","-");
 		fecha = fecha.replace("/","-");
-		 window.location.assign("/proyecto-limpio-spring/turno/"+ especialidadId + "/dia/"+ fecha + "/" + idDiaElegido);
+		window.location.assign("/proyecto-limpio-spring/turno/"+ especialidadId + "/dia/"+ fecha + "/" + idDiaElegido);
 		});	
 	 
+
+	 var medicoId2 = $("#medicos option:selected").val();
+		
+	 $("#botonSiguienteMedicoDia").click(function(){
+			window.location.assign("/proyecto-limpio-spring/turno/"+ EspecialidadId + "/dia/" + fecha + "/" + idDiaElegido + "/" + medicoId2);
+		});
 	
 });

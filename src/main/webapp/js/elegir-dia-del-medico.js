@@ -46,5 +46,4 @@ $(document).ready(function() {
 		 window.location.assign("/proyecto-limpio-spring/turno/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
 		});	
 	 
-	
 });

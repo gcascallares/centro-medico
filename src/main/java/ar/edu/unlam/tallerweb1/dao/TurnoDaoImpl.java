@@ -70,6 +70,20 @@ public class TurnoDaoImpl implements TurnoDao {
 		return lista;
 	}
 	
+	@Override
+	public List<Medico> listaDeMedicosDisponibles (Long especialidadId , Long diaId) {
+		//lista de los dias de los medicos que trabajan en esa especialidad
+		final Session session = sessionFactory.getCurrentSession();
+		List <Medico> lista = session.createCriteria(Medico.class)
+		.createAlias("especialidad","especialidadBuscada")
+		.add(Restrictions.eq("especialidadBuscada.id", especialidadId))
+		.createAlias("diasLaborales", "diasBuscados")
+		.add(Restrictions.eq("diasBuscados.id", diaId))
+		.list();
+		
+		return lista;
+	}
+	
 	
 	
 
