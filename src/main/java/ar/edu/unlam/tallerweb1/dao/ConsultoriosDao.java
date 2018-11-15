@@ -8,7 +8,6 @@ public interface ConsultoriosDao {
 
 	List<Consultorio> listaConsultorios();
 
-
 	Consultorio buscarConsultorioEspecifico(Long consultorioId);
 
 	void guardarConsultorio(Consultorio consultorio);
