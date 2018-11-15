@@ -16,7 +16,7 @@
 		<h1>${especialidadId}</h1>
 		<h1>${horario}</h1>
 		<h1>${fecha}</h1>
-		<h3> <a href="/turno">Volver</a> </h3>
+		<h3> <a href="${context}/turno">Volver</a> </h3>
 	</div>
 
 	<script src="../js/jquery-3.3.1.min.js"></script>
