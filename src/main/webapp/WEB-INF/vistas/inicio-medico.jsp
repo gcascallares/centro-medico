@@ -18,13 +18,13 @@
 
 		
 		
-			<h2 class="form-signin-heading" id="titulo">Bienvenido "Medico"</h2>
+			<h2 class="form-signin-heading" id="titulo">Bienvenido Doctor ${medico.nombre}</h2>
 			
 			<hr class="colorgraph">
 			
 			<br>
   
-  			<h3 class="form-signin-heading" id="sub-titulo">Turnos del dia</h3>
+  			<h3 class="form-signin-heading" id="sub-titulo">Turnos del dia ${fecha}</h3>
 			
         	
 				<c:forEach items="${listaTurnos}" var="Turnos">
@@ -32,13 +32,11 @@
 					<h5>${Turnos.id}</h5>
 					<h5>${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
 					<h5>${Turnos.horario}</h5>
-					<h5>${Turnos.fecha}</h5>
 					
 					<br>					
 				</c:forEach>	
 						
 			
-						<h1>${nombrePaciente}</h1>
 			
 			<br>
 			
