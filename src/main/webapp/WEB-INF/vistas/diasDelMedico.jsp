@@ -31,6 +31,9 @@
 	   dias.push(${dia});
 	</c:forEach> 
 </script>
+<script> 
+	var context = "${context}";
+</script>
 <title>Elija su Fecha</title>
 
 </head>

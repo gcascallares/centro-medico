@@ -22,7 +22,9 @@
 <title>Elija su especialidad</title>
 
 </head>
-
+<script> 
+	var context = "${context}";
+</script>
 <body>
 	<div class="container">
 		

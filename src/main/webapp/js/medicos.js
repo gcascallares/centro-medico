@@ -6,11 +6,11 @@ $(document).ready(function() {
 	
 	$("#botonSiguienteMedico").click(function(){
 		var medicoId = $("#medicos option:selected").val();
-		window.location.assign("/proyecto-limpio-spring/turno/"+ id + "/medico/"+ medicoId);
+		window.location.assign(window.context + "/turno/"+ id + "/medico/"+ medicoId);
 	});
 	
 	$("#atras").click(function(){
-		window.location.assign("/proyecto-limpio-spring/turno/"+ id);
-	});
+		window.history.back();
+	});	
 	
 });

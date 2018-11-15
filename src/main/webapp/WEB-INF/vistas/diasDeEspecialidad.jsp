@@ -27,11 +27,15 @@
 </style>
 
 <script>
+
 ///GUARDO LA LISTA CON LOS ID DE DIAS EN JAVASCRIPT
 	var dias = new Array();
 	<c:forEach items="${dias}" var="dia"> 
 	   dias.push(${dia});
 	</c:forEach> 
+</script>
+<script> 
+	var context = "${context}";
 </script>
 <title>Elija su Fecha</title>
 

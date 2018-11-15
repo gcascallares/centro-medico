@@ -23,7 +23,9 @@
 <title>Elija su paciente</title>
 
 </head>
-
+<script> 
+	var context = "${context}";
+</script>
 <body>
 	<div class="container">
 		<form:form action="/buscarpacientes" method="POST" modelAttribute="">

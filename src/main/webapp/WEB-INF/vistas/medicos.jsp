@@ -17,6 +17,9 @@
 </style>
 <title>Elija su Medico</title>
 </head>
+<script> 
+	var context = "${context}";
+</script>
 <body>
 	<div class="container">
 		<form:form action="" method="POST">
@@ -34,7 +37,7 @@
 			<br>
 			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteMedico">Continuar</a>
 			<br>
-			<button class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
+			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
 		</form:form>
 		
 	</div>

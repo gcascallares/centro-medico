@@ -17,6 +17,9 @@
 </style>
 <title>Elija su Medico</title>
 </head>
+<script> 
+	var context = "${context}";
+</script>
 <body>
 	<div class="container">
 		<form:form action="" method="POST">
