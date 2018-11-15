@@ -10,12 +10,15 @@
 <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
 <link href="${context}/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
+<script> 
+	var context = "${context}";
+</script>
 <body>
 	<div class="container">
-		<h1>${medicoId}</h1>
-		<h1>${especialidadId}</h1>
-		<h1>${horario}</h1>
-		<h1>${fecha}</h1>
+		<h1>Medico Id: ${turno.medicoId}</h1>
+		<h1>Especialidad Id: ${turno.especialidadId}</h1>
+		<h1>Horario: ${turno.horario}</h1>
+		<h1>Fecha: ${turno.fecha}</h1>
 		<h3> <a href="${context}/turno">Volver</a> </h3>
 	</div>
 

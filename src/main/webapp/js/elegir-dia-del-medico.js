@@ -35,7 +35,7 @@ $(document).ready(function() {
 	var medicoId = $("#medicoId").val();
 	
 	 $("#atras").click(function(){
-			window.location.assign("/proyecto-limpio-spring/turno/"+ especialidadId + "/medico/"+ medicoId);
+			window.history.back();
 		});	
 	 
 	 $("#botonSiguiente").click(function(){
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		fecha = fecha.replace("/","-");
 		fecha = fecha.replace("/","-");
 		fecha = fecha.replace("/","-");
-		 window.location.assign("/proyecto-limpio-spring/turno/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
+		 window.location.assign(window.context +"/turno/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
 		});	
 	 
 });

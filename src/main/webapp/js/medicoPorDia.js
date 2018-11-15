@@ -7,7 +7,7 @@ $(document).ready(function() {
 		
 	 $("#botonSiguienteMedico").click(function(){
 		 var medicoId = $("#medicos option:selected").val();
-			window.location.assign("/proyecto-limpio-spring/turno/"+ id + "/dia/" + fecha + "/" + idDiaElegido + "/" + medicoId);
+			window.location.assign(window.context +"/turno/"+ id + "/dia/" + fecha + "/" + idDiaElegido + "/" + medicoId);
 		});
 	
 });

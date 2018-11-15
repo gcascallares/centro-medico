@@ -172,7 +172,7 @@ public class ControladorTurnos {
 		
 		servicioTurnos.guardarTurno(turno);
 
-		modelo.put("turno",turno);
+		modelo.put("turno",turnoViewModel);
 		
 		return new ModelAndView("turno-ok", modelo);
 		
