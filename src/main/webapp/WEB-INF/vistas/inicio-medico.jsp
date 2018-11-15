@@ -30,9 +30,9 @@
 				<c:forEach items="${listaTurnos}" var="Turnos">
 					
 					<h5>${Turnos.id}</h5>
-					<h5>${Turnos.paciente}</h5>
+					<h5>${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
 					<h5>${Turnos.horario}</h5>
-					<h5>${Turnos.dia}</h5>
+					<h5>${Turnos.fecha}</h5>
 					
 					<br>					
 				</c:forEach>	

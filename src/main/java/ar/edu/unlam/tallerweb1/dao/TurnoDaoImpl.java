@@ -34,7 +34,8 @@ public class TurnoDaoImpl implements TurnoDao {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
-		.add(Restrictions.like("medico", medico))
+		.createAlias("medico","medicoBuscado")
+		.add(Restrictions.like("medico.id", medico.getId()))
 		.add(Restrictions.like("fecha", diaActual))
 		.add(Restrictions.like("estado", "en_espera"))
 		.list();
