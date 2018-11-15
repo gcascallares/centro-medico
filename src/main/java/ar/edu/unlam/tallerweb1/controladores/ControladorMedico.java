@@ -62,6 +62,8 @@ public class ControladorMedico {
 		
 		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico, diaActual);
 		modelo.put("listaTurnos", listaTurnos);
+		modelo.put("medico", medico);
+		modelo.put("fecha",diaActual);
 		return new ModelAndView("inicio-medico", modelo);
 	}
 	

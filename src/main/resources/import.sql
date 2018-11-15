@@ -4,4 +4,4 @@ insert into consultorio (id,numero,medico_id) values (1,100,1),(2,101,2),(3,102,
 insert into paciente (id, apellido, clave, dni, email, nombre) values (1,"ana", "1234", 111, "ala@", "alan")
 insert into diaslaborales (id,nombre) values (1,'Lunes'),(2,'Martes'),(3,'Miercoles'),(4,'Jueves'),(5,'Viernes');
 insert into dias_medicos(dia_id,medico_id) values (1,1),(3,1),(1,2),(2,2),(1,3),(5,3),(2,4),(3,4);
-insert into turno (id, estado, fecha, horario, medico_id, paciente_id) values (1,"atendido", "13-11-2018", "16:00", 1, 1), (2,"en_espera", "13-11-2018", "13:00", 1, 1),(3,"atendido", "16-11-2018", "16:00", 2, 1);
+insert into turno (id, estado, fecha, horario, medico_id, paciente_id) values (1,"en_espera", "15-11-2018", "16:00", 1, 1), (2,"en_espera", "15-11-2018", "13:00", 1, 1),(3,"atendido", "16-11-2018", "16:00", 2, 1);
