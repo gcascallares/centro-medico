@@ -3,8 +3,9 @@ $(document).ready(function() {
 	
 	
 	$("#botonSiguienteConsultorio").click(function(){
-		var id = $("#consultorio option:selected").val();
-		window.location.assign("/proyecto-limpio-spring/index-medico/"+ id);
+		var idConsultorio = $("#consultorio option:selected").val();
+		var idMedico = $("#medicoId").val();
+		window.location.assign(window.context +"/"+ idMedico +"/index-medico/"+ idConsultorio);
 	});
 	
 	

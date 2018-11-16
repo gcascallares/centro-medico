@@ -1,17 +1,12 @@
 $(document).ready(function() {
 	
-	
-	
 	$("#botonSiguienteEspecialidad").click(function(){
 		var id = $("#especialidad option:selected").val();
-		window.location.assign("/proyecto-limpio-spring/turno/"+ id);
+		window.location.assign(window.context +"/turno/"+ id);
 	});
 	
-	/*var especialidadId = $("#especialidad").val();
-	
-	$("#botonMedico").click(function(){
-		window.location.assign("/turno/medico"+ especialidadId);
-	});*/
-	
+	$("#atras").click(function(){
+		window.history.back();
+	});	
 	
 });

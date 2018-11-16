@@ -23,7 +23,9 @@
 <title>Elija su especialidad</title>
 
 </head>
-
+<script> 
+	var context = "${context}";
+</script>
 <body>
 	<div class="container">
 		<form:form action="/turno/{especialidadId}" method="POST" modelAttribute="especialidad">
@@ -46,7 +48,7 @@
 			
 			<br>
 			
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteEspecialidad">Siguiente con JS</a>
+			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteEspecialidad">Continuar</a>
 			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
 			
  	</form:form>

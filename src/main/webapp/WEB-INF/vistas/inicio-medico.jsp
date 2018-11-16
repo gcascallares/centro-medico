@@ -18,27 +18,27 @@
 
 		
 		
-			<h2 class="form-signin-heading" id="titulo">Bienvenido "Medico"</h2>
+			<h2 class="form-signin-heading" id="titulo">Bienvenido Doctor ${medico.nombre}</h2>
 			
 			<hr class="colorgraph">
 			
 			<br>
   
-  			<h3 class="form-signin-heading" id="sub-titulo">Turnos del dia</h3>
+  			<h3 class="form-signin-heading" id="sub-titulo">Turnos del dia ${fecha}</h3>
 			
         	
 				<c:forEach items="${listaTurnos}" var="Turnos">
 					
-					<h5>${Turnos.id}</h5>
-					<h5>${Turnos.paciente}</h5>
-					<h5>${Turnos.horario}</h5>
-					<h5>${Turnos.dia}</h5>
-					
+					<h5>IdTurno: ${Turnos.id}</h5>
+					<h5>Nombre: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
+					<h5>DNI: ${Turnos.paciente.dni} </h5>
+					<h5>Horario: ${Turnos.horario}</h5>
+					<h4>--------------------</h4>
+				
 					<br>					
 				</c:forEach>	
 						
 			
-						<h1>${nombrePaciente}</h1>;
 			
 			<br>
 			
@@ -46,7 +46,6 @@
 
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>
 	<script src="${context}/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${context}/js/inicio-medico.js" type="text/javascript"></script>
 
 
 </body>

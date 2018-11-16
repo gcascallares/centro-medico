@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 
 @Repository("medicoDao")
@@ -55,6 +59,19 @@ public class MedicoDaopImpl implements MedicoDao {
 							  .uniqueResult();
 	return medicoEspecifico;
 
+	}
+
+
+	@Override
+	public List<DiasLaborales> buscarDiasLaborales(Long id) {
+		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List <DiasLaborales> lista = session.createCriteria(DiasLaborales.class)
+		.createAlias("Medicos", "Medicos")
+		.add(Restrictions.eq("Medicos.id",id))
+		.list();
+		
+		return lista;
 	}
 
 }

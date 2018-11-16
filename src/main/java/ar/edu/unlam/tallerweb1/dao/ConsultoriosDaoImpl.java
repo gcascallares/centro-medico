@@ -9,9 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.unlam.tallerweb1.modelo.Consultorios;
-import ar.edu.unlam.tallerweb1.modelo.Medico;
-import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 
 
 @Repository("consultoriosDao")
@@ -21,37 +19,39 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public List<Consultorios> listaConsultorios() {
+	public List<Consultorio> listaConsultorios() {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 	
-		List <Consultorios> listaConsultorios = session.createCriteria(Consultorios.class)
-		//.createAlias("medico", "medicoBuscado")
-		//.add(Restrictions.like("medicoBuscado.consultorio", null))
+		List <Consultorio> listaConsultorios = session.createCriteria(Consultorio.class)
+		.add(Restrictions.isNull("medico"))
 		.list();
 		return listaConsultorios;
 		
 	}
 
+	
 	@Override
-	public void guardarConsultorio(Long consultorioId) {
+	public Consultorio buscarConsultorioEspecifico (Long consultorioId) {
 		
-		final Session session = sessionFactory.getCurrentSession();
-		
-		Medico medico = new Medico();
-		
-		Consultorios consultorio = new Consultorios();
-		
-		consultorio.getId();
-		
-		//medico.setConsultorio(consultorio.setId(consultorioId));
-		
-		
-		
-		
-		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	Consultorio consultorioEspecifico = (Consultorio) session.createCriteria (Consultorio.class)
+							  .add(Restrictions.eq("id",consultorioId))
+							  .uniqueResult();
+	return consultorioEspecifico;
+
 	}
 	
+	@Override
+	public void guardarConsultorio(Consultorio consultorio) {
+		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	session.save(consultorio);
+	
 
+	}
+	
 
 }

@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.dao;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 
 public interface MedicoDao {
@@ -11,5 +12,7 @@ public interface MedicoDao {
 	List<Medico> listaDeMedicosPorEspecialidad(Long especialidadId);
 
 	Medico MedicoEspecifico(Long id);
+
+	List<DiasLaborales> buscarDiasLaborales(Long id);
 
 }

@@ -2,12 +2,17 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
-import ar.edu.unlam.tallerweb1.modelo.Consultorios;
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 
 public interface ServicioConsultorio {
 
-	List <Consultorios> listaConsultorios();
+	List <Consultorio> listaConsultorios();
 	
-	void guardarConsultorio(Long consultorioId);
-	
+
+	Consultorio buscarConsultorioEspecifico(Long consultorioId);
+
+
+	void guardarConsultorio(Consultorio consultorio);
+
+
 }

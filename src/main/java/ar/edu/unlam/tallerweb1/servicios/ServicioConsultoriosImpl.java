@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.ConsultoriosDao;
-import ar.edu.unlam.tallerweb1.modelo.Consultorios;
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 
 @Service("servicioConsultorio")
 @Transactional
@@ -21,18 +21,22 @@ public class ServicioConsultoriosImpl implements ServicioConsultorio{
 	
 	
 	@Override
-	public List<Consultorios> listaConsultorios() {
+	public List<Consultorio> listaConsultorios() {
 			return servicioConsultoriosDao.listaConsultorios();
 	}
 
 
+
 	@Override
-	public void guardarConsultorio(Long consultorioId) {
+	public Consultorio buscarConsultorioEspecifico(Long consultorioId) {
+		return servicioConsultoriosDao.buscarConsultorioEspecifico(consultorioId);
+	}
+
+	@Override
+	public void guardarConsultorio(Consultorio consultorio){
 		
-		servicioConsultoriosDao.guardarConsultorio(consultorioId);
+		servicioConsultoriosDao.guardarConsultorio(consultorio);
 		
 	}
 
-	
-	
 }

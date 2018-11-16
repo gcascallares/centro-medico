@@ -12,6 +12,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Elija su consultorio</title>
 </head>
+<script> 
+	var context = "${context}";
+</script>
 <body>
 
 <div class="container">
@@ -33,6 +36,8 @@
 				</c:forEach>	
 						
 			</select>
+			
+			<input type="hidden" value="${medicoId}" id="medicoId">
 			
 			<br>
 			

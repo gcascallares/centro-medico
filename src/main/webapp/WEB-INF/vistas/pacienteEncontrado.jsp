@@ -23,7 +23,9 @@
 <title>Turnos del paciente</title>
 
 </head>
-
+<script> 
+	var context = "${context}";
+</script>
 <body>
 	<div class="container">
 		<form:form action="modificarestadoturno" method="POST" modelAttribute="">
