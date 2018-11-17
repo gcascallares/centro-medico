@@ -17,16 +17,15 @@ public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes 
 	private BuscadorPacientesDao buscadorPacientesDao;
 	
 	@Override
-	public List <Paciente> listaPacientes(String apellido) {
-			return buscadorPacientesDao.listaPacientes(apellido);
-	}
-	
-	@Override
-	public List <Turno> listaTurnoPaciente(Long dni){
-		return buscadorPacientesDao.listaTurnoPaciente(dni);
+	public List <Paciente> listaPacientes(Long dni) {
+			return buscadorPacientesDao.listaPacientes(dni);
 	}
 	
 	public boolean modificarEstadoTurno(Long id) {
 		return buscadorPacientesDao.modificarEstadoTurno(id);
+	}
+	@Override
+	public List <Turno> listaTurnos(Long id){
+		return buscadorPacientesDao.listaTurnos(id);
 	}
 }

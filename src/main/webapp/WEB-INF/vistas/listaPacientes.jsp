@@ -28,30 +28,24 @@
 </script>
 <body>
 	<div class="container">
-		<form:form action="/buscarpacientes" method="POST" modelAttribute="">
-		
+		<form:form action="/proyecto-limpio-spring/mostrarTurnosPaciente/{id}" method="POST">
 			<h3 class="form-signin-heading">Elija su paciente</h3>
-			
 			<hr class="colorgraph">
-			
 			<br>
   
-        	<select id="paciente">
-        	
+   	
 				<c:forEach items="${listapacientes}" var="paciente">
 				
-					<option value="${Paciente.dni}">${Paciente.nombre}${Paciente.apellido}${Paciente.dni}</option>
+					<h3><input type="submit" path="id" value="${paciente.id}" name="id">${paciente.nombre}${paciente.apellido}${paciente.dni}</h3></h2></input></br>
 					
 				</c:forEach>	
 						
-			</select>
-			
+	
 			<br>
 			
-			<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>
 			
  	</form:form>
-		
+	<button  class="btn btn-lg btn-primary btn-block" Type="Submit" ><a href="/proyecto-limpio-spring/buscadorPaciente">volver</a></button>	
 	</div>
 	
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>
