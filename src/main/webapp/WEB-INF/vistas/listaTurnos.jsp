@@ -38,7 +38,7 @@
        	
 				<c:forEach items="${listaturnos}" var="turno">
 				
-					<h3><input type="submit" path="id" value="${turno.id}" name="id">TURNO: ${turno.estado}${turno.fecha}${turno.horario}</h3></input></br>
+					<h3><input type="submit" path="id" value="${turno.id}" name="id">TURNO: ${turno.estado} ${turno.fecha} ${turno.horario}</h3></input></br>
 
 				</c:forEach>	
 			

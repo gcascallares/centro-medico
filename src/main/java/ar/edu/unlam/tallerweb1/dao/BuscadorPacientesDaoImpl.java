@@ -4,6 +4,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
@@ -52,7 +53,9 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		@SuppressWarnings("unchecked")
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.createAlias("paciente","pacienteBuscado")
-		.add(Restrictions.like("pacienteBuscado.id",id))
+		.add(Restrictions.like("pacienteBuscado.id",id)).add(Restrictions.like("estado","en_espera"))
+		.addOrder(Order.asc("fecha"))
+		.addOrder(Order.asc("horario"))
 		.list();
 		return listaTurnos;
 	}
