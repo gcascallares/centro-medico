@@ -31,19 +31,13 @@
 			<br>
 		<div class="search d-flex justify-content-center mt-4">
 		
-			<form:form action="buscarpacientespordni" method="POST">
+			<form action="/proyecto-limpio-spring/buscarpacientespordni/{dni}" method="POST">
 			
-				<form:input path="dni" name="dni" Type="number" /><br>
+				<input path="dni" name="dni" Type="number"></input><br>
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Buscar por dni</button>
-				
- 			</form:form>
- 			<form:form action="buscarpacientesporapellido" method="POST">
-			
-				<form:input path="apellido" name="apellido" Type="text" /><br>
-				<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Buscar por apellido</button>
-				
- 			</form:form>
-		</div>
+ 			</form>
+ 			
+ 		</div>
 	</div>
 	
 	<script src="${context}/js/bootstrap.min.js" type="text/javascript"></script>
