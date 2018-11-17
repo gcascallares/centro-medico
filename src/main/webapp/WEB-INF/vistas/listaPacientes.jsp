@@ -36,7 +36,7 @@
    	
 				<c:forEach items="${listapacientes}" var="paciente">
 				
-					<h3><input type="submit" path="id" value="${paciente.id}" name="id">${paciente.nombre}${paciente.apellido}${paciente.dni}</h3></h2></input></br>
+					<h3><input type="submit" path="id" value="${paciente.id}" name="id">${paciente.nombre} ${paciente.apellido} ${paciente.dni}</h3></h2></input></br>
 					
 				</c:forEach>	
 						
