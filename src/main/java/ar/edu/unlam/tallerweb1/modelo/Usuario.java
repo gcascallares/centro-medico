@@ -1,9 +1,11 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 // Clase que modela el concepto de Usuario, la anotacion @Entity le avisa a hibernate que esta clase es persistible
 // el paquete ar.edu.unlam.tallerweb1.modelo esta indicado en el archivo hibernateCOntext.xml para que hibernate
@@ -20,6 +22,14 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String rol;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Medico medico;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Recepcionista recepcionista;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Paciente paciente;
 	
 	public Long getId() {
 		return id;
@@ -33,18 +43,37 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	public Medico getMedico() {
+		return medico;
+	}
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+	public Recepcionista getRecepcionista() {
+		return recepcionista;
+	}
+	public void setRecepcionista(Recepcionista recepcionista) {
+		this.recepcionista = recepcionista;
+	}
+	public Paciente getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
 	public String getRol() {
 		return rol;
 	}
-
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	
+	
 }
