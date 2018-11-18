@@ -39,7 +39,7 @@
       <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
 
       <!-- Barra de Busqueda -->
@@ -118,7 +118,7 @@
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="banner">
         		<div class="container">
-        			<h1><span class="glyphicon glyphicon-plus"></span> Centro Medico</h1>
+        			<h1 style="color: white;><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico</h1>
         			<p>Que tu medicina sea tu alimento, y el alimento tu medicina</p>
         			<p><a class="btn btn-primary" href="${context}/turno">Solicitar Turno</a></p>
         		</div>
@@ -139,7 +139,7 @@
         	<div class="container-fluid">
                 <div class="row promo">
                 	<a href="#">
-        				<div class="col-md-16 promo-item " id="cardiologia">
+        				<div class="col-md-12 promo-item " id="cardiologia">
         					<h3>
         						<i class="fas fa-heartbeat"></i> Cardiologia
         					</h3>
@@ -177,7 +177,7 @@
         	<!-- Footer -->
         	<footer>
         	
-        		<h1 class="text-center">Encuentranos</h1>
+        		<h1 class="text-center"><i class="fas fa-map-marker-alt"></i>  Encuentranos</h1>
 
         		<!-- Map -->
         		<div class="footer-map">
@@ -247,10 +247,11 @@
                 <!-- /.container-fluid -->
 
                 <!-- Sticky Footer -->
-                <footer class="sticky-footer">
+                <footer class="sticky-footer" id="footer">
                   <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                      <span>Copyright © Taller Web 1 2018</span>
+                     <p><a href="#">Terminos &amp; Condiciones</a> | <a href="#">Politicas de Privacidad</a> | <a href="#">Contacto</a></p>
+        			 <p>Copyright &copy; Taller Web 2018 </p>
                     </div>
                   </div>
                 </footer>

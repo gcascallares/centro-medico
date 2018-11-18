@@ -37,14 +37,14 @@ public class ControladorTurnos {
 	private ServicioMedico servicioMedico;
 	
 //  Para determinar la vista al levantar el entorno
-	@RequestMapping(path = "/centroMedico", method = RequestMethod.GET)
+	@RequestMapping(path = "/Inicio", method = RequestMethod.GET)
 	public ModelAndView irAHome() {
 		return new ModelAndView("index");
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
-		return new ModelAndView("redirect:/centroMedico");
+		return new ModelAndView("redirect:/Inicio");
 	}
 	
 	
