@@ -138,33 +138,62 @@
             </div>
 
             <!-- Especialidades -->
-        	<div class="container-fluid">
-                <div class="row promo" style=""">
-                	<a href="#">
-        				<div class="col-md-12 promo-item " id="cardiologia">
-        					<h3>
-        						<i class="fas fa-heartbeat"></i> Cardiologia
-        					</h3>
-        				</div>
-                    </a>
-                    <a href="#">
-        				<div class="col-md-12 promo-item " id="laboratorio">
-        					<h3>
-        						<i class="fas fa-vials"></i> Laboratorio
-        					</h3>
-        				</div>
-                    </a>
-        			
-        			<a href="#">
-        				<div class="col-md-12 promo-item " id="radiologia">
-        					<h3>
-        						<i class="fas fa-x-ray"></i> Radiologia
-        					</h3>
-        				</div>
-                    </a>
-                </div>
-            </div>
-        	
+        	<section class="gallery-block cards-gallery">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-md-6 col-lg-4">
+		                <div class="card border-0 transform-on-hover">
+		                	<a class="lightbox" href="#">
+		                		<img src="img/laboratorio.jpg" alt="Card Image" class="card-img-top">
+		                	</a>
+		                    <div class="card-body">
+		                        <h6><a href="#"><i class="fas fa-vials"></i> Laboratorio</a></h6>
+		                        <p class="text-muted card-text">    Estudios Disponibles:<br>
+																	Hemograma Y Urinalizis Completo<br>
+																	Heses por Parasitos<br>
+																	Perfil Renal<br>
+																	Perfil Lipidico, Hepatico, Triode<br>
+																	Panel Basico Metabolico</p>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-md-6 col-lg-4">
+		                <div class="card border-0 transform-on-hover">
+							<a class="lightbox" href="#">
+			                	<img src="img/cardiologia.jpg" alt="Card Image" class="card-img-top">
+			                </a>
+		                    <div class="card-body">
+		                        <h6><a href="#"><i class="fas fa-heartbeat"></i>  Cardiologia</a></h6>
+		                        <p class="text-muted card-text">Estudios Disponibles:<br>
+																Ergometria<br>
+																Holter<br>
+																Ecocardiograma<br>
+																Electrocardiograma<br>
+																Tilt Test<br>
+																Eco Doppler Cardíaco<br>
+																Presumetria</p>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-md-6 col-lg-4">
+		                <div class="card border-0 transform-on-hover">
+		                	<a class="lightbox" href="#">
+		                		<img src="img/radiologia.jpg" alt="Card Image" class="card-img-top">
+		                	</a>
+		                    <div class="card-body">
+		                        <h6><a href="#"><i class="fas fa-x-ray"></i> Radiologia</a></h6>
+		                        <p class="text-muted card-text">Estudios Disponibles:<br>
+																Resonacia Magnetica<br>
+																Tomografia<br>
+																Radiologia Digital<br>
+																Radiologia Panoramica<br>
+																Ecografia</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+	    </section>
         	
         	<div class="container text-center">
         		<h1>Horarios de Atencion</h1>
@@ -297,6 +326,8 @@
 
     <!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 
   </body>
 
