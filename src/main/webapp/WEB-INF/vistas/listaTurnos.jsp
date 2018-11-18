@@ -28,7 +28,7 @@
 </script>
 <body>
 	<div class="container">
-		<form:form action="/proyecto-limpio-spring/modificarestadoturno/{id}" method="POST">
+		<form:form action="${context}/modificarestadoturno/{id}" method="POST">
 		
 			<h3 class="form-signin-heading">Elija el turno a modificar</h3>
 			
@@ -46,9 +46,8 @@
 			
  	</form:form>
  						
- 	
- 	<button  class="btn btn-lg btn-primary btn-block" Type="Submit" ><a href="/proyecto-limpio-spring/buscadorPaciente">volver</a></button>
-	<button  class="btn btn-lg btn-primary btn-block" Type="Submit" ><a href="/proyecto-limpio-spring/turno">sacar  turno</a></button>
+ 	<a href="${context}/turno"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Sacar  turno</button></a>
+ 	<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
 	</div>
 	
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>

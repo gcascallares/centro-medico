@@ -28,7 +28,7 @@
 </script>
 <body>
 	<div class="container">
-		<form:form action="/proyecto-limpio-spring/mostrarTurnosPaciente/{id}" method="POST">
+		<form:form action="${context}/mostrarTurnosPaciente/{id}" method="POST">
 			<h3 class="form-signin-heading">Elija su paciente</h3>
 			<hr class="colorgraph">
 			<br>
@@ -43,9 +43,9 @@
 	
 			<br>
 			
+				<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >volver</button></a>
 			
  	</form:form>
-	<button  class="btn btn-lg btn-primary btn-block" Type="Submit" ><a href="/proyecto-limpio-spring/buscadorPaciente">volver</a></button>	
 	</div>
 	
 	<script src="${context}/js/jquery-3.3.1.min.js"></script>

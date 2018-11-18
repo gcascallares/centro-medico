@@ -31,7 +31,7 @@
 			<br>
 		<div class="search d-flex justify-content-center mt-4">
 		
-			<form action="/proyecto-limpio-spring/buscarpacientespordni/{dni}" method="POST">
+			<form action="${context}/buscarpacientespordni/{dni}" method="POST">
 			
 				<input path="dni" name="dni" Type="number"></input><br>
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Buscar por dni</button>
