@@ -51,9 +51,10 @@ var idDiaElegido;
 	var especialidadId = $("#especialidadId").val();
 	var medicoId = $("#medicoId").val();
 	
-	 $("#atras").click(function(){
-			window.location.assign(window.context + "/" +especialidadId + "/medico/"+ medicoId);
-		});	
+	$("#atras").click(function(){
+		window.history.back();
+	});	
+	
 	 
 	 $("#botonSiguiente").click(function(){
 		 switch(dayOfWeek){

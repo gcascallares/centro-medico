@@ -9,5 +9,9 @@ $(document).ready(function() {
 		 var medicoId = $("#medicos option:selected").val();
 			window.location.assign(window.context +"/turno/"+ id + "/dia/" + fecha + "/" + idDiaElegido + "/" + medicoId);
 		});
+	 
+	 $("#atras").click(function(){
+			window.history.back();
+		});	
 	
 });
