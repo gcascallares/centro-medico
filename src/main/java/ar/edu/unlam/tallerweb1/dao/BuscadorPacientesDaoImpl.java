@@ -4,6 +4,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
@@ -17,24 +18,13 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
     private SessionFactory sessionFactory;
 	
 	@Override
-	public List <Paciente> listaPacientes(String apellido) {
+	public List <Paciente> listaPacientes(Long dni) {
 		final Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List <Paciente> listaPacientes = session.createCriteria(Paciente.class)
-		.add(Restrictions.like("apellido",apellido))
+		.add(Restrictions.like("dni",dni))
 		.list();
 		return listaPacientes;
-	}
-	
-	@Override
-	public List <Turno> listaTurnoPaciente(Long dni) {
-		
-		final Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List <Turno> listaTurnoPaciente = session.createCriteria (Turno.class)
-			.createAlias("paciente","pacienteJoin")
-			.add(Restrictions.like("pacientejoin.dni",dni)).list();
-		return listaTurnoPaciente;
 	}
 	
 	@Override
@@ -56,6 +46,18 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		Turno turnoBuscado = (Turno) session.createCriteria (Turno.class)
 		.add(Restrictions.like("id",id)).uniqueResult();
 		return (Turno) turnoBuscado;
+	}
+	
+	public List <Turno> listaTurnos(Long id){
+		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List <Turno> listaTurnos = session.createCriteria(Turno.class)
+		.createAlias("paciente","pacienteBuscado")
+		.add(Restrictions.like("pacienteBuscado.id",id)).add(Restrictions.like("estado","en_espera"))
+		.addOrder(Order.asc("fecha"))
+		.addOrder(Order.asc("horario"))
+		.list();
+		return listaTurnos;
 	}
 	
 }

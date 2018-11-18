@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-package ar.edu.unlam.tallerweb1.servicios;
-
-import java.util.List;
-
-import ar.edu.unlam.tallerweb1.modelo.Consultorio;
-
-public interface ServicioConsultorio {
-
-	List <Consultorio> listaConsultorios();
-	
-	void guardarConsultorio(Long consultorioId);
-	
-}
-=======
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
@@ -31,4 +16,3 @@ public interface ServicioConsultorio {
 
 
 }
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git

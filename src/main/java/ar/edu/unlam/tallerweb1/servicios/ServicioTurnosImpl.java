@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
 import ar.edu.unlam.tallerweb1.dao.TurnoDao;
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
@@ -56,9 +59,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	
 
 	@Override
-	public List<String> listaDeDiasDisponibles(Long especialidadId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId) {
+		return servicioTurnoDao.listaDeDiasDisponibles(especialidadId);
 	}
 
 	@Override
@@ -72,8 +74,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public List<Turno> listaTurnosPorMedico(Medico medico) {
-		return servicioTurnoDao.listaTurnosPorMedico(medico);
+	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {
+		return servicioTurnoDao.listaTurnosPorMedico(medico, diaActual);
 	}
 
 	@Override
@@ -81,6 +83,20 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		return servicioTurnoDao.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
 	}
 
+	public String diaActual(){
+
+		Calendar fecha = new GregorianCalendar();
+	    int ano = fecha.get(Calendar.YEAR);
+	    int mes = fecha.get(Calendar.MONTH)+1;
+	    int dia = fecha.get(Calendar.DAY_OF_MONTH);
+	    String fechaActual = dia+"-"+mes+"-"+ano;
+		return fechaActual;
+		
+	}
 	
+	@Override
+	public List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId) {
+		return servicioTurnoDao.listaDeMedicosDisponibles(especialidadId, diaId);
+	}
 	
 }

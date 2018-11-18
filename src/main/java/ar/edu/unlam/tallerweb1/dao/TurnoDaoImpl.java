@@ -6,9 +6,11 @@ import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
@@ -29,11 +31,15 @@ public class TurnoDaoImpl implements TurnoDao {
 	}
 
 	@Override
-	public List<Turno> listaTurnosPorMedico(Medico medico) {
+	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {
 		Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
-		.add(Restrictions.like("medico", medico))
+		.createAlias("medico","medicoBuscado")
+		.add(Restrictions.like("medico.id", medico.getId()))
+		.add(Restrictions.like("fecha", diaActual))
+		.add(Restrictions.like("estado", "en_espera"))
+		.addOrder(Order.asc("horario"))
 		.list();
 		
 		return listaTurnos;
@@ -53,6 +59,32 @@ public class TurnoDaoImpl implements TurnoDao {
 			}
 		}
 		return listaTurnos;
+	}
+
+	@Override
+	public List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId) {
+		//lista de los dias de los medicos que trabajan en esa especialidad
+		final Session session = sessionFactory.getCurrentSession();
+		List <DiasLaborales> lista = session.createCriteria(DiasLaborales.class)
+		.createAlias("Medicos", "Medicos")
+		.createAlias("Medicos.especialidad", "especialidadBuscada")
+		.add(Restrictions.eq("especialidadBuscada.id",especialidadId)).list();
+		
+		return lista;
+	}
+	
+	@Override
+	public List<Medico> listaDeMedicosDisponibles (Long especialidadId , Long diaId) {
+		//lista de los dias de los medicos que trabajan en esa especialidad
+		final Session session = sessionFactory.getCurrentSession();
+		List <Medico> lista = session.createCriteria(Medico.class)
+		.createAlias("especialidad","especialidadBuscada")
+		.add(Restrictions.eq("especialidadBuscada.id", especialidadId))
+		.createAlias("diasLaborales", "diasBuscados")
+		.add(Restrictions.eq("diasBuscados.id", diaId))
+		.list();
+		
+		return lista;
 	}
 	
 	
