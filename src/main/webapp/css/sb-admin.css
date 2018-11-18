@@ -409,7 +409,7 @@ i {
 .promo a:hover,
 .promo a:active {
     color: white;
-  text-shadow: 1px 1px 8px black;
+ 	text-shadow: 1px 1px 8px black;
     text-decoration: none;
 }
 
@@ -421,7 +421,7 @@ i {
 
 .promo-item:hover {
     background-size: 110%; 
-    border: 5px solid black;
+    border: 4px solid #212529;
     line-height: 170px;
 }
 
@@ -497,18 +497,6 @@ a:focus {
   text-decoration: underline;
 }
 
-/* Navbar */
-.navbar-default {
-  background-color: #fff;
-}
-.navbar-default .navbar-brand {
-  color: #dd845a;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: sienna;
-  background-color: transparent;
-}
 
 /* Primary Buttons */
 .btn-primary {
@@ -591,7 +579,7 @@ fieldset[disabled] .btn-primary.active {
 #cardiologia{
    background: url(../img/cardiologia.jpg);
    -webkit-background-size: cover;
-    text-align: center;
+    text-align: center; 
 }
 
 #laboratorio{
@@ -612,5 +600,18 @@ fieldset[disabled] .btn-primary.active {
 }
 #footer p{
 	font-size: 20px;
+}
+
+.errores{
+  -moz-box-shadow: 0 0 6px #929292;
+  -webkit-box-shadow: 0 0 6px #929292;
+  box-shadow: 0 0 6px #929292;
+  background: #5faedf;
+  color: #fff;
+  display: none;
+  font-size: 14px;
+  padding: 10px;
+  margin-top: 20px;
+  position: absolute;
 }
 

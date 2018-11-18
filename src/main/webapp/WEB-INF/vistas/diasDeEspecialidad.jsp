@@ -28,7 +28,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" >
-
+	
+	<link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 </head>
 
@@ -90,7 +91,7 @@
       <ul class="sidebar navbar-nav">
       
       	<li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -134,15 +135,19 @@
           
 
           <!-- Contenido de la Pagina -->
-        	
+        		
+        		
 		        <input type"hidden" value="${especialidadId}" id="especialidadId" hidden>
 				<input type"hidden" value="${medicoId}" id="medicoId" hidden>
+				<h3 class="form-signin-heading">Elija su Fecha</h3>
 				<br>
 				<br>
 				<br>
 		
 				<input type="text" id="datepicker">
 				
+				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
+				
 				<br>
 				<br>
 				<br>
@@ -157,7 +162,7 @@
 				<br>
 				<br>
 				
-				<a class="btn btn-lg btn-primary btn-block" id="botonSiguiente">Continuar</a>
+				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 				<br>
 				<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
  			

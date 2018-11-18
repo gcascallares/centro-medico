@@ -38,12 +38,31 @@ $(document).ready(function() {
 			window.history.back();
 		});	
 	 
-	 $("#botonSiguiente").click(function(){
-		var fecha = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();;
-		fecha = fecha.replace("/","-");
-		fecha = fecha.replace("/","-");
-		fecha = fecha.replace("/","-");
-		 window.location.assign(window.context +"/turno/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
+	 $("#siguiente").click(function(){
+		 
+		var fechaValida = $("#datepicker").val();
+		
+		//Validacion Fecha
+		
+        if(fechaValida != 0){
+        	
+        	$("#mensajeDia").fadeOut();
+            
+        	var fecha = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();;
+    		fecha = fecha.replace("/","-");
+    		fecha = fecha.replace("/","-");
+    		fecha = fecha.replace("/","-");
+    		window.location.assign(window.context +"/turno/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
+            
+        	}
+        
+        else{
+            
+        	$("#mensajeDia").fadeIn("slow");
+            return false;
+            
+            }
+		
 		});	
 	 
 });

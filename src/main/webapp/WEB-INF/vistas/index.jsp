@@ -25,6 +25,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
   </head>
 
@@ -75,7 +77,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -118,7 +120,7 @@
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="banner">
         		<div class="container">
-        			<h1 style="color: white;><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico</h1>
+        			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>
         			<p>Que tu medicina sea tu alimento, y el alimento tu medicina</p>
         			<p><a class="btn btn-primary" href="${context}/turno">Solicitar Turno</a></p>
         		</div>
@@ -137,7 +139,7 @@
 
             <!-- Especialidades -->
         	<div class="container-fluid">
-                <div class="row promo">
+                <div class="row promo" style=""">
                 	<a href="#">
         				<div class="col-md-12 promo-item " id="cardiologia">
         					<h3>
@@ -274,7 +276,7 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">Ã—</span>
             </button>
           </div>
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>

@@ -25,6 +25,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 </head>
 
@@ -76,7 +78,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -118,12 +120,13 @@
 
         <!-- Contenido de la Pagina -->
         	
-        	
-		<h1>Medico Id: ${turno.medicoId}</h1><br>
-		<h1>Especialidad Id: ${turno.especialidadId}</h1><br>
-		<h1>Horario: ${turno.horario}</h1><br>
-		<h1>Fecha: ${turno.fecha}</h1><br>
-		<h3> <a href="${context}/centroMedico">Volver</a> </h3><br>
+        <h1>Especificaciones de su Turno</h1> <br>
+        
+		<h3>Medico Id: ${turno.medicoId}</h1><br>
+		<h3>Especialidad Id: ${turno.especialidadId}</h1><br>
+		<h3>Horario: ${turno.horario}</h1><br>
+		<h3>Fecha: ${turno.fecha}</h1><br>
+		<h3> <a href="${context}/Inicio">Volver</a> </h3><br>
 		
 		
 		

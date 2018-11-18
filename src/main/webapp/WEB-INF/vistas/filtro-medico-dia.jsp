@@ -25,6 +25,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 
 </head>

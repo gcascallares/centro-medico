@@ -25,6 +25,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 
 </head>
@@ -77,7 +79,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -125,19 +127,23 @@
 			<br>
   
         	<select id="medicos">
-        	
+        		
+        		<option value="0"> </option>
 				<c:forEach items="${listaDeMedicos}" var="Medico">
-				
 					<option value="${Medico.id}">${Medico.nombre}</option>
 				</c:forEach>			
 			</select>
 			
 			<br>
+			<div id="mensajeMedico" class="errores">Por favor seleccione algunos de los medicos disponibles</div>
+			<br>
+			<br>
+			
 			<input type="hidden" value="${fecha}" id="fecha">
 			<input type="hidden" value="${especialidadId}" id="especialidadId">
 			<input type="hidden" value="${diaId}" id="diaId">
 			<br>
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteMedico">Continuar</a>
+			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 			<br>
 			<br>
 			<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>

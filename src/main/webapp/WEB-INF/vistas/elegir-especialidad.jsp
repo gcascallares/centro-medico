@@ -24,6 +24,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 	<title>Elija su especialidad</title>
 
@@ -77,7 +79,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
        <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -129,18 +131,26 @@
 			<br>
   
         	<select id="especialidad">
-        	
+        		
+        		<option value="0"></option>
+        		
 				<c:forEach items="${listaEsp}" var="Especialidad">
 				
+					
 					<option value="${Especialidad.id}" path="nombreEspecialidad">${Especialidad.nombreEspecialidad}</option>
 					
 				</c:forEach>	
 						
 			</select>
 			
-			<br><br>
+			<br>
+			<div id="mensajeEspecialidad" class="errores">Por favor seleccione alguna Especialiadad</div>
+			<br>
 			
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteEspecialidad">Continuar</a>
+			
+			<br><br>			
+			
+			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
 			
  			</form:form>

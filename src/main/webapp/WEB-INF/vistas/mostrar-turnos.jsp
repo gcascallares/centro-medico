@@ -26,6 +26,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 </head>
 
@@ -77,7 +79,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -125,6 +127,7 @@
 			<br>
 			
 			<select name="horario" id="horario">
+				
 				<c:forEach items="${listaDeTurnos}" var="t">
 					<option value="${t}">${t}</option>
 					<!-- El value despues va a ser el ID del medico -->
@@ -136,7 +139,9 @@
 			<input type="hidden" value="${medicoId}" name="medicoId">
 			<input type="hidden" value="${especialidadId}" name="especialidadId">
 			<br>
+			
 			<button class="btn btn-primary" id="reservar" Type="Submit" />Reservar</button>
+			
 			<br>
 			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>

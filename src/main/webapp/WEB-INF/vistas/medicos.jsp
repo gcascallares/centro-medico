@@ -26,6 +26,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 </head>
 
@@ -78,7 +80,7 @@
       <ul class="sidebar navbar-nav">
       	
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -129,14 +131,20 @@
 			<br>
   
         	<select id="medicos">
+        		<option value="0"></option>
 				<c:forEach items="${listaMedicos}" var="Medico">
 					<option value="${Medico.id}">${Medico.nombre}</option>
 				</c:forEach>			
 			</select>
+			
 			<br>
+			<div id="mensajeMedico" class="errores">Por favor seleccione algunos de los medicos disponibles</div>
+			<br>
+			<br>
+			
 			<input type="hidden" value="${especialidadId}" id="especialidadId">
 			<br>
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteMedico">Continuar</a>
+			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
 			</form:form>
