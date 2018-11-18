@@ -51,28 +51,50 @@ var idDiaElegido;
 	var especialidadId = $("#especialidadId").val();
 	var medicoId = $("#medicoId").val();
 	
-	 $("#atras").click(function(){
-			window.location.assign(window.context + "/" +especialidadId + "/medico/"+ medicoId);
-		});	
+	$("#atras").click(function(){
+		window.history.back();
+	});	
+	
 	 
-	 $("#botonSiguiente").click(function(){
-		 switch(dayOfWeek){
-		 case "Lunes": idDiaElegido = 1;
-		 break;
-		 case "Martes": idDiaElegido = 2;
-		 break;
-		 case "Miércoles": idDiaElegido = 3;
-		 break;
-		 case "Jueves": idDiaElegido = 4;
-		 break;
-		 case "Viernes": idDiaElegido = 5;
-		 break;
-		 }
-		var fecha = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();;
-		fecha = fecha.replace("/","-");
-		fecha = fecha.replace("/","-");
-		fecha = fecha.replace("/","-");
-		window.location.assign(window.context + "/turno/"+ especialidadId + "/dia/"+ fecha + "/" + idDiaElegido);
+	 $("#siguiente").click(function(){
+		 
+		 var fechaValida = $("#datepicker").val();
+		 
+		 	//Validacion Fecha
+			
+	        if(fechaValida != 0){
+	        	
+	        	$("#mensajeDia").fadeOut();
+	            
+	        	 switch(dayOfWeek){
+	    		 case "Lunes": idDiaElegido = 1;
+	    		 break;
+	    		 case "Martes": idDiaElegido = 2;
+	    		 break;
+	    		 case "Miércoles": idDiaElegido = 3;
+	    		 break;
+	    		 case "Jueves": idDiaElegido = 4;
+	    		 break;
+	    		 case "Viernes": idDiaElegido = 5;
+	    		 break;
+	    		 }
+	        	 
+	    		var fecha = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();;
+	    		fecha = fecha.replace("/","-");
+	    		fecha = fecha.replace("/","-");
+	    		fecha = fecha.replace("/","-");
+	    		window.location.assign(window.context + "/turno/"+ especialidadId + "/dia/"+ fecha + "/" + idDiaElegido);
+	            
+	        	}
+	        
+	        else{
+	            
+	        	$("#mensajeDia").fadeIn("slow");
+	            return false;
+	            
+	            }
+		 
+		
 		});	
 	 
 

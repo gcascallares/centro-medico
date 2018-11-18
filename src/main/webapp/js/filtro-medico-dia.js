@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$("#botonDia").click(function(){
 		window.location.assign(window.context +"/turno/"+ id + "/dias");
 	});
+	
 	$("#atras").click(function(){
 		window.history.back();
 	});	

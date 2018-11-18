@@ -6,9 +6,16 @@ $(document).ready(function() {
 	}
 		
 	
-	$("#botonSiguienteEspecialidad").click(function(){
+	$("#reservar").click(function(){
+		
+		var horario = $("#horario option:selected").val();
+		
 		var id = $("#especialidad option:selected").val();
-		window.location.href=window.context+"/turno/"+ id;
+  
+    	window.location.href=window.context+"/turno/"+ id;
+            
+            
+		
 	});
 	
 	$("#atras").click(function(){

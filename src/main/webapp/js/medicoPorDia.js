@@ -5,9 +5,31 @@ $(document).ready(function() {
 	 var fecha = $("#fecha").val();
 	 var idDiaElegido = $("#especialidadId").val();
 		
-	 $("#botonSiguienteMedico").click(function(){
-		 var medicoId = $("#medicos option:selected").val();
-			window.location.assign(window.context +"/turno/"+ id + "/dia/" + fecha + "/" + idDiaElegido + "/" + medicoId);
+	 $("#siguiente").click(function(){
+		 
+		 	var medicoId = $("#medicos option:selected").val();
+		 
+			//Validacion Especialidad
+			
+	        if(medicoId != 0){
+	        	
+	        	$("#mensajeMedico").fadeOut();
+	            
+				window.location.assign(window.context +"/turno/"+ id + "/dia/" + fecha + "/" + idDiaElegido + "/" + medicoId);
+	            
+	        	}
+	        
+	        else{
+	            
+	        	$("#mensajeMedico").fadeIn("slow");
+	            return false;
+	            
+	            }
+	        
 		});
+	 
+	 $("#atras").click(function(){
+			window.history.back();
+		});	
 	
 });
