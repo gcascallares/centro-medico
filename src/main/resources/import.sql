@@ -5,5 +5,5 @@ insert into paciente (apellido, dni, nombre) values ("ana", 111, "alan");
 insert into recepcionista (nombre) values ("Jalan");
 insert into diaslaborales (id,nombre) values (1,'Lunes'),(2,'Martes'),(3,'Miercoles'),(4,'Jueves'),(5,'Viernes');
 insert into dias_medicos(dia_id,medico_id) values (1,1),(3,1),(1,2),(2,2),(1,3),(5,3),(2,4),(3,4);
-insert into usuario(email,password,medico_id,recepcionista_id,paciente_id,rol) values ('a@a.com','123456',null,null,1,'paciente'),('b@b.com','123456',null,1,null,'recepcionista');
+insert into usuario(id,password,medico_id,recepcionista_id,paciente_id,rol) values ('1234567','1234567',null,null,1,'paciente'),('12345','12345',null,1,null,'recepcionista');
 insert into turno (id, estado, fecha, horario, medico_id, paciente_id) values (1,"en_espera", "15-11-2018", "16:00", 1, 1), (2,"en_espera", "15-11-2018", "13:00", 1, 1),(3,"atendido", "16-11-2018", "16:00", 2, 1);

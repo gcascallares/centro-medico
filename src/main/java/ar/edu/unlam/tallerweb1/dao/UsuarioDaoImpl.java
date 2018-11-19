@@ -25,11 +25,25 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		// Se obtiene la sesion asociada a la transaccion iniciada en el servicio que invoca a este metodo y se crea un criterio
 		// de busqueda de Usuario donde el email y password sean iguales a los del objeto recibido como parametro
 		// uniqueResult da error si se encuentran más de un resultado en la busqueda.
+		
 		final Session session = sessionFactory.getCurrentSession();
 		return (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.eq("email", usuario.getEmail()))
+				.add(Restrictions.eq("id", usuario.getId()))
 				.add(Restrictions.eq("password", usuario.getPassword()))
 				.uniqueResult();
+	}
+	
+	@Override
+	public Usuario guardarUsuario (Usuario usuario) {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		
+		Usuario usuario2 = usuario;
+		
+		session.save(usuario2);
+		
+		return usuario2;
+		
 	}
 
 }
