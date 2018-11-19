@@ -66,7 +66,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+          <a class="nav-link" href="${context}/buscadorPaciente">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
