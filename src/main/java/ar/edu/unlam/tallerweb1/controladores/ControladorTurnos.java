@@ -6,19 +6,24 @@ import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
@@ -35,6 +40,9 @@ public class ControladorTurnos {
 	
 	@Inject
 	private ServicioMedico servicioMedico;
+	
+	@Inject
+    private SessionFactory sessionFactory;
 	
 //  Para determinar la vista al levantar el entorno
 	@RequestMapping(path = "/Inicio", method = RequestMethod.GET)
@@ -190,6 +198,19 @@ public class ControladorTurnos {
 		return new ModelAndView("turno-ok", modelo);
 		
 	}
-	
-	
+	//mostrar historia clinica paciente
+	@RequestMapping(path= "/mostrarhistoriaclinica")
+	public ModelAndView mostrarHistoriaClinica(HttpServletRequest request){
+		ModelMap modelo = new ModelMap();
+		//final Session session = sessionFactory.getCurrentSession();
+		//Long id = (Long) (request.getSession().getAttribute("ID"));
+		//Long id = (Long) ((ServletRequest) session).getAttribute("ID");
+		//List<Turno> listaHistorial = servicioTurnos.mostrarHistoriaClinica(id);
+		Long id =(long) 1;
+		List<Turno> listaHistorial = servicioTurnos.mostrarHistoriaClinica(id);
+		Paciente paciente = servicioTurnos.mostrarDatosPaciente(id);
+		modelo.put("paciente",paciente);
+		modelo.put("listahistorial", listaHistorial);
+		return new ModelAndView("mostrarHistoriaClinica",modelo);
+	}
 }
