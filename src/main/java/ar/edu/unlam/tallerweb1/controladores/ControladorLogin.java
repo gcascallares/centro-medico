@@ -48,6 +48,7 @@ public class ControladorLogin {
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			switch(usuarioBuscado.getRol()) {
 			case "paciente": return new ModelAndView("redirect:/Inicio");
 			case "recepcionista": return new ModelAndView("redirect:/buscadorPaciente");

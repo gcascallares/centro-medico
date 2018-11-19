@@ -89,6 +89,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-file-signature"></i>
+            <span>Historia Clinica</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fab fa-creative-commons-nd"></i>
             <span>  Derivaciones</span></a>
