@@ -5,7 +5,7 @@ import java.util.List;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
-
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 public interface ServicioTurnos {
 	
@@ -28,6 +28,10 @@ public interface ServicioTurnos {
 	String diaActual();
 
 	List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId);
+	
+	List<Turno> mostrarHistoriaClinica(Long id);
+	
+	Paciente mostrarDatosPaciente(Long id);
 }
 
 

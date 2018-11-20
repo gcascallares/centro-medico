@@ -15,6 +15,7 @@ import ar.edu.unlam.tallerweb1.dao.TurnoDao;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 @Service("servicioTurnos")
 @Transactional
@@ -97,6 +98,16 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	@Override
 	public List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId) {
 		return servicioTurnoDao.listaDeMedicosDisponibles(especialidadId, diaId);
+	}
+	
+	@Override
+	public List<Turno> mostrarHistoriaClinica(Long id){
+		return servicioTurnoDao.mostrarHistoriaClinica(id);
+	}
+	
+	@Override
+	public Paciente mostrarDatosPaciente(Long id) {
+		return servicioTurnoDao.mostrarDatosPaciente(id);
 	}
 	
 }

@@ -23,6 +23,16 @@ public class Turno {
 	private String fecha;
 
 	private String estado;
+	
+	private String descripcion;
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
 	
 	public Long getId() {
