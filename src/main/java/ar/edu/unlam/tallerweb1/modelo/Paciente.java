@@ -12,7 +12,6 @@ public class Paciente {
 	private Long id;
 	
 	private String email;
-	private String clave;
 	
 	private Long dni;
 	private String nombre;
@@ -29,12 +28,6 @@ public class Paciente {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getClave() {
-		return clave;
-	}
-	public void setClave(String clave) {
-		this.clave = clave;
 	}
 	public Long getDni() {
 		return dni;

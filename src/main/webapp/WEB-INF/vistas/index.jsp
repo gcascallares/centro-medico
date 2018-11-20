@@ -89,12 +89,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
-            <i class="fas fa-file-signature"></i>
-            <span>Historia Clinica</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fab fa-creative-commons-nd"></i>
             <span>  Derivaciones</span></a>
@@ -317,7 +311,7 @@
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/Iniciar">Cerrar</a>
           </div>
         </div>
       </div>

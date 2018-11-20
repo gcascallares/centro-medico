@@ -1,41 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
-<html>
-	<head>
-	<!-- Bootstrap core CSS -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet" >
-	    <!-- Bootstrap theme -->
-	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-	</head>
-	<body>
-		<div class = "container">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
-				<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
-					<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
-				<form:form action="validar-login" method="POST" modelAttribute="usuario">
-			    	<h3 class="form-signin-heading">Taller Web I</h3>
-					<hr class="colorgraph"><br>
+<html lang="en">
 
-					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-					<form:input path="email" id="email" type="email" class="form-control" />
-					<form:input path="password" type="password" id="password" class="form-control"/>     		  
-					
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
-				</form:form>
+  <head>
 
-				<%--Bloque que es visible si el elemento error no estÃ¡ vacÃ­o	--%>
-				<c:if test="${not empty error}">
-			        <h4><span>${error}</span></h4>
-			        <br>
-		        </c:if>	
-			</div>
-		</div>
-		
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	</body>
+   	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Registrarse</title>
+
+    <!-- Bootstrap -->
+    <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Font Awesome-->
+    <link href="${context}/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Estilo que se aplica a todas las Vistas-->
+    <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+	<link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
+
+  </head>
+
+   <script> 
+	
+	var context = "${context}";
+	
+  </script>		 
+	
+  <body background="img/login.jpg" style="background-size: cover;">
+
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Iniciar Sesion</div>
+        <div class="card-body">
+        
+          <img alt="" src="img/logo3.png">
+          <br>
+          <br>
+        
+          <form:form action="Inicio" method="POST" modelAttribute="usuario">
+          
+            <div class="form-group">
+              <div class="form-label-group">
+                <form:input type="text" id="inputEmail" class="form-control" placeholder="D.N.I" required="required" autofocus="autofocus" path="id"/>
+                <label for="inputEmail">D.N.I</label>
+              </div>
+            </div>
+            <p>usuario: 1234567</p>
+            
+            <div class="form-group">
+              <div class="form-label-group">
+                <form:input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required" path="password"/>
+                <label for="inputPassword">Contraseña</label>
+              </div>
+            </div>
+            <p> contraseña: 1234567</p>
+            
+           	<button type="submit" class="btn btn-primary btn-block">Iniciar</button>
+            
+          </form:form>
+          
+		  <c:if test="${not empty error}">
+			     <h4><span>${error}</span></h4>
+			     <br>
+		  </c:if>	
+          
+          <div class="text-center">
+            <a class="d-block small mt-3" href="${context}/Registrar">Registrarse</a>
+            <a class="d-block small" href="#">¿Olvidaste tu Contraseña?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 	 <!-- Bootstrap core y JavaScript-->
+    <script src="${context}/js/jquery/jquery.min.js"></script>
+    <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!--Jquery-->
+    <script src="${context}/js/jquery-3.3.1.min.js"></script>
+    <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+
+  	<!-- Estilo que se aplica en todas las vistas-->
+    <script src="${context}/js/jquery/sb-admin.min.js"></script>
+
+  </body>
+
 </html>

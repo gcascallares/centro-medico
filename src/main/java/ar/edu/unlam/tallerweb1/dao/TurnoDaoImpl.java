@@ -11,9 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
-import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
-import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
 @Repository("turnoDao")
@@ -88,22 +86,8 @@ public class TurnoDaoImpl implements TurnoDao {
 		return lista;
 	}
 	
-	@Override
-	public List<Turno> mostrarHistoriaClinica(Long id){
-		final Session session = sessionFactory.getCurrentSession();
-		List <Turno> listaHistorial = session.createCriteria(Turno.class)
-				.createAlias("paciente","pacienteJoin")
-				.add(Restrictions.like("pacienteJoin.id", id))
-				.list();
-		return listaHistorial;
-	}
 	
-	@Override
-	public Paciente mostrarDatosPaciente(Long id) {
-	final Session session = sessionFactory.getCurrentSession();
-	Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
-			.add(Restrictions.eq("id",id))
-			.uniqueResult();
-	return paciente;
-	}
+	
+
+
 }
