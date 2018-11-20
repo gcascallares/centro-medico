@@ -48,6 +48,7 @@ public class ControladorLogin {
 		if (usuarioBuscado != null) {
 			
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			
 			switch(usuarioBuscado.getRol()) {
 			
