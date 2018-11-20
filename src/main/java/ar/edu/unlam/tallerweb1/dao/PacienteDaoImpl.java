@@ -15,15 +15,12 @@ public class PacienteDaoImpl  implements PacienteDao{
     private SessionFactory sessionFactory;
 
 	@Override
-	public Paciente guardarPaciente (Paciente paciente) {
+	public void guardarPaciente (Paciente paciente) {
 		
 		final Session session = sessionFactory.getCurrentSession();
 		
-		Paciente paciente2 = paciente;
+		session.save(paciente);
 		
-		session.save(paciente2);
-		
-		return paciente2;
 		
 	}
 

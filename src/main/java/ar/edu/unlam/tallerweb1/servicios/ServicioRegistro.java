@@ -5,8 +5,8 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface ServicioRegistro {
 
-	Paciente guardarPaciente(Paciente paciente);
+	void guardarPaciente(Paciente paciente);
 
-	Usuario guardarUsuario(Usuario usuario);
+	void guardarUsuario(Usuario usuario);
 
 }

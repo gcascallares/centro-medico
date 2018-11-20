@@ -39,8 +39,8 @@
   </script>
   
 
-  <body class="bg-dark">
-
+  <body background="img/login.jpg" style="background-size: cover;">
+  
     <div class="container">
       <div class="card card-register mx-auto mt-5">
         <div class="card-header">Registrarse</div>

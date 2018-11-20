@@ -38,11 +38,11 @@ public class ControladorRegistro {
 		
 		Usuario usuario = new Usuario();
 		
-		Paciente paciente2 = servicioRegistro.guardarPaciente(paciente);
+		servicioRegistro.guardarPaciente(paciente);
 		
 		modelo.put("usuario", usuario);
 		
-		modelo.put("paciente", paciente2);
+		modelo.put("paciente", paciente);
 		
 		return new ModelAndView("registrarUsuario", modelo);
 	}
@@ -53,9 +53,9 @@ public class ControladorRegistro {
 		
 		ModelMap modelo = new ModelMap();
 		
-		Usuario usuario2 = servicioRegistro.guardarUsuario(usuario);
+		servicioRegistro.guardarUsuario(usuario);
 		
-		modelo.put("usuario", usuario2);
+		modelo.put("usuario", usuario);
 		
 		return new ModelAndView("login", modelo);
 	}
