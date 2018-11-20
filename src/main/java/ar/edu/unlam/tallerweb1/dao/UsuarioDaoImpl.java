@@ -26,7 +26,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		// de busqueda de Usuario donde el email y password sean iguales a los del objeto recibido como parametro
 		// uniqueResult da error si se encuentran más de un resultado en la busqueda.
 		
-		final Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		return (Usuario) session.createCriteria(Usuario.class)
 				.add(Restrictions.eq("id", usuario.getId()))
 				.add(Restrictions.eq("password", usuario.getPassword()))
@@ -36,7 +36,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	@Override
 	public void guardarUsuario (Usuario usuario) {
 		
-		final Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		
 		session.save(usuario);
 		

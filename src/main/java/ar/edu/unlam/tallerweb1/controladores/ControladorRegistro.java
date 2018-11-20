@@ -40,6 +40,8 @@ public class ControladorRegistro {
 		
 		servicioRegistro.guardarPaciente(paciente);
 		
+		usuario.setPaciente(paciente);
+		
 		modelo.put("usuario", usuario);
 		
 		modelo.put("paciente", paciente);

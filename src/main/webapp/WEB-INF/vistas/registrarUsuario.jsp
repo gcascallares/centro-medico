@@ -56,6 +56,7 @@
             
               <div class="form-row">
               
+              	<form:input path="paciente.id" value="${paciente.id}" type="hidden"/>
               	<form:input path="rol" value="paciente" type="hidden"/>
               
                 <div class="col-md-6">
