@@ -4,6 +4,7 @@ import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface MedicoDao {
 	
@@ -14,5 +15,7 @@ public interface MedicoDao {
 	Medico MedicoEspecifico(Long id);
 
 	List<DiasLaborales> buscarDiasLaborales(Long id);
+
+	Medico buscarMedicoSegunUsuario(Usuario usuario);
 
 }

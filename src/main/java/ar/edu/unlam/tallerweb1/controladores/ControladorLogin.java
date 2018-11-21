@@ -10,14 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
+import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
 @Controller
 public class ControladorLogin {
 
 	@Inject
 	private ServicioLogin servicioLogin;
+	
+	@Inject
+	private ServicioMedico servicioMedico;
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
@@ -66,6 +72,9 @@ public class ControladorLogin {
 			
 			case "recepcionista": return new ModelAndView("buscadorPacientes");
 			
+			case "medico" : 
+				Medico medico = servicioMedico.traerMedicoSegunUsuario(usuarioBuscado);
+				return new ModelAndView("redirect:/"+medico.getId()+"/index-medico");
 			}
 		}
 		 else {

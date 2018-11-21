@@ -48,7 +48,7 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 		
 	final Session session = sessionFactory.getCurrentSession();
 	
-	session.save(consultorio);
+	session.update(consultorio);
 	
 
 	}

@@ -19,7 +19,7 @@
 
 <div class="container">
 
-		<form:form action="/index-medico/{consultorioId}" method="POST" modelAttribute="consultorio">
+		<form:form action="${context}/index-medico/{consultorioId}" method="POST">
 		
 			<h3 class="form-signin-heading">Elija un consultorio</h3>
 			
@@ -36,7 +36,7 @@
 				</c:forEach>	
 						
 			</select>
-			
+			<div id="mensajeVacio"></div>
 			<input type="hidden" value="${medicoId}" id="medicoId">
 			
 			<br>
