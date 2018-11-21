@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
+import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Service("servicioMedico")
 @Transactional
@@ -20,6 +22,11 @@ public class ServicioMedicoImpl implements ServicioMedico {
 	@Override
 	public List<DiasLaborales> buscarDiasLaborales(Long id) {
 		return medicoDao.buscarDiasLaborales(id);
+	}
+
+	@Override
+	public Medico traerMedicoSegunUsuario(Usuario usuario) {
+		return medicoDao.buscarMedicoSegunUsuario(usuario);
 	}
 
 }

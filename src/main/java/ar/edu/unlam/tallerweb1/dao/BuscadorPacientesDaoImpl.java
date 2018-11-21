@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Repository("buscadorPacientesDao")
 
@@ -59,5 +60,6 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		.list();
 		return listaTurnos;
 	}
+
 	
 }

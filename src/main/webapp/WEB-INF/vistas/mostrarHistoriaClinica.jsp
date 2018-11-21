@@ -114,17 +114,22 @@
 							<hr class="colorgraph">
 			
 							<br>
+							<div class="mb-2">
 							Dni: ${paciente.dni}</br>
-							       	
+							Nombre: ${paciente.nombre}</br>
+							Apellido: ${paciente.apellido}</br>
+							Email: ${paciente.email}</br>
+							</div>      	
 								<c:forEach items="${listahistorial}" var="turno">
-									
-									
-					${turno.medico.especialidad.nombreEspecialidad} ${turno.medico.nombre} ${turno.estado} ${turno.fecha} ${turno.horario} ${turno.descripcion} </br>
-
+									<div class="mb-5"> 
+										Consulta ${turno.id} <br>
+										Detalles: ${turno.medico.especialidad.nombreEspecialidad} - ${turno.medico.nombre} - ${turno.fecha} <br>
+										Descripcion : ${turno.descripcion} </br>
+									</div>
 								</c:forEach>	
 			
 							<br>
- 			<a href="${context}/Inicio"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+ 			<a onclick="window.history.back()"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
 
       </div>
       <!-- /.content-wrapper -->
@@ -150,7 +155,7 @@
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>

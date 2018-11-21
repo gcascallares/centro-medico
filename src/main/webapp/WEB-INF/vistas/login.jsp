@@ -52,11 +52,11 @@
           
             <div class="form-group">
               <div class="form-label-group">
-                <form:input type="text" id="inputEmail" class="form-control" placeholder="D.N.I" required="required" autofocus="autofocus" path="id"/>
+                <form:input type="text" id="inputEmail" class="form-control" placeholder="D.N.I" required="required" autofocus="autofocus" path="dni"/>
                 <label for="inputEmail">D.N.I</label>
               </div>
             </div>
-            <p>usuario: 1234567</p>
+            <p>usuario: 111</p>
             
             <div class="form-group">
               <div class="form-label-group">
@@ -64,7 +64,7 @@
                 <label for="inputPassword">Contraseña</label>
               </div>
             </div>
-            <p> contraseña: 1234567</p>
+            <p> contraseña: 111</p>
             
            	<button type="submit" class="btn btn-primary btn-block">Iniciar</button>
             

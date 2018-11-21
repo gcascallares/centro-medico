@@ -178,7 +178,7 @@
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>
