@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Repository("medicoDao")
 public class MedicoDaopImpl implements MedicoDao {
@@ -72,6 +73,16 @@ public class MedicoDaopImpl implements MedicoDao {
 		.list();
 		
 		return lista;
+	}
+
+
+	@Override
+	public Medico buscarMedicoSegunUsuario(Usuario usuario) {
+		final Session session = sessionFactory.getCurrentSession();
+		Usuario usuarioBuscado = (Usuario) session.createCriteria(Usuario.class)
+				.add(Restrictions.like("id", usuario.getId())).uniqueResult();
+		
+		return usuarioBuscado.getMedico();
 	}
 
 }
