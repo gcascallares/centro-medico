@@ -6,4 +6,4 @@ insert into recepcionista (nombre) values ("Jalan");
 insert into diaslaborales (id,nombre) values (1,'Lunes'),(2,'Martes'),(3,'Miercoles'),(4,'Jueves'),(5,'Viernes');
 insert into dias_medicos(dia_id,medico_id) values (1,1),(3,1),(1,2),(2,2),(1,3),(5,3),(2,4),(3,4);
 insert into usuario(dni,password,medico_id,recepcionista_id,paciente_id,rol) values (111,'111',null,null,1,'paciente'),('333','333',null,1,null,'recepcionista'),('222','222',1,null,null,'medico');
-insert into turno (id, estado, fecha, horario, medico_id, paciente_id) values (1,"en_espera", "15-11-2018", "16:00", 1, 1), (2,"en_espera", "15-11-2018", "13:00", 1, 1),(3,"atendido", "16-11-2018", "16:00", 2, 1);
+insert into turno (id, estado, fecha, horario, medico_id, paciente_id) values (1,"en_espera", "21-11-2018", "16:00", 1, 1), (2,"en_espera", "21-11-2018", "13:00", 1, 1),(3,"atendido", "16-11-2018", "16:00", 2, 1);
