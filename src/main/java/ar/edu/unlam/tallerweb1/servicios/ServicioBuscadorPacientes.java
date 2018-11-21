@@ -13,4 +13,8 @@ public interface ServicioBuscadorPacientes {
 	boolean modificarEstadoTurno(Long id);
 	
 	List <Turno> listaTurnos(Long id);
+	
+	
+	
+	
 }

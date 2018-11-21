@@ -23,8 +23,10 @@ import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 import javax.servlet.ServletRequest;
 
@@ -38,7 +40,13 @@ public class ControladorTurnos {
 	private ServicioEspecialidad servicioEspecialidad;
 	
 	@Inject
+	private ServicioBuscadorPacientes servicioBuscadorPacientes;
+	
+	@Inject
 	private ServicioMedico servicioMedico;
+	
+	@Inject
+	private ServicioPaciente servicioPaciente;
 	
 	@Inject
     private SessionFactory sessionFactory;
@@ -190,11 +198,11 @@ public class ControladorTurnos {
 		public ModelAndView mostrarHistoriaClinica(HttpServletRequest request){
 			ModelMap modelo = new ModelMap();
 			//final Session session = sessionFactory.getCurrentSession();
-			//Long id = (Long) (request.getSession().getAttribute("ID"));
+			Long id = (Long)request.getSession().getAttribute("ID");
 			//Long id = (Long) ((ServletRequest) session).getAttribute("ID");
-			Long id =(long) 1;
-			List<Turno> listaHistorial = servicioTurnos.mostrarHistoriaClinica(id);
-			Paciente paciente = servicioTurnos.mostrarDatosPaciente(id);
+			Long idPaciente = servicioPaciente.obtenerPacienteId(id);
+			List<Turno> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
+			Paciente paciente = servicioTurnos.mostrarDatosPaciente(idPaciente);
 			modelo.put("paciente",paciente);
 			modelo.put("listahistorial", listaHistorial);
 			return new ModelAndView("mostrarHistoriaClinica",modelo);

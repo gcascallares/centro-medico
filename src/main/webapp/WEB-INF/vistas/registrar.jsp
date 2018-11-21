@@ -71,7 +71,7 @@
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <form:input type="email" id="inputEmail" class="form-control" placeholder="centroMedico@gmil.com" required="required" path="email"/>
+                <form:input type="email" id="inputEmail" class="form-control" placeholder="centroMedico@gmail.com" required="required" path="email"/>
                 <label for="inputEmail">Correo Electronico</label>
               </div>
             </div>
@@ -79,8 +79,8 @@
               <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <form:input type="text" id="inputPassword" class="form-control" placeholder="D.N.I" required="required" path="dni"/>
-                    <label for="inputPassword">D.N.I</label>
+                    <form:input type="text" id="inputDni" class="form-control" placeholder="D.N.I" required="required" path="dni"/>
+                    <label for="inputDni">D.N.I</label>
                   </div>
                 </div>
               </div>
