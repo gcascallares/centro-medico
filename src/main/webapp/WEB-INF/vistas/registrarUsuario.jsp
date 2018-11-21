@@ -61,14 +61,14 @@
               
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <form:input type="readonly" class="form-control" value="${paciente.dni}" path="id" readonly="readonly"/>
-                    <label for="firstName">Usuario</label>
+                    <form:input type="readonly" class="form-control" value="${paciente.dni}" path="dni" readonly="readonly"/>
+                    <label for="firstName">Dni</label>
                   </div>
                 </div>
                 
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <form:input type="text" id="lastName" class="form-control" placeholder="Caontraseña" required="required" path="password"/>
+                    <form:input type="password" id="lastName" class="form-control" placeholder="Caontraseña" required="required" path="password"/>
                     <label for="lastName">Contraseña</label>
                   </div>
                 </div>

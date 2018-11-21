@@ -28,4 +28,6 @@ public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes 
 	public List <Turno> listaTurnos(Long id){
 		return buscadorPacientesDao.listaTurnos(id);
 	}
+
+	
 }

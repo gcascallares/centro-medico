@@ -28,7 +28,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		
 		Session session = sessionFactory.getCurrentSession();
 		return (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.eq("id", usuario.getId()))
+				.add(Restrictions.eq("dni", usuario.getDni()))
 				.add(Restrictions.eq("password", usuario.getPassword()))
 				.uniqueResult();
 	}
