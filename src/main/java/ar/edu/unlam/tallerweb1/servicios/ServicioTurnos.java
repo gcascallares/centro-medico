@@ -32,6 +32,10 @@ public interface ServicioTurnos {
 	List<Turno> mostrarHistoriaClinica(Long id);
 	
 	Paciente mostrarDatosPaciente(Long id);
+
+	void cambiarEstadoAtendido(Long id);
+
+	void agregarDescripcion(Long turnoId, String descripcion);
 }
 
 

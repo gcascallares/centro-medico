@@ -8,4 +8,6 @@ public interface UsuarioDao {
 	Usuario consultarUsuario (Usuario usuario);
 
 	void guardarUsuario(Usuario usuario);
+
+	Usuario consultarUsuario(Long idUsuario);
 }

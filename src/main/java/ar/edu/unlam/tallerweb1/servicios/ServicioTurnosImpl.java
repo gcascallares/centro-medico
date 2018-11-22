@@ -109,5 +109,16 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public Paciente mostrarDatosPaciente(Long id) {
 		return servicioTurnoDao.mostrarDatosPaciente(id);
 	}
+
+	@Override
+	public void cambiarEstadoAtendido(Long id) {
+		servicioTurnoDao.cambiarEstadoAtendido(id);
+		
+	}
+
+	@Override
+	public void agregarDescripcion(Long turnoId,String descripcion) {
+		servicioTurnoDao.agregarDescripcion(turnoId,descripcion);		
+	}
 	
 }

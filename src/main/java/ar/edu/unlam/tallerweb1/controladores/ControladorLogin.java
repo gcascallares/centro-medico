@@ -85,4 +85,23 @@ public class ControladorLogin {
 		
 		return new ModelAndView("login", model);
 	}
+	
+	@RequestMapping(path = "/Home")
+	public ModelAndView IrAlHome(HttpServletRequest request) {
+		Long idUsuario = (Long)request.getAttribute("ID");
+		Usuario usuario = servicioLogin.consultarUsuario(idUsuario);
+		ModelMap model = new ModelMap();			
+			switch(request.getSession().getAttribute("ROL").toString()) {
+			case "paciente": return new ModelAndView("index");
+			
+			case "recepcionista": return new ModelAndView("buscadorPacientes");
+			
+			case "medico" : 
+				Medico medico = servicioMedico.traerMedicoSegunUsuario(usuario);
+				return new ModelAndView("redirect:/"+medico.getId()+"/index-medico");
+			}
+		
+		
+		return new ModelAndView("index", model);
+	}
 }

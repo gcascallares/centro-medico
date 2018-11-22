@@ -126,7 +126,7 @@
 		<h3>Especialidad Id: ${turno.especialidadId}</h1><br>
 		<h3>Horario: ${turno.horario}</h1><br>
 		<h3>Fecha: ${turno.fecha}</h1><br>
-		<h3> <a href="${context}/Inicio">Volver</a> </h3><br>
+		<h3> <a href="${context}/Home">Volver</a> </h3><br>
 		
 		
 		
@@ -151,13 +151,13 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">x</span>
             </button>
           </div>
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>

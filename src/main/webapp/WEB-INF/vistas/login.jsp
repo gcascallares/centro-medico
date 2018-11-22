@@ -56,15 +56,19 @@
                 <label for="inputEmail">D.N.I</label>
               </div>
             </div>
-            <p>usuario: 111</p>
             
-            <div class="form-group">
+            <small> pss...</small> <br>
+            <small> paciente: 111</small> <br>
+            <small> medico: 222</small> <br>
+            <small> recepcionista: 333</small> <br>
+            
+            <div class="form-group mt-3">
               <div class="form-label-group">
                 <form:input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required" path="password"/>
                 <label for="inputPassword">Contraseña</label>
               </div>
             </div>
-            <p> contraseña: 111</p>
+            
             
            	<button type="submit" class="btn btn-primary btn-block">Iniciar</button>
             

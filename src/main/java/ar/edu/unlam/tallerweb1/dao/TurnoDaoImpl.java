@@ -25,7 +25,7 @@ public class TurnoDaoImpl implements TurnoDao {
 	public void guardarTurno (Turno turno) {
 		
 		final Session session = sessionFactory.getCurrentSession();
-		
+		turno.setEstado("En espera");
 		session.save(turno);
 		
 	}
@@ -38,7 +38,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		.createAlias("medico","medicoBuscado")
 		.add(Restrictions.like("medicoBuscado.id", medico.getId()))
 		.add(Restrictions.like("fecha", diaActual))
-		.add(Restrictions.like("estado", "en_espera"))
+		.add(Restrictions.like("estado", "En espera"))
 		.addOrder(Order.asc("horario"))
 		.list();
 		
@@ -104,6 +104,26 @@ public class TurnoDaoImpl implements TurnoDao {
 			.add(Restrictions.eq("id",id))
 			.uniqueResult();
 	return paciente;
+	}
+
+	@Override
+	public void cambiarEstadoAtendido(Long id) {
+		final Session session = sessionFactory.getCurrentSession();
+		Turno turno = (Turno)session.createCriteria(Turno.class)
+		.add(Restrictions.like("id", id)).uniqueResult();
+		
+		turno.setEstado("Atendido");
+		session.update(turno);
+	}
+
+	@Override
+	public void agregarDescripcion(Long turnoId,String descripcion) {
+		final Session session = sessionFactory.getCurrentSession();
+		Turno turno = (Turno)session.createCriteria(Turno.class)
+		.add(Restrictions.like("id", turnoId)).uniqueResult();
+		
+		turno.setDescripcion(descripcion);
+		session.update(turno);
 	}
 	
 
