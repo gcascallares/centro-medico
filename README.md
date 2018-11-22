@@ -1,5 +1,7 @@
 # Centro-Medico 
 
+![Medic Center](centro-medico/src/main/webapp/img/logo3.png)
+
 ### Taller Web 1
 
 ### Estado
