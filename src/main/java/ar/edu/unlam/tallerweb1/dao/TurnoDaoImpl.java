@@ -129,6 +129,12 @@ public class TurnoDaoImpl implements TurnoDao {
 		turno.setDescripcion(descripcion);
 		session.update(turno);
 	}
+
+	@Override
+	public void agregarDerivacion(Long pacienteId, Long idEspecialidad) {
+		final Session session = sessionFactory.getCurrentSession();
+		
+	}
 	
 
 

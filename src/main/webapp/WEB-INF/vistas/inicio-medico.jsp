@@ -50,6 +50,9 @@
 					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#turno${Turnos.id}">
 					  Dejar comentario
 					</button>
+					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#derivar">
+					  Derivar
+					</button>
 					</c:if>
 					<!-- Button trigger modal -->
 					<c:if test = "${Turnos.descripcion != null}">
@@ -78,10 +81,46 @@
 					      </div>
 					    </div>
 					  </div>
-					</div>					
+					</div>		
+					
+					
 				</c:forEach>	
 			</div>		
 			
+				<div class="modal fade" id="derivar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="titleTurno${Turnos.id}">Derivar</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+								<div class="form-group">
+								  <label for="comment">Seleccione Especialidad</label>
+								  
+        							<select id="especialidad">
+        		
+        								<option value="0"></option>
+        		
+											<c:forEach items="${listaEsp}" var="Especialidad">
+				
+					
+										<option value="${Especialidad.id}" path="nombreEspecialidad">${Especialidad.nombreEspecialidad}</option>
+					
+											</c:forEach>	
+						
+									</select>
+								</div>					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					        <button type="button" class="btn btn-primary" onclick="guardarDerivacion(${Turnos.paciente.id},${consultorioId},${medico.id})" id="guardarDerivacion">Guardar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>					
+							
 			
 			<br>
 			
@@ -94,6 +133,12 @@
 			var mensaje = $("#comentario").val();
 			window.location.href = window.context+"/turno/guardarComentario/" + idTurno + "/" + idConsultorio + "/" + idMedico+ "/" + mensaje;
 		}
+		
+		function guardarDerivacion(idPaciente,idMedico,idConsultorio){
+			var idEspecialidad = $("#especialidad option:selected").val();
+			window.location.href = window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico+ "/" + idEspecialidad + "/" + idPaciente;
+		}
+		
 	</script>
 	<script src="${context}/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 	<script src="${context}/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>

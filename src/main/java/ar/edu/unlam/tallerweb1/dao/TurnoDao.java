@@ -27,4 +27,6 @@ public interface TurnoDao {
 
 	void agregarDescripcion(Long turnoId, String descripcion);
 
+	void agregarDerivacion(Long pacienteId, Long idEspecialidad);
+
 }

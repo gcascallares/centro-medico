@@ -223,4 +223,13 @@ public class ControladorTurnos {
 			servicioTurnos.agregarDescripcion(turnoId,descripcion);
 
 			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
+
+		@RequestMapping(path="/turno/guardarDerivacion/{idEspecialidad}/{pacienteId}/{consultorioId}/{medicoId}")
+		public ModelAndView guardarDerivacion(@PathVariable Long consultorioId,@PathVariable Long medicoId,@PathVariable Long pacienteId,@PathVariable Long idEspecialidad){
+			ModelMap modelo = new ModelMap();
+			servicioTurnos.agregarDerivacion(pacienteId,idEspecialidad);
+
+			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
+		
+		
 }
