@@ -64,6 +64,7 @@ public class ControladorMedico {
 		modelo.put("listaTurnos", listaTurnos);
 		modelo.put("medico", medico);
 		modelo.put("fecha",diaActual);
+		modelo.put("consultorioId", consultorioId);
 		return new ModelAndView("inicio-medico", modelo);
 	}
 	

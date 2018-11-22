@@ -23,4 +23,8 @@ public interface TurnoDao {
 	
 	Paciente mostrarDatosPaciente(Long id);
 
+	void cambiarEstadoAtendido(Long id);
+
+	void agregarDescripcion(Long turnoId, String descripcion);
+
 }

@@ -12,17 +12,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoComentarioViewModel;
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
@@ -207,4 +210,17 @@ public class ControladorTurnos {
 			modelo.put("listahistorial", listaHistorial);
 			return new ModelAndView("mostrarHistoriaClinica",modelo);
 		}
+		
+		@RequestMapping(path="/turno/atendido/{turnoId}/{consultorioId}/{medicoId}")
+		public ModelAndView obtenerTurnoAtendido(@PathVariable Long turnoId,@PathVariable Long consultorioId,@PathVariable Long medicoId){
+			servicioTurnos.cambiarEstadoAtendido(turnoId);
+			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);
+		}
+		
+		@RequestMapping(path="/turno/guardarComentario/{turnoId}/{consultorioId}/{medicoId}/{descripcion}")
+		public ModelAndView guardarComentario(@PathVariable Long turnoId,@PathVariable Long consultorioId,@PathVariable Long medicoId,@PathVariable String descripcion ){
+			ModelMap modelo = new ModelMap();
+			servicioTurnos.agregarDescripcion(turnoId,descripcion);
+
+			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
 }
