@@ -171,8 +171,8 @@ public class ControladorTurnos {
 
 //  Paso 6 = guarda el turno con todas las especificaciones seleccionadas
 	@RequestMapping(path= "/reservar-turno", method = RequestMethod.POST)
-	public ModelAndView reservarTurno(TurnoViewModel turnoViewModel) {
-		
+	public ModelAndView reservarTurno(TurnoViewModel turnoViewModel,HttpServletRequest request) {
+		Long idUsuario = (Long)request.getSession().getAttribute("ID");
 		ModelMap modelo = new ModelMap();
 		
 		Turno turno = new Turno();
@@ -188,7 +188,7 @@ public class ControladorTurnos {
 		turno.setHorario(turnoViewModel.getHorario());
 		turno.setMedico(medico);
 		
-		servicioTurnos.guardarTurno(turno);
+		servicioTurnos.guardarTurno(turno,idUsuario);
 
 		modelo.put("turno",turnoViewModel);
 		

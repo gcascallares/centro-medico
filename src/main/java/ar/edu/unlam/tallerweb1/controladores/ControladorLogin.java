@@ -88,7 +88,7 @@ public class ControladorLogin {
 	
 	@RequestMapping(path = "/Home")
 	public ModelAndView IrAlHome(HttpServletRequest request) {
-		Long idUsuario = (Long)request.getAttribute("ID");
+		Long idUsuario = (Long)request.getSession().getAttribute("ID");
 		Usuario usuario = servicioLogin.consultarUsuario(idUsuario);
 		ModelMap model = new ModelMap();			
 			switch(request.getSession().getAttribute("ROL").toString()) {

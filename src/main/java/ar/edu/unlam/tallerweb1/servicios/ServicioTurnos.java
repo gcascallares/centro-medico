@@ -23,7 +23,7 @@ public interface ServicioTurnos {
 
 	List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha);
 
-	void guardarTurno(Turno turno);
+	void guardarTurno(Turno turno, Long idUsuario);
 
 	String diaActual();
 
