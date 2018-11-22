@@ -36,28 +36,16 @@
 
 <body id="page-top">
 
-
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
-
-      <!-- Barra de Busqueda -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar" aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
+      
       <!-- Desplegable del usuario -->
+      <div class="ml-auto">
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,7 +58,7 @@
           </div>
         </li>
       </ul>
-
+	</div>
     </nav>
 
     <div id="wrapper">
@@ -78,7 +66,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+          <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -119,16 +107,42 @@
           
 
         <!-- Contenido de la Pagina -->
-        	
-        <h1>Especificaciones de su Turno</h1> <br>
         
-		<h3>Medico Id: ${turno.medicoId}</h1><br>
-		<h3>Especialidad Id: ${turno.especialidadId}</h1><br>
-		<h3>Horario: ${turno.horario}</h1><br>
-		<h3>Fecha: ${turno.fecha}</h1><br>
-		<h3> <a href="${context}/Home">Volver</a> </h3><br>
+        <h1>Especificaciones de su Turno</h1> <br>
+
+    	<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-user-md"></i> <span>  Medico Id: ${turno.medicoId}</span> 
+		  </div>
+		</div>
 		
+		<br>
 		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad Id: ${turno.especialidadId}</span> 
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="far fa-clock"></i> <span>  Horario: ${turno.horario}</span>
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-calendar-alt"></i><span>  Fecha: ${turno.fecha}</span>
+		  </div>
+		</div>
+		
+		<br>
+		
+		<a class="btn btn-primary" href="${context}/Home" role="button"> Volver a Inicio </a>
 		
 		
 		
