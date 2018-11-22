@@ -1,6 +1,6 @@
 # Centro-Medico 
 
-![Medic Center](logo3.png)
+![Medic Center](https://github.com/ignacrescenzo/centro-medico/blob/master/src/main/webapp/img/logo3.png)
 
 ### Taller Web 1
 
