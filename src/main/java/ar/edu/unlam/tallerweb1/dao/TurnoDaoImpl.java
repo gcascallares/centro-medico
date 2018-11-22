@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 @Repository("turnoDao")
@@ -22,10 +23,13 @@ public class TurnoDaoImpl implements TurnoDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public void guardarTurno (Turno turno) {
+	public void guardarTurno (Turno turno, Long idUsuario) {
 		
 		final Session session = sessionFactory.getCurrentSession();
+		Usuario usuario = (Usuario)session.createCriteria(Usuario.class)
+		.add(Restrictions.like("id", idUsuario)).uniqueResult();
 		turno.setEstado("En espera");
+		turno.setPaciente(usuario.getPaciente());
 		session.save(turno);
 		
 	}
