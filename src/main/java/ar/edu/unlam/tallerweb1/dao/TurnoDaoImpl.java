@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 @Repository("turnoDao")
@@ -22,10 +23,13 @@ public class TurnoDaoImpl implements TurnoDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public void guardarTurno (Turno turno) {
+	public void guardarTurno (Turno turno, Long idUsuario) {
 		
 		final Session session = sessionFactory.getCurrentSession();
-		
+		Usuario usuario = (Usuario)session.createCriteria(Usuario.class)
+		.add(Restrictions.like("id", idUsuario)).uniqueResult();
+		turno.setEstado("En espera");
+		turno.setPaciente(usuario.getPaciente());
 		session.save(turno);
 		
 	}
@@ -36,9 +40,9 @@ public class TurnoDaoImpl implements TurnoDao {
 		@SuppressWarnings("unchecked")
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.createAlias("medico","medicoBuscado")
-		.add(Restrictions.like("medico.id", medico.getId()))
+		.add(Restrictions.like("medicoBuscado.id", medico.getId()))
 		.add(Restrictions.like("fecha", diaActual))
-		.add(Restrictions.like("estado", "en_espera"))
+		.add(Restrictions.like("estado", "En espera"))
 		.addOrder(Order.asc("horario"))
 		.list();
 		
@@ -104,6 +108,32 @@ public class TurnoDaoImpl implements TurnoDao {
 			.add(Restrictions.eq("id",id))
 			.uniqueResult();
 	return paciente;
+	}
+
+	@Override
+	public void cambiarEstadoAtendido(Long id) {
+		final Session session = sessionFactory.getCurrentSession();
+		Turno turno = (Turno)session.createCriteria(Turno.class)
+		.add(Restrictions.like("id", id)).uniqueResult();
+		
+		turno.setEstado("Atendido");
+		session.update(turno);
+	}
+
+	@Override
+	public void agregarDescripcion(Long turnoId,String descripcion) {
+		final Session session = sessionFactory.getCurrentSession();
+		Turno turno = (Turno)session.createCriteria(Turno.class)
+		.add(Restrictions.like("id", turnoId)).uniqueResult();
+		
+		turno.setDescripcion(descripcion);
+		session.update(turno);
+	}
+
+	@Override
+	public void agregarDerivacion(Long pacienteId, Long idEspecialidad) {
+		final Session session = sessionFactory.getCurrentSession();
+		
 	}
 	
 

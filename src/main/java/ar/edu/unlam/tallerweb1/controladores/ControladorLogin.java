@@ -14,7 +14,6 @@ import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
-import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
 @Controller
 public class ControladorLogin {
@@ -27,7 +26,9 @@ public class ControladorLogin {
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
+		
 		return new ModelAndView("redirect:/Iniciar");
+		
 	}
 
 
@@ -45,11 +46,15 @@ public class ControladorLogin {
 	
 	@RequestMapping("/cerrarSesion")
 	public ModelAndView cerrarSesion(HttpServletRequest request) {
+		
 		request.getSession().removeAttribute("ID");
 		request.getSession().removeAttribute("ROL");
+		
 		ModelMap modelo = new ModelMap();
 		Usuario usuario = new Usuario();
+		
 		modelo.put("usuario", usuario);
+		
 		return new ModelAndView("redirect:/Iniciar", modelo);
 	}
 	
@@ -57,9 +62,11 @@ public class ControladorLogin {
 	@RequestMapping(path = "/Inicio", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request) {
 		
-		ModelMap model = new ModelMap();
+		ModelMap modelo = new ModelMap();
 
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
+		
+		modelo.put("usuario", usuarioBuscado);
 		
 		if (usuarioBuscado != null) {
 			
@@ -68,9 +75,9 @@ public class ControladorLogin {
 			
 			switch(usuarioBuscado.getRol()) {
 			
-			case "paciente": return new ModelAndView("index");
+			case "paciente": return new ModelAndView("index", modelo);
 			
-			case "recepcionista": return new ModelAndView("buscadorPacientes");
+			case "recepcionista": return new ModelAndView("buscadorPacientes", modelo);
 			
 			case "medico" : 
 				Medico medico = servicioMedico.traerMedicoSegunUsuario(usuarioBuscado);
@@ -80,9 +87,33 @@ public class ControladorLogin {
 		 else {
 			 
 			// si el usuario no existe agrega un mensaje de error en el modelo.
-			model.put("error", "Usuario o clave incorrecta");
+			modelo.put("error", "Usuario o clave incorrecta");
 		}
 		
-		return new ModelAndView("login", model);
+		return new ModelAndView("login", modelo);
+	}
+	
+	@RequestMapping(path = "/Home")
+	public ModelAndView IrAlHome(HttpServletRequest request) {
+		
+		Long idUsuario = (Long)request.getSession().getAttribute("ID");
+		
+		Usuario usuario = servicioLogin.consultarUsuario(idUsuario);
+		
+		ModelMap modelo = new ModelMap();			
+		
+			switch(request.getSession().getAttribute("ROL").toString()) {
+			
+			case "paciente": return new ModelAndView("index");
+			
+			case "recepcionista": return new ModelAndView("buscadorPacientes");
+			
+			case "medico" : 
+				Medico medico = servicioMedico.traerMedicoSegunUsuario(usuario);
+				return new ModelAndView("redirect:/"+medico.getId()+"/index-medico");
+			}
+		
+		
+		return new ModelAndView("index", modelo);
 	}
 }

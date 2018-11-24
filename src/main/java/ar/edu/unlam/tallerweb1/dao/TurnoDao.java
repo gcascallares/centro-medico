@@ -13,7 +13,7 @@ public interface TurnoDao {
 
 	List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha);
 
-	void guardarTurno(Turno turno);
+	void guardarTurno(Turno turno, Long idUsuario);
 
 	List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId);
 
@@ -22,5 +22,11 @@ public interface TurnoDao {
 	List<Turno> mostrarHistoriaClinica(Long id);
 	
 	Paciente mostrarDatosPaciente(Long id);
+
+	void cambiarEstadoAtendido(Long id);
+
+	void agregarDescripcion(Long turnoId, String descripcion);
+
+	void agregarDerivacion(Long pacienteId, Long idEspecialidad);
 
 }

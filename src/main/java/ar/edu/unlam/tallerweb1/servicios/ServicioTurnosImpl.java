@@ -70,8 +70,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void guardarTurno(Turno turno) {
-		servicioTurnoDao.guardarTurno(turno);
+	public void guardarTurno(Turno turno, Long idUsuario) {
+		servicioTurnoDao.guardarTurno(turno,idUsuario);
 	}
 
 	@Override
@@ -108,6 +108,23 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	@Override
 	public Paciente mostrarDatosPaciente(Long id) {
 		return servicioTurnoDao.mostrarDatosPaciente(id);
+	}
+
+	@Override
+	public void cambiarEstadoAtendido(Long id) {
+		servicioTurnoDao.cambiarEstadoAtendido(id);
+		
+	}
+
+	@Override
+	public void agregarDescripcion(Long turnoId,String descripcion) {
+		servicioTurnoDao.agregarDescripcion(turnoId,descripcion);		
+	}
+
+	@Override
+	public void agregarDerivacion(Long pacienteId, Long idEspecialidad) {
+		servicioTurnoDao.agregarDerivacion(pacienteId, idEspecialidad);
+		
 	}
 	
 }
