@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -27,6 +28,11 @@ public class ServicioMedicoImpl implements ServicioMedico {
 	@Override
 	public Medico traerMedicoSegunUsuario(Usuario usuario) {
 		return medicoDao.buscarMedicoSegunUsuario(usuario);
+	}
+	
+	@Override
+	public Especialidad especialidadDelMedico (Long medicoid) {
+		return medicoDao.especialidadDelMedico(medicoid);
 	}
 
 }

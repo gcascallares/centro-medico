@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.dao;
 import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
+import ar.edu.unlam.tallerweb1.modelo.Estudio;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
@@ -25,8 +26,8 @@ public interface TurnoDao {
 
 	void cambiarEstadoAtendido(Long id);
 
-	void agregarDescripcion(Long turnoId, String descripcion);
-
 	void agregarDerivacion(Long pacienteId, Long idEspecialidad);
+
+	void agregarDescripcion(Long turnoId, String descripcion, Long estudio);
 
 }

@@ -117,8 +117,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void agregarDescripcion(Long turnoId,String descripcion) {
-		servicioTurnoDao.agregarDescripcion(turnoId,descripcion);		
+	public void agregarDescripcion(Long turnoId,String descripcion,Long estudio) {
+		servicioTurnoDao.agregarDescripcion(turnoId,descripcion,estudio);		
 	}
 
 	@Override

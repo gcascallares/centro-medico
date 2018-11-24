@@ -8,30 +8,30 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.Session;
+
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoComentarioViewModel;
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
+
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+
 import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
-import javax.servlet.ServletRequest;
+
 
 @Controller
 public class ControladorTurnos {
@@ -227,7 +227,9 @@ public class ControladorTurnos {
 		
 	}
 	
-	//mostrar historia clinica paciente
+	
+//mostrar historia clinica paciente
+	
 		@RequestMapping(path= "/mostrarhistoriaclinica")
 		public ModelAndView mostrarHistoriaClinica(HttpServletRequest request){
 			ModelMap modelo = new ModelMap();
@@ -242,22 +244,31 @@ public class ControladorTurnos {
 			return new ModelAndView("mostrarHistoriaClinica",modelo);
 		}
 		
+		
+// Parte de Descripscion del medico
+		
 		@RequestMapping(path="/turno/atendido/{turnoId}/{consultorioId}/{medicoId}")
 		public ModelAndView obtenerTurnoAtendido(@PathVariable Long turnoId,@PathVariable Long consultorioId,@PathVariable Long medicoId){
+		
 			servicioTurnos.cambiarEstadoAtendido(turnoId);
+			
 			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);
 		}
 		
-		@RequestMapping(path="/turno/guardarComentario/{turnoId}/{consultorioId}/{medicoId}/{descripcion}")
-		public ModelAndView guardarComentario(@PathVariable Long turnoId,@PathVariable Long consultorioId,@PathVariable Long medicoId,@PathVariable String descripcion ){
-			ModelMap modelo = new ModelMap();
-			servicioTurnos.agregarDescripcion(turnoId,descripcion);
-
+		
+		
+		@RequestMapping(path="/turno/guardarComentario/{turnoId}/{consultorioId}/{medicoId}/{estudio}/{descripcion}")
+		public ModelAndView guardarComentario(@PathVariable Long turnoId ,@PathVariable Long consultorioId ,@PathVariable Long medicoId ,@PathVariable Long estudio ,@PathVariable String descripcion ){
+			
+			servicioTurnos.agregarDescripcion(turnoId,descripcion,estudio);
+			
 			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
+		
+		
 
 		@RequestMapping(path="/turno/guardarDerivacion/{idEspecialidad}/{pacienteId}/{consultorioId}/{medicoId}")
 		public ModelAndView guardarDerivacion(@PathVariable Long consultorioId,@PathVariable Long medicoId,@PathVariable Long pacienteId,@PathVariable Long idEspecialidad){
-			ModelMap modelo = new ModelMap();
+			
 			servicioTurnos.agregarDerivacion(pacienteId,idEspecialidad);
 
 			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}

@@ -13,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
+import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -77,12 +78,25 @@ public class MedicoDaopImpl implements MedicoDao {
 
 
 	@Override
-	public Medico buscarMedicoSegunUsuario(Usuario usuario) {
+	public Medico buscarMedicoSegunUsuario (Usuario usuario) {
 		final Session session = sessionFactory.getCurrentSession();
 		Usuario usuarioBuscado = (Usuario) session.createCriteria(Usuario.class)
 				.add(Restrictions.like("id", usuario.getId())).uniqueResult();
 		
 		return usuarioBuscado.getMedico();
 	}
+	
+	@Override
+	public Especialidad especialidadDelMedico (Long medicoid) {
+		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	Medico medicoEspecifico = (Medico) session.createCriteria (Medico.class)
+							  .add(Restrictions.eq("id",medicoid))
+							  .uniqueResult();
+	
+	return medicoEspecifico.getEspecialidad();
 
+	}
+	
 }

@@ -99,6 +99,9 @@
 
 
 
+
+
+
           <!-- Contenido de la Pagina -->
         	
         	<div class="container">
@@ -120,6 +123,11 @@
  			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
 			<a href="${context}/turno"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Sacar Turno</button></a>
       </div>
+      
+      
+      
+      
+      
       <!-- /.content-wrapper -->
 
     </div>

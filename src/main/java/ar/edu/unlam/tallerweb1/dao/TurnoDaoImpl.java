@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
+import ar.edu.unlam.tallerweb1.modelo.Estudio;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -121,19 +122,27 @@ public class TurnoDaoImpl implements TurnoDao {
 	}
 
 	@Override
-	public void agregarDescripcion(Long turnoId,String descripcion) {
+	public void agregarDescripcion(Long turnoId,String descripcion, Long estudioId) {
+		
 		final Session session = sessionFactory.getCurrentSession();
+		
+		Estudio estudio = (Estudio)session.createCriteria(Estudio.class)
+				  		  .add(Restrictions.like("id", estudioId))
+				          .uniqueResult();
+	
 		Turno turno = (Turno)session.createCriteria(Turno.class)
-		.add(Restrictions.like("id", turnoId)).uniqueResult();
+					  .add(Restrictions.like("id", turnoId))
+					  .uniqueResult();
 		
 		turno.setDescripcion(descripcion);
+		turno.setEstudio(estudio);
+		
 		session.update(turno);
 	}
 
 	@Override
 	public void agregarDerivacion(Long pacienteId, Long idEspecialidad) {
 		final Session session = sessionFactory.getCurrentSession();
-		
 	}
 	
 
