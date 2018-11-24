@@ -40,7 +40,7 @@
 
 	      <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
+      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
@@ -103,7 +103,7 @@
         	
         	<div class="container">
 				</div>
-					<form:form action="${context}/mostrarTurnosPaciente/{id}" method="POST">
+					<form:form action="${context}/mostrarTurnosPaciente" method="POST">
 						<h3 class="form-signin-heading">Elija su paciente</h3>
 							<hr class="colorgraph">
 								<br>

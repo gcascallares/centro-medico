@@ -28,7 +28,7 @@ public class ControladorPacientes {
 		return new ModelAndView("buscadorPacientes", modelo);
 	}
 	
-	@RequestMapping(path="/buscarpacientespordni/{dni}", method = RequestMethod.POST)
+	@RequestMapping(path="/buscarpacientespordni", method = RequestMethod.POST)
 	public ModelAndView buscarPacientesPorDni(@RequestParam Long dni, HttpServletRequest request){
 		ModelMap modelo = new ModelMap();
 		List <Paciente> listaPacientes = servicioBuscadorPacientes.listaPacientes(dni);
@@ -36,17 +36,25 @@ public class ControladorPacientes {
 		return new ModelAndView("listaPacientes", modelo);
 	}
 	
-	@RequestMapping(path="/mostrarTurnosPaciente/{id}", method = RequestMethod.POST)
+	@RequestMapping(path="/mostrarTurnosPaciente", method = RequestMethod.POST)
 	public ModelAndView mostrarTurnosPaciente(@RequestParam Long id, HttpServletRequest request){
 		ModelMap modelo = new ModelMap();
 		List <Turno> listaTurnos = servicioBuscadorPacientes.listaTurnos(id);
 		modelo.put("listaturnos",listaTurnos);
 		return new ModelAndView("listaTurnos", modelo);
 	}
-	@RequestMapping(path="/modificarestadoturno/{id}", method = RequestMethod.POST)
-	public ModelAndView modificarEstadoTurno(@RequestParam Long id, HttpServletRequest request) {
+
+	@RequestMapping(path="/modificarestadoturno/{id}")
+	public ModelAndView modificarEstadoTurno(@PathVariable Long id, HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
 		servicioBuscadorPacientes.modificarEstadoTurno(id);
+		return new ModelAndView("buscadorPacientes", modelo);
+	}
+	
+	@RequestMapping(path="/modificarestadoturnorechazado/{id}")
+	public ModelAndView modificarEstadoTurnoRechazado(@PathVariable Long id, HttpServletRequest request) {
+		ModelMap modelo = new ModelMap();
+		servicioBuscadorPacientes.modificarEstadoTurnoRechazado(id);
 		return new ModelAndView("buscadorPacientes", modelo);
 	}
 	

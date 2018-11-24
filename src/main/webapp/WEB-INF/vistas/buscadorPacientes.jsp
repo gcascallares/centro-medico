@@ -37,7 +37,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
+      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
@@ -109,9 +109,9 @@
         		<div class="container">
         			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>     		
 			     <!-- Barra de Busqueda -->
-			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/buscarpacientespordni/{dni}" method="POST">
+			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/buscarpacientespordni" method="POST">
 			        <div class="input-group">
-			          <input path="dni" name="dni" type="numbre" class="form-control" placeholder="Buscar por dni" aria-label="Search" aria-describedby="basic-addon2">
+			          <input path="dni" name="dni" type="number" class="form-control" placeholder="Buscar por dni" aria-label="Search" aria-describedby="basic-addon2">
 			          <div class="input-group-append">
 			            <button class="btn btn-primary" type="submit">
 			              <i class="fas fa-search"></i>
