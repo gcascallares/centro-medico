@@ -40,6 +40,18 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		return true;
 	}
 	
+	@Override
+	public boolean modificarEstadoTurnoRechazado(Long id) {
+		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		Turno miturno = new Turno();
+		miturno = buscarTurnoPorId(id);
+		
+		miturno.setEstado("rechazado");
+		session.update(miturno);
+		return true;
+	}
+	
 	public Turno buscarTurnoPorId(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")

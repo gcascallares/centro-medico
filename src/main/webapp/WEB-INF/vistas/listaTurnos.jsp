@@ -40,7 +40,7 @@
 
 	      <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
+      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
@@ -103,7 +103,6 @@
         	
         	<div class="container">
 				</div>
- 					<form:form action="${context}/modificarestadoturno/{id}" method="POST">
 		
 						<h3 class="form-signin-heading">Elija el turno a modificar</h3>
 			
@@ -112,14 +111,12 @@
 							<br>
        	
 								<c:forEach items="${listaturnos}" var="turno">
-				
-									<button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${turno.id}" name="id">Turno: ${turno.estado} ${turno.fecha} ${turno.horario}</button></br>
-
+									<h3 class="form-signin-heading">Turno: ${turno.estado} ${turno.fecha} ${turno.horario}</h3>
+									<a href="${context}/modificarestadoturno/${turno.id}"><button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${turno.id}" name="id">Abonado</button></a></br>
+									<a href="${context}/modificarestadoturnorechazado/${turno.id}"><button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${turno.id}" name="id">Rechazado</button></a></br>
 								</c:forEach>	
 			
 							<br>
-			
- 					</form:form>
  			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
 			<a href="${context}/turno"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Sacar Turno</button></a>
       </div>
