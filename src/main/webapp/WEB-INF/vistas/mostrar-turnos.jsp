@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Eliga su Turno</title>
+    <title>Elija su Turno</title>
 
  	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -119,7 +119,6 @@
 				
 				<c:forEach items="${listaDeTurnos}" var="t">
 					<option value="${t}">${t}</option>
-					<!-- El value despues va a ser el ID del medico -->
 				</c:forEach>
 			</select>
 			

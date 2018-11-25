@@ -113,14 +113,14 @@
 
           <!-- Contenido de la Pagina -->
         	
-        	<h2 class="form-signin-heading" id="titulo">Bienvenido Doctor ${medico.nombre}</h2>
+        	<h2 class="form-signin-heading" id="titulo">Bienvenido Dr. ${medico.nombre}</h2>
 			
 			<hr class="colorgraph">
 			
 			<br>
   
   			<c:if test="${fn:length(listaTurnos) != 0}">
-				<h3 class="form-signin-heading" id="sub-titulo">Turnos del dia ${fecha}</h3>
+				<h3 class="form-signin-heading text-center" id="sub-titulo">Turnos del dia ${fecha}</h3>
 			</c:if>
   			
 			<c:if test="${fn:length(listaTurnos) == 0}">
@@ -128,23 +128,27 @@
 			</c:if>
         	<div id="turnos">
 				<c:forEach items="${listaTurnos}" var="Turnos">
-					
-					<h5>IdTurno: <span id="turno-${Turnos.id}">${Turnos.id}<span></h5>
-					<h5>Nombre: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
-					<h5>DNI: ${Turnos.paciente.dni} </h5>
-					<h5>Horario: ${Turnos.horario}</h5>
-					<h4>--------------------</h4>
+					<div class="card w-50 mx-auto mt-4 mb-4">
+					  <h5 class="card-header">Numero de turno: <span id="turno-${Turnos.id}">${Turnos.id}<span></h5>
+					  <div class="card-body">
+					    <h5 class="card-title">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
+					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
+					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
 					<c:if test = "${Turnos.descripcion == null}">
-					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#turno${Turnos.id}">
+					<div class="d-flex justify-content-center mt-4">
+					<button type="button" class="btn btn-primary mb-5 mr-4" data-toggle="modal" data-target="#turno${Turnos.id}">
 					  Dejar comentario
 					</button>
 					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#derivar">
 					  Derivar
 					</button>
+					</div>
 					</c:if>
 					<!-- Button trigger modal -->
 					<c:if test = "${Turnos.descripcion != null}">
+					<div class="text-center">
 						<button class="btn btn-success mb-5" onclick="atender(${Turnos.id},${consultorioId},${medico.id})" id="atendido-${Turnos.id}">Atendido</button>  
+			        </div>
 			        </c:if>
 					
 
@@ -159,11 +163,12 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
+					      	<h5>Inserta el tipo de estudio / consulta realizada</h5>
 								<div class="form-group">
 								
 								  <select id="estudio">
         		
-						        		<option value="0">Seleccione una opcion</option>
+						        		<option value="0" selected disabled>Seleccione una opcion</option>
 					        		
 										<c:forEach items="${listaEstudios}" var="Estudio">
 										
@@ -189,7 +194,8 @@
 					  </div>
 					</div>		
 					
-					
+					</div>
+					</div>
 				</c:forEach>	
 			</div>		
 			

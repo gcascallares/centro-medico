@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Eliga su paciente</title>
+    <title>Elija su paciente</title>
 
  	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
