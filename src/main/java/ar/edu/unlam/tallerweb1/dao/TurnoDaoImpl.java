@@ -34,6 +34,15 @@ public class TurnoDaoImpl implements TurnoDao {
 		session.save(turno);
 		
 	}
+	
+	@Override
+	public void guardarTurnoRecepcionista(Turno turno) {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		turno.setEstado("En espera");
+		
+		session.save(turno);
+	}
 
 	@Override
 	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {

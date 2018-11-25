@@ -73,6 +73,11 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public void guardarTurno(Turno turno, Long idUsuario) {
 		servicioTurnoDao.guardarTurno(turno,idUsuario);
 	}
+	
+	@Override
+	public void guardarTurnoRecepcionista(Turno turno) {
+		servicioTurnoDao.guardarTurnoRecepcionista(turno);
+	}
 
 	@Override
 	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {

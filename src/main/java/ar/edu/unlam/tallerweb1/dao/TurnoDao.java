@@ -15,6 +15,8 @@ public interface TurnoDao {
 	List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha);
 
 	void guardarTurno(Turno turno, Long idUsuario);
+	
+	void guardarTurnoRecepcionista(Turno turno);
 
 	List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId);
 
