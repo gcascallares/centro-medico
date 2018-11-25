@@ -121,7 +121,7 @@
   
         	<select id="especialidad">
         		
-        		<option value="0">Seleccione una opcion</option>
+        		<option value="0" disabled selected>Seleccione una opcion</option>
         		
 				<c:forEach items="${listaEsp}" var="Especialidad">
 				

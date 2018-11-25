@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Eliga su Medico</title>
+    <title>Elija su Medico</title>
 
  	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -120,7 +120,7 @@
 			<br>
   
         	<select id="medicos">
-        		<option value="0">Seleccione un opcion</option>
+        		<option value="0" disabled selected>Seleccione un opcion</option>
 				<c:forEach items="${listaMedicos}" var="Medico">
 					<option value="${Medico.id}">${Medico.nombre}</option>
 				</c:forEach>			
