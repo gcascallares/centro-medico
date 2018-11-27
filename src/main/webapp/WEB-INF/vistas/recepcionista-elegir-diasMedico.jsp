@@ -45,6 +45,9 @@
 	</c:forEach> 
 	
 	var context = "${context}";
+	var pacienteId = ${idPaciente};
+	var especialidadId =${especialidadId};
+	var medicoId = ${medicoId};
 </script>
 
 
@@ -139,15 +142,17 @@
 				<br>
 				<br>
 				
-				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 			
 			
 			<br><br>			
 
-			<%-- <a href="${context}/elegirhorario/${idPaciente}/${especialidadId}/${medicoId}/'27-11-2018'"><button  class="btn btn-lg btn-primary btn-block" value="27-11-2018" Type="button" >Siguiente</button></a>
+<%-- 			<a href="${context}/elegirhorario/${idPaciente}/${especialidadId}/${medicoId}/'27-11-2018'"><button  class="btn btn-lg btn-primary btn-block" value="27-11-2018" Type="button" >Siguiente</button></a>
+ --%>
+ 				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a> --%>
- 			
+				<br>
+				<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+
  			
  			
  			
@@ -190,7 +195,7 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
-    <script src="${context}/js/elegir-dia-del-medico.js" type="text/javascript"></script>
+    <script src="${context}/js/recepcionista-elegir-diasMedico.js" type="text/javascript"></script>
 	
 	<!-- Bootstrap core y JavaScript-->
 	<script src="${context}/js/bootstrap/bootstrap.min.js"></script>
