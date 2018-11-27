@@ -53,6 +53,8 @@ public class ControladorMedico {
 	
 	}
 	
+	
+	@SuppressWarnings("unused")
 	@RequestMapping("/{medicoId}/index-medico/{consultorioId}")
 	public ModelAndView inicioMedico(@PathVariable Long medicoId , @PathVariable Long consultorioId , HttpServletRequest request){
 		ModelMap modelo = new ModelMap();
@@ -78,6 +80,7 @@ public class ControladorMedico {
 		
 		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico, diaActual);
 		List<Medico> listaMedicos = servicioMedico.getMedicos();
+		
 		modelo.put("listaTurnos", listaTurnos);
 		modelo.put("medico", medico);
 		modelo.put("fecha",diaActual);

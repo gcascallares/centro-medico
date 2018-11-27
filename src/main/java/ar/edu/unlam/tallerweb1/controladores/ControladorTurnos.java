@@ -26,7 +26,6 @@ import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
-import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
@@ -41,16 +40,14 @@ public class ControladorTurnos {
 	
 	@Inject
 	private ServicioEspecialidad servicioEspecialidad;
-	
-	@Inject
-	private ServicioBuscadorPacientes servicioBuscadorPacientes;
-	
+
 	@Inject
 	private ServicioMedico servicioMedico;
 	
 	@Inject
 	private ServicioPaciente servicioPaciente;
 	
+	@SuppressWarnings("unused")
 	@Inject
     private SessionFactory sessionFactory;
 	

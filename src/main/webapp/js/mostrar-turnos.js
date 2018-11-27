@@ -8,14 +8,12 @@ $(document).ready(function() {
 	
 	$("#reservar").click(function(){
 		
-		var horario = $("#horario option:selected").val();
+		var horario = $("input[name='horario']:checked").val(); 
 		
 		var id = $("#especialidad option:selected").val();
   
     	window.location.href=window.context+"/turno/"+ id;
             
-            
-		
 	});
 	
 	$("#atras").click(function(){

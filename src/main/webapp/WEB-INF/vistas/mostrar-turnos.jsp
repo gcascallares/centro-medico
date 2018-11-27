@@ -115,13 +115,21 @@
 			<hr class="colorgraph">
 			<br>
 			
-			<select name="horario" id="horario">
+				
+				
 				
 				<c:forEach items="${listaDeTurnos}" var="t">
-					<option value="${t}">${t}</option>
+				
+							  <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left: 15px;">
+							  <label class="btn btn-secondary active" style="background-color: #1e9edb;">
+							    <input type="radio" name="horario" autocomplete="off" value="${t}" checked > ${t}
+							  </label>
+							</div>
+
 				</c:forEach>
-			</select>
-			
+				
+				
+				
 			<div> <h2 id="mensajeVacio">  </h2> </div>
 			<input type="hidden" value="${fecha}" name="fecha">
 			<input type="hidden" value="${medicoId}" name="medicoId">

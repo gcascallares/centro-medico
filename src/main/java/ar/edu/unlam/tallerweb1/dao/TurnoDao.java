@@ -3,7 +3,6 @@ package ar.edu.unlam.tallerweb1.dao;
 import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
-import ar.edu.unlam.tallerweb1.modelo.Estudio;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;

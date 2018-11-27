@@ -43,25 +43,30 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		session.save(turno);
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {
+		
 		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
+		
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.createAlias("medico","medicoBuscado")
 		.add(Restrictions.like("medicoBuscado.id", medico.getId()))
 		.add(Restrictions.like("fecha", diaActual))
-		.add(Restrictions.like("estado", "En espera"))
+		.add(Restrictions.like("estado", "Abonado"))
 		.addOrder(Order.asc("horario"))
 		.list();
 		
 		return listaTurnos;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha) {
+		
 		Session session = sessionFactory.getCurrentSession();
+		
 		List<Turno> listaTurnosBD = session.createCriteria(Turno.class).list();
 		
 		for(Turno turno : listaTurnosBD) {
@@ -72,13 +77,17 @@ public class TurnoDaoImpl implements TurnoDao {
 				}
 			}
 		}
+		
 		return listaTurnos;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId) {
+		
 		//lista de los dias de los medicos que trabajan en esa especialidad
 		final Session session = sessionFactory.getCurrentSession();
+		
 		List <DiasLaborales> lista = session.createCriteria(DiasLaborales.class)
 		.createAlias("Medicos", "Medicos")
 		.createAlias("Medicos.especialidad", "especialidadBuscada")
@@ -87,10 +96,13 @@ public class TurnoDaoImpl implements TurnoDao {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medico> listaDeMedicosDisponibles (Long especialidadId , Long diaId) {
+		
 		//lista de los dias de los medicos que trabajan en esa especialidad
 		final Session session = sessionFactory.getCurrentSession();
+		
 		List <Medico> lista = session.createCriteria(Medico.class)
 		.createAlias("especialidad","especialidadBuscada")
 		.add(Restrictions.eq("especialidadBuscada.id", especialidadId))
@@ -101,28 +113,36 @@ public class TurnoDaoImpl implements TurnoDao {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Turno> mostrarHistoriaClinica(Long id){
+		
 		final Session session = sessionFactory.getCurrentSession();
+		
 		List <Turno> listaHistorial = session.createCriteria(Turno.class)
 				.createAlias("paciente","pacienteJoin")
 				.add(Restrictions.like("pacienteJoin.id", id))
 				.list();
+		
 		return listaHistorial;
 	}
 	
 	@Override
 	public Paciente mostrarDatosPaciente(Long id) {
+		
 	final Session session = sessionFactory.getCurrentSession();
+	
 	Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
 			.add(Restrictions.eq("id",id))
 			.uniqueResult();
+	
 	return paciente;
 	}
 
 	@Override
 	public void cambiarEstadoAtendido(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
+		
 		Turno turno = (Turno)session.createCriteria(Turno.class)
 		.add(Restrictions.like("id", id)).uniqueResult();
 		
@@ -151,6 +171,7 @@ public class TurnoDaoImpl implements TurnoDao {
 
 	@Override
 	public void agregarDerivacion(Long pacienteId, Long idMedico) {
+		
 		final Session session = sessionFactory.getCurrentSession();
 		
 		Paciente paciente = (Paciente)session.createCriteria(Paciente.class)
