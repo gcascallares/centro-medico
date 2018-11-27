@@ -21,4 +21,6 @@ public interface MedicoDao {
 
 	Especialidad especialidadDelMedico(Long medicoid);
 
+	List<Medico> getMedicos();
+
 }

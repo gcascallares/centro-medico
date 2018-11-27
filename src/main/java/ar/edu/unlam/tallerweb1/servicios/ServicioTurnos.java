@@ -37,7 +37,7 @@ public interface ServicioTurnos {
 
 	void cambiarEstadoAtendido(Long id);
 
-	void agregarDerivacion(Long pacienteId, Long idEspecialidad);
+	void agregarDerivacion(Long pacienteId, Long medicoId);
 
 	void agregarDescripcion(Long turnoId, String descripcion, Long estudio);
 }

@@ -28,7 +28,7 @@ public interface TurnoDao {
 
 	void cambiarEstadoAtendido(Long id);
 
-	void agregarDerivacion(Long pacienteId, Long idEspecialidad);
+	void agregarDerivacion(Long pacienteId, Long idMedico);
 
 	void agregarDescripcion(Long turnoId, String descripcion, Long estudio);
 

@@ -15,4 +15,6 @@ public interface ServicioMedico {
 	Medico  traerMedicoSegunUsuario(Usuario usuario);
 	
 	Especialidad especialidadDelMedico(Long medicoid);
+
+	List<Medico> getMedicos();
 }

@@ -150,8 +150,23 @@ public class TurnoDaoImpl implements TurnoDao {
 	}
 
 	@Override
-	public void agregarDerivacion(Long pacienteId, Long idEspecialidad) {
+	public void agregarDerivacion(Long pacienteId, Long idMedico) {
 		final Session session = sessionFactory.getCurrentSession();
+		
+		Paciente paciente = (Paciente)session.createCriteria(Paciente.class)
+		  		  .add(Restrictions.like("id", pacienteId))
+		          .uniqueResult();
+		
+		Medico medico = (Medico)session.createCriteria(Medico.class)
+		  		  .add(Restrictions.like("id", idMedico))
+		          .uniqueResult();
+		
+		Turno turno = new Turno();
+		turno.setEstado("En espera");
+		turno.setPaciente(paciente);
+		turno.setMedico(medico);
+		
+		session.save(turno);
 	}
 	
 
