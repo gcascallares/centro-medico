@@ -98,5 +98,12 @@ public class MedicoDaopImpl implements MedicoDao {
 	return medicoEspecifico.getEspecialidad();
 
 	}
+
+
+	@Override
+	public List<Medico> getMedicos() {
+		final Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Medico.class).list();
+	}
 	
 }

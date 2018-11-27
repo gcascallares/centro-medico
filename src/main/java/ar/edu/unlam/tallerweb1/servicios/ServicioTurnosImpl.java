@@ -127,8 +127,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void agregarDerivacion(Long pacienteId, Long idEspecialidad) {
-		servicioTurnoDao.agregarDerivacion(pacienteId, idEspecialidad);
+	public void agregarDerivacion(Long pacienteId, Long idMedico) {
+		servicioTurnoDao.agregarDerivacion(pacienteId, idMedico);
 		
 	}
 	

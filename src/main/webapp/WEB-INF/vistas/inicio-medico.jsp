@@ -163,12 +163,12 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-					      	<h5>Inserta el tipo de estudio / consulta realizada</h5>
-								<div class="form-group">
+					      	<div class="text-center"><h5>Inserta el tipo de estudio / consulta realizada</h5></div>
+								<div class="form-group text-center">
 								
 								  <select id="estudio">
         		
-						        		<option value="0" selected disabled>Seleccione una opcion</option>
+						        		<option value="0" selected disabled>Seleccione una opción</option>
 					        		
 										<c:forEach items="${listaEstudios}" var="Estudio">
 										
@@ -196,8 +196,8 @@
 					
 					</div>
 					</div>
-				</c:forEach>	
-			</div>		
+					
+				
 			
 				<div class="modal fade" id="derivar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
@@ -209,16 +209,16 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-								<div class="form-group">
-								  <label for="comment">Seleccione Especialidad</label>
+								<div class="form-group text-center">
+								  <label for="comment">Seleccione el medico al que desea derivar</label>
 								  
-        							<select id="especialidad">
+        							<select id="medico">
         		
-        								<option value="0"></option>
+        								<option value="0" disabled selected>Seleccione una opción</option>
         		
-											<c:forEach items="${listaEsp}" var="Especialidad">
+											<c:forEach items="${listaMedicos}" var="medico">
 					
-										<option value="${Especialidad.id}" path="nombreEspecialidad">${Especialidad.nombreEspecialidad}</option>
+										<option value="${medico.id}">Dr/a. ${medico.nombre} - ${medico.especialidad.nombreEspecialidad}</option>
 					
 											</c:forEach>	
 						
@@ -226,13 +226,13 @@
 								</div>					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-					        <button type="button" class="btn btn-primary" onclick="guardarDerivacion(${Turnos.paciente.id},${consultorioId},${medico.id})" id="guardarDerivacion">Guardar</button>
+					        <button type="button" class="btn btn-primary" onclick="guardarDerivacion(${Turnos.paciente.id},${consultorioId},${medico.id})" id="guardarDerivacion">Aceptar</button>
 					      </div>
 					    </div>
 					  </div>
 					</div>					
-							
-			
+					</c:forEach>		
+					</div>	
 			<br>
  			
  			
@@ -286,10 +286,10 @@
 		window.location.href = window.context+"/turno/guardarComentario/" + idTurno + "/" + idConsultorio + "/" + idMedico+ "/" + estudio + "/" + mensaje;
 	}
 	
-	function guardarDerivacion(idPaciente,idMedico,idConsultorio){
+	function guardarDerivacion(idPaciente,idConsultorio,idMedico){
 		
-		var idEspecialidad = $("#especialidad option:selected").val();
-		window.location.href = window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico+ "/" + idEspecialidad + "/" + idPaciente;
+		var medicoADerivar = $("#medico option:selected").val();
+		window.location.href = window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico + "/" + idPaciente + "/" + medicoADerivar;
 		
 	}
 		

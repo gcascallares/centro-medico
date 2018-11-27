@@ -77,12 +77,12 @@ public class ControladorMedico {
 		List <Estudio> listaDeEstudios = servicioEspecialidad.listaDeEstudios(especialidad);
 		
 		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico, diaActual);
-		
+		List<Medico> listaMedicos = servicioMedico.getMedicos();
 		modelo.put("listaTurnos", listaTurnos);
 		modelo.put("medico", medico);
 		modelo.put("fecha",diaActual);
 		modelo.put("consultorioId", consultorioId);
-		modelo.put("listaEsp", listaEspecialidad);
+		modelo.put("listaMedicos", listaMedicos);
 		modelo.put("listaEstudios",listaDeEstudios);
 		
 		return new ModelAndView("inicio-medico", modelo);
