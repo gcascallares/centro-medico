@@ -212,6 +212,7 @@ public class ControladorTurnos {
 		medico.setId(turnoViewModel.getMedicoId());
 		medico.setEspecialidad(especialidad);
 		
+		turno.setDerivado(0);
 		turno.setFecha(turnoViewModel.getFecha());
 		turno.setHorario(turnoViewModel.getHorario());
 		turno.setMedico(medico);
@@ -225,7 +226,7 @@ public class ControladorTurnos {
 	}
 	
 	
-//mostrar historia clinica paciente
+//		Mostrar historia clinica paciente
 	
 		@RequestMapping(path= "/mostrarhistoriaclinica")
 		public ModelAndView mostrarHistoriaClinica(HttpServletRequest request){
@@ -242,7 +243,7 @@ public class ControladorTurnos {
 		}
 		
 		
-// Parte de Descripscion del medico
+// 		Parte de Descripscion del medico
 		
 		@RequestMapping(path="/turno/atendido/{turnoId}/{consultorioId}/{medicoId}")
 		public ModelAndView obtenerTurnoAtendido(@PathVariable Long turnoId,@PathVariable Long consultorioId,@PathVariable Long medicoId){

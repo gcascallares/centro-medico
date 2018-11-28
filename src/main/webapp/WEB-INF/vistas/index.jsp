@@ -35,6 +35,8 @@
 	</script>
 
  <body id="page-top">
+ 
+ 	<input type="hidden" value="${usuario.id}" id="usuario">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -79,18 +81,18 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarhistoriaclinica">
-            <i class="fas fa-file-signature"></i>
+            <i class="fas fa-history"></i>
             <span>Historia Clinica</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/" id="derivacion">
             <i class="fab fa-creative-commons-nd"></i>
             <span>  Derivaciones</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
+            <i class="fas fa-mobile-alt"></i>
             <span>  Contacto</span></a>
         </li>
       </ul>
@@ -104,14 +106,8 @@
             <li class="breadcrumb-item">
               <a href="#">Inicio</a>
             </li>
-          </ol>
+          </ol>       
           
-          
-          
-          
-          
-          
-
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="banner">
         		<div class="container">
@@ -321,6 +317,8 @@
 
     <!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
+    <script src="${context}/js/derivacion.js"></script>
+    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 

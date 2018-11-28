@@ -31,4 +31,8 @@ public interface TurnoDao {
 
 	void agregarDescripcion(Long turnoId, String descripcion, Long estudio);
 
+	List<Turno> listaDeDerivacion(Long usuarioId);
+
+	void guardarDerivacion(Turno turno);
+
 }

@@ -144,7 +144,8 @@ public class TurnoDaoImpl implements TurnoDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		Turno turno = (Turno)session.createCriteria(Turno.class)
-		.add(Restrictions.like("id", id)).uniqueResult();
+					  .add(Restrictions.like("id", id))
+		              .uniqueResult();
 		
 		turno.setEstado("Atendido");
 		session.update(turno);
@@ -190,6 +191,39 @@ public class TurnoDaoImpl implements TurnoDao {
 		session.save(turno);
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List <Turno> listaDeDerivacion(Long usuarioId) {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		
+		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
+							.add(Restrictions.like("id", usuarioId))
+							.uniqueResult();
+		
+		
+		List <Turno> listaDeDerivaciones = session.createCriteria(Turno.class)
+				  .createAlias("paciente", "pacienteBuscado")
+				  .add(Restrictions.like("pacienteBuscado.id", paciente.getId()))
+				  .add(Restrictions.like("derivado", 1))
+				  .list();
+		
+		return listaDeDerivaciones;
 
+	}
+	
+	@Override
+	public void guardarDerivacion (Turno turno) {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		
+		turno.setEstado("En espera");
+		turno.setFecha(turno.getFecha());
+		turno.setHorario(turno.getHorario());
+		
+		session.update(turno);
+		
+	}
+	
 
 }

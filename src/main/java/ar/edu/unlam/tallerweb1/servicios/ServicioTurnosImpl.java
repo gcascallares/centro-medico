@@ -132,4 +132,13 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 	}
 	
+	@Override
+	public List<Turno> listaDeDerivacion(Long usuarioId) {
+		return servicioTurnoDao.listaDeDerivacion(usuarioId);
+	}
+	
+	@Override
+	public void guardarDerivacion (Turno turno) {
+		servicioTurnoDao.guardarDerivacion(turno);
+	}
 }

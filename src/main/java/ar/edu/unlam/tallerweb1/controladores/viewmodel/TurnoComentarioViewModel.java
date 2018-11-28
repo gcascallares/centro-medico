@@ -1,10 +1,12 @@
 package ar.edu.unlam.tallerweb1.controladores.viewmodel;
 
 public class TurnoComentarioViewModel {
+	
 	private Long medicoId;
 	private Long id;
 	private Long consultorioId;
 	private String descripcion;
+	
 	public Long getMedicoId() {
 		return medicoId;
 	}
