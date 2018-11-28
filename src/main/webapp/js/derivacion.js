@@ -9,8 +9,8 @@ $(document).ready(function() {
 		 
 		 var especialidadId = $("#especialidad").val();
 		 var medicoId = $("#medico").val();
-		 
-		 window.location.assign(window.context +"/derivacion/"+ especialidadId + "/medico/" + medicoId);
+		 var turnoId = $("#turnoId").val();
+		 window.location.assign(window.context +"/derivacion/"+ especialidadId + "/medico/" + medicoId + turnoId);
 	
 	        
 		});

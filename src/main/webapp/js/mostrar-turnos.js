@@ -9,10 +9,10 @@ $(document).ready(function() {
 	$("#reservar").click(function(){
 		
 		var horario = $("input[name='horario']:checked").val(); 
-		
-		var id = $("#especialidad option:selected").val();
+		var turnoId = $("turnoId").val(); 
+		var fecha = $("fecha").val();
   
-    	window.location.href=window.context+"/turno/"+ id;
+    	window.location.href = window.context+"/derivacion/"+ turnoId + fecha + horario;
             
 	});
 	

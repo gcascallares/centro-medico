@@ -33,7 +33,7 @@ $(document).ready(function() {
 		
 	var especialidadId = $("#especialidadId").val();
 	var medicoId = $("#medicoId").val();
-	 
+	var turnoId = $("#turnoId").val(); 
 	 $("#siguiente").click(function(){
 		 
 		var fechaValida = $("#datepicker").val();
@@ -48,7 +48,7 @@ $(document).ready(function() {
     		fecha = fecha.replace("/","-");
     		fecha = fecha.replace("/","-");
     		fecha = fecha.replace("/","-");
-    		window.location.assign(window.context +"/derivacion/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
+    		window.location.assign(window.context +"/derivacion/"+ turnoId + especialidadId + "/medico/"+ medicoId +"/"+ fecha);
             
         	}
         
