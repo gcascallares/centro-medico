@@ -46,8 +46,8 @@ public class ControladorDerivacion {
 			}
 			
 			
-			@RequestMapping("/derivacion/{especialidadId}/medico/{medicoId}")
-			public ModelAndView elegirFechaParaDerivacion(@PathVariable Long especialidadId, @PathVariable Long medicoId) {
+			@RequestMapping("/derivacion/{especialidadId}/medico/{medicoId}/{turnoId}")
+			public ModelAndView elegirFechaParaDerivacion(@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable Long turnoId) {
 				
 				ModelMap modelo = new ModelMap();
 				
@@ -64,12 +64,12 @@ public class ControladorDerivacion {
 				modelo.put("medicoId", medicoId);
 				modelo.put("especialidadId",especialidadId);
 				modelo.put("dias", idDias);
-				
+				modelo.put("turnoId", turnoId);
 				return new ModelAndView("diasDelMedicoDerivacion", modelo);
 			}
 			
-			@RequestMapping("/derivacion/{especialidadId}/medico/{medicoId}/{fecha}")
-			public ModelAndView turnosDeLaDerivacion(@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha ){
+			@RequestMapping("/derivacion/{turnoId}/especialidadId}/medico/{medicoId}/{fecha}")
+			public ModelAndView turnosDeLaDerivacion(@PathVariable Long turnoId, @PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha ){
 				
 				ModelMap modelo = new ModelMap();
 				
@@ -81,26 +81,21 @@ public class ControladorDerivacion {
 				modelo.put("listaDeTurnos", listaTurnosDisponibles);
 				modelo.put("especialidadId", especialidadId);
 				modelo.put("medicoId", medicoId);
+				modelo.put("turnoId", turnoId);
 				modelo.put("fecha", fecha);
-				modelo.put("medico", medicoBuscado.getNombre());
+				modelo.put("medico", medicoBuscado);
 				
 				return new ModelAndView("mostrar-turnos-derivacion", modelo);
 			}
 			
-			@RequestMapping(path= "/guardarDerivacion", method = RequestMethod.POST)
-			public ModelAndView reservarDerivacion(DerivacionViewModel derivacionViewModel,HttpServletRequest request) {
+			@RequestMapping(path= "/derivacion/{turnoId}/{fecha}/{horario}", method = RequestMethod.POST)
+			public ModelAndView reservarDerivacion(@PathVariable Long turnoId,@PathVariable String fecha,@PathVariable String horario) {
 				
 				ModelMap modelo = new ModelMap();
 				
-				Turno turno = new Turno();
+				Turno turnoDerivado = servicioTurnos.guardarDerivacion(turnoId,fecha,horario);
 
-				turno.setDerivado(0);
-				turno.setFecha(derivacionViewModel.getFecha());
-				turno.setHorario(derivacionViewModel.getHorario());
-				
-				servicioTurnos.guardarDerivacion(turno);
-
-				modelo.put("turno", derivacionViewModel);
+				modelo.put("turno", turnoDerivado);
 				
 				return new ModelAndView("turno-ok", modelo);
 				

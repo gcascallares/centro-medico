@@ -33,6 +33,6 @@ public interface TurnoDao {
 
 	List<Turno> listaDeDerivacion(Long usuarioId);
 
-	void guardarDerivacion(Turno turno);
+	Turno guardarDerivacion(Long turnoId,String fecha,String horario);
 
 }

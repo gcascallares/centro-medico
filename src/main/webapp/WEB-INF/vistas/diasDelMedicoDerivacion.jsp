@@ -125,9 +125,9 @@
           <!-- Contenido de la Pagina -->
         		
         		
-		        <input type"hidden" value="${especialidadId}" id="especialidadId" hidden>
-				<input type"hidden" value="${medicoId}" id="medicoId" hidden>
-				
+		        <input type="hidden" value="${especialidadId}" id="especialidadId">
+				<input type="hidden" value="${medicoId}" id="medicoId" >
+				<input type="hidden" value="${turnoId}" id="turnoId" >
 				<h3 class="form-signin-heading">Elija su Fecha</h3>
 				<br>
 				<br>

@@ -121,6 +121,7 @@
 					  <div class="card-body">
 					   
 					   <input type="hidden" value="${Derivacion.medico.id}" id="medico">
+					   <input type="hidden" value="${Derivacion.id}" id="turnoId">
 					   <input type="hidden" value="${Derivacion.medico.especialidad.id}" id="especialidad">
 					   
 					    <h5 class="card-title">Especialidad Id: ${Derivacion.medico.especialidad.id}</h5>

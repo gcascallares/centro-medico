@@ -110,8 +110,8 @@
 
           <!-- Contenido de la Pagina -->
         	
-        	<form:form action="${context}/guardarDerivacion" method="POST" modelAttribute = "turno">
-			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
+<%--         	<form:form action="${context}/guardarDerivacion" method="POST" modelAttribute = "turno">
+ --%>			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
 			<hr class="colorgraph">
 			<br>
 			
@@ -131,19 +131,20 @@
 				
 				
 			<div> <h2 id="mensajeVacio">  </h2> </div>
-			<input type="hidden" value="${fecha}" name="fecha">
-			<input type="hidden" value="${medicoId}" name="medicoId">
-			<input type="hidden" value="${especialidadId}" name="especialidadId">
+			<input type="hidden" value="${fecha}" id="fecha">
+			<input type="hidden" value="${turnoId}" id="turnoId">
+			<input type="hidden" value="${medicoId}" id="medicoId">
+			<input type="hidden" value="${especialidadId}" id="especialidadId">
 			<br>
 			
-			<button class="btn btn-primary" id="reservar" Type="Submit" />Reservar</button>
+			<button class="btn btn-primary" id="reservar" Type="button" />Reservar</button>
 			
 			<br>
 			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
 			
-			</form:form>
- 			
+<%-- 			</form:form>
+ --%> 			
 
       </div>
       <!-- /.content-wrapper -->

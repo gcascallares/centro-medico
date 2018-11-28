@@ -185,6 +185,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		Turno turno = new Turno();
 		turno.setEstado("En espera");
+		turno.setDerivado(1);
 		turno.setPaciente(paciente);
 		turno.setMedico(medico);
 		
@@ -213,16 +214,18 @@ public class TurnoDaoImpl implements TurnoDao {
 	}
 	
 	@Override
-	public void guardarDerivacion (Turno turno) {
+	public Turno guardarDerivacion (Long turnoId,String fecha,String horario) {
 		
 		final Session session = sessionFactory.getCurrentSession();
 		
-		turno.setEstado("En espera");
-		turno.setFecha(turno.getFecha());
-		turno.setHorario(turno.getHorario());
+		Turno turno = (Turno) session.createCriteria(Turno.class)
+				.add(Restrictions.like("id", turnoId)).uniqueResult();
+		
+		turno.setFecha(fecha);
+		turno.setHorario(horario);
 		
 		session.update(turno);
-		
+		return turno;
 	}
 	
 
