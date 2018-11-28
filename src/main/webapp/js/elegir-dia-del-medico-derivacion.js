@@ -48,7 +48,7 @@ $(document).ready(function() {
     		fecha = fecha.replace("/","-");
     		fecha = fecha.replace("/","-");
     		fecha = fecha.replace("/","-");
-    		window.location.assign(window.context +"/derivacion/"+ turnoId + especialidadId + "/medico/"+ medicoId +"/"+ fecha);
+    		window.location.assign(window.context +"/derivacion/"+ turnoId +"/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
             
         	}
         

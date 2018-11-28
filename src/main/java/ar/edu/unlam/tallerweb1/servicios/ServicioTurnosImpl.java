@@ -138,7 +138,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 	
 	@Override
-	public Turno guardarDerivacion (Long turnoId,String fecha, String horario) {
-		return servicioTurnoDao.guardarDerivacion(turnoId,fecha,horario);
+	public Turno guardarDerivacion (Long turnoId,String fecha, String horario ,Long especialidadId, Long medicoId) {
+		return servicioTurnoDao.guardarDerivacion(turnoId,fecha,horario,especialidadId,medicoId);
 	}
 }

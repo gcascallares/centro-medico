@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
 	if ($('#horario').val() === null ){
 		$("#mensajeVacio").text("No hay turnos disponibles para la fecha seleccionada, intente con otra");
 		$('#horario').css("display","none");
@@ -9,10 +10,12 @@ $(document).ready(function() {
 	$("#reservar").click(function(){
 		
 		var horario = $("input[name='horario']:checked").val(); 
-		var turnoId = $("turnoId").val(); 
-		var fecha = $("fecha").val();
+		var turnoId = $("#turnoId").val(); 
+		var fecha = $("#fecha").val();
+		var especialidadId = $("#especialidadId").val();
+		var medicoId = $("#medicoId").val();
   
-    	window.location.href = window.context+"/derivacion/"+ turnoId + fecha + horario;
+    	window.location.href = window.context + "/derivacion/" + turnoId + "/" + especialidadId + "/medico/" + medicoId + "/" + fecha + "/" + horario;
             
 	});
 	

@@ -43,7 +43,7 @@ public interface ServicioTurnos {
 
 	List<Turno> listaDeDerivacion(Long usuarioId);
 
-	Turno guardarDerivacion(Long turnoId,String fecha,String horario);
+	Turno guardarDerivacion(Long turnoId, String fecha, String horario, Long especialidadId, Long medicoId);
 }
 
 
