@@ -2,11 +2,27 @@ $(document).ready(function() {
 	
 	var id = $("#especialidadId").val();
 	
-	
-	
-	$("#botonSiguienteMedico").click(function(){
+	$("#siguiente").click(function(){
+		
 		var medicoId = $("#medicos option:selected").val();
-		window.location.assign(window.context + "/turno/"+ id + "/medico/"+ medicoId);
+		
+		//Validacion Medico
+		
+        if(medicoId != 0){
+        	
+        	$("#mensajeMedico").fadeOut();
+            
+        	window.location.assign(window.context + "/turno/"+ id + "/medico/"+ medicoId);
+            
+        	}
+        
+        else{
+            
+        	$("#mensajeMedico").fadeIn("slow");
+            return false;
+            
+            }
+		
 	});
 	
 	$("#atras").click(function(){

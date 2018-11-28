@@ -15,6 +15,7 @@ import ar.edu.unlam.tallerweb1.dao.TurnoDao;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 
 @Service("servicioTurnos")
 @Transactional
@@ -69,8 +70,13 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void guardarTurno(Turno turno) {
-		servicioTurnoDao.guardarTurno(turno);
+	public void guardarTurno(Turno turno, Long idUsuario) {
+		servicioTurnoDao.guardarTurno(turno,idUsuario);
+	}
+	
+	@Override
+	public void guardarTurnoRecepcionista(Turno turno) {
+		servicioTurnoDao.guardarTurnoRecepcionista(turno);
 	}
 
 	@Override
@@ -98,5 +104,43 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId) {
 		return servicioTurnoDao.listaDeMedicosDisponibles(especialidadId, diaId);
 	}
+	
+	@Override
+	public List<Turno> mostrarHistoriaClinica(Long id){
+		return servicioTurnoDao.mostrarHistoriaClinica(id);
+	}
+	
+	@Override
+	public Paciente mostrarDatosPaciente(Long id) {
+		return servicioTurnoDao.mostrarDatosPaciente(id);
+	}
+
+	@Override
+	public void cambiarEstadoAtendido(Long id) {
+		servicioTurnoDao.cambiarEstadoAtendido(id);
+		
+	}
+
+	@Override
+	public void agregarDescripcion(Long turnoId,String descripcion,Long estudio) {
+		servicioTurnoDao.agregarDescripcion(turnoId,descripcion,estudio);		
+	}
+
+	@Override
+	public void agregarDerivacion(Long pacienteId, Long idMedico) {
+		servicioTurnoDao.agregarDerivacion(pacienteId, idMedico);
+		
+	}
+	
+	@Override
+	public List<Turno> listaDeDerivacion(Long usuarioId) {
+		return servicioTurnoDao.listaDeDerivacion(usuarioId);
+	}
+	
+	@Override
+	public void guardarDerivacion (Turno turno, Long idUsuario) {
+		servicioTurnoDao.guardarDerivacion(turno, idUsuario);
+	}
+	
 	
 }

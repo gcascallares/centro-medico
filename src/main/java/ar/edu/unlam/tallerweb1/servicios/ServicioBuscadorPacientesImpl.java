@@ -21,11 +21,20 @@ public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes 
 			return buscadorPacientesDao.listaPacientes(dni);
 	}
 	
+	@Override
 	public boolean modificarEstadoTurno(Long id) {
 		return buscadorPacientesDao.modificarEstadoTurno(id);
 	}
+	
+	@Override
+	public boolean modificarEstadoTurnoRechazado(Long id) {
+		return buscadorPacientesDao.modificarEstadoTurnoRechazado(id);
+	}
+	
 	@Override
 	public List <Turno> listaTurnos(Long id){
 		return buscadorPacientesDao.listaTurnos(id);
 	}
+
+	
 }

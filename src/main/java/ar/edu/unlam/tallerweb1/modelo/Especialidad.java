@@ -33,5 +33,5 @@ public class Especialidad {
 	public void setIntervalo(Integer intervalo) {
 		this.intervalo = intervalo;
 	}
-
+	
 }

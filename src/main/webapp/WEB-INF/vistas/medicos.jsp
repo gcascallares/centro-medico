@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Eliga su Medico</title>
+    <title>Elija su Medico</title>
 
  	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 </head>
 
@@ -41,22 +43,11 @@
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
-
-      <!-- Barra de Busqueda -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar" aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
+      
       <!-- Desplegable del usuario -->
+      <div class="ml-auto">
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,7 +60,7 @@
           </div>
         </li>
       </ul>
-
+	</div>
     </nav>
 
     <div id="wrapper">
@@ -78,7 +69,7 @@
       <ul class="sidebar navbar-nav">
       	
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -129,14 +120,20 @@
 			<br>
   
         	<select id="medicos">
+        		<option value="0" disabled selected>Seleccione un opcion</option>
 				<c:forEach items="${listaMedicos}" var="Medico">
 					<option value="${Medico.id}">${Medico.nombre}</option>
 				</c:forEach>			
 			</select>
+			
 			<br>
+			<div id="mensajeMedico" class="errores">Por favor seleccione algunos de los medicos disponibles</div>
+			<br>
+			<br>
+			
 			<input type="hidden" value="${especialidadId}" id="especialidadId">
 			<br>
-			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteMedico">Continuar</a>
+			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
 			</form:form>
@@ -162,13 +159,13 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">x</span>
             </button>
           </div>
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>

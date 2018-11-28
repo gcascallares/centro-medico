@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Eliga su Turno</title>
+    <title>Elija su Turno</title>
 
  	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 </head>
 
@@ -40,23 +42,12 @@
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
-
-      <!-- Barra de Busqueda -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar" aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
+      
       <!-- Desplegable del usuario -->
+      <div class="ml-auto">
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,7 +60,7 @@
           </div>
         </li>
       </ul>
-
+	</div>
     </nav>
 
     <div id="wrapper">
@@ -77,7 +68,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -95,7 +86,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
+            <i class="fas fa-mobile-alt"></i>
             <span>  Contacto</span></a>
         </li>
       </ul>
@@ -111,7 +102,7 @@
             </li>
           </ol>
           
-          
+     </div>     
           
           
           
@@ -120,23 +111,35 @@
           <!-- Contenido de la Pagina -->
         	
         	<form:form action="${context}/reservar-turno" method="POST" modelAttribute = "turno">
+        	
 			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
 			<hr class="colorgraph">
 			<br>
 			
-			<select name="horario" id="horario">
+				
+				
+				
 				<c:forEach items="${listaDeTurnos}" var="t">
-					<option value="${t}">${t}</option>
-					<!-- El value despues va a ser el ID del medico -->
+				
+							  <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left: 15px;">
+							  <label class="btn btn-secondary active" style="background-color: #1e9edb;">
+							    <input type="radio" name="horario" autocomplete="off" value="${t}" checked > ${t}
+							  </label>
+							</div>
+
 				</c:forEach>
-			</select>
-			
+				
+				
+				
 			<div> <h2 id="mensajeVacio">  </h2> </div>
+			
 			<input type="hidden" value="${fecha}" name="fecha">
 			<input type="hidden" value="${medicoId}" name="medicoId">
 			<input type="hidden" value="${especialidadId}" name="especialidadId">
 			<br>
-			<button class="btn btn-primary" id="reservar" Type="Submit" />Reservar</button>
+			
+			<button class="btn btn-primary" id="reservar" Type="Submit">Reservar</button>
+			
 			<br>
 			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
@@ -162,16 +165,17 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">x</span>
             </button>
           </div>
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>
+	</div>
 	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>

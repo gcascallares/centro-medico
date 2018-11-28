@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Centro Medico</title>
+    <title>Elija su Fecha</title>
 
     <!-- Bootstrap core CSS-->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -30,8 +30,9 @@
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
     
     <link href="${context}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" >
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
-	<title>Elija su especialidad</title>
 
 </head>
 
@@ -50,27 +51,16 @@
 <body id="page-top">
 
 
-	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+	 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
-
-      <!-- Barra de Busqueda -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar" aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
+      
       <!-- Desplegable del usuario -->
+      <div class="ml-auto">
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +73,7 @@
           </div>
         </li>
       </ul>
-
+	</div>
     </nav>
 
     <div id="wrapper">
@@ -91,7 +81,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -126,14 +116,16 @@
           
 
           <!-- Contenido de la Pagina -->
-        	
+        		
+        		
 		        <input type"hidden" value="${especialidadId}" id="especialidadId" hidden>
 				<input type"hidden" value="${medicoId}" id="medicoId" hidden>
-				<br>
+				<h3 class="form-signin-heading">Elija su Fecha</h3>
 				<br>
 				<br>
 		
 				<input type="text" id="datepicker">
+				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
 				
 				<br>
 				<br>
@@ -149,7 +141,7 @@
 				<br>
 				<br>
 				
-				<a class="btn btn-lg btn-primary btn-block" id="botonSiguiente">Continuar</a>
+				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 				<br>
 				<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
 
@@ -172,13 +164,13 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">x</span>
             </button>
           </div>
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>

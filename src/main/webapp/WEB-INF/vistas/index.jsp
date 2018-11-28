@@ -25,6 +25,8 @@
     
     <!-- Estilo que se aplica a todas las Vistas-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
   </head>
 
@@ -33,32 +35,23 @@
 	</script>
 
  <body id="page-top">
+ 
+ 	<input type="hidden" value="${usuario.id}" id="usuario">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
-
-      <!-- Barra de Busqueda -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar" aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
+      
       <!-- Desplegable del usuario -->
+      <div class="ml-auto">
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-2x fa-user-circle fa-fw"></i>
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+           <i class="fas fa-2x fa-user-circle fa-fw"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Ajustes</a>
@@ -67,7 +60,7 @@
           </div>
         </li>
       </ul>
-
+	</div>
     </nav>
 
     <div id="wrapper">
@@ -75,7 +68,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -87,13 +80,19 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span>Historia Clinica</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/" id="derivacion">
             <i class="fab fa-creative-commons-nd"></i>
             <span>  Derivaciones</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
+            <i class="fas fa-mobile-alt"></i>
             <span>  Contacto</span></a>
         </li>
       </ul>
@@ -107,18 +106,12 @@
             <li class="breadcrumb-item">
               <a href="#">Inicio</a>
             </li>
-          </ol>
+          </ol>       
           
-          
-          
-          
-          
-          
-
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="banner">
         		<div class="container">
-        			<h1><span class="glyphicon glyphicon-plus"></span> Centro Medico</h1>
+        			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>
         			<p>Que tu medicina sea tu alimento, y el alimento tu medicina</p>
         			<p><a class="btn btn-primary" href="${context}/turno">Solicitar Turno</a></p>
         		</div>
@@ -136,33 +129,62 @@
             </div>
 
             <!-- Especialidades -->
-        	<div class="container-fluid">
-                <div class="row promo">
-                	<a href="#">
-        				<div class="col-md-16 promo-item " id="cardiologia">
-        					<h3>
-        						<i class="fas fa-heartbeat"></i> Cardiologia
-        					</h3>
-        				</div>
-                    </a>
-                    <a href="#">
-        				<div class="col-md-12 promo-item " id="laboratorio">
-        					<h3>
-        						<i class="fas fa-vials"></i> Laboratorio
-        					</h3>
-        				</div>
-                    </a>
-        			
-        			<a href="#">
-        				<div class="col-md-12 promo-item " id="radiologia">
-        					<h3>
-        						<i class="fas fa-x-ray"></i> Radiologia
-        					</h3>
-        				</div>
-                    </a>
-                </div>
-            </div>
-        	
+        	<section class="gallery-block cards-gallery">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-md-6 col-lg-4">
+		                <div class="card border-0 transform-on-hover">
+		                	<a class="lightbox" href="#">
+		                		<img src="img/laboratorio.jpg" alt="Card Image" class="card-img-top">
+		                	</a>
+		                    <div class="card-body">
+		                        <h6><a href="#"><i class="fas fa-vials"></i> Laboratorio</a></h6>
+		                        <p class="text-muted card-text">    Estudios Disponibles:<br>
+																	Hemograma Y Urinalizis Completo<br>
+																	Heses por Parasitos<br>
+																	Perfil Renal<br>
+																	Perfil Lipidico, Hepatico, Triode<br>
+																	Panel Basico Metabolico</p>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-md-6 col-lg-4">
+		                <div class="card border-0 transform-on-hover">
+							<a class="lightbox" href="#">
+			                	<img src="img/cardiologia.jpg" alt="Card Image" class="card-img-top">
+			                </a>
+		                    <div class="card-body">
+		                        <h6><a href="#"><i class="fas fa-heartbeat"></i>  Cardiologia</a></h6>
+		                        <p class="text-muted card-text">Estudios Disponibles:<br>
+																Ergometria<br>
+																Holter<br>
+																Ecocardiograma<br>
+																Electrocardiograma<br>
+																Tilt Test<br>
+																Eco Doppler CardÃ­aco<br>
+																Presumetria</p>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-md-6 col-lg-4">
+		                <div class="card border-0 transform-on-hover">
+		                	<a class="lightbox" href="#">
+		                		<img src="img/radiologia.jpg" alt="Card Image" class="card-img-top">
+		                	</a>
+		                    <div class="card-body">
+		                        <h6><a href="#"><i class="fas fa-x-ray"></i> Radiologia</a></h6>
+		                        <p class="text-muted card-text">Estudios Disponibles:<br>
+																Resonacia Magnetica<br>
+																Tomografia<br>
+																Radiologia Digital<br>
+																Radiologia Panoramica<br>
+																Ecografia</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+	    </section>
         	
         	<div class="container text-center">
         		<h1>Horarios de Atencion</h1>
@@ -177,7 +199,7 @@
         	<!-- Footer -->
         	<footer>
         	
-        		<h1 class="text-center">Encuentranos</h1>
+        		<h1 class="text-center"><i class="fas fa-map-marker-alt"></i>  Encuentranos</h1>
 
         		<!-- Map -->
         		<div class="footer-map">
@@ -247,10 +269,11 @@
                 <!-- /.container-fluid -->
 
                 <!-- Sticky Footer -->
-                <footer class="sticky-footer">
+                <footer class="sticky-footer" id="footer">
                   <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                      <span>Copyright © Taller Web 1 2018</span>
+                     <p><a href="#">Terminos &amp; Condiciones</a> | <a href="#">Politicas de Privacidad</a> | <a href="#">Contacto</a></p>
+        			 <p>Copyright &copy; Taller Web 2018 </p>
                     </div>
                   </div>
                 </footer>
@@ -273,13 +296,13 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true">x</span>
             </button>
           </div>
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="#">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>
@@ -294,6 +317,10 @@
 
     <!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
+    <script src="${context}/js/derivacion.js"></script>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 
   </body>
 
