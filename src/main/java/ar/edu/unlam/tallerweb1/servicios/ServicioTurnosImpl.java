@@ -70,8 +70,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void guardarTurno(Turno turno, Long idUsuario) {
-		servicioTurnoDao.guardarTurno(turno,idUsuario);
+	public Turno guardarTurno(Turno turno, Long idUsuario) {
+		return servicioTurnoDao.guardarTurno(turno,idUsuario);
 	}
 	
 	@Override

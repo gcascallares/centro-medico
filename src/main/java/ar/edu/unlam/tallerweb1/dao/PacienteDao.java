@@ -8,4 +8,6 @@ public interface PacienteDao {
 
 	Long obtenerIdPaciente(Long id);
 
+	Paciente obtenerPaciente(Long idPaciente);
+
 }

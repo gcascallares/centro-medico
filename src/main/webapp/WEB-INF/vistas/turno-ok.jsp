@@ -112,7 +112,7 @@
 
     	<div class="card">
 		  <div class="card-body">
-		    <i class="fas fa-user-md"></i> <span>  Medico Id: ${turno.medicoId}</span> 
+		    <i class="fas fa-user-md"></i> <span>  Medico: ${turno.medico.nombre}</span> 
 		  </div>
 		</div>
 		
@@ -120,7 +120,7 @@
 		
 		<div class="card">
 		  <div class="card-body">
-		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad Id: ${turno.especialidadId}</span> 
+		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad: ${turno.medico.especialidad.nombreEspecialidad}</span> 
 		  </div>
 		</div>
 		
