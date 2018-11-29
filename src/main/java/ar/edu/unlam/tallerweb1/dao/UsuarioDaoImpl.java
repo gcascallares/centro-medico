@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,11 +35,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	}
 	
 	@Override
-	public void guardarUsuario (Usuario usuario) {
+	public Usuario guardarUsuario (Paciente paciente) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		
+		Usuario usuario = new Usuario();
+		usuario.setDni(paciente.getDni());
+		usuario.setPaciente(paciente);
+		usuario.setRol("paciente");
 		session.save(usuario);
+		
+		return usuario;
 		
 	}
 

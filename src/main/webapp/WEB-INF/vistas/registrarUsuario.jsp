@@ -50,25 +50,22 @@
          <br>
          <br>	
         	
-          <form:form action="Iniciar" method="POST" modelAttribute="usuario">
-          
+<form action="${context}/Iniciar" method = "POST">          
             <div class="form-group">
             
               <div class="form-row">
               
-              	<form:input path="paciente.id" value="${paciente.id}" type="hidden"/>
-              	<form:input path="rol" value="paciente" type="hidden"/>
               
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <form:input type="readonly" class="form-control" value="${paciente.dni}" path="dni" readonly="readonly"/>
+                    <input type="readonly" class="form-control" value="${usuario.dni}" readonly="readonly"/>
                     <label for="firstName">Dni</label>
                   </div>
                 </div>
-                
+                <input type="hidden" value="${usuario.id}" name="id">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <form:input type="password" id="lastName" class="form-control" placeholder="Caontraseña" required="required" path="password"/>
+                    <input type="password" id="lastName" class="form-control" name="contrasena" placeholder="Caontraseña" required="required" />
                     <label for="lastName">Contraseña</label>
                   </div>
                 </div>
@@ -76,9 +73,7 @@
             </div>
             
             <input type="submit" class="btn btn-primary btn-block" value="Registrarse"></input>
-            
-          </form:form>
-          
+         </form>
         </div>
       </div>
     </div>
