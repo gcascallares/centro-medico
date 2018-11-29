@@ -68,7 +68,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
        <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+          <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -114,19 +114,38 @@
 							<hr class="colorgraph">
 			
 							<br>
-							<div class="mb-2">
-							Dni: ${paciente.dni}</br>
-							Nombre: ${paciente.nombre}</br>
-							Apellido: ${paciente.apellido}</br>
-							Email: ${paciente.email}</br>
-							</div>      	
-								<c:forEach items="${listahistorial}" var="turno">
-									<div class="mb-5"> 
-										Consulta ${turno.id} <br>
-										Detalles: ${turno.medico.especialidad.nombreEspecialidad} - ${turno.medico.nombre} - ${turno.fecha} <br>
-										Descripcion : ${turno.descripcion} </br>
-									</div>
-								</c:forEach>	
+							
+							<div class="jumbotron jumbotron-fluid text-center">
+							  <div class="container">
+							    <h1 class="display-5 mb-3">${paciente.nombre} ${paciente.apellido}</h1>
+							    <p class="lead">Dni: ${paciente.dni}</p>
+							    <p class="lead">Email: ${paciente.email}</p>
+							  </br>
+							  </div>
+							</div>
+
+							<div class="accordion" id="accordionExample">
+						<c:forEach items="${listahistorial}" var="turno">
+						  <div class="card">
+						    <div class="card-header" id="heading${turno.id}">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${turno.id}" aria-expanded="true" aria-controls="collapse${turno.id}">
+						          Consulta: ${turno.fecha}
+						        </button>
+						      </h5>
+						    </div>
+						
+						    <div id="collapse${turno.id}" class="collapse" aria-labelledby="heading${turno.id}" data-parent="#accordionExample">
+						      <div class="card-body">
+						      		Especialidad: ${turno.medico.especialidad.nombreEspecialidad} </br>
+						      		Medico: ${turno.medico.nombre} </br>
+						      		Descripcion : ${turno.descripcion} </br>
+						      </div>
+						    </div>
+						  </div>
+						  </c:forEach> 
+						</div>
+									
 			
 							<br>
  			<a onclick="window.history.back()"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>

@@ -115,17 +115,11 @@
 			
 				
 				
-				
+				<div class="w-75 p-3 text-center mx-auto" >
 				<c:forEach items="${listaDeTurnos}" var="t">
-				
-							  <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left: 15px;">
-							  <label class="btn btn-secondary active" style="background-color: #1e9edb;">
-							    <input type="radio" name="horario" autocomplete="off" value="${t}" checked > ${t}
-							  </label>
-							</div>
-
+							    <label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
 				</c:forEach>
-				
+				</div>
 				
 				
 			<div> <h2 id="mensajeVacio">  </h2> </div>
@@ -136,9 +130,9 @@
 			<input type="hidden" value="${especialidadId}" id="especialidadId">
 			
 			<br>
-			
-			<button class="btn btn-primary" id="reservar" Type="button">Reservar</button>
-			
+			<div class="text-center">
+			<button class="btn btn-primary mx-auto" id="reservar" Type="button">Reservar</button>
+			</div>
 			<br>
 			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
