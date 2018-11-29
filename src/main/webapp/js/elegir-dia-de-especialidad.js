@@ -28,6 +28,7 @@ var idDiaElegido;
 				        		day == window.dias[2] || day == window.dias[3]
 				        		|| day == window.dias[4])];
 				    },
+				    minDate: new Date(),
 				    onSelect: function(dateText){
 				    	var seldate = $(this).datepicker('getDate');
 				        seldate = seldate.toDateString();
