@@ -7,6 +7,6 @@ public interface ServicioRegistro {
 
 	void guardarPaciente(Paciente paciente);
 
-	void guardarUsuario(Usuario usuario);
+	Usuario guardarUsuario(Paciente paciente);
 
 }
