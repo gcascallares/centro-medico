@@ -14,8 +14,12 @@ $(document).ready(function() {
 		var fecha = $("#fecha").val();
 		var especialidadId = $("#especialidadId").val();
 		var medicoId = $("#medicoId").val();
-  
-    	window.location.href = window.context + "/derivacion/" + turnoId + "/" + especialidadId + "/medico/" + medicoId + "/" + fecha + "/" + horario;
+		if(typeof horario === 'undefined'){
+			  alert("Debe elegir un turno")
+			}
+		else{
+	    	window.location.href = window.context + "/derivacion/" + turnoId + "/" + especialidadId + "/medico/" + medicoId + "/" + fecha + "/" + horario;
+		}
             
 	});
 	
