@@ -25,7 +25,7 @@ public class TurnoDaoImpl implements TurnoDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public void guardarTurno (Turno turno, Long idUsuario) {
+	public Turno guardarTurno (Turno turno, Long idUsuario) {
 		
 		final Session session = sessionFactory.getCurrentSession();
 		Usuario usuario = (Usuario)session.createCriteria(Usuario.class)
@@ -33,7 +33,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		turno.setEstado("En espera");
 		turno.setPaciente(usuario.getPaciente());
 		session.save(turno);
-		
+		return turno;
 	}
 	
 	@Override
@@ -41,7 +41,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		final Session session = sessionFactory.getCurrentSession();
 		turno.setEstado("En espera");
-		
+		turno.setDerivado(0);
 		session.save(turno);
 	}
 	
@@ -123,6 +123,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		List <Turno> listaHistorial = session.createCriteria(Turno.class)
 				.createAlias("paciente","pacienteJoin")
 				.add(Restrictions.like("pacienteJoin.id", id))
+				.add(Restrictions.like("estado", "Atendido"))
 				.list();
 		
 		return listaHistorial;

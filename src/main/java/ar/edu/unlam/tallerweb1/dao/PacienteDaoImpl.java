@@ -36,4 +36,15 @@ public class PacienteDaoImpl  implements PacienteDao{
 		return usuario.getPaciente().getId();
 	}
 
+
+	@Override
+	public Paciente obtenerPaciente(Long idPaciente) {
+		final Session session = sessionFactory.getCurrentSession();
+		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
+				.add(Restrictions.like("id", idPaciente)).uniqueResult();
+		
+		return paciente;
+				
+	}
+
 }

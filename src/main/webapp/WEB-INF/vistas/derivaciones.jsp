@@ -75,7 +75,7 @@
             <span>  Inicio</span>
           </a>
         </li>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fas fa-file-signature"></i>
@@ -95,7 +95,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
+            <i class="fas fa-mobile-alt"></i>
             <span>  Contacto</span></a>
         </li>
       </ul>
@@ -110,7 +110,7 @@
               <a href="#">Derivaciones</a>
             </li>
           </ol>
-          
+          </div>
           
           <!-- Contenido de la Pagina -->
           
@@ -130,11 +130,11 @@
 					    <h5 class="card-title">DNI: ${Derivacion.paciente.dni}</h5>
 					    
 					<div class="d-flex justify-content-center mt-4">
-
-					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#derivar" id="fechaDerivacion">
-					  Completar Derivacion
-					</button>
-					
+					<a href="${context}/derivacion/${Derivacion.id}/${Derivacion.medico.especialidad.id}/medico/${Derivacion.medico.id}">
+						<button type="button" class="btn btn-primary mb-5"  onclick="" id="">
+						  Completar Derivacion
+						</button>
+					</a>
 					</div>
 					
 					</div>

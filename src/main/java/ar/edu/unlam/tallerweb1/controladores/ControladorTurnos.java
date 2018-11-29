@@ -204,22 +204,14 @@ public class ControladorTurnos {
 		ModelMap modelo = new ModelMap();
 		
 		Turno turno = new Turno();
-		Medico medico = new Medico();
-		Especialidad especialidad = new Especialidad();
-		
-		especialidad.setId(turnoViewModel.getEspecialidadId());
-		
-		medico.setId(turnoViewModel.getMedicoId());
-		medico.setEspecialidad(especialidad);
-		
+		Medico medico = servicioTurnos.buscarMedicoEspecifico(turnoViewModel.getMedicoId());
 		turno.setDerivado(0);
 		turno.setFecha(turnoViewModel.getFecha());
 		turno.setHorario(turnoViewModel.getHorario());
 		turno.setMedico(medico);
-		
-		servicioTurnos.guardarTurno(turno,idUsuario);
+		Turno turnoCreado = servicioTurnos.guardarTurno(turno,idUsuario);
 
-		modelo.put("turno",turnoViewModel);
+		modelo.put("turno",turnoCreado);
 		
 		return new ModelAndView("turno-ok", modelo);
 		

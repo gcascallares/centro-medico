@@ -139,7 +139,17 @@
 						      <div class="card-body">
 						      		Especialidad: ${turno.medico.especialidad.nombreEspecialidad} </br>
 						      		Medico: ${turno.medico.nombre} </br>
-						      		Descripcion : ${turno.descripcion} </br>
+						      		<c:choose>
+									    <c:when test="'${turno.descripcion}i' == 'i' ">
+									        Descripcion : No se ha insertado una descripción <br> 
+									        <br />
+									    </c:when>    
+									    <c:otherwise>
+									        Descripcion : ${turno.descripcion} </br>
+									        <br />
+									    </c:otherwise>
+									</c:choose>
+						      		
 						      </div>
 						    </div>
 						  </div>
