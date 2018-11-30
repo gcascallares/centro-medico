@@ -133,8 +133,8 @@ public class ControladorMedico {
 		
 	}
 	
-	@RequestMapping("/mostrarTurnosPorDia/{medicoId}")
-	public ModelAndView mostrarTurnosPorDia(@PathVariable Long medicoId , HttpServletRequest request){
+	@RequestMapping("/mostrarTurnosPorDia/{medicoId}/{consultorioId}")
+	public ModelAndView mostrarTurnosPorDia(@PathVariable Long medicoId ,@PathVariable Long consultorioId, HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
@@ -148,8 +148,8 @@ public class ControladorMedico {
 		
 	}
 
-	@RequestMapping("/mostrarTurnosDeProximoDiaLaboral/{medicoId}")
-	public ModelAndView mostrarTurnosDeProximoDiaLaboral(@PathVariable Long medicoId , HttpServletRequest request){
+	@RequestMapping("/mostrarTurnosDeProximoDiaLaboral/{medicoId}/{consultorioId}")
+	public ModelAndView mostrarTurnosDeProximoDiaLaboral(@PathVariable Long medicoId ,@PathVariable Long consultorioId , HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
