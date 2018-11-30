@@ -298,6 +298,16 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		return listaTurnosProxDiaLaboral;
 	}
+
+	@Override
+	public List<Atencion> mostrarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId) {
+		final Session session = sessionFactory.getCurrentSession();
+		List <Atencion> historiaClinica = session.createCriteria(Atencion.class)
+				.add(Restrictions.like("paciente.id", pacienteId))
+				.add(Restrictions.like("medico.id", medicoId)).list();
+		
+		return historiaClinica;
+	}
 	
 
 }
