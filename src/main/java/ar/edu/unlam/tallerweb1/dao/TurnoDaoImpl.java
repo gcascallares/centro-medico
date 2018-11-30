@@ -275,7 +275,7 @@ public class TurnoDaoImpl implements TurnoDao {
 				  .add(Restrictions.not(Restrictions.like("estado","Abonado")))
 				  .add(Restrictions.not(Restrictions.like("estado","Rechazado")))
 				  .add(Restrictions.isNotNull("fecha"))
-				  .addOrder(Order.desc("fecha"))
+				  .addOrder(Order.asc("fecha"))
 				  .list();
 		
 		

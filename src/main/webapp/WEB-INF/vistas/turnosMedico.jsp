@@ -84,7 +84,7 @@
         <li class="nav-item">
           <a class="nav-link" href="${context}/generarAtencion">
             <i class="fab fa-creative-commons-nd"></i>
-            <span> Atenciones</span></a>
+          	  <span> Atenciones</span></a>
         </li>
       </ul>	
 
@@ -97,7 +97,7 @@
 			</c:if>
    <br>
    <c:forEach items="${listaTodosLosTurnos}" var="Turnos">
-   <div class="card w-10 mx-auto mt-4 mb-4">
+   <div class="card w-10 mx-auto mt-2 mb-2">
    
    						<h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
    						 <div class="card-body">

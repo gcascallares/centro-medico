@@ -138,6 +138,9 @@ public class ControladorMedico {
 		ModelMap modelo = new ModelMap();
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
 		
+		//Trae el dia siguiente
+		String diaSiguiente = servicioTurnos.diaSiguiente();
+		
 		List <Turno> listaTodosLosTurnos = new ArrayList <Turno>();
 		listaTodosLosTurnos = servicioTurnos.listaTodosLosTurnos(medico);
 		

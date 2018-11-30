@@ -101,6 +101,17 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 	}
 	
+	public String diaSiguiente(){
+
+		Calendar fecha = new GregorianCalendar();
+	    int ano = fecha.get(Calendar.YEAR);
+	    int mes = fecha.get(Calendar.MONTH)+1;
+	    int dia = fecha.get(Calendar.DAY_OF_MONTH)+1;
+	    String fechaActual = dia+"-"+mes+"-"+ano;
+		return fechaActual;
+		
+	}
+	
 	@Override
 	public List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId) {
 		return servicioTurnoDao.listaDeMedicosDisponibles(especialidadId, diaId);
