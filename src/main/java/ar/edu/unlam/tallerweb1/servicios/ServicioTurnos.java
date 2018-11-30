@@ -52,7 +52,7 @@ public interface ServicioTurnos {
 
 	List<Turno> listaTodosLosTurnos(Medico medico);
 
-	List<Turno> listaTurnosManana(Medico medico, String diaSiguiente);
+	List<Turno> listaTurnosProxDiaLaboral(Medico medico, String diaSiguiente);
 }
 
 

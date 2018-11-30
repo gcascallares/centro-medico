@@ -69,12 +69,6 @@
 
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
             <i class="fas fa-file-signature"></i>
@@ -82,9 +76,9 @@
           </a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosDeMañana/${medicoId}">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}">
             <i class="fas fa-file-signature"></i>
-            <span>Turnos de Mañana</span>
+            <span>Turnos del proximo dia Laboral</span>
           </a>
         </li>
         <li class="nav-item">
