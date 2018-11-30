@@ -167,6 +167,8 @@ public class ControladorMedico {
 		
 		modelo.put("listaTurnosProxDiaLaboral",listaTurnosProxDiaLaboral);
 		
+		System.out.println(diaSiguiente);
+		
 		return new ModelAndView("turnosDeProximoDiaLaboral", modelo);
 		
 	}
