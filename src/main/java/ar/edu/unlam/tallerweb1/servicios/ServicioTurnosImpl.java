@@ -196,4 +196,5 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public List<Turno> listaTurnosProxDiaLaboral(Medico medico, String diaSiguiente) {
 		return servicioTurnoDao.listaTurnosProxDiaLaboral(medico, diaSiguiente);
 	}
+
 }
