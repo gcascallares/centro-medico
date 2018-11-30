@@ -70,15 +70,15 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
        <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosPorDia">
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
             <i class="fas fa-file-signature"></i>
-            <span>Turnos Por Dia</span>
+            <span>Todos los Turnos</span>
           </a>
         </li>
         <li class="nav-item">

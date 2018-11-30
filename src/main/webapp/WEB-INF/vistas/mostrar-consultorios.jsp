@@ -63,37 +63,7 @@
 
     <div id="wrapper">
 
-      <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-      <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
-            <i class="fas fa-file-signature"></i>
-            <span>Historia Clinica</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
-      </ul>
+    
 
       <div id="content-wrapper">
 
