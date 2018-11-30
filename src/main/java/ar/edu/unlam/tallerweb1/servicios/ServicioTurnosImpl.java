@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -101,14 +104,37 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 	}
 	
-	public String diaSiguiente(){
+	public String diaSiguiente(Medico medico){
 
 		Calendar fecha = new GregorianCalendar();
-	    int ano = fecha.get(Calendar.YEAR);
-	    int mes = fecha.get(Calendar.MONTH)+1;
-	    int dia = fecha.get(Calendar.DAY_OF_MONTH)+1;
-	    String fechaActual = dia+"-"+mes+"-"+ano;
-		return fechaActual;
+		int indice = -1;
+		long diaDeLaSemanaId = fecha.get(Calendar.DAY_OF_WEEK)-1;
+		List<DiasLaborales> diasLaborales = medico.getDiasLaborales();
+		for(DiasLaborales dia : diasLaborales) {
+			if(dia.getId()==diaDeLaSemanaId) {
+				indice = (int) diasLaborales.indexOf(dia);
+			}
+		}
+		int indiceBuscado = (diasLaborales.size() == (indice+1)  ? 0 : (indice+1));
+	    DiasLaborales proximoDiaLaboral = diasLaborales.get(indiceBuscado);
+		LocalDate ld = LocalDate.of(fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH)+1, fecha.get(Calendar.DAY_OF_MONTH));
+		switch(proximoDiaLaboral.getNombre()) {
+		case "Lunes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+		break;
+		case "Martes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+		break;
+		case "Miércoles": ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+		break;
+		case "Jueves": ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
+		break;
+		case "Viernes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+		break;
+		}
+		int ano = ld.getYear();
+	    int mes = ld.getMonthValue();
+	    int dia = ld.getDayOfMonth();
+	    String fechaSiguiente = dia+"-"+mes+"-"+ano;
+		return fechaSiguiente;
 		
 	}
 	

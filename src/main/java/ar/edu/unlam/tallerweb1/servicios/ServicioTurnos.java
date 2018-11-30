@@ -30,7 +30,7 @@ public interface ServicioTurnos {
 
 	String diaActual();
 
-	String diaSiguiente();
+	String diaSiguiente(Medico medico);
 	
 	List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId);
 	
