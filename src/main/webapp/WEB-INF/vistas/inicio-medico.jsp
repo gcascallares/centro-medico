@@ -76,9 +76,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span>Turnos Por Dia</span>
           </a>
         </li>
         <li class="nav-item">

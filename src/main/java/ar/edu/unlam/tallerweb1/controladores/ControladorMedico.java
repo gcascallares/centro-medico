@@ -132,4 +132,19 @@ public class ControladorMedico {
 		
 	}
 	
+	@RequestMapping("/mostrarTurnosPorDia/{medicoId}")
+	public ModelAndView mostrarTurnosPorDia(@PathVariable Long medicoId , HttpServletRequest request){
+		
+		ModelMap modelo = new ModelMap();
+		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
+		
+		List <Turno> listaTodosLosTurnos = new ArrayList <Turno>();
+		listaTodosLosTurnos = servicioTurnos.listaTodosLosTurnos(medico);
+		
+		modelo.put("listaTodosLosTurnos",listaTodosLosTurnos);
+		
+		return new ModelAndView("turnosMedico", modelo);
+		
+	}
+	
 }

@@ -47,6 +47,8 @@ public interface ServicioTurnos {
 	Turno guardarDerivacion(Long turnoId, String fecha, String horario, Long especialidadId, Long medicoId);
 
 	void guardarAtencion(String mensaje, Long pacienteId, Long medicoId, String fecha);
+
+	List<Turno> listaTodosLosTurnos(Medico medico);
 }
 
 
