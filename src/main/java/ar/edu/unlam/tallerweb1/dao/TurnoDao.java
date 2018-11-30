@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.dao;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
@@ -21,7 +22,7 @@ public interface TurnoDao {
 
 	List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId);
 	
-	List<Turno> mostrarHistoriaClinica(Long id);
+	List<Atencion> mostrarHistoriaClinica(Long id);
 	
 	Paciente mostrarDatosPaciente(Long id);
 

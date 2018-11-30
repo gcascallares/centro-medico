@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
 import ar.edu.unlam.tallerweb1.dao.TurnoDao;
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
@@ -106,7 +107,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 	
 	@Override
-	public List<Turno> mostrarHistoriaClinica(Long id){
+	public List<Atencion> mostrarHistoriaClinica(Long id){
 		return servicioTurnoDao.mostrarHistoriaClinica(id);
 	}
 	

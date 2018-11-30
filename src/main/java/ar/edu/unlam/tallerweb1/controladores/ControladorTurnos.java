@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 
@@ -227,7 +228,7 @@ public class ControladorTurnos {
 			Long id = (Long)request.getSession().getAttribute("ID");
 			//Long id = (Long) ((ServletRequest) session).getAttribute("ID");
 			Long idPaciente = servicioPaciente.obtenerPacienteId(id);
-			List<Turno> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
+			List<Atencion> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
 			Paciente paciente = servicioTurnos.mostrarDatosPaciente(idPaciente);
 			modelo.put("paciente",paciente);
 			modelo.put("listahistorial", listaHistorial);
