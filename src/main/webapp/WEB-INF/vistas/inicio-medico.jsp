@@ -82,9 +82,9 @@
           </a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosDeMañana/${medicoId}">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}">
             <i class="fas fa-file-signature"></i>
-            <span>Turnos de Mañana</span>
+            <span>Turnos del proximo dia Laboral</span>
           </a>
         </li>
         <li class="nav-item">

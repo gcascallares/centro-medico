@@ -88,15 +88,15 @@
         </li>
       </ul>	
 
- 			<c:if test="${fn:length(listaTurnosManana) != 0}">
+ 			<c:if test="${fn:length(listaTurnosProxDiaLaboral) != 0}">
 				<h3 class="form-signin-heading text-center" id="sub-titulo">Turnos Mañana</h3>
 			</c:if>
   			
-			<c:if test="${fn:length(listaTurnosManana) == 0}">
+			<c:if test="${fn:length(listaTurnosProxDiaLaboral) == 0}">
 				<div class="text-center mt-5"><h2>No hay turnos</h2></div>
 			</c:if>
    <br>
-   <c:forEach items="${listaTurnosManana}" var="Turnos">
+   <c:forEach items="${listaTurnosProxDiaLaboral}" var="Turnos">
    <div class="card w-10 mx-auto mt-2 mb-2">
    
    						<h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
