@@ -263,6 +263,41 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		return turno;
 	}
+
+	@Override
+	public List<Turno> listaTodosLosTurnos(Medico medico) {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		
+		List <Turno> listaTodosLosTurnos = session.createCriteria(Turno.class)
+					.createAlias("medico","medicoBuscado")
+				  .add(Restrictions.like("medicoBuscado.id", medico.getId()))
+				  .add(Restrictions.not(Restrictions.like("estado","Abonado")))
+				  .add(Restrictions.not(Restrictions.like("estado","Rechazado")))
+				  .add(Restrictions.isNotNull("fecha"))
+				  .addOrder(Order.asc("fecha"))
+				  .list();
+		
+		
+		return listaTodosLosTurnos;
+		
+	}
+
+	@Override
+	public List<Turno> listaTurnosManana(Medico medico, String diaSiguiente) {
+
+		final Session session = sessionFactory.getCurrentSession();
+		
+		List <Turno> listaTurnosManana = session.createCriteria(Turno.class)
+				.createAlias("medico","medicoBuscado")
+				.add(Restrictions.like("medicoBuscado.id", medico.getId()))
+				.add(Restrictions.like("fecha", diaSiguiente))
+				.add(Restrictions.like("estado", "En espera"))
+				.addOrder(Order.asc("horario"))
+				.list();
+		
+		return listaTurnosManana;
+	}
 	
 
 }

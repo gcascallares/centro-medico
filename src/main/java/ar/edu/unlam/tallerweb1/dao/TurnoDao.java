@@ -36,4 +36,8 @@ public interface TurnoDao {
 
 	Turno guardarDerivacion(Long turnoId, String fecha, String horario, Long especialidadId, Long medicoId);
 
+	List<Turno> listaTodosLosTurnos(Medico medico);
+
+	List<Turno> listaTurnosManana(Medico medico,String diaSiguiente);
+
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Consultorio;
+import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Estudio;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
@@ -129,6 +130,41 @@ public class ControladorMedico {
 		servicioTurnos.guardarAtencion(mensaje, idPaciente, medicoId, fecha);
 
 		return new ModelAndView("redirect:/generarAtencion");
+		
+	}
+	
+	@RequestMapping("/mostrarTurnosPorDia/{medicoId}")
+	public ModelAndView mostrarTurnosPorDia(@PathVariable Long medicoId , HttpServletRequest request){
+		
+		ModelMap modelo = new ModelMap();
+		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
+		
+		List <Turno> listaTodosLosTurnos = new ArrayList <Turno>();
+		listaTodosLosTurnos = servicioTurnos.listaTodosLosTurnos(medico);
+		
+		modelo.put("listaTodosLosTurnos",listaTodosLosTurnos);
+		
+		return new ModelAndView("turnosMedico", modelo);
+		
+	}
+
+	@RequestMapping("/mostrarTurnosDeMañana/{medicoId}")
+	public ModelAndView mostrarTurnosDeMañana(@PathVariable Long medicoId , HttpServletRequest request){
+		
+		ModelMap modelo = new ModelMap();
+		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
+		List<DiasLaborales> diasLaborales = servicioMedico.buscarDiasLaborales(medicoId);
+		medico.setDiasLaborales(diasLaborales);
+		//Trae el dia siguiente
+		String diaSiguiente = servicioTurnos.diaSiguiente(medico);
+		
+		List <Turno> listaTurnosManana = new ArrayList <Turno>();
+		
+		listaTurnosManana = servicioTurnos.listaTurnosManana(medico,diaSiguiente);
+		
+		modelo.put("listaTurnosManana",listaTurnosManana);
+		
+		return new ModelAndView("turnosDeManana", modelo);
 		
 	}
 	

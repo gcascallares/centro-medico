@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -101,6 +104,40 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 	}
 	
+	public String diaSiguiente(Medico medico){
+
+		Calendar fecha = new GregorianCalendar();
+		int indice = -1;
+		long diaDeLaSemanaId = fecha.get(Calendar.DAY_OF_WEEK)-1;
+		List<DiasLaborales> diasLaborales = medico.getDiasLaborales();
+		for(DiasLaborales dia : diasLaborales) {
+			if(dia.getId()==diaDeLaSemanaId) {
+				indice = (int) diasLaborales.indexOf(dia);
+			}
+		}
+		int indiceBuscado = (diasLaborales.size() == (indice+1)  ? 0 : (indice+1));
+	    DiasLaborales proximoDiaLaboral = diasLaborales.get(indiceBuscado);
+		LocalDate ld = LocalDate.of(fecha.get(Calendar.YEAR), fecha.get(Calendar.MONTH)+1, fecha.get(Calendar.DAY_OF_MONTH));
+		switch(proximoDiaLaboral.getNombre()) {
+		case "Lunes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+		break;
+		case "Martes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+		break;
+		case "Miércoles": ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+		break;
+		case "Jueves": ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
+		break;
+		case "Viernes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+		break;
+		}
+		int ano = ld.getYear();
+	    int mes = ld.getMonthValue();
+	    int dia = ld.getDayOfMonth();
+	    String fechaSiguiente = dia+"-"+mes+"-"+ano;
+		return fechaSiguiente;
+		
+	}
+	
 	@Override
 	public List<Medico> listaDeMedicosDisponibles(Long especialidadId, Long diaId) {
 		return servicioTurnoDao.listaDeMedicosDisponibles(especialidadId, diaId);
@@ -146,5 +183,15 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	@Override
 	public void guardarAtencion(String mensaje, Long pacienteId, Long medicoId, String fecha) {
 		servicioMedicoDao.guardarAtencion(mensaje, pacienteId, medicoId, fecha);
+	}
+
+	@Override
+	public List<Turno> listaTodosLosTurnos(Medico medico) {
+		return servicioTurnoDao.listaTodosLosTurnos(medico);
+	}
+
+	@Override
+	public List<Turno> listaTurnosManana(Medico medico, String diaSiguiente) {
+		return servicioTurnoDao.listaTurnosManana(medico, diaSiguiente);
 	}
 }
