@@ -148,23 +148,26 @@ public class ControladorMedico {
 		
 	}
 
-	@RequestMapping("/mostrarTurnosDeMañana/{medicoId}")
-	public ModelAndView mostrarTurnosDeMañana(@PathVariable Long medicoId , HttpServletRequest request){
+	@RequestMapping("/mostrarTurnosDeProximoDiaLaboral/{medicoId}")
+	public ModelAndView mostrarTurnosDeProximoDiaLaboral(@PathVariable Long medicoId , HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
+		
+		//Trae el dias Laborales
 		List<DiasLaborales> diasLaborales = servicioMedico.buscarDiasLaborales(medicoId);
 		medico.setDiasLaborales(diasLaborales);
+		
 		//Trae el dia siguiente
 		String diaSiguiente = servicioTurnos.diaSiguiente(medico);
 		
-		List <Turno> listaTurnosManana = new ArrayList <Turno>();
+		List <Turno> listaTurnosProxDiaLaboral = new ArrayList <Turno>();
 		
-		listaTurnosManana = servicioTurnos.listaTurnosManana(medico,diaSiguiente);
+		listaTurnosProxDiaLaboral = servicioTurnos.listaTurnosProxDiaLaboral(medico,diaSiguiente);
 		
-		modelo.put("listaTurnosManana",listaTurnosManana);
+		modelo.put("listaTurnosProxDiaLaboral",listaTurnosProxDiaLaboral);
 		
-		return new ModelAndView("turnosDeManana", modelo);
+		return new ModelAndView("turnosDeProximoDiaLaboral", modelo);
 		
 	}
 	

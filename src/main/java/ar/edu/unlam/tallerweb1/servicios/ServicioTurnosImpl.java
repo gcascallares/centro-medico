@@ -191,7 +191,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public List<Turno> listaTurnosManana(Medico medico, String diaSiguiente) {
-		return servicioTurnoDao.listaTurnosManana(medico, diaSiguiente);
+	public List<Turno> listaTurnosProxDiaLaboral(Medico medico, String diaSiguiente) {
+		return servicioTurnoDao.listaTurnosProxDiaLaboral(medico, diaSiguiente);
 	}
 }
