@@ -9,9 +9,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Repository("medicoDao")
@@ -104,8 +106,35 @@ public class MedicoDaopImpl implements MedicoDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medico> getMedicos() {
+		
 		final Session session = sessionFactory.getCurrentSession();
+		
 		return session.createCriteria(Medico.class).list();
+	}
+	
+	@Override
+	public void guardarAtencion(String mensaje ,Long pacienteId, Long medicoId, String fecha) {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		
+		Atencion atencion = new Atencion();
+		
+		Medico medico = (Medico) session.createCriteria (Medico.class)
+				  		.add(Restrictions.eq("id",medicoId))
+				  		.uniqueResult();
+		
+		Paciente paciente = (Paciente) session.createCriteria (Paciente.class)
+				  			.add(Restrictions.eq("id",pacienteId))
+				  			.uniqueResult();
+		
+		
+		atencion.setTurno(null);
+		atencion.setDescripcion(mensaje);
+		atencion.setFecha(fecha);
+		atencion.setPaciente(paciente);
+		atencion.setMedico(medico);
+		
+		session.save(atencion);
 	}
 	
 }

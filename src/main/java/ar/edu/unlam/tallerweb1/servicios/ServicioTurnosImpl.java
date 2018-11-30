@@ -141,4 +141,9 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public Turno guardarDerivacion (Long turnoId,String fecha, String horario ,Long especialidadId, Long medicoId) {
 		return servicioTurnoDao.guardarDerivacion(turnoId,fecha,horario,especialidadId,medicoId);
 	}
+	
+	@Override
+	public void guardarAtencion(String mensaje, Long pacienteId, Long medicoId, String fecha) {
+		servicioMedicoDao.guardarAtencion(mensaje, pacienteId, medicoId, fecha);
+	}
 }

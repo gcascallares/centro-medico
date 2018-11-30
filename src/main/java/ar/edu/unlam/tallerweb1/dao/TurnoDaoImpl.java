@@ -10,6 +10,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Estudio;
@@ -28,11 +29,16 @@ public class TurnoDaoImpl implements TurnoDao {
 	public Turno guardarTurno (Turno turno, Long idUsuario) {
 		
 		final Session session = sessionFactory.getCurrentSession();
+		
 		Usuario usuario = (Usuario)session.createCriteria(Usuario.class)
-		.add(Restrictions.like("id", idUsuario)).uniqueResult();
+						  .add(Restrictions.like("id", idUsuario))
+						  .uniqueResult();
+		
 		turno.setEstado("En espera");
 		turno.setPaciente(usuario.getPaciente());
+		
 		session.save(turno);
+		
 		return turno;
 	}
 	
@@ -40,8 +46,10 @@ public class TurnoDaoImpl implements TurnoDao {
 	public void guardarTurnoRecepcionista(Turno turno) {
 		
 		final Session session = sessionFactory.getCurrentSession();
+		
 		turno.setEstado("En espera");
 		turno.setDerivado(0);
+		
 		session.save(turno);
 	}
 	
@@ -166,8 +174,19 @@ public class TurnoDaoImpl implements TurnoDao {
 					  .add(Restrictions.like("id", turnoId))
 					  .uniqueResult();
 		
-		turno.setDescripcion(descripcion);
+		Paciente paciente = turno.getPaciente();
+		
 		turno.setEstudio(estudio);
+		
+		Atencion atencion = new Atencion();
+		
+		atencion.setTurno(turno);
+		atencion.setDescripcion(descripcion);
+		atencion.setPaciente(paciente);
+		atencion.setFecha(turno.getFecha());
+		atencion.setMedico(turno.getMedico());
+		
+		session.save(atencion);
 		
 		session.update(turno);
 	}
@@ -186,6 +205,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		          .uniqueResult();
 		
 		Turno turno = new Turno();
+		
 		turno.setEstado("En espera");
 		turno.setDerivado(1);
 		turno.setPaciente(paciente);

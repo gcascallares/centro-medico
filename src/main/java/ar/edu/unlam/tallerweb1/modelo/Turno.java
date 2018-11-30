@@ -26,21 +26,10 @@ public class Turno {
 
 	private String estado;
 	
-	private String descripcion;
-	
 	private Integer derivado;
 	
 	@ManyToOne
 	private Estudio estudio;
-	
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	
 	public Long getId() {
 		return id;

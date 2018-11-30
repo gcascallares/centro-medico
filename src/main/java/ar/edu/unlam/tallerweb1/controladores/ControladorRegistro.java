@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,6 +54,7 @@ public class ControladorRegistro {
 //  Para determinar la vista al levantar el entorno
 	@RequestMapping(path = "/Iniciar", method = RequestMethod.POST)
 	public ModelAndView irAHome(Long id, String contrasena, HttpServletRequest request) {
+		
 		Usuario usuario = servicioPaciente.guardarContrasena(id,contrasena);
 		ModelMap modelo = new ModelMap();
 

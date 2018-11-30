@@ -243,6 +243,7 @@ public class ControladorTurnos {
 			servicioTurnos.cambiarEstadoAtendido(turnoId);
 			
 			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);
+			
 		}
 		
 		
@@ -252,7 +253,9 @@ public class ControladorTurnos {
 			
 			servicioTurnos.agregarDescripcion(turnoId,descripcion,estudio);
 			
-			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
+			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		
+			
+		}
 		
 		
 
@@ -261,7 +264,9 @@ public class ControladorTurnos {
 			
 			servicioTurnos.agregarDerivacion(pacienteId,medicoADerivarId);
 
-			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
+			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		
+			
+		}
 		
 		
 }
