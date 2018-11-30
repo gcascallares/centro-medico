@@ -53,6 +53,7 @@ public interface ServicioTurnos {
 	List<Turno> listaTodosLosTurnos(Medico medico);
 
 	List<Turno> listaTurnosProxDiaLaboral(Medico medico, String diaSiguiente);
+
 }
 
 
