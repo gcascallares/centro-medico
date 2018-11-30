@@ -51,6 +51,8 @@ public interface ServicioTurnos {
 	void guardarAtencion(String mensaje, Long pacienteId, Long medicoId, String fecha);
 
 	List<Turno> listaTodosLosTurnos(Medico medico);
+
+	List<Turno> listaTurnosManana(Medico medico, String diaSiguiente);
 }
 
 

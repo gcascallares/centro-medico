@@ -78,7 +78,13 @@
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
             <i class="fas fa-file-signature"></i>
-            <span>Turnos Por Dia</span>
+            <span>Todos los Turnos</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosDeMañana/${medicoId}">
+            <i class="fas fa-file-signature"></i>
+            <span>Turnos de Mañana</span>
           </a>
         </li>
         <li class="nav-item">

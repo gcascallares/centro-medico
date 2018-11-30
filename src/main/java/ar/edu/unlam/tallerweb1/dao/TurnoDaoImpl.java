@@ -282,6 +282,22 @@ public class TurnoDaoImpl implements TurnoDao {
 		return listaTodosLosTurnos;
 		
 	}
+
+	@Override
+	public List<Turno> listaTurnosManana(Medico medico, String diaSiguiente) {
+
+		final Session session = sessionFactory.getCurrentSession();
+		
+		List <Turno> listaTurnosManana = session.createCriteria(Turno.class)
+				.createAlias("medico","medicoBuscado")
+				.add(Restrictions.like("medicoBuscado.id", medico.getId()))
+				.add(Restrictions.like("fecha", diaSiguiente))
+				.add(Restrictions.like("estado", "En espera"))
+				.addOrder(Order.asc("horario"))
+				.list();
+		
+		return listaTurnosManana;
+	}
 	
 
 }
