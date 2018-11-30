@@ -125,34 +125,37 @@
 							</div>
 
 							<div class="accordion" id="accordionExample">
-						<c:forEach items="${listahistorial}" var="turno">
+						<c:forEach items="${listahistorial}" var="atencion">
+						<c:if test="${(empty atencion.turno) or (atencion.turno.estado == 'Atendido')}">
 						  <div class="card">
-						    <div class="card-header" id="heading${turno.id}">
+						    <div class="card-header" id="heading${atencion.id}">
 						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${turno.id}" aria-expanded="true" aria-controls="collapse${turno.id}">
-						          Consulta: ${turno.fecha}
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${atencion.id}" aria-expanded="true" aria-controls="collapse${turno.id}">
+						          Atención: ${atencion.fecha}
 						        </button>
 						      </h5>
 						    </div>
 						
-						    <div id="collapse${turno.id}" class="collapse" aria-labelledby="heading${turno.id}" data-parent="#accordionExample">
+						    <div id="collapse${atencion.id}" class="collapse" aria-labelledby="heading${atencion.id}" data-parent="#accordionExample">
 						      <div class="card-body">
-						      		Especialidad: ${turno.medico.especialidad.nombreEspecialidad} </br>
-						      		Medico: ${turno.medico.nombre} </br>
-						      		<c:choose>
-									    <c:when test="'${turno.descripcion}i' == 'i' ">
-									        Descripcion : No se ha insertado una descripción <br> 
+						      		Especialidad: ${atencion.medico.especialidad.nombreEspecialidad} </br>
+						      		Medico: ${atencion.medico.nombre} </br>
+									Descripción : ${atencion.descripcion} </br></br></br>
+									<c:choose>
+									    <c:when test="${ empty atencion.turno}">
+									        No se realizó con turno
 									        <br />
 									    </c:when>    
 									    <c:otherwise>
-									        Descripcion : ${turno.descripcion} </br>
-									        <br />
+									        Información del turno:  <br />
+									        Horario: ${atencion.turno.horario} <br>
+									        Estudio: ${atencion.turno.estudio.nombre} <br>
 									    </c:otherwise>
-									</c:choose>
-						      		
+									</c:choose>		
 						      </div>
 						    </div>
 						  </div>
+						  </c:if>
 						  </c:forEach> 
 						</div>
 									

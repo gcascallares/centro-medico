@@ -124,14 +124,13 @@ public class TurnoDaoImpl implements TurnoDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Turno> mostrarHistoriaClinica(Long id){
+	public List<Atencion> mostrarHistoriaClinica(Long id){
 		
 		final Session session = sessionFactory.getCurrentSession();
 		
-		List <Turno> listaHistorial = session.createCriteria(Turno.class)
+		List <Atencion> listaHistorial = session.createCriteria(Atencion.class)
 				.createAlias("paciente","pacienteJoin")
 				.add(Restrictions.like("pacienteJoin.id", id))
-				.add(Restrictions.like("estado", "Atendido"))
 				.list();
 		
 		return listaHistorial;

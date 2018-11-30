@@ -128,7 +128,7 @@ public class ControladorMedico {
 		
 		servicioTurnos.guardarAtencion(mensaje, idPaciente, medicoId, fecha);
 
-		return new ModelAndView("listaPacientesAtencion");
+		return new ModelAndView("redirect:/generarAtencion");
 		
 	}
 	
