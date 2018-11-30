@@ -123,7 +123,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		break;
 		case "Martes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
 		break;
-		case "Miércoles": ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+		case "Miercoles": ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
 		break;
 		case "Jueves": ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
 		break;
