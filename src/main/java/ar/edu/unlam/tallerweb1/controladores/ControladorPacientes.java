@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
@@ -23,6 +22,7 @@ import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
 @Controller
@@ -40,6 +40,9 @@ public class ControladorPacientes {
 	
 	@Inject
 	private ServicioMedico servicioMedico;
+	
+	@Inject
+	private ServicioPaciente servicioPaciente;
 	
 	@RequestMapping("/buscadorPaciente")
 	public ModelAndView buscadorDePacientes(){
@@ -136,10 +139,8 @@ public class ControladorPacientes {
 	@RequestMapping (path = "/recepcionistareservarturno/{medico_id}/{paciente_id}", method = RequestMethod.POST)
 	public ModelAndView recepcionistaReservarTurno(@PathVariable Long paciente_id, @PathVariable Long medico_id,@ModelAttribute("turno") Turno turno, HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
-		Medico medico = new Medico();
-		Paciente paciente = new Paciente();
-		medico.setId(medico_id);
-		paciente.setId(paciente_id);
+		Medico medico = servicioTurnos.buscarMedicoEspecifico(medico_id);
+		Paciente paciente = servicioPaciente.obtenerPaciente(paciente_id);
 		turno.setPaciente(paciente);
 		turno.setMedico(medico);
 		servicioTurnos.guardarTurnoRecepcionista(turno);

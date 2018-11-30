@@ -14,4 +14,6 @@ public interface BuscadorPacientesDao {
 	List <Turno> listaTurnos(Long id);
 
 	boolean modificarEstadoTurnoRechazado(Long id);
+
+	Turno buscarTurnoPorId(Long id);
 }

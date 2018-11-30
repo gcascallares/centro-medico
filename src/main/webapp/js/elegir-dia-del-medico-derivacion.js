@@ -34,11 +34,7 @@ $(document).ready(function() {
 		
 	var especialidadId = $("#especialidadId").val();
 	var medicoId = $("#medicoId").val();
-	
-	 $("#atras").click(function(){
-			window.history.back();
-		});	
-	 
+	var turnoId = $("#turnoId").val(); 
 	 $("#siguiente").click(function(){
 		 
 		var fechaValida = $("#datepicker").val();
@@ -53,7 +49,7 @@ $(document).ready(function() {
     		fecha = fecha.replace("/","-");
     		fecha = fecha.replace("/","-");
     		fecha = fecha.replace("/","-");
-    		window.location.assign(window.context +"/turno/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
+    		window.location.assign(window.context +"/derivacion/"+ turnoId +"/"+ especialidadId + "/medico/"+ medicoId +"/"+ fecha);
             
         	}
         
@@ -65,5 +61,10 @@ $(document).ready(function() {
             }
 		
 		});	
+	 
+	 $("#atras").click(function(){
+			window.history.back();
+		});	
+	 
 	 
 });

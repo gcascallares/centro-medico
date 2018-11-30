@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -15,9 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Elija su Turno</title>
-
- 	<!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
 
@@ -28,6 +28,8 @@
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
+
+	<title>Bienvenido Medico</title>
 
 </head>
 
@@ -42,7 +44,7 @@
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
       
@@ -68,7 +70,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+          <a class="nav-link" href="${context}/buscadorPaciente">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -80,14 +82,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/generarAtencion">
             <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i>
-            <span>  Contacto</span></a>
+            <span> Atenciones</span></a>
         </li>
       </ul>
 
@@ -98,11 +95,11 @@
           <!--Menu Hamburguesa -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Solicitar Turno</a>
+              <a href="#">Atencion</a>
             </li>
           </ol>
-          
      </div>     
+          
           
           
           
@@ -110,35 +107,70 @@
 
           <!-- Contenido de la Pagina -->
         	
-        	<form:form action="${context}/reservar-turno" method="POST" modelAttribute = "turno">
-			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
-			<hr class="colorgraph">
+        
+        	<div id="turnos">
+				<form:form action="${context}/mostrarTurnosPaciente" method="POST">
+					<h3 class="form-signin-heading"> Elija su paciente</h3>
+					<hr class="colorgraph">
+					<br>
+   	
+				<c:forEach items="${listapacientes}" var="paciente">
+								
+					<input type="hidden" value="${paciente.id}" id="paciente">	
+								
+					<div class="card w-50 mx-auto mt-4 mb-4">
+					  <div class="card-body">
+					    <h5 class="card-title">Paciente: ${paciente.nombre} ${paciente.apellido}</h5>
+					    <h5 class="card-title">DNI: ${paciente.dni}</h5>
+
+					
+					<div class="d-flex justify-content-center mt-4">
+					
+					<button type="button" class="btn btn-primary mb-5 mr-4" data-toggle="modal" data-target="#atencion">
+					  Generar Atencion
+					</button>
+	
+					</div>
+					
+
+
+					<!-- Modal -->
+					<div class="modal fade" id="atencion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="titleTurno${paciente.dni}">Atencion</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					  
+								<div class="form-group text-center">
+
+								  <label for="comment">Atencion</label>
+								  <textarea class="form-control" rows="5" id="comentario"></textarea>
+								  
+								</div>					      
+						 </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					        <button type="button" class="btn btn-primary" onclick="guardarAtencion()" id="guardar">Guardar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>		
+					
+					</div>
+					</div>
+				
+				</c:forEach>	
+
+					
+ 			</form:form>
+ 					
+			</div>	
 			<br>
-			
-				
-				
-				
-				<div class="w-75 p-3 text-center mx-auto" >
-				<c:forEach items="${listaDeTurnos}" var="t">
-							    <label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
-				</c:forEach>
-				</div>
-				
-				
-				
-			<div> <h2 id="mensajeVacio">  </h2> </div>
-			<input type="hidden" value="${fecha}" name="fecha">
-			<input type="hidden" value="${medicoId}" name="medicoId">
-			<input type="hidden" value="${especialidadId}" name="especialidadId">
-			<br>
-			<div class="text-center">
-				<button class="btn btn-primary" id="reservar" Type="Submit">Reservar</button>
-			</div>
-			<br>
-			<br>
-			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
-			
-			</form:form>
  			
 
       </div>
@@ -147,7 +179,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!--Boton para ir a arriba-->
+   <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
@@ -169,7 +201,21 @@
           </div>
         </div>
       </div>
-	</div>
+    </div>
+	
+	<script> 
+	
+	
+	function guardarAtencion(){
+		
+		var mensaje = $("#comentario").val();
+		var idPaciente = $("#paciente").val();
+		
+		window.location.href = window.context+"/generarAtencion/" + mensaje + "/" + idPaciente;
+	}
+	
+		
+	</script>
 	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
@@ -178,12 +224,10 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
-    <script src="${context}/js/mostrar-turnos.js" type="text/javascript"></script>
+    <script src="${context}/js/inicio-medico.js" type="text/javascript"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    
-	
 	
 </body>
 

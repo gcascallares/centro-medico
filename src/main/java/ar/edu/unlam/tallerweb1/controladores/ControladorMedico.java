@@ -10,18 +10,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Estudio;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
+import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioConsultorio;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
-
 
 @Controller
 
@@ -39,6 +42,9 @@ public class ControladorMedico {
 	@Inject
 	private ServicioMedico servicioMedico;
 	
+	@Inject
+	private ServicioBuscadorPacientes servicioBuscadorPacientes;
+	
 	
 	@RequestMapping("/{medicoId}/index-medico")
 	public ModelAndView elegirConsultorio(@PathVariable Long medicoId , HttpServletRequest request){
@@ -53,6 +59,8 @@ public class ControladorMedico {
 	
 	}
 	
+	
+	@SuppressWarnings("unused")
 	@RequestMapping("/{medicoId}/index-medico/{consultorioId}")
 	public ModelAndView inicioMedico(@PathVariable Long medicoId , @PathVariable Long consultorioId , HttpServletRequest request){
 		ModelMap modelo = new ModelMap();
@@ -77,16 +85,51 @@ public class ControladorMedico {
 		List <Estudio> listaDeEstudios = servicioEspecialidad.listaDeEstudios(especialidad);
 		
 		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico, diaActual);
+		List<Medico> listaMedicos = servicioMedico.getMedicos();
 		
 		modelo.put("listaTurnos", listaTurnos);
 		modelo.put("medico", medico);
 		modelo.put("fecha",diaActual);
 		modelo.put("consultorioId", consultorioId);
-		modelo.put("listaEsp", listaEspecialidad);
+		modelo.put("listaMedicos", listaMedicos);
 		modelo.put("listaEstudios",listaDeEstudios);
 		
 		return new ModelAndView("inicio-medico", modelo);
 	}
 	
+	
+	
+	@RequestMapping("/generarAtencion")
+	public ModelAndView buscadorDePacientes(){
+		
+		ModelMap modelo = new ModelMap();
+		
+		return new ModelAndView("atencionesMedico", modelo);
+		
+	}
+	
+	@RequestMapping(path="/atencionpacientespordni", method = RequestMethod.POST)
+	public ModelAndView buscarPacientesPorDni(@RequestParam Long dni, HttpServletRequest request){
+		
+		ModelMap modelo = new ModelMap();
+		
+		List <Paciente> listaPacientes = servicioBuscadorPacientes.listaPacientes(dni);
+		modelo.put("listapacientes",listaPacientes);
+		
+		return new ModelAndView("listaPacientesAtencion", modelo);
+	}
+	
+	@RequestMapping("/generarAtencion/{mensaje}/{idPaciente}")
+	public ModelAndView guardarAtencion(@PathVariable String mensaje, @PathVariable Long idPaciente , HttpServletRequest request){
+		
+		String fecha = servicioTurnos.diaActual();
+		
+		Long medicoId = (Long) request.getSession().getAttribute("ID");
+		
+		servicioTurnos.guardarAtencion(mensaje, idPaciente, medicoId, fecha);
+
+		return new ModelAndView("redirect:/generarAtencion");
+		
+	}
 	
 }

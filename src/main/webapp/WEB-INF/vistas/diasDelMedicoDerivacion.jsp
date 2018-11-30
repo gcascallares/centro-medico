@@ -3,46 +3,60 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
 <meta charset="utf-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Elija su Turno</title>
+    <title>Elija su Fecha</title>
 
- 	<!-- Bootstrap -->
+    <!-- Bootstrap core CSS-->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="${context}/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
     <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
 
-    <!-- Font Awesome-->
-    <link href="${context}/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
-    <!-- Estilo que se aplica a todas las Vistas-->
+    <!-- Custom styles for this template-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
     
+    <link href="${context}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" >
+    
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
+
 
 </head>
 
 <script> 
+
+
+///GUARDO LA LISTA CON LOS ID DE DIAS EN JAVASCRIPT
+	var dias = new Array();
+	<c:forEach items="${dias}" var="dia"> 
+	   dias.push(${dia});
+	</c:forEach> 
+	
 	var context = "${context}";
 </script>
 
 <body id="page-top">
 
 
-	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+	 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
       
@@ -67,16 +81,16 @@
 
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-      <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span>Historia Clinica</span>
           </a>
         </li>
         <li class="nav-item">
@@ -86,7 +100,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i>
+            <i class="fas fa-mobile-alt"></i></i>
             <span>  Contacto</span></a>
         </li>
       </ul>
@@ -102,44 +116,43 @@
             </li>
           </ol>
           
-     </div>     
+          
           
           
           
           
 
           <!-- Contenido de la Pagina -->
-        	
-        	<form:form action="${context}/reservar-turno" method="POST" modelAttribute = "turno">
-			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
-			<hr class="colorgraph">
-			<br>
-			
+        		
+        		
+		        <input type="hidden" value="${especialidadId}" id="especialidadId">
+				<input type="hidden" value="${medicoId}" id="medicoId" >
+				<input type="hidden" value="${turnoId}" id="turnoId" >
+				<h3 class="form-signin-heading">Elija su Fecha</h3>
+				<br>
+				<br>
+		
+				<input type="text" id="datepicker">
+				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
 				
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 				
-				
-				<div class="w-75 p-3 text-center mx-auto" >
-				<c:forEach items="${listaDeTurnos}" var="t">
-							    <label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
-				</c:forEach>
-				</div>
-				
-				
-				
-			<div> <h2 id="mensajeVacio">  </h2> </div>
-			<input type="hidden" value="${fecha}" name="fecha">
-			<input type="hidden" value="${medicoId}" name="medicoId">
-			<input type="hidden" value="${especialidadId}" name="especialidadId">
-			<br>
-			<div class="text-center">
-				<button class="btn btn-primary" id="reservar" Type="Submit">Reservar</button>
-			</div>
-			<br>
-			<br>
-			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
-			
-			</form:form>
- 			
+				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
+				<br>
+				<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
+
 
       </div>
       <!-- /.content-wrapper -->
@@ -147,7 +160,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!--Boton para ir a arriba-->
+     <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
@@ -169,21 +182,24 @@
           </div>
         </div>
       </div>
-	</div>
 	
-	 <!-- Bootstrap core y JavaScript-->
+	<!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
 
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
-    <script src="${context}/js/mostrar-turnos.js" type="text/javascript"></script>
+    <script src="${context}/js/elegir-dia-del-medico-derivacion.js"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    
 	
+	<!-- Jquery UI-->
+	<script src="${context}/js/jquery-ui/jquery-ui.min.js"></script>
+	
+	<!-- Moments JS-->
+	<script src="${context}/js/moment.js" type="text/javascript"></script>
 	
 </body>
 

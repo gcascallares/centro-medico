@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.controladores.viewmodel.TurnoViewModel;
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 
@@ -26,7 +27,6 @@ import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 
-import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
@@ -41,16 +41,14 @@ public class ControladorTurnos {
 	
 	@Inject
 	private ServicioEspecialidad servicioEspecialidad;
-	
-	@Inject
-	private ServicioBuscadorPacientes servicioBuscadorPacientes;
-	
+
 	@Inject
 	private ServicioMedico servicioMedico;
 	
 	@Inject
 	private ServicioPaciente servicioPaciente;
 	
+	@SuppressWarnings("unused")
 	@Inject
     private SessionFactory sessionFactory;
 	
@@ -207,28 +205,21 @@ public class ControladorTurnos {
 		ModelMap modelo = new ModelMap();
 		
 		Turno turno = new Turno();
-		Medico medico = new Medico();
-		Especialidad especialidad = new Especialidad();
-		
-		especialidad.setId(turnoViewModel.getEspecialidadId());
-		
-		medico.setId(turnoViewModel.getMedicoId());
-		medico.setEspecialidad(especialidad);
-		
+		Medico medico = servicioTurnos.buscarMedicoEspecifico(turnoViewModel.getMedicoId());
+		turno.setDerivado(0);
 		turno.setFecha(turnoViewModel.getFecha());
 		turno.setHorario(turnoViewModel.getHorario());
 		turno.setMedico(medico);
-		
-		servicioTurnos.guardarTurno(turno,idUsuario);
+		Turno turnoCreado = servicioTurnos.guardarTurno(turno,idUsuario);
 
-		modelo.put("turno",turnoViewModel);
+		modelo.put("turno",turnoCreado);
 		
 		return new ModelAndView("turno-ok", modelo);
 		
 	}
 	
 	
-//mostrar historia clinica paciente
+//		Mostrar historia clinica paciente
 	
 		@RequestMapping(path= "/mostrarhistoriaclinica")
 		public ModelAndView mostrarHistoriaClinica(HttpServletRequest request){
@@ -237,7 +228,7 @@ public class ControladorTurnos {
 			Long id = (Long)request.getSession().getAttribute("ID");
 			//Long id = (Long) ((ServletRequest) session).getAttribute("ID");
 			Long idPaciente = servicioPaciente.obtenerPacienteId(id);
-			List<Turno> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
+			List<Atencion> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
 			Paciente paciente = servicioTurnos.mostrarDatosPaciente(idPaciente);
 			modelo.put("paciente",paciente);
 			modelo.put("listahistorial", listaHistorial);
@@ -245,7 +236,7 @@ public class ControladorTurnos {
 		}
 		
 		
-// Parte de Descripscion del medico
+// 		Parte de Descripscion del medico
 		
 		@RequestMapping(path="/turno/atendido/{turnoId}/{consultorioId}/{medicoId}")
 		public ModelAndView obtenerTurnoAtendido(@PathVariable Long turnoId,@PathVariable Long consultorioId,@PathVariable Long medicoId){
@@ -253,6 +244,7 @@ public class ControladorTurnos {
 			servicioTurnos.cambiarEstadoAtendido(turnoId);
 			
 			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);
+			
 		}
 		
 		
@@ -262,16 +254,20 @@ public class ControladorTurnos {
 			
 			servicioTurnos.agregarDescripcion(turnoId,descripcion,estudio);
 			
-			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
-		
-		
-
-		@RequestMapping(path="/turno/guardarDerivacion/{idEspecialidad}/{pacienteId}/{consultorioId}/{medicoId}")
-		public ModelAndView guardarDerivacion(@PathVariable Long consultorioId,@PathVariable Long medicoId,@PathVariable Long pacienteId,@PathVariable Long idEspecialidad){
+			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		
 			
-			servicioTurnos.agregarDerivacion(pacienteId,idEspecialidad);
+		}
+		
+		
 
-			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		}
+		@RequestMapping(path="/turno/guardarDerivacion/{consultorioId}/{medicoId}/{pacienteId}/{medicoADerivarId}")
+		public ModelAndView guardarDerivacion(@PathVariable Long consultorioId,@PathVariable Long medicoId,@PathVariable Long pacienteId,@PathVariable Long medicoADerivarId){
+			
+			servicioTurnos.agregarDerivacion(pacienteId,medicoADerivarId);
+
+			return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorioId);		
+			
+		}
 		
 		
 }

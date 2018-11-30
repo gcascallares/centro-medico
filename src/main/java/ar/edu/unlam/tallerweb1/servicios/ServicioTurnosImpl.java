@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
 import ar.edu.unlam.tallerweb1.dao.TurnoDao;
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
@@ -70,8 +71,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void guardarTurno(Turno turno, Long idUsuario) {
-		servicioTurnoDao.guardarTurno(turno,idUsuario);
+	public Turno guardarTurno(Turno turno, Long idUsuario) {
+		return servicioTurnoDao.guardarTurno(turno,idUsuario);
 	}
 	
 	@Override
@@ -106,7 +107,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 	
 	@Override
-	public List<Turno> mostrarHistoriaClinica(Long id){
+	public List<Atencion> mostrarHistoriaClinica(Long id){
 		return servicioTurnoDao.mostrarHistoriaClinica(id);
 	}
 	
@@ -127,9 +128,23 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public void agregarDerivacion(Long pacienteId, Long idEspecialidad) {
-		servicioTurnoDao.agregarDerivacion(pacienteId, idEspecialidad);
+	public void agregarDerivacion(Long pacienteId, Long idMedico) {
+		servicioTurnoDao.agregarDerivacion(pacienteId, idMedico);
 		
 	}
 	
+	@Override
+	public List<Turno> listaDeDerivacion(Long usuarioId) {
+		return servicioTurnoDao.listaDeDerivacion(usuarioId);
+	}
+	
+	@Override
+	public Turno guardarDerivacion (Long turnoId,String fecha, String horario ,Long especialidadId, Long medicoId) {
+		return servicioTurnoDao.guardarDerivacion(turnoId,fecha,horario,especialidadId,medicoId);
+	}
+	
+	@Override
+	public void guardarAtencion(String mensaje, Long pacienteId, Long medicoId, String fecha) {
+		servicioMedicoDao.guardarAtencion(mensaje, pacienteId, medicoId, fecha);
+	}
 }

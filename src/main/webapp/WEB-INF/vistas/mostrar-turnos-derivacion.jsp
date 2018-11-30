@@ -101,21 +101,18 @@
               <a href="#">Solicitar Turno</a>
             </li>
           </ol>
+      </div>    
           
-     </div>     
           
           
           
           
 
           <!-- Contenido de la Pagina -->
-        	
-        	<form:form action="${context}/reservar-turno" method="POST" modelAttribute = "turno">
-			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
+        	<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
 			<hr class="colorgraph">
 			<br>
 			
-				
 				
 				
 				<div class="w-75 p-3 text-center mx-auto" >
@@ -125,22 +122,21 @@
 				</div>
 				
 				
-				
 			<div> <h2 id="mensajeVacio">  </h2> </div>
-			<input type="hidden" value="${fecha}" name="fecha">
-			<input type="hidden" value="${medicoId}" name="medicoId">
-			<input type="hidden" value="${especialidadId}" name="especialidadId">
+			
+			<input type="hidden" value="${fecha}" id="fecha">
+			<input type="hidden" value="${turnoId}" id="turnoId">
+			<input type="hidden" value="${medicoId}" id="medicoId">
+			<input type="hidden" value="${especialidadId}" id="especialidadId">
+			
 			<br>
 			<div class="text-center">
-				<button class="btn btn-primary" id="reservar" Type="Submit">Reservar</button>
+			<button class="btn btn-primary mx-auto" id="reservar" Type="button">Reservar</button>
 			</div>
 			<br>
 			<br>
 			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
 			
-			</form:form>
- 			
-
       </div>
       <!-- /.content-wrapper -->
 
@@ -152,7 +148,7 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Modal de cierre de sesio-->
+    <!-- Modal de cierre de sesion-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -169,7 +165,7 @@
           </div>
         </div>
       </div>
-	</div>
+    </div>
 	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>

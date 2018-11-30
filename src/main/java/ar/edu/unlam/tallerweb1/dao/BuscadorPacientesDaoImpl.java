@@ -9,7 +9,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Repository("buscadorPacientesDao")
 
@@ -18,32 +17,37 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 	@Inject
     private SessionFactory sessionFactory;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List <Paciente> listaPacientes(Long dni) {
+		
 		final Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
+		
 		List <Paciente> listaPacientes = session.createCriteria(Paciente.class)
 		.add(Restrictions.like("dni",dni))
 		.list();
+		
 		return listaPacientes;
 	}
 	
 	@Override
 	public boolean modificarEstadoTurno(Long id) {
+		
 		final Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
+		
 		Turno miturno = new Turno();
 		miturno = buscarTurnoPorId(id);
 		
-		miturno.setEstado("abonado");
+		miturno.setEstado("Abonado");
 		session.update(miturno);
 		return true;
 	}
 	
 	@Override
 	public boolean modificarEstadoTurnoRechazado(Long id) {
+		
 		final Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
+		
 		Turno miturno = new Turno();
 		miturno = buscarTurnoPorId(id);
 		
@@ -52,24 +56,31 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		return true;
 	}
 	
+	@Override
 	public Turno buscarTurnoPorId(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
 		
 		Turno turnoBuscado = (Turno) session.createCriteria (Turno.class)
 		.add(Restrictions.like("id",id)).uniqueResult();
+		
 		return (Turno) turnoBuscado;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List <Turno> listaTurnos(Long id){
+		
 		final Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
+		
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.createAlias("paciente","pacienteBuscado")
-		.add(Restrictions.like("pacienteBuscado.id",id)).add(Restrictions.like("estado","en_espera"))
+		.add(Restrictions.like("pacienteBuscado.id",id))
+		.add(Restrictions.like("estado","en_espera"))
+		.add(Restrictions.like("derivado", 0))
 		.addOrder(Order.asc("fecha"))
 		.addOrder(Order.asc("horario"))
 		.list();
+		
 		return listaTurnos;
 	}
 

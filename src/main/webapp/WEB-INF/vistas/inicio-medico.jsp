@@ -75,7 +75,6 @@
             <span>  Inicio</span>
           </a>
         </li>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fas fa-file-signature"></i>
@@ -83,14 +82,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/generarAtencion">
             <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
+            <span> Atenciones</span></a>
         </li>
       </ul>
 
@@ -104,7 +98,7 @@
               <a href="#">Solicitar Turno</a>
             </li>
           </ol>
-          
+     </div>     
           
           
           
@@ -134,7 +128,7 @@
 					    <h5 class="card-title">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
 					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
 					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
-					<c:if test = "${Turnos.descripcion == null}">
+					<c:if test = "${Turnos.estudio == null}">
 					<div class="d-flex justify-content-center mt-4">
 					<button type="button" class="btn btn-primary mb-5 mr-4" data-toggle="modal" data-target="#turno${Turnos.id}">
 					  Dejar comentario
@@ -145,7 +139,7 @@
 					</div>
 					</c:if>
 					<!-- Button trigger modal -->
-					<c:if test = "${Turnos.descripcion != null}">
+					<c:if test = "${Turnos.estudio != null}">
 					<div class="text-center">
 						<button class="btn btn-success mb-5" onclick="atender(${Turnos.id},${consultorioId},${medico.id})" id="atendido-${Turnos.id}">Atendido</button>  
 			        </div>
@@ -163,12 +157,12 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-					      	<h5>Inserta el tipo de estudio / consulta realizada</h5>
-								<div class="form-group">
+					      	<div class="text-center"><h5>Inserta el tipo de estudio / consulta realizada</h5></div>
+								<div class="form-group text-center">
 								
 								  <select id="estudio">
         		
-						        		<option value="0" selected disabled>Seleccione una opcion</option>
+						        		<option value="0" selected disabled>Seleccione una opción</option>
 					        		
 										<c:forEach items="${listaEstudios}" var="Estudio">
 										
@@ -196,8 +190,8 @@
 					
 					</div>
 					</div>
-				</c:forEach>	
-			</div>		
+					
+				
 			
 				<div class="modal fade" id="derivar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
@@ -209,16 +203,16 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-								<div class="form-group">
-								  <label for="comment">Seleccione Especialidad</label>
+								<div class="form-group text-center">
+								  <label for="comment">Seleccione el medico al que desea derivar</label>
 								  
-        							<select id="especialidad">
+        							<select id="medico">
         		
-        								<option value="0"></option>
+        								<option value="0" disabled selected>Seleccione una opción</option>
         		
-											<c:forEach items="${listaEsp}" var="Especialidad">
+											<c:forEach items="${listaMedicos}" var="medico">
 					
-										<option value="${Especialidad.id}" path="nombreEspecialidad">${Especialidad.nombreEspecialidad}</option>
+										<option value="${medico.id}">Dr/a. ${medico.nombre} - ${medico.especialidad.nombreEspecialidad}</option>
 					
 											</c:forEach>	
 						
@@ -226,13 +220,13 @@
 								</div>					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-					        <button type="button" class="btn btn-primary" onclick="guardarDerivacion(${Turnos.paciente.id},${consultorioId},${medico.id})" id="guardarDerivacion">Guardar</button>
+					        <button type="button" class="btn btn-primary" onclick="guardarDerivacion(${Turnos.paciente.id},${consultorioId},${medico.id})" id="guardarDerivacion">Aceptar</button>
 					      </div>
 					    </div>
 					  </div>
 					</div>					
-							
-			
+					</c:forEach>		
+					</div>	
 			<br>
  			
  			
@@ -286,10 +280,10 @@
 		window.location.href = window.context+"/turno/guardarComentario/" + idTurno + "/" + idConsultorio + "/" + idMedico+ "/" + estudio + "/" + mensaje;
 	}
 	
-	function guardarDerivacion(idPaciente,idMedico,idConsultorio){
+	function guardarDerivacion(idPaciente,idConsultorio,idMedico){
 		
-		var idEspecialidad = $("#especialidad option:selected").val();
-		window.location.href = window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico+ "/" + idEspecialidad + "/" + idPaciente;
+		var medicoADerivar = $("#medico option:selected").val();
+		window.location.href = window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico + "/" + idPaciente + "/" + medicoADerivar;
 		
 	}
 		

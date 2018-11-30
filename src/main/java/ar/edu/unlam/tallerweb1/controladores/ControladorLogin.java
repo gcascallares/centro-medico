@@ -102,9 +102,11 @@ public class ControladorLogin {
 		
 		ModelMap modelo = new ModelMap();			
 		
+		modelo.put("usuario", usuario);
+		
 			switch(request.getSession().getAttribute("ROL").toString()) {
 			
-			case "paciente": return new ModelAndView("index");
+			case "paciente": return new ModelAndView("index",modelo);
 			
 			case "recepcionista": return new ModelAndView("buscadorPacientes");
 			

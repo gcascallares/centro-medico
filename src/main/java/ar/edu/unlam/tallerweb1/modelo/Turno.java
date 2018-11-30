@@ -26,19 +26,10 @@ public class Turno {
 
 	private String estado;
 	
-	private String descripcion;
+	private Integer derivado;
 	
 	@ManyToOne
 	private Estudio estudio;
-	
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	
 	public Long getId() {
 		return id;
@@ -94,6 +85,14 @@ public class Turno {
 
 	public void setEstudio(Estudio estudio) {
 		this.estudio = estudio;
+	}
+
+	public Integer getDerivado() {
+		return derivado;
+	}
+
+	public void setDerivado(Integer derivado) {
+		this.derivado = derivado;
 	}
 
 	

@@ -16,25 +16,25 @@
 
     <title>Lista Dias Medico</title>
 
- 	<!-- Bootstrap -->
+ 	<!-- Bootstrap core CSS-->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="${context}/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
     <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
 
-    <!-- Font Awesome-->
-    <link href="${context}/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
-    <!-- Estilo que se aplica a todas las Vistas-->
+    <!-- Custom styles for this template-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
+    
+    <link href="${context}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" >
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
 
 </head>
 
-<script> 
-	var context = "${context}";
-	
-</script>
 <script> 
 
 
@@ -45,7 +45,11 @@
 	</c:forEach> 
 	
 	var context = "${context}";
+	var pacienteId = ${idPaciente};
+	var especialidadId =${especialidadId};
+	var medicoId = ${medicoId};
 </script>
+
 
 <body id="page-top">
 
@@ -121,7 +125,7 @@
 			
 			<hr class="colorgraph">
 			
-		<!--<input type="text" id="datepicker">
+		<input type="text" id="datepicker">
 				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
 				
 				<br>
@@ -138,15 +142,17 @@
 				<br>
 				<br>
 				
-				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 			
 			
-			<br><br>		-->	
+			<br><br>			
 
-			<a href="${context}/elegirhorario/${idPaciente}/${especialidadId}/${medicoId}/'27-11-2018'"><button  class="btn btn-lg btn-primary btn-block" value="27-11-2018" Type="button" >27-11-2018</button></a>
+<%-- 			<a href="${context}/elegirhorario/${idPaciente}/${especialidadId}/${medicoId}/'27-11-2018'"><button  class="btn btn-lg btn-primary btn-block" value="27-11-2018" Type="button" >Siguiente</button></a>
+ --%>
+ 				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
- 			
+				<br>
+				<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+
  			
  			
  			
@@ -182,14 +188,19 @@
     </div>
 	
 	
-	<!-- Bootstrap core y JavaScript-->
-    <script src="${context}/js/jquery/jquery.min.js"></script>
-    <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
+	
+    <%-- <script src="${context}/js/jquery/jquery.min.js"></script> --%>
+    
 
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
-    <script src="${context}/js/elegir-dia-del-medico.js" type="text/javascript"></script>
+    <script src="${context}/js/recepcionista-elegir-diasMedico.js" type="text/javascript"></script>
+	
+	<!-- Bootstrap core y JavaScript-->
+	<script src="${context}/js/bootstrap/bootstrap.min.js"></script>
+	<script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
+	
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>

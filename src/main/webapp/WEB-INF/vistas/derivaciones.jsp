@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -15,9 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Elija su Turno</title>
-
- 	<!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
 
@@ -28,6 +28,8 @@
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
+
+	<title>Derivaciones</title>
 
 </head>
 
@@ -42,7 +44,7 @@
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
       
@@ -67,16 +69,23 @@
 
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-      <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
+       
         <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fas fa-file-signature"></i>
             <span>  Turnos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span>Historia Clinica</span>
           </a>
         </li>
         <li class="nav-item">
@@ -98,56 +107,52 @@
           <!--Menu Hamburguesa -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Solicitar Turno</a>
+              <a href="#">Derivaciones</a>
             </li>
           </ol>
+          </div>
           
-     </div>     
-          
-          
-          
-          
-
           <!-- Contenido de la Pagina -->
+          
+          <c:forEach items="${listaDerivaciones}" var="Derivacion">
+										
+					<div class="card w-50 mx-auto mt-4 mb-4">
+					  <h5 class="card-header">Numero de turno: ${Derivacion.id}</h5>
+					  <div class="card-body">
+					   
+					   <input type="hidden" value="${Derivacion.medico.id}" id="medico">
+					   <input type="hidden" value="${Derivacion.id}" id="turnoId">
+					   <input type="hidden" value="${Derivacion.medico.especialidad.id}" id="especialidad">
+					   
+					    <h5 class="card-title">Especialidad Id: ${Derivacion.medico.especialidad.id}</h5>
+					  	<h5 class="card-title">Medico: Dr/a:  ${Derivacion.medico.nombre}</h5>
+					    <h5 class="card-title">Paciente: ${Derivacion.paciente.nombre} ${Derivacion.paciente.apellido}</h5>
+					    <h5 class="card-title">DNI: ${Derivacion.paciente.dni}</h5>
+					    
+					<div class="d-flex justify-content-center mt-4">
+					<a href="${context}/derivacion/${Derivacion.id}/${Derivacion.medico.especialidad.id}/medico/${Derivacion.medico.id}">
+						<button type="button" class="btn btn-primary mb-5"  onclick="" id="">
+						  Completar Derivacion
+						</button>
+					</a>
+					</div>
+					
+					</div>
+					
+					</div>
+					
+									
+		 </c:forEach>	
+          
         	
-        	<form:form action="${context}/reservar-turno" method="POST" modelAttribute = "turno">
-			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
-			<hr class="colorgraph">
-			<br>
-			
-				
-				
-				
-				<div class="w-75 p-3 text-center mx-auto" >
-				<c:forEach items="${listaDeTurnos}" var="t">
-							    <label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
-				</c:forEach>
-				</div>
-				
-				
-				
-			<div> <h2 id="mensajeVacio">  </h2> </div>
-			<input type="hidden" value="${fecha}" name="fecha">
-			<input type="hidden" value="${medicoId}" name="medicoId">
-			<input type="hidden" value="${especialidadId}" name="especialidadId">
-			<br>
-			<div class="text-center">
-				<button class="btn btn-primary" id="reservar" Type="Submit">Reservar</button>
-			</div>
-			<br>
-			<br>
-			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
-			
-			</form:form>
- 			
-
+        	
       </div>
       <!-- /.content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
-    <!--Boton para ir a arriba-->
+   <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
@@ -169,7 +174,7 @@
           </div>
         </div>
       </div>
-	</div>
+    </div>
 	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
@@ -178,12 +183,10 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
-    <script src="${context}/js/mostrar-turnos.js" type="text/javascript"></script>
+    <script src="${context}/js/derivacion.js"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    
-	
 	
 </body>
 
