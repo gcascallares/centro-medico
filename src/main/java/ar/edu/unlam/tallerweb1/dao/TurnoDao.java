@@ -40,4 +40,6 @@ public interface TurnoDao {
 
 	List<Turno> listaTurnosProxDiaLaboral(Medico medico,String diaSiguiente);
 
+	List<Atencion> mostrarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId);
+
 }

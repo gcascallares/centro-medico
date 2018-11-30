@@ -82,17 +82,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>Historia Clinica</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
             <i class="fas fa-mobile-alt"></i></i>
             <span>  Contacto</span></a>
         </li>
@@ -124,11 +113,11 @@
 							  </br>
 							  </div>
 							</div>
-					<c:if test="${fn:length(listahistorial) == 0}">
+					<c:if test="${fn:length(historiaClinica) == 0}">
 						<div class="text-center mt-5"><h2>No hay turnos para mostrar!</h2></div>
 					</c:if>
 							<div class="accordion" id="accordionExample">
-						<c:forEach items="${listahistorial}" var="atencion">
+						<c:forEach items="${historiaClinica}" var="atencion">
 						<c:if test="${(empty atencion.turno) or (atencion.turno.estado == 'Atendido')}">
 						  <div class="card">
 						    <div class="card-header" id="heading${atencion.id}">

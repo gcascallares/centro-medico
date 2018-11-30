@@ -54,6 +54,8 @@ public interface ServicioTurnos {
 
 	List<Turno> listaTurnosProxDiaLaboral(Medico medico, String diaSiguiente);
 
+	List<Atencion> buscarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId);
+
 }
 
 

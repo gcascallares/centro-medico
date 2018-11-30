@@ -197,4 +197,9 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		return servicioTurnoDao.listaTurnosProxDiaLaboral(medico, diaSiguiente);
 	}
 
+	@Override
+	public List<Atencion> buscarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId) {
+		return servicioTurnoDao.mostrarHistoriaClinicaDePaciente(pacienteId,medicoId);
+	}
+
 }

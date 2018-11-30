@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
@@ -168,6 +169,19 @@ public class ControladorMedico {
 		modelo.put("listaTurnosProxDiaLaboral",listaTurnosProxDiaLaboral);
 				
 		return new ModelAndView("turnosDeProximoDiaLaboral", modelo);
+		
+	}
+	
+	@RequestMapping("/medico/mostrarhistoriaclinica/{pacienteId}")
+	public ModelAndView mostrarHistoriaClinica(@PathVariable Long pacienteId , HttpServletRequest request){
+		Long medicoId = (Long)request.getSession().getAttribute("ID");
+		ModelMap modelo = new ModelMap();
+		Paciente paciente = servicioTurnos.mostrarDatosPaciente(pacienteId);
+		List<Atencion> historiaClinica = servicioTurnos.buscarHistoriaClinicaDePaciente(pacienteId,medicoId);		
+		
+		modelo.put("historiaClinica", historiaClinica);
+		modelo.put("paciente", paciente);
+		return new ModelAndView("mostrarHistoriaClinicaDePaciente", modelo);
 		
 	}
 	
