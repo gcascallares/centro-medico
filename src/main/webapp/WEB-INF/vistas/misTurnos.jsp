@@ -68,7 +68,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+          <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -136,7 +136,7 @@
 					  Actualizar
 					</button></a>
 
-					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#eliminarTurno">
+					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#eliminarTurno${Turnos.id}">
 					  Eliminar
 					</button>
 					</div>
@@ -144,7 +144,22 @@
 					</div>
 					</div>
 					
-				
+					<div class="modal fade" id="eliminarTurno${Turnos.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				      <div class="modal-dialog" role="document">
+				        <div class="modal-content">
+				          <div class="modal-header">
+				            <h5 class="modal-title" id="exampleModalLabel${Turnos.id}">Seguro que quiere Eliminar este turno</h5>
+				            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				              <span aria-hidden="true">x</span>
+				            </button>
+				          </div>
+				          <div class="modal-footer">
+				            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+				            <a class="btn btn-primary" href="${context}/misTurnos/${Turnos.id}">Eliminar</a>
+				          </div>
+				        </div>
+				      </div>
+				    </div>
 			
 							
 			</c:forEach>	
@@ -182,22 +197,7 @@
       </div>
     </div>
     
-    <div class="modal fade" id="eliminarTurno" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere Eliminar este turno</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">x</span>
-            </button>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="${context}/misTurnos/${Turnos.id}">Eliminar</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>

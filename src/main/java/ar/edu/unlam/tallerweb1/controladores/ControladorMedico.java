@@ -48,6 +48,16 @@ public class ControladorMedico {
 	private ServicioBuscadorPacientes servicioBuscadorPacientes;
 	
 	
+	public ServicioTurnos getServicioTurnos() {
+		return servicioTurnos;
+	}
+
+
+	public void setServicioTurnos(ServicioTurnos servicioTurnos) {
+		this.servicioTurnos = servicioTurnos;
+	}
+
+
 	@RequestMapping("/{medicoId}/index-medico")
 	public ModelAndView elegirConsultorio(@PathVariable Long medicoId , HttpServletRequest request){
 		
