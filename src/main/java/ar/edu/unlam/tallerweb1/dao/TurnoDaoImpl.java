@@ -264,6 +264,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		return turno;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Turno> listaTodosLosTurnos(Medico medico) {
 		
@@ -283,12 +284,13 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Turno> listaTurnosManana(Medico medico, String diaSiguiente) {
+	public List<Turno> listaTurnosProxDiaLaboral(Medico medico, String diaSiguiente) {
 
 		final Session session = sessionFactory.getCurrentSession();
 		
-		List <Turno> listaTurnosManana = session.createCriteria(Turno.class)
+		List <Turno> listaTurnosProxDiaLaboral = session.createCriteria(Turno.class)
 				.createAlias("medico","medicoBuscado")
 				.add(Restrictions.like("medicoBuscado.id", medico.getId()))
 				.add(Restrictions.like("fecha", diaSiguiente))
@@ -296,8 +298,58 @@ public class TurnoDaoImpl implements TurnoDao {
 				.addOrder(Order.asc("horario"))
 				.list();
 		
-		return listaTurnosManana;
+		return listaTurnosProxDiaLaboral;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Atencion> mostrarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId) {
+		final Session session = sessionFactory.getCurrentSession();
+		List <Atencion> historiaClinica = session.createCriteria(Atencion.class)
+				.add(Restrictions.like("paciente.id", pacienteId))
+				.list();
+		
+		return historiaClinica;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Turno> listaTurnosPorPaciente(Long idUsuario) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
+						  .add(Restrictions.like("id", idUsuario))
+						  .uniqueResult();
+		
+		Long pacienteId = usuario.getPaciente().getId();
+		
+		List <Turno> listaTurnos = session.createCriteria(Turno.class)
+								   .createAlias("paciente","pacienteBuscado")
+								   .add(Restrictions.like("pacienteBuscado.id", pacienteId))
+								   .add(Restrictions.like("estado", "En espera"))
+								   .add(Restrictions.like("derivado",0))
+								   .list();
+		
+		return listaTurnos;
+	}
+	
+	@Override
+	public Turno actualizarTurno (Long turnoId, String fecha, String horario ) {
+		
+		final Session session = sessionFactory.getCurrentSession();
+		
+		Turno turno = (Turno) session.createCriteria(Turno.class)
+					  .add(Restrictions.like("id", turnoId))
+					  .uniqueResult();
+
+		turno.setFecha(fecha);
+		turno.setHorario(horario);
+		
+		session.update(turno);
+		
+		return turno;
+	}
 
 }

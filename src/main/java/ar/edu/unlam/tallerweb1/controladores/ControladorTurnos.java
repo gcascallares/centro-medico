@@ -26,7 +26,7 @@ import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
-
+import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPaciente;
@@ -47,6 +47,9 @@ public class ControladorTurnos {
 	
 	@Inject
 	private ServicioPaciente servicioPaciente;
+	
+	@Inject
+	private ServicioBuscadorPacientes servicioBuscadorPacientes;
 	
 	@SuppressWarnings("unused")
 	@Inject
@@ -269,5 +272,91 @@ public class ControladorTurnos {
 			
 		}
 		
+		
+// 		Turnos del paciente y actualizacion
+		
+		@RequestMapping("/misTurnos")
+		public ModelAndView misTurnos(HttpServletRequest request) {
+			
+			ModelMap modelo = new ModelMap();
+			
+			Long idUsuario = (Long)request.getSession().getAttribute("ID");
+			
+			List <Turno> listaDeTurnos = servicioTurnos.listaTurnosPorPaciente(idUsuario);
+			
+			modelo.put("listaTurnos",listaDeTurnos);
+			
+			return new ModelAndView("misTurnos", modelo);
+		}
+		
+		@RequestMapping("/misTurnos/actualizar/{turnoId}/{especialidadId}/{medicoId}")
+		public ModelAndView elegirFechaActualizar(@PathVariable Long turnoId, @PathVariable Long especialidadId, @PathVariable Long medicoId, HttpServletRequest request) {
+			
+			ModelMap modelo = new ModelMap();
+			
+			List <DiasLaborales> listaDeDias = new ArrayList<DiasLaborales>();
+			
+			listaDeDias = servicioMedico.buscarDiasLaborales(medicoId);
+			//convierto a lista de id de dias para usarlo en el calendario
+			
+			List <Long> idDias = new ArrayList<Long>();
+			for(DiasLaborales dia : listaDeDias) {
+				idDias.add(dia.getId());
+			}
+			
+			modelo.put("dias", idDias);
+			
+			modelo.put("turnoId", turnoId);
+			
+			modelo.put("especialidadId", especialidadId);
+			
+			modelo.put("medicoId", medicoId);
+			
+			return new ModelAndView("diasDelMedicoActualizar", modelo);
+		}
+		
+		@RequestMapping("/misTurnos/actualizar/{turnoId}/{especialidadId}/{medicoId}/{fecha}")
+		public ModelAndView obtenerListaDeTurnosDeMedicoActualizar(@PathVariable Long turnoId, @PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha){
+			
+			ModelMap modelo = new ModelMap();
+			
+			Medico medicoBuscado = servicioTurnos.buscarMedicoEspecifico(medicoId);
+			
+			List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado);
+			List <String> listaTurnosDisponibles = servicioTurnos.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
+			
+			modelo.put("listaDeTurnos", listaTurnosDisponibles);
+			
+			modelo.put("especialidadId", especialidadId);
+			modelo.put("medicoId", medicoId);
+			modelo.put("fecha", fecha);
+			
+			modelo.put("medico", medicoBuscado.getNombre());
+			modelo.put("turnoId", turnoId);
+			
+			
+			return new ModelAndView("mostrar-turnos-actualizar", modelo);
+		}
+		
+		@RequestMapping("misTurnos/actualizar/{turnoId}/{especialidadId}/{medicoId}/{fecha}/{horario}")
+		public ModelAndView reservarDerivacion(@PathVariable Long turnoId,@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, @PathVariable String horario) {
+			
+			ModelMap modelo = new ModelMap();
+			
+			Turno turnoDerivado = servicioTurnos.actualizarTurno(turnoId, fecha, horario);
+			
+			modelo.put("turno", turnoDerivado);
+			
+			return new ModelAndView("actualizar-ok", modelo);
+			
+		}
+		
+		@RequestMapping("/misTurnos/{turnoId}")
+		public ModelAndView eliminarTurno (@PathVariable Long turnoId, HttpServletRequest request) {
+			
+			servicioBuscadorPacientes.modificarEstadoTurnoRechazado(turnoId);
+			
+			return new ModelAndView("redirect:/misTurnos") ;
+		}
 		
 }

@@ -70,21 +70,27 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
        <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
-            <span>  Inicio</span>
+            <span>Inicio</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosPorDia">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
-            <span>Turnos Por Dia</span>
+            <span>Todos los Turnos</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/generarAtencion">
             <i class="fab fa-creative-commons-nd"></i>
-          	  <span> Atenciones</span></a>
+            <span> Atenciones</span></a>
         </li>
       </ul>	
 
@@ -97,9 +103,9 @@
 			</c:if>
    <br>
    <c:forEach items="${listaTodosLosTurnos}" var="Turnos">
-   <div class="card w-10 mx-auto mt-2 mb-2">
+   <div class="card mx-auto mt-2 mb-2">
    
-   						<h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
+   						<a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}"><h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
    						 <div class="card-body">
 					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
 					    <h5 class="card-title">Fecha: ${Turnos.fecha}</h5>

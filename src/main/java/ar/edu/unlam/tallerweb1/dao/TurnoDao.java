@@ -38,6 +38,12 @@ public interface TurnoDao {
 
 	List<Turno> listaTodosLosTurnos(Medico medico);
 
-	List<Turno> listaTurnosManana(Medico medico,String diaSiguiente);
+	List<Turno> listaTurnosProxDiaLaboral(Medico medico,String diaSiguiente);
+
+	List<Atencion> mostrarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId);
+
+	List<Turno> listaTurnosPorPaciente(Long pacienteId);
+
+	Turno actualizarTurno(Long turnoId, String fecha, String horario);
 
 }

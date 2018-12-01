@@ -9,12 +9,13 @@
 <head>
 
 <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Especificaciones del Turno</title>
+    <title>Elija su Turno</title>
 
  	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -36,11 +37,13 @@
 
 <body id="page-top">
 
+	  <input type="hidden" value="${usuario.id}" id="usuario">
+
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
       
@@ -96,61 +99,51 @@
             </li>
           </ol>
           
-          
+     </div>     
           
           
           
           
 
-        <!-- Contenido de la Pagina -->
-        
-        <h1>Especificaciones de su Turno</h1> <br>
-
-    	<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-user-md"></i> <span>  Medico: ${turno.medico.nombre}</span> 
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad: ${turno.medico.especialidad.nombreEspecialidad}</span> 
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="far fa-clock"></i> <span>  Horario: ${turno.horario}</span>
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-calendar-alt"></i><span>  Fecha: ${turno.fecha}</span>
-		  </div>
-		</div>
-		
-		<br>
-		
-		<a class="btn btn-primary" href="${context}/Home" role="button"> Volver a Inicio </a>
-		
-		
-		
+          <!-- Contenido de la Pagina -->
+        	
+			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
+			<hr class="colorgraph">
+			<br>
+			
+				
+				
+				
+				<div class="w-75 p-3 text-center mx-auto" >
+				<c:forEach items="${listaDeTurnos}" var="t">
+							    <label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
+				</c:forEach>
+				</div>
+				
+				
+				
+			<div> <h2 id="mensajeVacio">  </h2> </div>
+			<input type="hidden" value="${fecha}" id="fecha">
+			<input type="hidden" value="${medicoId}" id="medicoId">
+			<input type="hidden" value="${turnoId}" id="turnoId">
+			<input type="hidden" value="${especialidadId}" id="especialidadId">
+			<br>
+			<div class="text-center">
+				<button class="btn btn-primary" id="actualizar" Type="Submit">Reservar</button>
+			</div>
+			<br>
+			<br>
+			<button class="btn btn-lg btn-primary btn-block" type="button" id="atras">Atras</button>
+			
+ 			
 
       </div>
       <!-- /.content-wrapper -->
-	</div>
-	
+
     </div>
     <!-- /#wrapper -->
 
-     <!--Boton para ir a arriba-->
+    <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
@@ -173,6 +166,7 @@
         </div>
       </div>
 	</div>
+	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
@@ -180,11 +174,13 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+    <script src="${context}/js/mostrar-turnos-actualizar.js" type="text/javascript"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    <script src="${context}/js/derivacion.js"></script>
     
+	
+	
 </body>
 
 </html>

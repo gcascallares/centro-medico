@@ -39,7 +39,6 @@
 
 <body id="page-top">
 
-
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
@@ -68,35 +67,24 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-       <li class="nav-item">
+    	<ul class="sidebar navbar-nav">
+      <li class="nav-item">
           <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
-       
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/misTurnos">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span> Mis Turnos</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarhistoriaclinica">
             <i class="fas fa-history"></i>
-            <span>Historia Clinica</span>
+            <span> Historia Clinica</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i>
-            <span>  Contacto</span></a>
         </li>
       </ul>
 
@@ -183,7 +171,6 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
-    <script src="${context}/js/derivacion.js"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>

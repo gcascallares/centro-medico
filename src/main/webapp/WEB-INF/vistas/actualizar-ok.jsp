@@ -64,7 +64,7 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
-     <ul class="sidebar navbar-nav">
+      <ul class="sidebar navbar-nav">
       <li class="nav-item">
           <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
@@ -96,7 +96,7 @@
             </li>
           </ol>
           
-          
+     </div>     
           
           
           
@@ -145,8 +145,7 @@
 
       </div>
       <!-- /.content-wrapper -->
-	</div>
-	
+
     </div>
     <!-- /#wrapper -->
 
@@ -172,7 +171,7 @@
           </div>
         </div>
       </div>
-	</div>
+	</div>	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
@@ -183,8 +182,7 @@
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    <script src="${context}/js/derivacion.js"></script>
-    
+
 </body>
 
 </html>

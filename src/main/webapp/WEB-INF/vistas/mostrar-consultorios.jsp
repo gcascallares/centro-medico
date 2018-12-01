@@ -63,35 +63,19 @@
 
     <div id="wrapper">
 
-      <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-      <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+    
+    <!-- Barra del costado -->
+       <ul class="sidebar navbar-nav">
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
-            <span>  Inicio</span>
+            <span>Inicio</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
-            <i class="fas fa-file-signature"></i>
-            <span>Historia Clinica</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/generarAtencion">
             <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
+            <span> Atenciones</span></a>
         </li>
       </ul>
 
@@ -142,7 +126,9 @@
 
       </div>
       <!-- /.content-wrapper -->
-
+	
+	</div>
+	
     </div>
     <!-- /#wrapper -->
 

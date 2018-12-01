@@ -67,26 +67,27 @@
 
     <div id="wrapper">
 
-      <!-- Barra del costado -->
+       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-      <li class="nav-item">
-          <a class="nav-link" href="${context}/buscadorPaciente">
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span>Todos los Turnos</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="${context}/generarAtencion">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span> Atenciones</span></a>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}">
+            <i class="fas fa-file-signature"></i>
+            <span>Turnos del proximo dia Laboral</span>
+          </a>
         </li>
-      </ul>
+      </ul>	
 
       <div id="content-wrapper">
 

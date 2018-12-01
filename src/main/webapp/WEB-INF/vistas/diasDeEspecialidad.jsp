@@ -48,7 +48,6 @@
 
 <body id="page-top">
 
-
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
@@ -77,32 +76,24 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-      
-      	<li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
+     <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
-      	
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/misTurnos">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span> Mis Turnos</span>
           </a>
         </li>
-        
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span> Historia Clinica</span>
+          </a>
         </li>
       </ul>
 
@@ -126,8 +117,8 @@
           <!-- Contenido de la Pagina -->
         		
         		
-		        <input type"hidden" value="${especialidadId}" id="especialidadId" hidden>
-				<input type"hidden" value="${medicoId}" id="medicoId" hidden>
+		        <input type="hidden" value="${especialidadId}" id="especialidadId">
+				<input type="hidden" value="${medicoId}" id="medicoId">
 				<h3 class="form-signin-heading">Elija su Fecha</h3>
 				<br>
 				<br>
@@ -160,7 +151,7 @@
 
       </div>
       <!-- /.content-wrapper -->
-
+	</div>
     </div>
     <!-- /#wrapper -->
 

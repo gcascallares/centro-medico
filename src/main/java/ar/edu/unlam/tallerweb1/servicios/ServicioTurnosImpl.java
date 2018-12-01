@@ -123,7 +123,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		break;
 		case "Martes": ld = ld.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
 		break;
-		case "Miércoles": ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+		case "Miercoles": ld = ld.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
 		break;
 		case "Jueves": ld = ld.with(TemporalAdjusters.next(DayOfWeek.THURSDAY));
 		break;
@@ -133,7 +133,9 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		int ano = ld.getYear();
 	    int mes = ld.getMonthValue();
 	    int dia = ld.getDayOfMonth();
-	    String fechaSiguiente = dia+"-"+mes+"-"+ano;
+	    String diaBien = (dia < 10 ? "0"+dia : dia).toString();
+	    String mesBien = (mes < 10 ? "0"+mes : mes).toString();
+	    String fechaSiguiente = diaBien+"-"+mesBien+"-"+ano;
 		return fechaSiguiente;
 		
 	}
@@ -191,7 +193,22 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	}
 
 	@Override
-	public List<Turno> listaTurnosManana(Medico medico, String diaSiguiente) {
-		return servicioTurnoDao.listaTurnosManana(medico, diaSiguiente);
+	public List<Turno> listaTurnosProxDiaLaboral(Medico medico, String diaSiguiente) {
+		return servicioTurnoDao.listaTurnosProxDiaLaboral(medico, diaSiguiente);
+	}
+
+	@Override
+	public List<Atencion> buscarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId) {
+		return servicioTurnoDao.mostrarHistoriaClinicaDePaciente(pacienteId,medicoId);
+	}
+	
+	@Override
+	public List<Turno> listaTurnosPorPaciente(Long idUsuario) {
+		return servicioTurnoDao.listaTurnosPorPaciente(idUsuario);
+	}
+	
+	@Override
+	 public Turno actualizarTurno(Long turnoId, String fecha, String horario) {
+		return servicioTurnoDao.actualizarTurno(turnoId, fecha, horario);
 	}
 }

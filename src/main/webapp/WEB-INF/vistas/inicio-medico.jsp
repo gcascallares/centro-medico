@@ -67,24 +67,18 @@
 
     <div id="wrapper">
 
-      <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
+      	
         <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
             <span>Todos los Turnos</span>
           </a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosDeMañana/${medicoId}">
-            <i class="fas fa-file-signature"></i>
-            <span>Turnos de Mañana</span>
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
           </a>
         </li>
         <li class="nav-item">
@@ -129,23 +123,25 @@
         	<div id="turnos">
 				<c:forEach items="${listaTurnos}" var="Turnos">
 					<div class="card w-50 mx-auto mt-4 mb-4">
-					  <h5 class="card-header">Numero de turno: <span id="turno-${Turnos.id}">${Turnos.id}<span></h5>
+					  <h5 class="card-header">Numero de turno: <span id="turno-${Turnos.id}">${Turnos.id}</span></h5>
 					  <div class="card-body">
-					    <h5 class="card-title">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
+					    <a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}"><h5 class="card-title">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
 					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
 					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
-					<c:if test = "${Turnos.estudio == null}">
+					
 					<div class="d-flex justify-content-center mt-4">
+					<c:if test = "${Turnos.estudio == null}">
 					<button type="button" class="btn btn-primary mb-5 mr-4" data-toggle="modal" data-target="#turno${Turnos.id}">
 					  Dejar comentario
 					</button>
+					</c:if>
 					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#derivar">
 					  Derivar
 					</button>
 					</div>
-					</c:if>
+					
 					<!-- Button trigger modal -->
-					<c:if test = "${Turnos.estudio != null}">
+					<c:if test = "${Turnos.estado != 'Atendido'}">
 					<div class="text-center">
 						<button class="btn btn-success mb-5" onclick="atender(${Turnos.id},${consultorioId},${medico.id})" id="atendido-${Turnos.id}">Atendido</button>  
 			        </div>
