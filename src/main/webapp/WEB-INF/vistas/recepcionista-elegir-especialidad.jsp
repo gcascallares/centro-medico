@@ -33,6 +33,8 @@
 
 <script> 
 	var context = "${context}";
+	
+	var idPaciente = "${idPaciente}";
 </script>
 
 <body id="page-top">
@@ -104,19 +106,26 @@
 
           <!-- Contenido de la Pagina -->
         	
+        	<form:form action="/turno/{especialidadId}" method="POST" modelAttribute="especialidad">
 		
-			<h3 class="form-signin-heading">Elija La especialidad</h3>
+			<h3 class="form-signin-heading">Elija su especialidad</h3>
 			
 			<hr class="colorgraph">
 			
 			<br>
   
+        	<select id="especialidad">
+        		
+        		<option value="0" disabled selected>Seleccione una opcion</option>
+        		
 				<c:forEach items="${listaEsp}" var="Especialidad">
 				
 					
-					<a href="${context}/elegirmedico/${idPaciente}/${Especialidad.id}"><button class="btn btn-lg btn-primary btn-block" type="submit" path="especialidadId" value="${Especialidad.id}">${Especialidad.nombreEspecialidad}</button></a></br>
+					<option value="${Especialidad.id}" path="nombreEspecialidad">${Especialidad.nombreEspecialidad}</option>
 					
 				</c:forEach>	
+						
+			</select>
 			
 			<br>
 			<div id="mensajeEspecialidad" class="errores">Por favor seleccione alguna Especialiadad</div>
@@ -124,6 +133,11 @@
 			
 			
 			<br><br>			
+			
+			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
+			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
+			
+ 			</form:form>			
 
  			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
  			
@@ -169,6 +183,7 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+    <script src="${context}/js/recepcionista-elegir-especialidad.js" type="text/javascript"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
