@@ -76,15 +76,21 @@
           </a>
         </li>
        <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
             <span>Todos los Turnos</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/generarAtencion">
             <i class="fab fa-creative-commons-nd"></i>
-          	  <span> Atenciones</span></a>
+            <span> Atenciones</span></a>
         </li>
       </ul>	
 

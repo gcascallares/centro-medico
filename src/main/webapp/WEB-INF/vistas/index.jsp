@@ -82,18 +82,13 @@
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarhistoriaclinica">
             <i class="fas fa-history"></i>
-            <span>Historia Clinica</span>
+            <span> Historia Clinica</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/" id="derivacion">
             <i class="fab fa-creative-commons-nd"></i>
             <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i>
-            <span>  Contacto</span></a>
         </li>
       </ul>
 

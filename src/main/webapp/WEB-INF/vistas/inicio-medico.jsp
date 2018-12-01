@@ -67,8 +67,8 @@
 
     <div id="wrapper">
 
-      <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
+      	
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
@@ -77,8 +77,8 @@
         </li>
          <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
-            <i class="fas fa-file-signature"></i>
-            <span>Turnos del proximo dia Laboral</span>
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
           </a>
         </li>
         <li class="nav-item">

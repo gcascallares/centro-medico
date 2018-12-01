@@ -64,6 +64,20 @@
     <div id="wrapper">
 
     
+    <!-- Barra del costado -->
+       <ul class="sidebar navbar-nav">
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/generarAtencion">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span> Atenciones</span></a>
+        </li>
+      </ul>
 
       <div id="content-wrapper">
 
@@ -112,7 +126,9 @@
 
       </div>
       <!-- /.content-wrapper -->
-
+	
+	</div>
+	
     </div>
     <!-- /#wrapper -->
 

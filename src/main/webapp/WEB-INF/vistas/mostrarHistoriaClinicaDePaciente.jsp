@@ -82,7 +82,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
+            <i class="fas fa-mobile-alt"></i>
             <span>  Contacto</span></a>
         </li>
       </ul>
@@ -110,7 +110,7 @@
 							    <h1 class="display-5 mb-3">${paciente.nombre} ${paciente.apellido}</h1>
 							    <p class="lead">Dni: ${paciente.dni}</p>
 							    <p class="lead">Email: ${paciente.email}</p>
-							  </br>
+							  <br>
 							  </div>
 							</div>
 					<c:if test="${fn:length(historiaClinica) == 0}">
@@ -130,9 +130,9 @@
 						
 						    <div id="collapse${atencion.id}" class="collapse" aria-labelledby="heading${atencion.id}" data-parent="#accordionExample">
 						      <div class="card-body">
-						      		Especialidad: ${atencion.medico.especialidad.nombreEspecialidad} </br>
-						      		Medico: ${atencion.medico.nombre} </br>
-									Descripción : ${atencion.descripcion} </br></br></br>
+						      		Especialidad: ${atencion.medico.especialidad.nombreEspecialidad} <br>
+						      		Medico: ${atencion.medico.nombre} <br>
+									Descripción : ${atencion.descripcion} <br><br><br>
 									<c:choose>
 									    <c:when test="${ empty atencion.turno}">
 									        No se realizó con turno
@@ -157,7 +157,8 @@
 
       </div>
       <!-- /.content-wrapper -->
-
+	</div>
+	
     </div>
     <!-- /#wrapper -->
 

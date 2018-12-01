@@ -72,20 +72,16 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/misTurnos">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span> Mis Turnos</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i>
-            <span>  Contacto</span></a>
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span> Historia Clinica</span>
+          </a>
         </li>
       </ul>
 
@@ -186,7 +182,7 @@
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    
+
 </body>
 
 </html>

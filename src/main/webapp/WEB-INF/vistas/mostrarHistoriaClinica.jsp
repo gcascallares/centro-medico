@@ -38,7 +38,6 @@
 
 <body id="page-top">
 
-
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
@@ -67,34 +66,24 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-       <li class="nav-item">
+     <ul class="sidebar navbar-nav">
+      <li class="nav-item">
           <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/misTurnos">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span> Mis Turnos</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>Historia Clinica</span>
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span> Historia Clinica</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
         </li>
       </ul>
 
@@ -121,7 +110,7 @@
 							    <h1 class="display-5 mb-3">${paciente.nombre} ${paciente.apellido}</h1>
 							    <p class="lead">Dni: ${paciente.dni}</p>
 							    <p class="lead">Email: ${paciente.email}</p>
-							  </br>
+							  <br>
 							  </div>
 							</div>
 					<c:if test="${fn:length(listahistorial) == 0}">
@@ -141,9 +130,9 @@
 						
 						    <div id="collapse${atencion.id}" class="collapse" aria-labelledby="heading${atencion.id}" data-parent="#accordionExample">
 						      <div class="card-body">
-						      		Especialidad: ${atencion.medico.especialidad.nombreEspecialidad} </br>
-						      		Medico: ${atencion.medico.nombre} </br>
-									Descripción : ${atencion.descripcion} </br></br></br>
+						      		Especialidad: ${atencion.medico.especialidad.nombreEspecialidad} <br>
+						      		Medico: ${atencion.medico.nombre} <br>
+									Descripción : ${atencion.descripcion} <br><br><br>
 									<c:choose>
 									    <c:when test="${ empty atencion.turno}">
 									        No se realizó con turno
@@ -168,7 +157,7 @@
 
       </div>
       <!-- /.content-wrapper -->
-
+	</div>
     </div>
     <!-- /#wrapper -->
 
