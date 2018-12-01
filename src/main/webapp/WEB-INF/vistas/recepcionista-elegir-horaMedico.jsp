@@ -119,10 +119,10 @@
 			</select>
 			
 			<div> <h2 id="mensajeVacio">  </h2> </div>
-			<input type="text" path="${fecha}" value="${fecha}" name="fecha">
-			<input type="text" path="${medico_id}" value="${medico_id}" name="medico_id">
-			<input type="text" path="${especialidadId}" value="${especialidadId}" name="especialidadId">
-			<input type="text" path="${paciente_id}"  value="${paciente_id}" name="paciente_id">
+			<input type="text" hidden path="${fecha}" value="${fecha}" name="fecha">
+			<input type="text" hidden path="${medico_id}" value="${medico_id}" name="medico_id">
+			<input type="text" hidden path="${especialidadId}" value="${especialidadId}" name="especialidadId">
+			<input type="text" hidden path="${paciente_id}"  value="${paciente_id}" name="paciente_id">
 			<br>
 			
 			<button class="btn btn-primary" Type="Submit" />Reservar</button>
@@ -132,7 +132,7 @@
 			
 			</form:form>	
 
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+ 			<a href="${context}/elegirdia/${idPaciente}/${especialidadId}/${medicoId}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
  			
  			
  			

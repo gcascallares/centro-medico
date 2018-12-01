@@ -106,7 +106,7 @@
 
           <!-- Contenido de la Pagina -->
         	
-        	<form:form action="/turno/{especialidadId}" method="POST" modelAttribute="especialidad">
+        	<form:form action="" method="POST" modelAttribute="especialidad">
 		
 			<h3 class="form-signin-heading">Elija su especialidad</h3>
 			
@@ -139,7 +139,10 @@
 			
  			</form:form>			
 
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+ 			<form action="${context}/mostrarTurnosPaciente" method="POST">
+ 			<input type="text" hidden value="${idPaciente}" name=id>
+ 			<button  class="btn btn-lg btn-primary btn-block" Type="submit" >Volver</button>
+ 			</form>
  			
  			
  			

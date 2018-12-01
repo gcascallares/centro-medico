@@ -129,7 +129,7 @@
 			<br>
 		
 			</form:form>
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+ 			<a href="${context}/sacarTurno/${idPaciente}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
  			
  			
  			

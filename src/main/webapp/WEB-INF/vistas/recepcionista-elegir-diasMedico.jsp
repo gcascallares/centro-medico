@@ -46,7 +46,7 @@
 	
 	var context = "${context}";
 	var pacienteId = ${idPaciente};
-	var especialidadId =${especialidadId};
+	var especialidadId = ${especialidadId};
 	var medicoId = ${medicoId};
 </script>
 
@@ -151,7 +151,7 @@
  				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 
 				<br>
-				<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+				<a href="${context}/elegirmedico/${idPaciente}/${especialidadId}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
 
  			
  			
