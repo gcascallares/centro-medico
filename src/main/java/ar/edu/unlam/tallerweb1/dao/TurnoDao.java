@@ -42,4 +42,8 @@ public interface TurnoDao {
 
 	List<Atencion> mostrarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId);
 
+	List<Turno> listaTurnosPorPaciente(Long pacienteId);
+
+	Turno actualizarTurno(Long turnoId, String fecha, String horario);
+
 }

@@ -56,6 +56,10 @@ public interface ServicioTurnos {
 
 	List<Atencion> buscarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId);
 
+	List<Turno> listaTurnosPorPaciente(Long idUsuario);
+
+	Turno actualizarTurno(Long turnoId, String fecha, String horario);
+
 }
 
 

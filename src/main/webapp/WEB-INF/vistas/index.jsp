@@ -74,9 +74,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/misTurnos">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span> Mis Turnos</span>
           </a>
         </li>
         <li class="nav-item">

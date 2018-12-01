@@ -175,7 +175,7 @@
           </div>
         </div>
       </div>
-	
+	</div>
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
@@ -183,7 +183,6 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
-    <script src="${context}/js/filtro-medico-dia.js" type="text/javascript"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>

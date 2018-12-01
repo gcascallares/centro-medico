@@ -9,12 +9,13 @@
 <head>
 
 <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Especificaciones del Turno</title>
+    <title>Elija su Turno</title>
 
  	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -36,11 +37,12 @@
 
 <body id="page-top">
 
+
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
       
@@ -66,7 +68,7 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-          <a class="nav-link" href="${context}/Home">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
@@ -99,67 +101,69 @@
               <a href="#">Solicitar Turno</a>
             </li>
           </ol>
-          
+      </div>    
           
           
           
           
           
 
-        <!-- Contenido de la Pagina -->
-        
-        <h1>Especificaciones de su Turno</h1> <br>
+          <!-- Contenido de la Pagina -->
+        	<h3 class="form-signin-heading">Lista de Turnos</h3>
+			<hr class="colorgraph">
+			<br>
+			
+				
+			<c:forEach items="${listaTurnos}" var="Turnos">
+			
+					<div class="card w-50 mx-auto mt-4 mb-4">
+					  <h5 class="card-header">Numero de turno: <span id="turno-${Turnos.id}">${Turnos.id}</span></h5>
+					  <div class="card-body">
+					  	<h5 class="card-title">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5>
+					    <h5 class="card-title">D.N.I: ${Turnos.paciente.dni}</h5>
+					    <h5 class="card-title">Especialidad: ${Turnos.medico.especialidad.nombreEspecialidad}</h5>
+					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
+					    <h5 class="card-title">Fecha: ${Turnos.fecha}</h5>
+					    
+					    <input type="hidden" value="${Turnos.medico.especialidad.id}" id="especialidad">
+					    <input type="hidden" value="${Turnos.id}" id="turnoId">
+					    <input type="hidden" value="${Turnos.medico.id}" id="medicoId">
+					
+					<div class="d-flex justify-content-center mt-4">
 
-    	<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-user-md"></i> <span>  Medico: ${turno.medico.nombre}</span> 
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad: ${turno.medico.especialidad.nombreEspecialidad}</span> 
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="far fa-clock"></i> <span>  Horario: ${turno.horario}</span>
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-calendar-alt"></i><span>  Fecha: ${turno.fecha}</span>
-		  </div>
-		</div>
-		
-		<br>
-		
-		<a class="btn btn-primary" href="${context}/Home" role="button"> Volver a Inicio </a>
-		
-		
-		
+					<a href="${context}/misTurnos/actualizar/${Turnos.id}/${Turnos.medico.especialidad.id}/${Turnos.medico.id}">
+					<button type="button" class="btn btn-primary mb-5 mr-4" id="actualizar">
+					  Actualizar
+					</button></a>
 
+					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#eliminarTurno">
+					  Eliminar
+					</button>
+					</div>
+					
+					</div>
+					</div>
+					
+				
+			
+							
+			</c:forEach>	
+			<br>	
+				
+			<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>	
+			
       </div>
       <!-- /.content-wrapper -->
-	
-	</div>
+
     </div>
     <!-- /#wrapper -->
 
-     <!--Boton para ir a arriba-->
+    <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Modal de cierre de sesio-->
+    <!-- Modal de cierre de sesion-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -176,7 +180,25 @@
           </div>
         </div>
       </div>
-	</div>	
+    </div>
+    
+    <div class="modal fade" id="eliminarTurno" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere Eliminar este turno</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="${context}/misTurnos/${Turnos.id}">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
@@ -184,10 +206,13 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+    <script src="${context}/js/misTurnos.js" type="text/javascript"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
     
+	
+	
 </body>
 
 </html>

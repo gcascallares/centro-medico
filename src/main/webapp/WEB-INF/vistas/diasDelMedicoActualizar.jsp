@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,29 +15,43 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Especificaciones del Turno</title>
+    <title>Elija su Fecha</title>
 
- 	<!-- Bootstrap -->
+    <!-- Bootstrap core CSS-->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="${context}/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
     <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
 
-    <!-- Font Awesome-->
-    <link href="${context}/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
-    <!-- Estilo que se aplica a todas las Vistas-->
+    <!-- Custom styles for this template-->
     <link href="${context}/css/sb-admin.css" rel="stylesheet">
     
+    <link href="${context}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" >
+    
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
+
 
 </head>
 
 <script> 
+
+
+///GUARDO LA LISTA CON LOS ID DE DIAS EN JAVASCRIPT
+	var dias = new Array();
+	<c:forEach items="${dias}" var="dia"> 
+	   dias.push(${dia});
+	</c:forEach> 
+	
 	var context = "${context}";
 </script>
 
 <body id="page-top">
 
-	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+	 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
@@ -65,16 +80,10 @@
 
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-      <li class="nav-item">
-          <a class="nav-link" href="${context}/Home">
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/Inicio">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
           </a>
         </li>
         <li class="nav-item">
@@ -106,51 +115,44 @@
           
           
 
-        <!-- Contenido de la Pagina -->
-        
-        <h1>Especificaciones de su Turno</h1> <br>
+          <!-- Contenido de la Pagina -->
+        		
+        		
+		        <input type="hidden" value="${especialidadId}" id="especialidadId">
+				<input type="hidden" value="${medicoId}" id="medicoId">
+				<input type="hidden" value="${turnoId}" id="turnoId">
+				
+				<h3 class="form-signin-heading">Elija su Fecha</h3>
+				<br>
+				<br>
+		
+				<input type="text" id="datepicker">
+				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
+				
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				
+				<a class="btn btn-lg btn-primary btn-block" id="siguienteActualizar">Continuar</a>
+				<br>
+				<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
 
-    	<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-user-md"></i> <span>  Medico: ${turno.medico.nombre}</span> 
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad: ${turno.medico.especialidad.nombreEspecialidad}</span> 
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="far fa-clock"></i> <span>  Horario: ${turno.horario}</span>
-		  </div>
-		</div>
-		
-		<br>
-		
-		<div class="card">
-		  <div class="card-body">
-		    <i class="fas fa-calendar-alt"></i><span>  Fecha: ${turno.fecha}</span>
-		  </div>
-		</div>
-		
-		<br>
-		
-		<a class="btn btn-primary" href="${context}/Home" role="button"> Volver a Inicio </a>
-		
-		
-		
 
       </div>
       <!-- /.content-wrapper -->
-	
+
 	</div>
+	
     </div>
     <!-- /#wrapper -->
 
@@ -176,18 +178,26 @@
           </div>
         </div>
       </div>
-	</div>	
-	 <!-- Bootstrap core y JavaScript-->
+	
+	</div>
+	<!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
 
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+    <script src="${context}/js/elegir-dia-del-medico-actualizar.js" type="text/javascript"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    
+	
+	<!-- Jquery UI-->
+	<script src="${context}/js/jquery-ui/jquery-ui.min.js"></script>
+	
+	<!-- Moments JS-->
+	<script src="${context}/js/moment.js" type="text/javascript"></script>
+	
 </body>
 
 </html>
