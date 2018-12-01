@@ -100,7 +100,7 @@
             </li>
           </ol>
           
-          
+     </div>     
           
           
           
@@ -149,8 +149,7 @@
 
       </div>
       <!-- /.content-wrapper -->
-	
-	</div>
+
     </div>
     <!-- /#wrapper -->
 

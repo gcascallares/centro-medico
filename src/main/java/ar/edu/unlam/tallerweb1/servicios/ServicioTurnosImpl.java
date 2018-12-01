@@ -201,5 +201,14 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public List<Atencion> buscarHistoriaClinicaDePaciente(Long pacienteId, Long medicoId) {
 		return servicioTurnoDao.mostrarHistoriaClinicaDePaciente(pacienteId,medicoId);
 	}
-
+	
+	@Override
+	public List<Turno> listaTurnosPorPaciente(Long idUsuario) {
+		return servicioTurnoDao.listaTurnosPorPaciente(idUsuario);
+	}
+	
+	@Override
+	 public Turno actualizarTurno(Long turnoId, String fecha, String horario) {
+		return servicioTurnoDao.actualizarTurno(turnoId, fecha, horario);
+	}
 }
