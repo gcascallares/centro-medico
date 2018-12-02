@@ -35,8 +35,6 @@
 	</script>
 
  <body id="page-top">
- 
- 	<input type="hidden" value="${usuario.id}" id="usuario">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -84,11 +82,6 @@
             <i class="fas fa-history"></i>
             <span> Historia Clinica</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="${context}/" id="derivacion">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
         </li>
       </ul>
 
@@ -312,7 +305,6 @@
 
     <!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    <script src="${context}/js/derivacion.js"></script>
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>

@@ -84,6 +84,11 @@
             <span> Historia Clinica</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/" id="derivacion">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span>  Derivaciones</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
