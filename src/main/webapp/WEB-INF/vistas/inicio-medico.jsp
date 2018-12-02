@@ -100,10 +100,10 @@
           <!--Menu Hamburguesa -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Solicitar Turno</a>
+              <a href="#">Medico</a>
             </li>
           </ol>
-     </div>     
+         
           
           
           
@@ -238,7 +238,7 @@
  			
  			
  			
- 			
+ 		</div> 	
  			
 
       </div>

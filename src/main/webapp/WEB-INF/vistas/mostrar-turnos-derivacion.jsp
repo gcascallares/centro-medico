@@ -101,11 +101,8 @@
               <a href="#">Solicitar Turno</a>
             </li>
           </ol>
-      </div>    
-          
-          
-          
-          
+      
+ 
           
 
           <!-- Contenido de la Pagina -->
@@ -147,6 +144,8 @@
 				    </div>
 				</div>	
       </footer>
+
+	</div>
 
     </div>
     <!-- /#wrapper -->

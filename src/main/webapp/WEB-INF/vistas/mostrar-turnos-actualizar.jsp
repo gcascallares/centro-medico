@@ -104,7 +104,7 @@
             </li>
           </ol>
           
-     </div>     
+        
           
           
           
@@ -134,7 +134,7 @@
 			<input type="hidden" value="${especialidadId}" id="especialidadId">
 			<br>
 			<div class="text-center">
-				<button class="btn btn-primary" id="actualizar" Type="Submit">Reservar</button>
+				<button class="btn btn-primary" id="actualizar" Type="Submit">Actualizar</button>
 			</div>
 			<br>
 			<br>
@@ -153,6 +153,8 @@
 				</div>	
       </footer>
 
+	</div>  
+	
     </div>
     <!-- /#wrapper -->
 

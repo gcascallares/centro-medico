@@ -88,11 +88,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/generarAtencion">
+          <a class="nav-link" href="${context}/generarAtencion/${medicoId}/${consultorioId}">
             <i class="fab fa-creative-commons-nd"></i>
             <span> Atenciones</span></a>
         </li>
       </ul>	
+      
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Turno</a>
+            </li>
+          </ol>
 
  			<c:if test="${fn:length(listaTurnosProxDiaLaboral) != 0}">
 				<h3 class="form-signin-heading text-center" id="sub-titulo">Turnos Mañana</h3>
@@ -101,24 +112,26 @@
 			<c:if test="${fn:length(listaTurnosProxDiaLaboral) == 0}">
 				<div class="text-center mt-5"><h2>No hay turnos</h2></div>
 			</c:if>
-   <br>
-   <c:forEach items="${listaTurnosProxDiaLaboral}" var="Turnos">
-   <div class="card w-10 mx-auto mt-2 mb-2">
-   
-   						<a href="${context}/medico/mostrarhistoriaclinica/${paciente.id}"><h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
-   						 <div class="card-body">
-					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
-					    <h5 class="card-title">Fecha: ${Turnos.fecha}</h5>
-					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
-					    </div>
-   </div>
-   </c:forEach>
+			   <br>
+			   <c:forEach items="${listaTurnosProxDiaLaboral}" var="Turnos">
+			   <div class="card w-10 mx-auto mt-2 mb-2">
+			   
+			   						<a href="${context}/medico/mostrarhistoriaclinica/${paciente.id}"><h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
+			   						 <div class="card-body">
+								    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
+								    <h5 class="card-title">Fecha: ${Turnos.fecha}</h5>
+								    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
+								    </div>
+			   </div>
+			   </c:forEach>
    
 
     </div>
 
 
-
+	</div>
+	
+	</div>
 
    <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
