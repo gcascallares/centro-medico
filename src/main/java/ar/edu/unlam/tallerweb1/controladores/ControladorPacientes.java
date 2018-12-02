@@ -45,9 +45,15 @@ public class ControladorPacientes {
 	private ServicioPaciente servicioPaciente;
 	
 	@RequestMapping("/buscadorPaciente")
-	public ModelAndView buscadorDePacientes(){
+	public ModelAndView buscadorDePacientes(HttpServletRequest request){
 		ModelMap modelo = new ModelMap();
-		return new ModelAndView("buscadorPacientes", modelo);
+		String usuarioRol = (String)request.getSession().getAttribute("ROL");
+		if("recepcionista".equals(usuarioRol)){
+			return new ModelAndView("buscadorPacientes", modelo);
+		}
+		else{
+			return new ModelAndView("redirect:/Iniciar", modelo);
+		}
 	}
 	
 	@RequestMapping(path="/buscarpacientespordni", method = RequestMethod.POST)
