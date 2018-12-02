@@ -697,3 +697,7 @@ fieldset[disabled] .btn-primary.active {
   position: absolute;
 }
 
+.progress.active .progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}

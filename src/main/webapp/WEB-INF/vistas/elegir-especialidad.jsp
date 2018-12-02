@@ -142,15 +142,19 @@
 			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
 			
  			</form:form>
- 			
- 			
- 			
- 			
+			
  			
 
       </div>
       <!-- /.content-wrapper -->
 	</div>
+			<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:16%">16%</div>
+				    </div>
+				</div>	
+                </footer>
     </div>
     <!-- /#wrapper -->
 

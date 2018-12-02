@@ -138,6 +138,14 @@
 
       </div>
       <!-- /.content-wrapper -->
+      
+      	<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:80%">80%</div>
+				    </div>
+				</div>	
+        </footer>
 
     </div>
     <!-- /#wrapper -->
