@@ -38,5 +38,10 @@ public class ServicioConsultoriosImpl implements ServicioConsultorio{
 		servicioConsultoriosDao.guardarConsultorio(consultorio);
 		
 	}
+	
+	@Override
+	public Consultorio buscarConsultorioPorMedico (Long medicoId) {
+		return servicioConsultoriosDao.buscarConsultorioPorMedico(medicoId);
+	}
 
 }

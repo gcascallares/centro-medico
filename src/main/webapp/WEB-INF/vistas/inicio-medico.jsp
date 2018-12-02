@@ -68,7 +68,12 @@
     <div id="wrapper">
 
       <ul class="sidebar navbar-nav">
-      	
+      	 <li class="nav-item">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
@@ -82,7 +87,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/generarAtencion">
+          <a class="nav-link" href="${context}/generarAtencion/${medicoId}/${consultorioId}">
             <i class="fab fa-creative-commons-nd"></i>
             <span> Atenciones</span></a>
         </li>
@@ -107,7 +112,7 @@
 
           <!-- Contenido de la Pagina -->
         	
-        	<h2 class="form-signin-heading" id="titulo">Bienvenido Dr. ${medico.nombre}</h2>
+        	<h3 class="form-signin-heading" id="titulo">  Bienvenido Dr. ${medico.nombre}</h3>
 			
 			<hr class="colorgraph">
 			

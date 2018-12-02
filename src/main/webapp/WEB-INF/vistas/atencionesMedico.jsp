@@ -33,7 +33,7 @@
 	<script> 
 		var context = "${context}";
 	</script>
- <body id="page-top">
+ <body id="page-top" background="">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -59,29 +59,34 @@
       </ul>
 	</div>
     </nav>
-    <div id="wrapper">
+    <div  id="wrapper">
 
      <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
+       <ul class="sidebar navbar-nav">
        <li class="nav-item">
           <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
-            <span>  Inicio</span>
+            <span>Inicio</span>
           </a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
             <span>Todos los Turnos</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}">
-            <i class="fas fa-file-signature"></i>
-            <span>Turnos del proximo dia Laboral</span>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
           </a>
         </li>
-      </ul>	
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/generarAtencion/${medicoId}/${consultorioId}">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span> Atenciones</span></a>
+        </li>
+      </ul>		
 
       <div id="content-wrapper">
 
@@ -90,7 +95,7 @@
           <!--Menu Hamburguesa -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Inicio</a>
+              <a href="#">Atenciones</a>
             </li>
           </ol>
           
@@ -101,9 +106,9 @@
         		<div class="container">
         			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>     		
 			     <!-- Barra de Busqueda -->
-			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/atencionpacientespordni" method="POST">
+			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/atencionpacientespordni/${medicoId}/${consultorioId}" method="POST">
 			        <div class="input-group">
-			          <input path="dni" name="dni" required type="number" class="form-control" placeholder="Buscar por dni" aria-label="Search" aria-describedby="basic-addon2">
+			          <input name="dni" required type="number" class="form-control" placeholder="Buscar por dni" aria-label="Search" aria-describedby="basic-addon2">
 			          <div class="input-group-append">
 			            <button class="btn btn-primary" type="submit">
 			              <i class="fas fa-search"></i>

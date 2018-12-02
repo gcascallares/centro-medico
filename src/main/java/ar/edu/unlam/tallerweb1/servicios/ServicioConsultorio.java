@@ -15,4 +15,7 @@ public interface ServicioConsultorio {
 	void guardarConsultorio(Consultorio consultorio);
 
 
+	Consultorio buscarConsultorioPorMedico(Long medicoId);
+
+
 }

@@ -4,5 +4,8 @@ $(document).ready(function() {
 		alert(id);
 	}
 	
+	$("#atras").click(function(){
+		window.history.back();
+	});
 	
 });

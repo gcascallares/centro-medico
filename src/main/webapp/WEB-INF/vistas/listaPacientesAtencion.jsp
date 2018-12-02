@@ -72,22 +72,27 @@
        <li class="nav-item">
           <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
-            <span>  Inicio</span>
+            <span>Inicio</span>
           </a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}">
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
             <span>Todos los Turnos</span>
           </a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}">
-            <i class="fas fa-file-signature"></i>
-            <span>Turnos del proximo dia Laboral</span>
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
           </a>
         </li>
-      </ul>	
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/generarAtencion">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span> Atenciones</span></a>
+        </li>
+      </ul>
 
       <div id="content-wrapper">
 
@@ -96,7 +101,7 @@
           <!--Menu Hamburguesa -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Atencion</a>
+              <a href="#">Atenciones</a>
             </li>
           </ol>
      </div>     
@@ -111,7 +116,7 @@
         
         	<div id="turnos">
 				<form:form action="${context}/mostrarTurnosPaciente" method="POST">
-					<h3 class="form-signin-heading"> Elija su paciente</h3>
+					<h3 class="form-signin-heading"> Genere la Atencion</h3>
 					<hr class="colorgraph">
 					<br>
    	
@@ -212,7 +217,7 @@
 		var mensaje = $("#comentario").val();
 		var idPaciente = $("#paciente").val();
 		
-		window.location.href = window.context+"/generarAtencion/" + mensaje + "/" + idPaciente;
+		window.location.href = window.context+"/generarAtencion/" + mensaje + "/" + idPaciente + "/" + ${medicoId} + "/" + ${consultorioId};
 	}
 	
 		

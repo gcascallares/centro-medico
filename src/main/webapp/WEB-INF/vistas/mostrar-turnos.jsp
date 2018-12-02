@@ -29,6 +29,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
+
 </head>
 
 <script> 
@@ -84,6 +85,11 @@
             <span> Historia Clinica</span>
           </a>
         </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/derivacion/${usuarioId}">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span>  Derivaciones</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -116,9 +122,9 @@
 				<div class="w-75 p-3 text-center mx-auto" >
 				<c:forEach items="${listaDeTurnos}" var="t">
 							    <label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
+							    
 				</c:forEach>
 				</div>
-				
 				
 				
 			<div> <h2 id="mensajeVacio">  </h2> </div>
@@ -138,6 +144,14 @@
 
       </div>
       <!-- /.content-wrapper -->
+      
+      	<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:80%">80%</div>
+				    </div>
+				</div>	
+        </footer>
 
     </div>
     <!-- /#wrapper -->
@@ -178,7 +192,6 @@
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
     
-	
 	
 </body>
 

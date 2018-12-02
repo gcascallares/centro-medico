@@ -80,6 +80,7 @@ public class ControladorMedico {
 		//Guarda el idMedico en el consultorio elejido
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
 		Consultorio consultorio = servicioConsultorio.buscarConsultorioEspecifico(consultorioId);
+		
 		consultorio.setMedico(medico);
 		servicioConsultorio.guardarConsultorio(consultorio);
 		
@@ -111,19 +112,33 @@ public class ControladorMedico {
 	
 	
 	
-	@RequestMapping("/generarAtencion")
-	public ModelAndView buscadorDePacientes(){
+	@RequestMapping("/generarAtencion/{medicoId}/{consultorioId}")
+	public ModelAndView buscadorDePacientes(@PathVariable Long medicoId ,@PathVariable Long consultorioId , HttpServletRequest request){
+	
+		//Long medicoId = (Long)request.getSession().getAttribute("ID");
+		//Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
+		//Long consultorioId = consultorio.getId();
 		
 		ModelMap modelo = new ModelMap();
+		
+		modelo.put("medicoId", medicoId);
+		modelo.put("consultorioId", consultorioId);
 		
 		return new ModelAndView("atencionesMedico", modelo);
 		
 	}
 	
-	@RequestMapping(path="/atencionpacientespordni", method = RequestMethod.POST)
-	public ModelAndView buscarPacientesPorDni(@RequestParam Long dni, HttpServletRequest request){
+	@RequestMapping(path="/atencionpacientespordni/{medicoId}/{consultorioId}", method = RequestMethod.POST)
+	public ModelAndView buscarPacientesPorDni(@PathVariable Long medicoId ,@PathVariable Long consultorioId ,@RequestParam Long dni, HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
+		
+		//Long medicoId = (Long)request.getSession().getAttribute("ID");
+		//Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
+		//Long consultorioId = consultorio.getId();
+		
+		modelo.put("medicoId", medicoId);
+		modelo.put("consultorioId", consultorioId);
 		
 		List <Paciente> listaPacientes = servicioBuscadorPacientes.listaPacientes(dni);
 		modelo.put("listapacientes",listaPacientes);
@@ -131,16 +146,16 @@ public class ControladorMedico {
 		return new ModelAndView("listaPacientesAtencion", modelo);
 	}
 	
-	@RequestMapping("/generarAtencion/{mensaje}/{idPaciente}")
-	public ModelAndView guardarAtencion(@PathVariable String mensaje, @PathVariable Long idPaciente , HttpServletRequest request){
+	@RequestMapping("/generarAtencion/{mensaje}/{idPaciente}/{medicoId}/{consultorioId}")
+	public ModelAndView guardarAtencion(@PathVariable Long medicoId ,@PathVariable Long consultorioId, @PathVariable String mensaje, @PathVariable Long idPaciente , HttpServletRequest request){
 		
 		String fecha = servicioTurnos.diaActual();
 		
-		Long medicoId = (Long) request.getSession().getAttribute("ID");
+		//Long medicoId = (Long) request.getSession().getAttribute("ID");
 		
 		servicioTurnos.guardarAtencion(mensaje, idPaciente, medicoId, fecha);
 
-		return new ModelAndView("redirect:/generarAtencion");
+		return new ModelAndView("redirect:/generarAtencion/{medicoId}/{consultorioId}");
 		
 	}
 	
@@ -182,15 +197,23 @@ public class ControladorMedico {
 		
 	}
 	
-	@RequestMapping("/medico/mostrarhistoriaclinica/{pacienteId}")
-	public ModelAndView mostrarHistoriaClinica(@PathVariable Long pacienteId , HttpServletRequest request){
-		Long medicoId = (Long)request.getSession().getAttribute("ID");
+	@RequestMapping("/medico/mostrarhistoriaclinica/{pacienteId}/{medicoId}/{consultorioId}")
+	public ModelAndView mostrarHistoriaClinica(@PathVariable Long medicoId ,@PathVariable Long consultorioId, @PathVariable Long pacienteId , HttpServletRequest request){
+		
+		//Long medicoId = (Long)request.getSession().getAttribute("ID");
+		//Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
+		//Long consultorioId = consultorio.getId();
+		
 		ModelMap modelo = new ModelMap();
 		Paciente paciente = servicioTurnos.mostrarDatosPaciente(pacienteId);
+		
 		List<Atencion> historiaClinica = servicioTurnos.buscarHistoriaClinicaDePaciente(pacienteId,medicoId);		
 		
 		modelo.put("historiaClinica", historiaClinica);
 		modelo.put("paciente", paciente);
+		modelo.put("medicoId", medicoId);
+		modelo.put("consultorioId", consultorioId);
+		
 		return new ModelAndView("mostrarHistoriaClinicaDePaciente", modelo);
 		
 	}

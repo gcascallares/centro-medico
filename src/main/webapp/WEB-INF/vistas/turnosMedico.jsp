@@ -17,7 +17,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Bootstrap -->
+    <title>Elija su Turno</title>
+
+ 	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
 
@@ -29,8 +31,6 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
-	<title>Bienvenido Medico</title>
-
 </head>
 
 <script> 
@@ -39,12 +39,11 @@
 
 <body id="page-top">
 
-
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
       </button>
       
@@ -68,7 +67,7 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
+    <ul class="sidebar navbar-nav">
        <li class="nav-item">
           <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
@@ -88,45 +87,83 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/generarAtencion">
+          <a class="nav-link" href="${context}/generarAtencion/${medicoId}/${consultorioId}">
             <i class="fab fa-creative-commons-nd"></i>
             <span> Atenciones</span></a>
         </li>
       </ul>	
 
- 			<c:if test="${fn:length(listaTodosLosTurnos) != 0}">
-				<h3 class="form-signin-heading text-center" id="sub-titulo">Todos Los Turnos</h3>
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Turnos</a>
+            </li>
+          </ol>
+      </div>    
+          
+
+
+          <!-- Contenido de la Pagina -->
+			
+			<c:if test="${fn:length(listaTodosLosTurnos) != 0}">
+				<h3 class="form-signin-heading text-center" id="sub-titulo">Lista de Turnos</h3>
 			</c:if>
   			
 			<c:if test="${fn:length(listaTodosLosTurnos) == 0}">
 				<div class="text-center mt-5"><h2>No hay turnos</h2></div>
 			</c:if>
    <br>
-   <c:forEach items="${listaTodosLosTurnos}" var="Turnos">
-   <div class="card mx-auto mt-2 mb-2">
-   
-   						<a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}"><h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
-   						 <div class="card-body">
-					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
-					    <h5 class="card-title">Fecha: ${Turnos.fecha}</h5>
-					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
-					    <h5 class="card-title">Estado del turno: ${Turnos.estado}</h5>
-					    </div>
-   </div>
-   </c:forEach>
-   
+   			<div class="accordion" id="accordionExample">
+						<c:forEach items="${listaTodosLosTurnos}" var="Turnos">
+						  <div class="card">
+						    <div class="card-header" id="heading${atencion.id}">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${atencion.id}" aria-expanded="true" aria-controls="collapse${turno.id}">
+						         Fecha del Turno: <span id="turno-${Turnos.id}">${Turnos.fecha}</span>
+						        </button>
+						      </h5>
+						    </div>
+						
+						    <div id="collapse${atencion.id}" class="collapse" aria-labelledby="heading${atencion.id}" data-parent="#accordionExample">
+						      <div class="card-body">
+						      		<a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}/${medicoId}/${consultorioId}">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</a><br>
+					   				D.N.I: ${Turnos.paciente.dni}<br>
+					  				Especialidad: ${Turnos.medico.especialidad.nombreEspecialidad}<br>
+					    			Horario: ${Turnos.horario}<br>
+					    			Estado: ${Turnos.estado}<br>
+						      </div>
+						    </div>
+						  </div>
+						  </c:forEach> 
+						  
+						 <input type="hidden" value="${Turnos.medico.especialidad.id}" id="especialidad">
+						 <input type="hidden" value="${Turnos.medico.consultorio.id}" id="consultorioId">
+					     <input type="hidden" value="${Turnos.id}" id="turnoId">
+					    <input type="hidden" value="${Turnos.medico.id}" id="medicoId"> 
+					    
+					</div>
+		
+				
+			<br>	
+				
+			<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
+			
+      </div>
+      <!-- /.content-wrapper -->
 
     </div>
+    <!-- /#wrapper -->
 
-
-
-
-   <!--Boton para ir a arriba-->
+    <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Modal de cierre de sesio-->
+    <!-- Modal de cierre de sesion-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -144,13 +181,8 @@
         </div>
       </div>
     </div>
-	
-	<script> 
-	
-	
-	
-		
-	</script>
+    
+    
 	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
@@ -163,6 +195,7 @@
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
+	
 	
 </body>
 

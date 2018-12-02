@@ -34,7 +34,6 @@ public class MedicoDaopImpl implements MedicoDao {
 
 	}
 	
-	
 	//Este funciona en caso de que se filtre por fecha
 	@Override
 	public List<Medico> listaDeMedicosPorEspecialidad (Long especialidadId) {

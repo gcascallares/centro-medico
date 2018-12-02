@@ -53,5 +53,18 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 
 	}
 	
+	@Override
+	public Consultorio buscarConsultorioPorMedico (Long medicoId) {
+		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	Consultorio consultorioEspecifico = (Consultorio) session.createCriteria (Consultorio.class)
+										.createAlias("medico", "medicoBuscado")
+										.add(Restrictions.eq("medicoBuscado.id",medicoId))
+										.uniqueResult();
+	return consultorioEspecifico;
+
+	}
+	
 
 }

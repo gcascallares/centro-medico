@@ -85,6 +85,11 @@
             <span> Historia Clinica</span>
           </a>
         </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/derivacion/${usuarioId}">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span>  Derivaciones</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -117,12 +122,18 @@
 				<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
 		
 			</div>
-			
- 			
 
       </div>
       <!-- /.content-wrapper -->
-
+      
+      <footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:32%">32%</div>
+				    </div>
+				</div>	
+                </footer>
+	
     </div>
     <!-- /#wrapper -->
 
@@ -149,6 +160,14 @@
         </div>
       </div>
     </div>
+	
+	<script type="text/javascript">
+	$(".progress-bar").animate({
+	    width: "70%"
+	}, 2500);
+	
+	</script>
+	
 	
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>

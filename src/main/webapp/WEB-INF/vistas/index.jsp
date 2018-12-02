@@ -35,8 +35,6 @@
 	</script>
 
  <body id="page-top">
- 
- 	<input type="hidden" value="${usuario.id}" id="usuario">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -86,9 +84,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/" id="derivacion">
+          <a class="nav-link" href="${context}/derivacion/${usuario.id}">
             <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
+            <span> Derivaciones</span>
+          </a>
         </li>
       </ul>
 
@@ -104,7 +103,7 @@
           </ol>       
           
           <!-- Contenido de la Pagina -->
-        	<div class="jumbotron feature" id="banner">
+        	<div class="jumbotron feature" id="bannerPrincipal">
         		<div class="container">
         			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>
         			<p>Que tu medicina sea tu alimento, y el alimento tu medicina</p>
@@ -264,7 +263,7 @@
                 <!-- /.container-fluid -->
 
                 <!-- Sticky Footer -->
-                <footer class="sticky-footer" id="footer">
+                <footer class="sticky-footer" id="footerPrincipal">
                   <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                      <p><a href="#">Terminos &amp; Condiciones</a> | <a href="#">Politicas de Privacidad</a> | <a href="#">Contacto</a></p>
@@ -312,7 +311,6 @@
 
     <!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
-    <script src="${context}/js/derivacion.js"></script>
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>

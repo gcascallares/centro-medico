@@ -40,9 +40,6 @@
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars fa-2x" style="color: white;"></i>
-      </button>
       
       <!-- Desplegable del usuario -->
       <div class="ml-auto">
@@ -65,19 +62,6 @@
 
     
     <!-- Barra del costado -->
-       <ul class="sidebar navbar-nav">
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
-            <i class="fas fa-home"></i>
-            <span>Inicio</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="${context}/generarAtencion">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span> Atenciones</span></a>
-        </li>
-      </ul>
 
       <div id="content-wrapper">
 
