@@ -71,19 +71,19 @@
        <li class="nav-item">
           <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
-            <span>Inicio</span>
+            <span> Inicio</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
-            <span>Todos los Turnos</span>
+            <span> Todos los Turnos</span>
           </a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
            <i class="fas fa-calendar-check"></i>
-            <span>Turnos del Proximo Dia</span>
+            <span> Turnos del Proximo Dia</span>
           </a>
         </li>
         <li class="nav-item">
@@ -103,7 +103,7 @@
               <a href="#">Turnos</a>
             </li>
           </ol>
-      </div>    
+         
           
 
 
@@ -116,7 +116,7 @@
 			<c:if test="${fn:length(listaTodosLosTurnos) == 0}">
 				<div class="text-center mt-5"><h2>No hay turnos</h2></div>
 			</c:if>
-   <br>
+   			<br>
    			<div class="accordion" id="accordionExample">
 						<c:forEach items="${listaTodosLosTurnos}" var="Turnos">
 						  <div class="card">
@@ -154,7 +154,9 @@
 			
       </div>
       <!-- /.content-wrapper -->
-
+	
+	</div> 
+	
     </div>
     <!-- /#wrapper -->
 

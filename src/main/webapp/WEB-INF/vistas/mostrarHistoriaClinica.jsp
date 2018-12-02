@@ -97,13 +97,16 @@
         <div class="container-fluid">
 
           <!--Menu Hamburguesa -->
-
+		  <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Historia Clinica</a>
+            </li>
+          </ol>
+         
 
 
           <!-- Contenido de la Pagina -->
-        	
-        	<div class="container">
-				</div>
+				
  						<h3 class="form-signin-heading">Historia Clinica del Paciente ${paciente.nombre} ${paciente.apellido}</h3>
 			
 							<hr class="colorgraph">
@@ -155,15 +158,16 @@
 						  </c:if>
 						  </c:forEach> 
 						</div>
-									
+								
 			
 							<br>
  			<a onclick="window.history.back()"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
 
+		</div>
+		
       </div>
       <!-- /.content-wrapper -->
 	</div>
-    </div>
     <!-- /#wrapper -->
 
      <!--Boton para ir a arriba-->

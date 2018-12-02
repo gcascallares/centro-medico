@@ -101,7 +101,7 @@
               <a href="#">Solicitar Turno</a>
             </li>
           </ol>
-      </div>    
+          
           
           
           
@@ -166,6 +166,8 @@
 			<br>	
 				
 			<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>	
+			
+		</div>	
 			
       </div>
       <!-- /.content-wrapper -->
