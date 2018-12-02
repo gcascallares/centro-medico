@@ -80,6 +80,7 @@ public class ControladorMedico {
 		//Guarda el idMedico en el consultorio elejido
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
 		Consultorio consultorio = servicioConsultorio.buscarConsultorioEspecifico(consultorioId);
+		
 		consultorio.setMedico(medico);
 		servicioConsultorio.guardarConsultorio(consultorio);
 		
@@ -184,13 +185,21 @@ public class ControladorMedico {
 	
 	@RequestMapping("/medico/mostrarhistoriaclinica/{pacienteId}")
 	public ModelAndView mostrarHistoriaClinica(@PathVariable Long pacienteId , HttpServletRequest request){
+		
 		Long medicoId = (Long)request.getSession().getAttribute("ID");
+		Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
+		Long consultorioId = consultorio.getId();
+		
 		ModelMap modelo = new ModelMap();
 		Paciente paciente = servicioTurnos.mostrarDatosPaciente(pacienteId);
+		
 		List<Atencion> historiaClinica = servicioTurnos.buscarHistoriaClinicaDePaciente(pacienteId,medicoId);		
 		
 		modelo.put("historiaClinica", historiaClinica);
 		modelo.put("paciente", paciente);
+		modelo.put("medicoId", medicoId);
+		modelo.put("consultorioId", consultorioId);
+		
 		return new ModelAndView("mostrarHistoriaClinicaDePaciente", modelo);
 		
 	}

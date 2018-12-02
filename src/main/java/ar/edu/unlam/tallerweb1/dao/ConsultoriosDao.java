@@ -12,5 +12,7 @@ public interface ConsultoriosDao {
 
 	void guardarConsultorio(Consultorio consultorio);
 
+	Consultorio buscarConsultorioPorMedico(Long medicoId);
+
 	
 }

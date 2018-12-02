@@ -41,7 +41,7 @@
 
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
+      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars fa-2x" style="color: white;"></i>
@@ -67,25 +67,31 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
+     <ul class="sidebar navbar-nav">
        <li class="nav-item">
-          <a class="nav-link" href="${context}/Home">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
             <i class="fas fa-home"></i>
-            <span>  Inicio</span>
+            <span>Inicio</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
             <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
+            <span>Todos los Turnos</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i>
-            <span>  Contacto</span></a>
+          <a class="nav-link" href="${context}/generarAtencion">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span> Atenciones</span></a>
         </li>
-      </ul>
+      </ul>	
 
       <div id="content-wrapper">
 
@@ -116,7 +122,7 @@
 					<c:if test="${fn:length(historiaClinica) == 0}">
 						<div class="text-center mt-5"><h2>No hay turnos para mostrar!</h2></div>
 					</c:if>
-							<div class="accordion" id="accordionExample">
+					<div class="accordion" id="accordionExample">
 						<c:forEach items="${historiaClinica}" var="atencion">
 						<c:if test="${(empty atencion.turno) or (atencion.turno.estado == 'Atendido')}">
 						  <div class="card">
@@ -148,6 +154,7 @@
 						    </div>
 						  </div>
 						  </c:if>
+					     
 						  </c:forEach> 
 						</div>
 									
