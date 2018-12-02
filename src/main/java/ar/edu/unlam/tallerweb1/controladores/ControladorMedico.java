@@ -113,9 +113,17 @@ public class ControladorMedico {
 	
 	
 	@RequestMapping("/generarAtencion")
-	public ModelAndView buscadorDePacientes(){
+	public ModelAndView buscadorDePacientes(HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
+		
+		Long medicoId = (Long)request.getSession().getAttribute("ID");
+		
+		Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
+		Long consultorioId = consultorio.getId();
+		
+		modelo.put("medicoId", medicoId);
+		modelo.put("consultorioId", consultorioId);
 		
 		return new ModelAndView("atencionesMedico", modelo);
 		
@@ -125,6 +133,13 @@ public class ControladorMedico {
 	public ModelAndView buscarPacientesPorDni(@RequestParam Long dni, HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
+		
+		Long medicoId = (Long)request.getSession().getAttribute("ID");
+		Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
+		Long consultorioId = consultorio.getId();
+		
+		modelo.put("medicoId", medicoId);
+		modelo.put("consultorioId", consultorioId);
 		
 		List <Paciente> listaPacientes = servicioBuscadorPacientes.listaPacientes(dni);
 		modelo.put("listapacientes",listaPacientes);

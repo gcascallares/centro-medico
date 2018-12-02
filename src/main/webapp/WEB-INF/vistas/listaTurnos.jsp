@@ -73,22 +73,6 @@
             <span>  Inicio</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -114,20 +98,39 @@
 							<br>
        	
 								<c:forEach items="${listaturnos}" var="turno">
-									<h3 class="form-signin-heading">Turno: ${turno.estado} ${turno.fecha} ${turno.horario}</h3>
-									<a href="${context}/modificarestadoturno/${turno.id}"><button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${turno.id}" name="id">Abonado</button></a></br>
-									<a href="${context}/modificarestadoturnorechazado/${turno.id}"><button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${turno.id}" name="id">Rechazado</button></a></br>
+								
+									 <div class="card w-50 mx-auto mt-4 mb-4">
+												  <h5 class="card-header">Numero de Turno: ${turno.id} </h5>
+												  <div class="card-body">
+							
+												    <h5 class="card-title">Estado: ${turno.estado} </h5>
+												  	<h5 class="card-title">Fecha: ${turno.fecha} </h5>
+												    <h5 class="card-title">Horario: ${turno.horario} </h5>
+												    
+														<div class="d-flex justify-content-center mt-4">
+																
+																<a href="${context}/modificarestadoturno/${turno.id}">
+																	<button class="btn btn-primary mb-5" type="submit" value="${turno.id}" name="id"><i class="fas fa-user-check" style="color: green;"></i> Abonado</button>
+																</a>
+																&nbsp;&nbsp;
+																<a href="${context}/modificarestadoturnorechazado/${turno.id}">
+																	<button class="btn btn-primary mb-5" type="submit" value="${turno.id}" name="id"><i class="fas fa-user-times" style="color: red;"></i> Rechazado</button>
+																</a>
+																
+														</div>
+												
+												</div>
+												
+										</div>
+									
 								</c:forEach>	
 			
 							<br>
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+ 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a><br>
 			<a href="${context}/sacarTurno/${idPaciente}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Sacar Turno</button></a>
       </div>
       
-      
-      
-      
-      
+      </div>
       <!-- /.content-wrapper -->
 
     </div>

@@ -104,7 +104,7 @@
           </ol>       
           
           <!-- Contenido de la Pagina -->
-        	<div class="jumbotron feature" id="banner">
+        	<div class="jumbotron feature" id="bannerPrincipal">
         		<div class="container">
         			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>
         			<p>Que tu medicina sea tu alimento, y el alimento tu medicina</p>

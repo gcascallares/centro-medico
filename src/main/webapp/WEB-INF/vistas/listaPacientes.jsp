@@ -73,22 +73,6 @@
             <span>  Inicio</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -110,17 +94,31 @@
    	
 								<c:forEach items="${listapacientes}" var="paciente">
 				
-									<button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${paciente.id}" name="id">${paciente.nombre} ${paciente.apellido} ${paciente.dni}</button></br>
+									<button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${paciente.id}" name="id" >
+										  <h5 class="card-header" style="color: black;"><i class="far fa-user fa-2x" style="color: black;"></i></h5>
+										  <div class="card-body">
+										   
+										    Usuario: ${paciente.dni}<br>
+										  	Nombre: ${paciente.nombre}<br>
+										    Apellido: ${paciente.apellido}
+										
+										</div>
+
+									</button><br>
 					
 								</c:forEach>	
 	
 								<br>
 			
  					</form:form>
+ 					
+ 					
+ 					
  			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
       </div>
       <!-- /.content-wrapper -->
-
+	</div>
+	
     </div>
     <!-- /#wrapper -->
 

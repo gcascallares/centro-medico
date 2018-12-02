@@ -627,7 +627,7 @@ fieldset[disabled] .btn-primary.active {
   bottom: 15px;
 }
 
-#banner{
+#bannerPrincipal{
    background: url(../img/banner.jpg) no-repeat fixed center;
    -webkit-background-size: cover;
    -moz-background-size: cover;
@@ -636,6 +636,26 @@ fieldset[disabled] .btn-primary.active {
    height: 100%;
    width: 100% ;
    text-align: center;
+}
+
+#banner{
+   background: url(../img/buscador.jpg) no-repeat fixed center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   height: 700px;
+   width: 100% ;
+   text-align: center;
+}
+
+#banner h1 {
+	font-size: 90px;
+	margin-top: 100px;
+}
+#banner input{
+	height: 40px;
+	width:500px;
 }
 
 #cardiologia{
