@@ -57,13 +57,17 @@ public class ControladorTurnos {
 	
 //	Paso 1 = selecciona la especialidad
 	@RequestMapping("/turno")
-	public ModelAndView elegirEspecialidad() {
+	public ModelAndView elegirEspecialidad(HttpServletRequest request) {
 		
 		ModelMap modelo = new ModelMap();
 		
 		List <Especialidad> listarEspecialidad = new ArrayList <Especialidad>();
 		
 		listarEspecialidad = servicioEspecialidad.consultarEspecialidades();
+		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
 		
 		modelo.put("listaEsp",listarEspecialidad);
 		
@@ -78,16 +82,24 @@ public class ControladorTurnos {
 		
 		modelo.put("especialidadId", especialidadId);
 		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
+		
 		return new ModelAndView("filtro-medico-dia", modelo);
 	}
 	
 //	Paso 3.a = filtra a todos los medicos segun la especialidad elegida
 	@RequestMapping("/turno/{especialidadId}/medicos")
-	public ModelAndView fitroMedico (@PathVariable Long especialidadId) {
+	public ModelAndView fitroMedico (@PathVariable Long especialidadId, HttpServletRequest request) {
 		
 		ModelMap modelo = new ModelMap();
 		
 		List <Medico> listaMedicos = servicioTurnos.listaDeMedicosPorEspecialidad(especialidadId);
+		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
 		
 		modelo.put("especialidadId",especialidadId);
 		modelo.put("listaMedicos", listaMedicos);
@@ -97,7 +109,7 @@ public class ControladorTurnos {
 	
 //	Paso 3.b = seleccionaria la fecha en la cual desea solicitar el turno
 	@RequestMapping("/turno/{especialidadId}/dias")
-	public ModelAndView fitroDia (@PathVariable Long especialidadId) {
+	public ModelAndView fitroDia (@PathVariable Long especialidadId, HttpServletRequest request) {
 		
 		ModelMap modelo = new ModelMap();
 		
@@ -116,6 +128,10 @@ public class ControladorTurnos {
 			idDias.add(dia.getId());
 		}				
 		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
+		
 		modelo.put("dias", idDias);
 		
 		return new ModelAndView("diasDeEspecialidad", modelo);
@@ -124,7 +140,7 @@ public class ControladorTurnos {
 	
 //	Paso 4.a = selecciona la fecha del turno
 	@RequestMapping("/turno/{especialidadId}/medico/{medicoId}")
-	public ModelAndView elegirFecha (@PathVariable Long especialidadId, @PathVariable Long medicoId) {
+	public ModelAndView elegirFecha (@PathVariable Long especialidadId, @PathVariable Long medicoId, HttpServletRequest request) {
 		
 		ModelMap modelo = new ModelMap();
 		
@@ -138,6 +154,10 @@ public class ControladorTurnos {
 			idDias.add(dia.getId());
 		}
 		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
+		
 		modelo.put("medicoId", medicoId);
 		modelo.put("especialidadId",especialidadId);
 		modelo.put("dias", idDias);
@@ -147,13 +167,17 @@ public class ControladorTurnos {
 	
 //	Paso 4.b = selecciona fecha segun el medico
 	@RequestMapping("/turno/{especialidadId}/dia/{fecha}/{diaId}")
-	public ModelAndView medicosDisponiblesPorDia (@PathVariable Long especialidadId, @PathVariable String fecha, @PathVariable Long diaId) {
+	public ModelAndView medicosDisponiblesPorDia (@PathVariable Long especialidadId, @PathVariable String fecha, @PathVariable Long diaId, HttpServletRequest request) {
 		ModelMap modelo = new ModelMap();
 		
 		modelo.put("especialidadId", especialidadId);
 		modelo.put("fecha", fecha);
 		
 		List <Medico> listaMedicosPorDia = servicioTurnos.listaDeMedicosDisponibles(especialidadId, diaId);
+		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
 		
 		modelo.put("listaDeMedicos",listaMedicosPorDia);
 		
@@ -162,7 +186,7 @@ public class ControladorTurnos {
 	
 //	Paso 5.a = lista los turnos disponibles del medico en la fecha seleccionada a travez del filtro de Medico
 	@RequestMapping(path="/turno/{especialidadId}/medico/{medicoId}/{fecha}")
-	public ModelAndView obtenerListaDeTurnosDeMedico(@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha ){
+	public ModelAndView obtenerListaDeTurnosDeMedico(@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, HttpServletRequest request ){
 		
 		ModelMap modelo = new ModelMap();
 		
@@ -177,12 +201,16 @@ public class ControladorTurnos {
 		modelo.put("fecha", fecha);
 		modelo.put("medico", medicoBuscado.getNombre());
 		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
+		
 		return new ModelAndView("mostrar-turnos", modelo);
 	}
 	
 //	Paso 5.b = lista los turnos disponibles del medico en la fecha seleccionada a travez del filtro de Dia
 	@RequestMapping(path="/turno/{especialidadId}/dia/{fecha}/{diaId}/{medicoId}")
-	public ModelAndView obtenerListaDeTurnosDeMedicoPorDia(@PathVariable Long especialidadId, @PathVariable String fecha, @PathVariable Long diaId, @PathVariable Long medicoId){
+	public ModelAndView obtenerListaDeTurnosDeMedicoPorDia(@PathVariable Long especialidadId, @PathVariable String fecha, @PathVariable Long diaId, @PathVariable Long medicoId, HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
 		
@@ -193,6 +221,10 @@ public class ControladorTurnos {
 		Medico medicoBuscado = servicioTurnos.buscarMedicoEspecifico(medicoId);
 		List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado);
 		List <String> listaTurnosDisponibles = servicioTurnos.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
+		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
 		
 		modelo.put("listaDeTurnos", listaTurnosDisponibles);
 		
@@ -214,6 +246,10 @@ public class ControladorTurnos {
 		turno.setHorario(turnoViewModel.getHorario());
 		turno.setMedico(medico);
 		Turno turnoCreado = servicioTurnos.guardarTurno(turno,idUsuario);
+		
+		Long usuarioId = (Long)request.getSession().getAttribute("ID");
+		
+		modelo.put("usuarioId", usuarioId);
 
 		modelo.put("turno",turnoCreado);
 		
@@ -226,15 +262,20 @@ public class ControladorTurnos {
 	
 		@RequestMapping(path= "/mostrarhistoriaclinica")
 		public ModelAndView mostrarHistoriaClinica(HttpServletRequest request){
+			
 			ModelMap modelo = new ModelMap();
-			//final Session session = sessionFactory.getCurrentSession();
-			Long id = (Long)request.getSession().getAttribute("ID");
-			//Long id = (Long) ((ServletRequest) session).getAttribute("ID");
-			Long idPaciente = servicioPaciente.obtenerPacienteId(id);
+			
+			Long usuarioId = (Long)request.getSession().getAttribute("ID");
+			Long idPaciente = servicioPaciente.obtenerPacienteId(usuarioId);
+			
 			List<Atencion> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
+			
 			Paciente paciente = servicioTurnos.mostrarDatosPaciente(idPaciente);
+			
 			modelo.put("paciente",paciente);
 			modelo.put("listahistorial", listaHistorial);
+			modelo.put("usuarioId", usuarioId);
+			
 			return new ModelAndView("mostrarHistoriaClinica",modelo);
 		}
 		
@@ -284,6 +325,10 @@ public class ControladorTurnos {
 			
 			List <Turno> listaDeTurnos = servicioTurnos.listaTurnosPorPaciente(idUsuario);
 			
+			Long usuarioId = (Long)request.getSession().getAttribute("ID");
+			
+			modelo.put("usuarioId", usuarioId);
+			
 			modelo.put("listaTurnos",listaDeTurnos);
 			
 			return new ModelAndView("misTurnos", modelo);
@@ -304,6 +349,10 @@ public class ControladorTurnos {
 				idDias.add(dia.getId());
 			}
 			
+			Long usuarioId = (Long)request.getSession().getAttribute("ID");
+			
+			modelo.put("usuarioId", usuarioId);
+			
 			modelo.put("dias", idDias);
 			
 			modelo.put("turnoId", turnoId);
@@ -316,7 +365,7 @@ public class ControladorTurnos {
 		}
 		
 		@RequestMapping("/misTurnos/actualizar/{turnoId}/{especialidadId}/{medicoId}/{fecha}")
-		public ModelAndView obtenerListaDeTurnosDeMedicoActualizar(@PathVariable Long turnoId, @PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha){
+		public ModelAndView obtenerListaDeTurnosDeMedicoActualizar(@PathVariable Long turnoId, @PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, HttpServletRequest request){
 			
 			ModelMap modelo = new ModelMap();
 			
@@ -334,16 +383,23 @@ public class ControladorTurnos {
 			modelo.put("medico", medicoBuscado.getNombre());
 			modelo.put("turnoId", turnoId);
 			
+			Long usuarioId = (Long)request.getSession().getAttribute("ID");
+			
+			modelo.put("usuarioId", usuarioId);
 			
 			return new ModelAndView("mostrar-turnos-actualizar", modelo);
 		}
 		
 		@RequestMapping("misTurnos/actualizar/{turnoId}/{especialidadId}/{medicoId}/{fecha}/{horario}")
-		public ModelAndView reservarDerivacion(@PathVariable Long turnoId,@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, @PathVariable String horario) {
+		public ModelAndView reservarDerivacion(@PathVariable Long turnoId,@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, @PathVariable String horario, HttpServletRequest request) {
 			
 			ModelMap modelo = new ModelMap();
 			
 			Turno turnoDerivado = servicioTurnos.actualizarTurno(turnoId, fecha, horario);
+			
+			Long usuarioId = (Long)request.getSession().getAttribute("ID");
+			
+			modelo.put("usuarioId", usuarioId);
 			
 			modelo.put("turno", turnoDerivado);
 			
