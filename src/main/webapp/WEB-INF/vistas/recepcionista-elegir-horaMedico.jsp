@@ -65,29 +65,13 @@
 
     <div id="wrapper">
 
-      <!-- Barra del costado -->
+       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-       <li class="nav-item">
+      <li class="nav-item">
           <a class="nav-link" href="${context}/buscadorPaciente">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
         </li>
       </ul>
 
@@ -96,11 +80,11 @@
         <div class="container-fluid">
 
           <!--Menu Hamburguesa -->
-          
-          
-          
-          
-          
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Recepcionista</a>
+            </li>
+          </ol>
 
           <!-- Contenido de la Pagina -->
         	
@@ -109,20 +93,16 @@
 			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
 			<hr class="colorgraph">
 			<br>
-			
-			<select name="horario" id="horario">
-				
-				<c:forEach items="${listaDeTurnos}" var="t">
-					<option path="${t}" value="${t}">${t}</option>
-					<!-- El value despues va a ser el ID del medico -->
-				</c:forEach>
-			</select>
-			
+				<div class="w-75 p-3 text-center mx-auto" >
+					<c:forEach items="${listaDeTurnos}" var="t">
+						<label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
+					</c:forEach>
+				</div>
 			<div> <h2 id="mensajeVacio">  </h2> </div>
-			<input type="text" hidden path="${fecha}" value="${fecha}" name="fecha">
-			<input type="text" hidden path="${medico_id}" value="${medico_id}" name="medico_id">
-			<input type="text" hidden path="${especialidadId}" value="${especialidadId}" name="especialidadId">
-			<input type="text" hidden path="${paciente_id}"  value="${paciente_id}" name="paciente_id">
+				<input type="text" hidden path="${fecha}" value="${fecha}" name="fecha">
+				<input type="text" hidden path="${medico_id}" value="${medico_id}" name="medico_id">
+				<input type="text" hidden path="${especialidadId}" value="${especialidadId}" name="especialidadId">
+				<input type="text" hidden path="${paciente_id}"  value="${paciente_id}" name="paciente_id">
 			<br>
 			
 			<button class="btn btn-primary" Type="Submit" />Reservar</button>
