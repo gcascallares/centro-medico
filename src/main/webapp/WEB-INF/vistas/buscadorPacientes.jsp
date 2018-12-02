@@ -83,10 +83,6 @@
           </ol>
           
           
-          
-          
-          
-          
 
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="banner">

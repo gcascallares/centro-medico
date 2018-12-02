@@ -65,9 +65,9 @@
 
     <div id="wrapper">
 
-      <!-- Barra del costado -->
+       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-       <li class="nav-item">
+      <li class="nav-item">
           <a class="nav-link" href="${context}/buscadorPaciente">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
@@ -80,12 +80,11 @@
         <div class="container-fluid">
 
           <!--Menu Hamburguesa -->
-
-
-
-
-
-
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Recepcionista</a>
+            </li>
+          </ol>
           <!-- Contenido de la Pagina -->
         	
         	<div class="container">
