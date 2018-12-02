@@ -87,7 +87,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/generarAtencion">
+          <a class="nav-link" href="${context}/generarAtencion/${medicoId}/${consultorioId}">
             <i class="fab fa-creative-commons-nd"></i>
             <span> Atenciones</span></a>
         </li>
@@ -130,7 +130,7 @@
 						
 						    <div id="collapse${atencion.id}" class="collapse" aria-labelledby="heading${atencion.id}" data-parent="#accordionExample">
 						      <div class="card-body">
-						      		<a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</a><br>
+						      		<a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}/${medicoId}/${consultorioId}">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</a><br>
 					   				D.N.I: ${Turnos.paciente.dni}<br>
 					  				Especialidad: ${Turnos.medico.especialidad.nombreEspecialidad}<br>
 					    			Horario: ${Turnos.horario}<br>

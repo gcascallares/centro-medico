@@ -217,7 +217,7 @@
 		var mensaje = $("#comentario").val();
 		var idPaciente = $("#paciente").val();
 		
-		window.location.href = window.context+"/generarAtencion/" + mensaje + "/" + idPaciente;
+		window.location.href = window.context+"/generarAtencion/" + mensaje + "/" + idPaciente + "/" + ${medicoId} + "/" + ${consultorioId};
 	}
 	
 		

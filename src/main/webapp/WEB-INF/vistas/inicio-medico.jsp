@@ -87,7 +87,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/generarAtencion">
+          <a class="nav-link" href="${context}/generarAtencion/${medicoId}/${consultorioId}">
             <i class="fab fa-creative-commons-nd"></i>
             <span> Atenciones</span></a>
         </li>
