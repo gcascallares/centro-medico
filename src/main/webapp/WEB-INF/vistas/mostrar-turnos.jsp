@@ -29,6 +29,7 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
+
 </head>
 
 <script> 
@@ -121,9 +122,9 @@
 				<div class="w-75 p-3 text-center mx-auto" >
 				<c:forEach items="${listaDeTurnos}" var="t">
 							    <label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
+							    
 				</c:forEach>
 				</div>
-				
 				
 				
 			<div> <h2 id="mensajeVacio">  </h2> </div>
@@ -191,7 +192,6 @@
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
     
-	
 	
 </body>
 

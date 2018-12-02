@@ -263,7 +263,7 @@
                 <!-- /.container-fluid -->
 
                 <!-- Sticky Footer -->
-                <footer class="sticky-footer" id="footer">
+                <footer class="sticky-footer" id="footerPrincipal">
                   <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                      <p><a href="#">Terminos &amp; Condiciones</a> | <a href="#">Politicas de Privacidad</a> | <a href="#">Contacto</a></p>

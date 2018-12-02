@@ -412,7 +412,7 @@ footer.sticky-footer {
   bottom: 0;
   width: calc(100% - 90px);
   height: 80px;
-  background-color: #e9ecef;
+  background-color: #ffffff;
 }
 
 footer.sticky-footer .copyright {
@@ -676,6 +676,13 @@ fieldset[disabled] .btn-primary.active {
    text-align: center;
 }
 
+#footerPrincipal
+{
+	background-color: #50575eb8;
+	padding-top: 15px;
+	
+}
+
 #footer
 {
 	padding-top: 15px;
@@ -701,3 +708,4 @@ fieldset[disabled] .btn-primary.active {
     -webkit-transition: none !important;
     transition: none !important;
 }
+
