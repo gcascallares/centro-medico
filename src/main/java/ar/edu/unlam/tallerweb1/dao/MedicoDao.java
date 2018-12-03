@@ -25,4 +25,6 @@ public interface MedicoDao {
 
 	void guardarAtencion(String mensaje, Long pacienteId, Long medicoId, String fecha);
 
+	List<Medico> listaMedicos();
+
 }

@@ -162,4 +162,21 @@ public class ControladorPacientes {
 		servicioTurnos.guardarTurnoRecepcionista(turno);
 		return new ModelAndView("buscadorPacientes", modelo);
 	}
+	
+	@RequestMapping("/datosmedicos")
+	public ModelAndView mostrarMedicos(HttpServletRequest request){
+		
+		ModelMap modelo = new ModelMap();
+		String usuarioRol = (String)request.getSession().getAttribute("ROL");
+		if("recepcionista".equals(usuarioRol)){
+			
+			List <Medico> listaMedicos = servicioMedico.listaMedicos();
+			modelo.put("listamedicos",listaMedicos);
+			return new ModelAndView("recepcionista-datos-medicos", modelo);
+		}
+		else{
+			return new ModelAndView("redirect:/Iniciar", modelo);
+		}
+	}
+	
 }

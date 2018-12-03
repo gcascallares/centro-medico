@@ -136,4 +136,12 @@ public class MedicoDaopImpl implements MedicoDao {
 		session.save(atencion);
 	}
 	
+	@Override
+	public List<Medico> listaMedicos(){
+		
+		final Session session = sessionFactory.getCurrentSession();
+		List <Medico> listaMedicos = session.createCriteria(Medico.class).list();
+		return listaMedicos;
+	}
+	
 }
