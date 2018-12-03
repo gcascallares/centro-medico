@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -113,6 +115,10 @@
 			<hr class="colorgraph">
 			<br>
 			
+			
+			 <c:if test="${fn:length(listaTurnos) == 0}">
+				<div class="text-center mt-5"><h2>No hay posee ningun Turno</h2></div>
+			</c:if>
 				
 			<c:forEach items="${listaTurnos}" var="Turnos">
 			
