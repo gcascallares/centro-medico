@@ -109,6 +109,10 @@
 						      <div class="card-body">
 					  				Especialidad: ${Medico.especialidad.nombreEspecialidad}<br>
 					    			Horario: ${Medico.horaDesde}:${Medico.minutoDesde} hasta ${Medico.horaHasta}:${Medico.minutoHasta}<br>
+					    			
+					    				Dias: ${Medico.diasLaborales}
+					    			
+					    			
 						      </div>
 						  	</div>
 						  	</div>
