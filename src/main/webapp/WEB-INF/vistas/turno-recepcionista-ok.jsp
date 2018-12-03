@@ -132,7 +132,7 @@
 		
 		<br>
 		
-		<a class="btn btn-primary" href="${context}/buscarpacientespordni" role="button"> Volver a Inicio </a>
+		<a class="btn btn-primary" href="${context}/buscadorPaciente" role="button"> Volver a Inicio </a>
 		
 		
 		

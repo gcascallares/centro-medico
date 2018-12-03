@@ -172,6 +172,11 @@ public class ControladorPacientes {
 		if("recepcionista".equals(usuarioRol)){
 			
 			List <Medico> listaMedicos = servicioMedico.listaMedicos();
+			
+			for(Medico medico : listaMedicos){
+				List <DiasLaborales> listaDeDias =  servicioMedico.buscarDiasLaborales(medico.getId());
+				medico.setDiasLaborales(listaDeDias);
+			}
 			modelo.put("listamedicos",listaMedicos);
 			return new ModelAndView("recepcionista-datos-medicos", modelo);
 		}
