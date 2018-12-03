@@ -31,6 +31,47 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 @Controller
 
 public class ControladorMedico {
+	
+	
+
+	public ServicioConsultorio getServicioConsultorio() {
+		return servicioConsultorio;
+	}
+
+
+	public void setServicioConsultorio(ServicioConsultorio servicioConsultorio) {
+		this.servicioConsultorio = servicioConsultorio;
+	}
+
+
+	public ServicioEspecialidad getServicioEspecialidad() {
+		return servicioEspecialidad;
+	}
+
+
+	public void setServicioEspecialidad(ServicioEspecialidad servicioEspecialidad) {
+		this.servicioEspecialidad = servicioEspecialidad;
+	}
+
+
+	public ServicioMedico getServicioMedico() {
+		return servicioMedico;
+	}
+
+
+	public void setServicioMedico(ServicioMedico servicioMedico) {
+		this.servicioMedico = servicioMedico;
+	}
+
+
+	public ServicioBuscadorPacientes getServicioBuscadorPacientes() {
+		return servicioBuscadorPacientes;
+	}
+
+
+	public void setServicioBuscadorPacientes(ServicioBuscadorPacientes servicioBuscadorPacientes) {
+		this.servicioBuscadorPacientes = servicioBuscadorPacientes;
+	}
 
 	@Inject
 	private ServicioConsultorio servicioConsultorio;
