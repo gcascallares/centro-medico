@@ -199,7 +199,7 @@ public class MockitoTest {
 		
 		when(servicioMedicoMock.especialidadDelMedico(medicoId)).thenReturn(especialidadMock);
 		
-		when(servicioTurnosMock.listaTurnosProxDiaLaboral(medicoMock, diaActual)).thenReturn(listaTurnosMock);
+		when(servicioTurnosMock.listaTurnosPorMedico(medicoMock, diaActual)).thenReturn(listaTurnosMock);
 		
 		when(servicioEspecialidadMock.consultarEspecialidades()).thenReturn(listaEspecialidadMock);
 		
@@ -209,7 +209,7 @@ public class MockitoTest {
 		
 		ModelAndView modelAndViewMock = controladorMedico.inicioMedico(medicoId, consultorioId, requestMock);
 		
-//		assertThat(modelAndViewMock.getModelMap().get("listaTurnos")).isEqualTo(listaTurnosMock);
+		assertThat(modelAndViewMock.getModelMap().get("listaTurnos")).isEqualTo(listaTurnosMock);
 		
 		assertThat(modelAndViewMock.getModelMap().get("medico")).isEqualTo(medicoMock);
 		
