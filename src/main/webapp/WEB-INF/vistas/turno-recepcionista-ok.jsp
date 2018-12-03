@@ -8,15 +8,15 @@
 
 <head>
 
-   <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Centro Medico / Buscador</title>
+    <title>Especificaciones del Turno</title>
 
-     <!-- Bootstrap -->
+ 	<!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${context}/css/dataTables.bootstrap4.css" rel="stylesheet">
 
@@ -28,14 +28,15 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
-
 </head>
-	<script> 
-		var context = "${context}";
-	</script>
- <body id="page-top">
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+<script> 
+	var context = "${context}";
+</script>
+
+<body id="page-top">
+
+	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
 
@@ -47,8 +48,8 @@
       <div class="ml-auto">
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-           <i class="fas fa-2x fa-user-circle fa-fw"></i>
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-2x fa-user-circle fa-fw"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Ajustes</a>
@@ -59,24 +60,24 @@
       </ul>
 	</div>
     </nav>
+
     <div id="wrapper">
 
       <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
+     <ul class="sidebar navbar-nav">
       <li class="nav-item">
           <a class="nav-link" href="${context}/buscadorPaciente">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
           </a>
         </li>
-      <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="${context}/datosmedicos">
             <i class="fas fa-user-md"></i>
             <span>Medicos</span>
           </a>
-        </li>
+        </li> 
       </ul>
-      
 
       <div id="content-wrapper">
 
@@ -85,39 +86,74 @@
           <!--Menu Hamburguesa -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Recepcionista</a>
+              <a href="#">Solicitar Turno</a>
             </li>
           </ol>
           
           
+          
+          
+          
+          
 
-          <!-- Contenido de la Pagina -->
-        	<div class="jumbotron feature" id="banner">
-        		<div class="container">
-        			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>     		
-			     <!-- Barra de Busqueda -->
-			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/buscarpacientespordni" method="POST">
-			        <div class="input-group">
-			          <input path="dni" name="dni" required type="number" class="form-control" placeholder="Buscar por dni" aria-label="Search" aria-describedby="basic-addon2">
-			          <div class="input-group-append">
-			            <button class="btn btn-primary" type="submit">
-			              <i class="fas fa-search"></i>
-			            </button>
-			          </div>
-			        </div>
-			      </form>
-        		</div>
-        	</div>
+        <!-- Contenido de la Pagina -->
+        
+        <h1>Especificaciones de su Turno</h1> <br>
+
+    	<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-user-md"></i> <span>  Medico: ${turno.medico.nombre}</span> 
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad: ${turno.medico.especialidad.nombreEspecialidad}</span> 
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="far fa-clock"></i> <span>  Horario: ${turno.horario}</span>
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-calendar-alt"></i><span>  Fecha: ${turno.fecha}</span>
+		  </div>
+		</div>
+		
+		<br>
+		
+		<a class="btn btn-primary" href="${context}/buscarpacientespordni" role="button"> Volver a Inicio </a>
+		
+		
+		
 
       </div>
       <!-- /.content-wrapper -->
 	
 	</div>
 	
+	<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:100%">100%</div>
+				    </div>
+				</div>	
+                </footer>
+	
     </div>
     <!-- /#wrapper -->
 
-    <!--Boton para ir a arriba-->
+     <!--Boton para ir a arriba-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
@@ -139,20 +175,18 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Bootstrap core y JavaScript-->
+	</div>	
+	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
+    <!--Jquery-->
+    <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
 
-    <!-- Estilo que se aplica en todas las vistas-->
+  	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-
-  </body>
+</body>
 
 </html>

@@ -139,7 +139,6 @@
 			<br><br>			
 			
 			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
-			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
 			
  			</form:form>
 			
@@ -151,7 +150,7 @@
 			<footer class="sticky-footer" >
 				<div class="col-xs-12 col-sm-12 progress-container">
 				    <div class="progress progress-striped active">
-				        <div class="progress-bar progress-bar-success" style="width:16%">16%</div>
+				        <div class="progress-bar progress-bar-success" style="width:10%">10%</div>
 				    </div>
 				</div>	
                 </footer>

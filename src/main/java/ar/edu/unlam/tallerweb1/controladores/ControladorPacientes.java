@@ -160,7 +160,8 @@ public class ControladorPacientes {
 		turno.setPaciente(paciente);
 		turno.setMedico(medico);
 		servicioTurnos.guardarTurnoRecepcionista(turno);
-		return new ModelAndView("buscadorPacientes", modelo);
+		modelo.put("turno", turno);
+		return new ModelAndView("turno-recepcionista-ok", modelo);
 	}
 	
 	@RequestMapping("/datosmedicos")

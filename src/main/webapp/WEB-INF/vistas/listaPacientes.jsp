@@ -73,6 +73,12 @@
             <span>  Inicio</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li>
       </ul>
 
       <div id="content-wrapper">

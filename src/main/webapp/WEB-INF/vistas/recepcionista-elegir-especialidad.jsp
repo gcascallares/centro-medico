@@ -75,6 +75,12 @@
             <span>  Inicio</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -118,22 +124,29 @@
 			
 			<br><br>			
 			
-			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
-			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
-			
  			</form:form>			
+ 			
+ 			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 
  			<form action="${context}/mostrarTurnosPaciente" method="POST">
- 			<input type="text" hidden value="${idPaciente}" name=id>
+ 			<input type="hidden" value="${idPaciente}" name=id><br>
  			<button  class="btn btn-lg btn-primary btn-block" Type="submit" >Volver</button>
  			</form>
  			
  			
- 			
+ 		</div>	
  			
 
       </div>
       <!-- /.content-wrapper -->
+      
+      <footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:16%">16%</div>
+				    </div>
+				</div>	
+                </footer>
 
     </div>
     <!-- /#wrapper -->
