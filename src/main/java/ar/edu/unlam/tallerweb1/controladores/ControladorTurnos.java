@@ -264,19 +264,27 @@ public class ControladorTurnos {
 		public ModelAndView mostrarHistoriaClinica(HttpServletRequest request){
 			
 			ModelMap modelo = new ModelMap();
+			String usuarioRol = (String)request.getSession().getAttribute("ROL");
 			
-			Long usuarioId = (Long)request.getSession().getAttribute("ID");
-			Long idPaciente = servicioPaciente.obtenerPacienteId(usuarioId);
+			if("paciente".equals(usuarioRol)) {
 			
-			List<Atencion> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
+				Long usuarioId = (Long)request.getSession().getAttribute("ID");
+				Long idPaciente = servicioPaciente.obtenerPacienteId(usuarioId);
+				
+				List<Atencion> listaHistorial = servicioTurnos.mostrarHistoriaClinica(idPaciente);
+				
+				Paciente paciente = servicioTurnos.mostrarDatosPaciente(idPaciente);
+				
+				modelo.put("paciente",paciente);
+				modelo.put("listahistorial", listaHistorial);
+				modelo.put("usuarioId", usuarioId);
+				
+				return new ModelAndView("mostrarHistoriaClinica",modelo);
+			}
+			else {
+				return new ModelAndView("redirect:/Iniciar", modelo);
+			}
 			
-			Paciente paciente = servicioTurnos.mostrarDatosPaciente(idPaciente);
-			
-			modelo.put("paciente",paciente);
-			modelo.put("listahistorial", listaHistorial);
-			modelo.put("usuarioId", usuarioId);
-			
-			return new ModelAndView("mostrarHistoriaClinica",modelo);
 		}
 		
 		
@@ -320,6 +328,9 @@ public class ControladorTurnos {
 		public ModelAndView misTurnos(HttpServletRequest request) {
 			
 			ModelMap modelo = new ModelMap();
+			String usuarioRol = (String)request.getSession().getAttribute("ROL");
+			
+			if("paciente".equals(usuarioRol)) {
 			
 			Long idUsuario = (Long)request.getSession().getAttribute("ID");
 			
@@ -332,6 +343,10 @@ public class ControladorTurnos {
 			modelo.put("listaTurnos",listaDeTurnos);
 			
 			return new ModelAndView("misTurnos", modelo);
+			}
+			else {
+				return new ModelAndView("redirect:/Iniciar", modelo);
+			}
 		}
 		
 		@RequestMapping("/misTurnos/actualizar/{turnoId}/{especialidadId}/{medicoId}")
