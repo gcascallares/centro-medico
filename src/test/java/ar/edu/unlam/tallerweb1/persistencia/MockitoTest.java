@@ -21,6 +21,7 @@ import ar.edu.unlam.tallerweb1.controladores.ControladorLogin;
 import ar.edu.unlam.tallerweb1.controladores.ControladorMedico;
 import ar.edu.unlam.tallerweb1.controladores.ControladorPacientes;
 import ar.edu.unlam.tallerweb1.controladores.ControladorTurnos;
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -33,6 +34,7 @@ public class MockitoTest {
     public void pruebaMostrarHistoriaClinica(){
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		ServicioTurnos servicioTurnosMock = mock(ServicioTurnos.class);
+		List<Atencion> historiaClinica = mock(List.class);
 		Long pacienteId = null;
 		Long medicoId = null;
 		Long consultorioId = null;
@@ -41,11 +43,18 @@ public class MockitoTest {
 		Usuario usuarioMock = mock(Usuario.class);
 		ControladorMedico controladorMedico = new ControladorMedico();
 		controladorMedico.setServicioTurnos(servicioTurnosMock);
+		when(servicioTurnosMock.buscarHistoriaClinicaDePaciente(pacienteId, medicoId)).thenReturn(historiaClinica);
 		when (servicioTurnosMock.mostrarDatosPaciente(pacienteId)).thenReturn(pacienteMock);
 		when (request.getSession()).thenReturn(sessionMock);
 		ModelAndView modelandview = controladorMedico.mostrarHistoriaClinica(medicoId,consultorioId,pacienteId, request);
 		
 		assertThat(modelandview.getViewName()).isEqualTo("mostrarHistoriaClinicaDePaciente");
+		
+		assertThat(modelandview.getModelMap().get("historiaClinica")).isEqualTo(historiaClinica);
+		assertThat(modelandview.getModelMap().get("paciente")).isEqualTo(pacienteMock);
+		assertThat(modelandview.getModelMap().get("medicoId")).isEqualTo(medicoId);
+		assertThat(modelandview.getModelMap().get("consultorioId")).isEqualTo(consultorioId);
+		
 
     }
 	
@@ -102,7 +111,12 @@ public class MockitoTest {
 		ModelAndView modelandview = controladorTurnos.obtenerListaDeTurnosDeMedico(especialidadId, medicoId, fecha, request);
 		
 		assertThat(modelandview.getViewName()).isEqualTo("mostrar-turnos");
-
+		
+		assertThat(modelandview.getModelMap().get("medico")).isEqualTo(medicoMock.getNombre());
+		assertThat(modelandview.getModelMap().get("listaDeTurnos")).isEqualTo(listaTurnosDisponibles);
+		assertThat(modelandview.getModelMap().get("especialidadId")).isEqualTo(especialidadId);
+		assertThat(modelandview.getModelMap().get("medicoId")).isEqualTo(medicoId);
+		assertThat(modelandview.getModelMap().get("fecha")).isEqualTo(fecha);
     }
 	
 }
