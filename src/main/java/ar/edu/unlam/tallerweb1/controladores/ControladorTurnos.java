@@ -51,6 +51,14 @@ public class ControladorTurnos {
 	@Inject
 	private ServicioBuscadorPacientes servicioBuscadorPacientes;
 	
+	public ServicioTurnos getServicioTurnos() {
+		return servicioTurnos;
+	}
+
+	public void setServicioTurnos(ServicioTurnos servicioTurnos) {
+		this.servicioTurnos = servicioTurnos;
+	}
+
 	@SuppressWarnings("unused")
 	@Inject
     private SessionFactory sessionFactory;

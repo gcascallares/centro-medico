@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import static org.mockito.Mockito.*;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.junit.Test;
 import org.junit.runner.Request;
@@ -18,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.controladores.ControladorLogin;
 import ar.edu.unlam.tallerweb1.controladores.ControladorMedico;
 import ar.edu.unlam.tallerweb1.controladores.ControladorPacientes;
+import ar.edu.unlam.tallerweb1.controladores.ControladorTurnos;
+import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
@@ -74,4 +78,31 @@ public class MockitoTest {
 		ModelAndView modelandview = controladorPaciente.buscadorDePacientes(requestMock);
 		assertThat(modelandview.getViewName()).isEqualTo("buscadorPacientes");
 	}
+	
+	@Test
+    @Transactional @Rollback(true)
+    public void obtenerListaDeTurnosDeMedico(){
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		ServicioTurnos servicioTurnosMock = mock(ServicioTurnos.class);
+		Long usuarioId = null;
+		Long medicoId = null;
+		Long especialidadId = null;
+		String fecha = "";
+		Medico medicoMock = mock(Medico.class);
+		List<String> listaTurnos = mock(List.class);
+		List<String> listaTurnosDisponibles = mock(List.class);
+		HttpSession sessionMock = mock(HttpSession.class);
+		ControladorTurnos controladorTurnos = new ControladorTurnos();
+		controladorTurnos.setServicioTurnos(servicioTurnosMock);
+		when (request.getSession()).thenReturn(sessionMock);
+		when (servicioTurnosMock.buscarMedicoEspecifico(medicoId)).thenReturn(medicoMock);
+		when (servicioTurnosMock.turnosDeMedicoEspecifico(medicoMock)).thenReturn(listaTurnos);
+		when (servicioTurnosMock.turnosDisponibles(listaTurnos, especialidadId, medicoId, fecha)).thenReturn(listaTurnosDisponibles);
+		when (request.getSession().getAttribute("ID")).thenReturn(usuarioId);
+		ModelAndView modelandview = controladorTurnos.obtenerListaDeTurnosDeMedico(especialidadId, medicoId, fecha, request);
+		
+		assertThat(modelandview.getViewName()).isEqualTo("mostrar-turnos");
+
+    }
+	
 }
