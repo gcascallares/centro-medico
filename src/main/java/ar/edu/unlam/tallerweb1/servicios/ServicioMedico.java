@@ -17,4 +17,6 @@ public interface ServicioMedico {
 	Especialidad especialidadDelMedico(Long medicoid);
 
 	List<Medico> getMedicos();
+
+	List<Medico> listaMedicos();
 }

@@ -39,5 +39,10 @@ public class ServicioMedicoImpl implements ServicioMedico {
 	public List<Medico> getMedicos() {
 		return medicoDao.getMedicos();
 	}
+	
+	@Override
+	public List<Medico> listaMedicos(){
+		return medicoDao.listaMedicos();
+	}
 
 }
