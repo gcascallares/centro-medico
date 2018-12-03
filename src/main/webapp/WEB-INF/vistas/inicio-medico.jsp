@@ -304,7 +304,7 @@
 	            
 	            }
 
-	});
+	}
 	
 	function guardarDerivacion(idPaciente,idConsultorio,idMedico){
 		

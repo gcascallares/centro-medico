@@ -120,15 +120,15 @@
    			<div class="accordion" id="accordionExample">
 						<c:forEach items="${listaTodosLosTurnos}" var="Turnos">
 						  <div class="card">
-						    <div class="card-header" id="heading${atencion.id}">
+						    <div class="card-header" id="heading${Turnos.id}">
 						      <h5 class="mb-0">
-						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${atencion.id}" aria-expanded="true" aria-controls="collapse${turno.id}">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${Turnos.id}" aria-expanded="true" aria-controls="collapse${turno.id}">
 						         Fecha del Turno: <span id="turno-${Turnos.id}">${Turnos.fecha}</span>
 						        </button>
 						      </h5>
 						    </div>
 						
-						    <div id="collapse${atencion.id}" class="collapse" aria-labelledby="heading${atencion.id}" data-parent="#accordionExample">
+						    <div id="collapse${Turnos.id}" class="collapse" aria-labelledby="heading${Turnos.id}" data-parent="#accordionExample">
 						      <div class="card-body">
 						      		<a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}/${medicoId}/${consultorioId}">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</a><br>
 					   				D.N.I: ${Turnos.paciente.dni}<br>
@@ -138,12 +138,13 @@
 						      </div>
 						    </div>
 						  </div>
-						  </c:forEach> 
-						  
-						 <input type="hidden" value="${Turnos.medico.especialidad.id}" id="especialidad">
+						  <input type="hidden" value="${Turnos.medico.especialidad.id}" id="especialidad">
 						 <input type="hidden" value="${Turnos.medico.consultorio.id}" id="consultorioId">
 					     <input type="hidden" value="${Turnos.id}" id="turnoId">
-					    <input type="hidden" value="${Turnos.medico.id}" id="medicoId"> 
+					     <input type="hidden" value="${Turnos.medico.id}" id="medicoId">
+						  </c:forEach> 
+						  
+						  
 					    
 					</div>
 		

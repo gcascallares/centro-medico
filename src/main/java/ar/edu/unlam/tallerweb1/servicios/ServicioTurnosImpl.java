@@ -99,7 +99,9 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	    int ano = fecha.get(Calendar.YEAR);
 	    int mes = fecha.get(Calendar.MONTH)+1;
 	    int dia = fecha.get(Calendar.DAY_OF_MONTH);
-	    String fechaActual = dia+"-"+mes+"-"+ano;
+	    String diaBien = (dia < 10 ? "0"+dia : dia).toString();
+	    String mesBien = (mes < 10 ? "0"+mes : mes).toString();
+	    String fechaActual = diaBien+"-"+mesBien+"-"+ano;
 		return fechaActual;
 		
 	}
