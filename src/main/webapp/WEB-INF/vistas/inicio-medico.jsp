@@ -185,7 +185,9 @@
 								  <label for="comment">Descripcion</label>
 								  <textarea class="form-control" rows="5" id="comentario"></textarea>
 								  
-								</div>					      
+								</div>	
+								
+								<div id="mensajeDescripcion" class="errores">Por favor agregue una Descripcion</div>				      
 						 </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -219,11 +221,14 @@
         		
 											<c:forEach items="${listaMedicos}" var="medico">
 					
-										<option value="${medico.id}">Dr/a. ${medico.nombre} - ${medico.especialidad.nombreEspecialidad}</option>
+											<option value="${medico.id}">Dr/a. ${medico.nombre} - ${medico.especialidad.nombreEspecialidad}</option>
 					
 											</c:forEach>	
 						
 									</select>
+									
+									<div id="mensajeMedico" class="errores">Por favor seleccione algun medico</div>	
+									
 								</div>					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -281,16 +286,44 @@
 	
 	function guardarComentario(idTurno,idConsultorio,idMedico){
 		
-		var estudio = $("#estudio option:selected").val();
 		var mensaje = $("#comentario").val();
+		var estudio = $("#estudio option:selected").val();
 		
-		window.location.href = window.context+"/turno/guardarComentario/" + idTurno + "/" + idConsultorio + "/" + idMedico+ "/" + estudio + "/" + mensaje;
+		 if(mensaje != 0){
+	        	
+	        	$("#mensajeDescripcion").fadeOut();
+	            
+	        	window.location.href = window.context+"/turno/guardarComentario/" + idTurno + "/" + idConsultorio + "/" + idMedico+ "/" + estudio + "/" + mensaje;
+	            
+	        	}
+	        
+	        else{
+	            
+	        	$("#mensajeDescripcion").fadeIn("slow");
+	            return false;
+	            
+	            }
+
 	}
 	
 	function guardarDerivacion(idPaciente,idConsultorio,idMedico){
 		
 		var medicoADerivar = $("#medico option:selected").val();
-		window.location.href = window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico + "/" + idPaciente + "/" + medicoADerivar;
+		
+        if(medicoADerivar != 0){
+        	
+        	$("#mensajeMedico").fadeOut();
+            
+            window.location.assign(window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico + "/" + idPaciente + "/" + medicoADerivar);
+            
+        	}
+        
+        else{
+            
+        	$("#mensajeMedico").fadeIn("slow");
+            return false;
+            
+            }
 		
 	}
 		

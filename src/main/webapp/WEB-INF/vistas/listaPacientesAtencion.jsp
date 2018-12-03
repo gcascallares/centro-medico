@@ -104,10 +104,7 @@
               <a href="#">Atenciones</a>
             </li>
           </ol>
-     </div>     
-          
-          
-          
+
           
           
 
@@ -116,7 +113,7 @@
         
         	<div id="turnos">
 				<form:form action="${context}/mostrarTurnosPaciente" method="POST">
-					<h3 class="form-signin-heading"> Genere la Atencion</h3>
+					<h3 class="form-signin-heading"> Generar la Atencion</h3>
 					<hr class="colorgraph">
 					<br>
    	
@@ -157,7 +154,10 @@
 								  <label for="comment">Atencion</label>
 								  <textarea class="form-control" rows="5" id="comentario"></textarea>
 								  
-								</div>					      
+								</div>	
+								
+								<div id="mensajeAtencion" class="errores">Por favor agregue una atencion</div>
+				      
 						 </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -171,13 +171,14 @@
 					</div>
 				
 				</c:forEach>	
-
+				
 					
  			</form:form>
  					
 			</div>	
 			<br>
  			
+		</div>
 
       </div>
       <!-- /.content-wrapper -->
@@ -217,7 +218,22 @@
 		var mensaje = $("#comentario").val();
 		var idPaciente = $("#paciente").val();
 		
-		window.location.href = window.context+"/generarAtencion/" + mensaje + "/" + idPaciente + "/" + ${medicoId} + "/" + ${consultorioId};
+		 if(mensaje != 0){
+	        	
+	        	$("#mensajeAtencion").fadeOut();
+	            
+	        	window.location.href = window.context+"/generarAtencion/" + mensaje + "/" + idPaciente + "/" + ${medicoId} + "/" + ${consultorioId};
+	            
+	        	}
+	        
+	        else{
+	            
+	        	$("#mensajeAtencion").fadeIn("slow");
+	            return false;
+	            
+	            }
+		
+		
 	}
 	
 		

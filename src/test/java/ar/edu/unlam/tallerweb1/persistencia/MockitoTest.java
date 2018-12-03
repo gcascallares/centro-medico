@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import static org.mockito.Mockito.*;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.junit.Test;
 import org.junit.runner.Request;
@@ -18,6 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.controladores.ControladorLogin;
 import ar.edu.unlam.tallerweb1.controladores.ControladorMedico;
 import ar.edu.unlam.tallerweb1.controladores.ControladorPacientes;
+import ar.edu.unlam.tallerweb1.controladores.ControladorTurnos;
+import ar.edu.unlam.tallerweb1.modelo.Atencion;
+import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
@@ -29,17 +34,27 @@ public class MockitoTest {
     public void pruebaMostrarHistoriaClinica(){
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		ServicioTurnos servicioTurnosMock = mock(ServicioTurnos.class);
+		List<Atencion> historiaClinica = mock(List.class);
 		Long pacienteId = null;
+		Long medicoId = null;
+		Long consultorioId = null;
 		Paciente pacienteMock = mock(Paciente.class);
 		HttpSession sessionMock = mock(HttpSession.class);
 		Usuario usuarioMock = mock(Usuario.class);
 		ControladorMedico controladorMedico = new ControladorMedico();
 		controladorMedico.setServicioTurnos(servicioTurnosMock);
+		when(servicioTurnosMock.buscarHistoriaClinicaDePaciente(pacienteId, medicoId)).thenReturn(historiaClinica);
 		when (servicioTurnosMock.mostrarDatosPaciente(pacienteId)).thenReturn(pacienteMock);
 		when (request.getSession()).thenReturn(sessionMock);
-		ModelAndView modelandview = controladorMedico.mostrarHistoriaClinica(pacienteId, request);
+		ModelAndView modelandview = controladorMedico.mostrarHistoriaClinica(medicoId,consultorioId,pacienteId, request);
 		
 		assertThat(modelandview.getViewName()).isEqualTo("mostrarHistoriaClinicaDePaciente");
+		
+		assertThat(modelandview.getModelMap().get("historiaClinica")).isEqualTo(historiaClinica);
+		assertThat(modelandview.getModelMap().get("paciente")).isEqualTo(pacienteMock);
+		assertThat(modelandview.getModelMap().get("medicoId")).isEqualTo(medicoId);
+		assertThat(modelandview.getModelMap().get("consultorioId")).isEqualTo(consultorioId);
+		
 
     }
 	
@@ -72,4 +87,36 @@ public class MockitoTest {
 		ModelAndView modelandview = controladorPaciente.buscadorDePacientes(requestMock);
 		assertThat(modelandview.getViewName()).isEqualTo("buscadorPacientes");
 	}
+	
+	@Test
+    @Transactional @Rollback(true)
+    public void obtenerListaDeTurnosDeMedico(){
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		ServicioTurnos servicioTurnosMock = mock(ServicioTurnos.class);
+		Long usuarioId = null;
+		Long medicoId = null;
+		Long especialidadId = null;
+		String fecha = "";
+		Medico medicoMock = mock(Medico.class);
+		List<String> listaTurnos = mock(List.class);
+		List<String> listaTurnosDisponibles = mock(List.class);
+		HttpSession sessionMock = mock(HttpSession.class);
+		ControladorTurnos controladorTurnos = new ControladorTurnos();
+		controladorTurnos.setServicioTurnos(servicioTurnosMock);
+		when (request.getSession()).thenReturn(sessionMock);
+		when (servicioTurnosMock.buscarMedicoEspecifico(medicoId)).thenReturn(medicoMock);
+		when (servicioTurnosMock.turnosDeMedicoEspecifico(medicoMock)).thenReturn(listaTurnos);
+		when (servicioTurnosMock.turnosDisponibles(listaTurnos, especialidadId, medicoId, fecha)).thenReturn(listaTurnosDisponibles);
+		when (request.getSession().getAttribute("ID")).thenReturn(usuarioId);
+		ModelAndView modelandview = controladorTurnos.obtenerListaDeTurnosDeMedico(especialidadId, medicoId, fecha, request);
+		
+		assertThat(modelandview.getViewName()).isEqualTo("mostrar-turnos");
+		
+		assertThat(modelandview.getModelMap().get("medico")).isEqualTo(medicoMock.getNombre());
+		assertThat(modelandview.getModelMap().get("listaDeTurnos")).isEqualTo(listaTurnosDisponibles);
+		assertThat(modelandview.getModelMap().get("especialidadId")).isEqualTo(especialidadId);
+		assertThat(modelandview.getModelMap().get("medicoId")).isEqualTo(medicoId);
+		assertThat(modelandview.getModelMap().get("fecha")).isEqualTo(fecha);
+    }
+	
 }

@@ -91,6 +91,8 @@
   
         	<select id="consultorio">
         	
+        		
+        	
 				<c:forEach items="${listaConsultorios}" var="Consultorio">
 				
 					<option value="${Consultorio.id}">${Consultorio.numero}</option>
@@ -98,6 +100,11 @@
 				</c:forEach>	
 						
 			</select>
+			
+			<br>
+			<div id="mensajeConsultorio" class="errores">Por favor seleccione algun Consultorio</div>
+			<br>
+			
 			<div id="mensajeVacio"></div>
 			<input type="hidden" value="${medicoId}" id="medicoId">
 			

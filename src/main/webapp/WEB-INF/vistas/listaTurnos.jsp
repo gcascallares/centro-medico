@@ -73,6 +73,12 @@
             <span>  Inicio</span>
           </a>
         </li>
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
       </ul>
 
       <div id="content-wrapper">
@@ -153,7 +159,7 @@
           <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="/cerrarSesion">Cerrar</a>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
           </div>
         </div>
       </div>

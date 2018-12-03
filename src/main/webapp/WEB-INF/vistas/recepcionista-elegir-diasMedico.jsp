@@ -89,6 +89,12 @@
             <span>  Inicio</span>
           </a>
         </li>
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
       </ul>
 
       <div id="content-wrapper">
@@ -108,7 +114,7 @@
 			
 			<hr class="colorgraph">
 			
-		<input type="text" id="datepicker">
+			<input type="text" id="datepicker">
 				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
 				
 				<br>
@@ -129,19 +135,25 @@
 			
 			<br><br>			
 
-<%-- 			<a href="${context}/elegirhorario/${idPaciente}/${especialidadId}/${medicoId}/'27-11-2018'"><button  class="btn btn-lg btn-primary btn-block" value="27-11-2018" Type="button" >Siguiente</button></a>
- --%>
  				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 
 				<br>
 				<a href="${context}/elegirmedico/${idPaciente}/${especialidadId}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
 
  			
- 			
+ 		</div>		
  			
 
       </div>
       <!-- /.content-wrapper -->
+      
+      <footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:50%">50%</div>
+				    </div>
+				</div>	
+      </footer>
 
     </div>
     <!-- /#wrapper -->

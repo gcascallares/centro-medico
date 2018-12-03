@@ -73,6 +73,12 @@
             <span>  Inicio</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
       </ul>
 
       <div id="content-wrapper">
@@ -99,13 +105,15 @@
 					</c:forEach>
 				</div>
 			<div> <h2 id="mensajeVacio">  </h2> </div>
-				<input type="text" hidden path="${fecha}" value="${fecha}" name="fecha">
-				<input type="text" hidden path="${medico_id}" value="${medico_id}" name="medico_id">
-				<input type="text" hidden path="${especialidadId}" value="${especialidadId}" name="especialidadId">
-				<input type="text" hidden path="${paciente_id}"  value="${paciente_id}" name="paciente_id">
+				<input type="hidden" hiddenpath="${fecha}" value="${fecha}" name="fecha">
+				<input type="hidden" hidden path="${medico_id}" value="${medico_id}" name="medico_id">
+				<input type="hidden" hidden path="${especialidadId}" value="${especialidadId}" name="especialidadId">
+				<input type="hidden" hidden path="${paciente_id}"  value="${paciente_id}" name="paciente_id">
 			<br>
 			
-			<button class="btn btn-primary" Type="Submit" />Reservar</button>
+			<div class="text-center">
+				<button class="btn btn-primary" id="reservar" Type="Submit">Reservar</button>
+			</div>
 			
 			<br>
 			<br>
@@ -116,10 +124,18 @@
  			
  			
  			
- 			
+ 		</div>		
 
       </div>
       <!-- /.content-wrapper -->
+      
+      <footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:75%">75%</div>
+				    </div>
+				</div>	
+      </footer>
 
     </div>
     <!-- /#wrapper -->
@@ -156,6 +172,7 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+    <script src="${context}/js/mostrar-turnos.js" type="text/javascript"></script>
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>

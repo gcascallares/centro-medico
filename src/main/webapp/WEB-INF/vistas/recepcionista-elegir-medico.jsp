@@ -76,6 +76,12 @@
             <span>  Inicio</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
       </ul>
 
       <div id="content-wrapper">
@@ -107,21 +113,31 @@
 			<br>
 			<div id="mensajeMedico" class="errores">Por favor seleccione algunos de los medicos disponibles</div>
 			<br>
-		
+			
+			<br>
 			<br>
 			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
 			<br>
 		
 			</form:form>
+			
  			<a href="${context}/sacarTurno/${idPaciente}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
  			
  			
- 			
+ 		</div>		
  			
 
       </div>
       <!-- /.content-wrapper -->
-
+		
+		<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:25%">25%</div>
+				    </div>
+				</div>	
+        </footer>
+		
     </div>
     <!-- /#wrapper -->
 
