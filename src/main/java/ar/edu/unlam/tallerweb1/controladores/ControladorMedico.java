@@ -62,12 +62,19 @@ public class ControladorMedico {
 	public ModelAndView elegirConsultorio(@PathVariable Long medicoId , HttpServletRequest request){
 		
 		ModelMap modelo = new ModelMap();
-		List <Consultorio> listaConsultorios = new ArrayList <Consultorio>();
-		listaConsultorios = servicioConsultorio.listaConsultorios();
+		String usuarioRol = (String)request.getSession().getAttribute("ROL");
+		
+		if("medico".equals(usuarioRol)){
+			List <Consultorio> listaConsultorios = new ArrayList <Consultorio>();
+			listaConsultorios = servicioConsultorio.listaConsultorios();
 	
-		modelo.put("listaConsultorios", listaConsultorios);
-		modelo.put("medicoId", medicoId);
-		return new ModelAndView("mostrar-consultorios", modelo);
+			modelo.put("listaConsultorios", listaConsultorios);
+			modelo.put("medicoId", medicoId);
+			return new ModelAndView("mostrar-consultorios", modelo);
+		}
+		else{
+			return new ModelAndView("redirect:/Iniciar", modelo);
+		}
 	
 	}
 	

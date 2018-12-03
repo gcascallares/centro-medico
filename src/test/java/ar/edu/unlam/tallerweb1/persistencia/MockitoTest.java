@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.controladores.ControladorLogin;
 import ar.edu.unlam.tallerweb1.controladores.ControladorMedico;
+import ar.edu.unlam.tallerweb1.controladores.ControladorPacientes;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
@@ -57,4 +58,18 @@ public class MockitoTest {
 		
 		assertThat(modelandview.getViewName()).isEqualTo("login");
     }*/
+	
+	@Test
+    @Transactional @Rollback(true)
+	 public void pruebaLoginRolRecepcionista(){
+		
+		HttpServletRequest requestMock = mock(HttpServletRequest.class);
+		HttpSession sessionMock = mock(HttpSession.class);
+		ControladorPacientes controladorPaciente = new ControladorPacientes();
+		String usuarioRol = "recepcionista";
+		when (requestMock.getSession()).thenReturn(sessionMock);
+		when (requestMock.getSession().getAttribute("ROL")).thenReturn(usuarioRol);
+		ModelAndView modelandview = controladorPaciente.buscadorDePacientes(requestMock);
+		assertThat(modelandview.getViewName()).isEqualTo("buscadorPacientes");
+	}
 }

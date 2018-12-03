@@ -46,6 +46,7 @@ public class ControladorPacientes {
 	
 	@RequestMapping("/buscadorPaciente")
 	public ModelAndView buscadorDePacientes(HttpServletRequest request){
+		
 		ModelMap modelo = new ModelMap();
 		String usuarioRol = (String)request.getSession().getAttribute("ROL");
 		if("recepcionista".equals(usuarioRol)){
@@ -58,10 +59,19 @@ public class ControladorPacientes {
 	
 	@RequestMapping(path="/buscarpacientespordni", method = RequestMethod.POST)
 	public ModelAndView buscarPacientesPorDni(@RequestParam Long dni, HttpServletRequest request){
+		
 		ModelMap modelo = new ModelMap();
+		String usuarioRol = (String)request.getSession().getAttribute("ROL");
+		
+		if("recepcionista".equals(usuarioRol)){
+			
 		List <Paciente> listaPacientes = servicioBuscadorPacientes.listaPacientes(dni);
 		modelo.put("listapacientes",listaPacientes);
 		return new ModelAndView("listaPacientes", modelo);
+		}
+		else{
+			return new ModelAndView("redirect:/Iniciar", modelo);
+		}
 	}
 	
 	@RequestMapping(path="/mostrarTurnosPaciente", method = RequestMethod.POST)
