@@ -30,6 +30,8 @@ public class MockitoTest {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		ServicioTurnos servicioTurnosMock = mock(ServicioTurnos.class);
 		Long pacienteId = null;
+		Long medicoId = null;
+		Long consultorioId = null;
 		Paciente pacienteMock = mock(Paciente.class);
 		HttpSession sessionMock = mock(HttpSession.class);
 		Usuario usuarioMock = mock(Usuario.class);
@@ -37,7 +39,7 @@ public class MockitoTest {
 		controladorMedico.setServicioTurnos(servicioTurnosMock);
 		when (servicioTurnosMock.mostrarDatosPaciente(pacienteId)).thenReturn(pacienteMock);
 		when (request.getSession()).thenReturn(sessionMock);
-		ModelAndView modelandview = controladorMedico.mostrarHistoriaClinica(pacienteId, request);
+		ModelAndView modelandview = controladorMedico.mostrarHistoriaClinica(medicoId,consultorioId,pacienteId, request);
 		
 		assertThat(modelandview.getViewName()).isEqualTo("mostrarHistoriaClinicaDePaciente");
 
