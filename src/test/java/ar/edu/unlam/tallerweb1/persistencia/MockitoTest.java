@@ -27,11 +27,13 @@ import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioBuscadorPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioConsultorio;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
+
 
 public class MockitoTest {
 	
@@ -162,7 +164,7 @@ public class MockitoTest {
     	
     }
 	
-	@SuppressWarnings({ "unchecked", "unused" })
+	@SuppressWarnings({ "unchecked" })
 	@Test
     @Transactional @Rollback(true)
     public void pruebaQuePruebaInicioDelMedico(){
@@ -227,6 +229,62 @@ public class MockitoTest {
 		assertThat(modelAndViewMock.getModelMap().get("listaEstudios")).isEqualTo(listaDeEstudiosMock);
 		
 		assertThat(modelAndViewMock.getViewName()).isEqualTo("inicio-medico");
+	}
+
+	
+	@Test
+	@Transactional @Rollback(true)
+	public void testModificarEstadoTurno(){
+		
+		HttpSession sessionMock = mock(HttpSession.class);
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		ServicioBuscadorPacientes servicioBuscadorPacientesMock = mock(ServicioBuscadorPacientes.class);
+			
+		Long idTurno = null;
+		
+		ControladorPacientes controladorPacientes = new ControladorPacientes();
+	
+		controladorPacientes.setServicioBuscadorPacientes(servicioBuscadorPacientesMock);
+		
+		when (request.getSession()).thenReturn(sessionMock);
+		
+		when (servicioBuscadorPacientesMock.modificarEstadoTurno(idTurno)).thenReturn(true);
+		
+		ModelAndView modelandview = controladorPacientes.modificarEstadoTurno(idTurno, request);
+		
+		assertThat(modelandview.getViewName()).isEqualTo("buscadorPacientes");
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Test
+    @Transactional @Rollback(true)
+    public void obtenerListaDeTurnosDePaciente(){
+		
+		HttpSession sessionMock = mock(HttpSession.class);
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		ServicioBuscadorPacientes servicioBuscadorPacientesMock = mock(ServicioBuscadorPacientes.class);
+		
+		Paciente pacienteMock =  mock(Paciente.class);
+		List<Turno> listaTurnos = mock(List.class);
+		
+		Long idTurno = null;
+		
+		Long idPaciente = pacienteMock.getId();
+		
+		ControladorPacientes controladorPacientes = new ControladorPacientes();
+	
+		controladorPacientes.setServicioBuscadorPacientes(servicioBuscadorPacientesMock);
+		
+		when (request.getSession()).thenReturn(sessionMock);
+		
+		when (servicioBuscadorPacientesMock.listaTurnos(idPaciente)).thenReturn(listaTurnos);
+		
+		ModelAndView modelandview = controladorPacientes.mostrarTurnosPaciente(idTurno, request);
+		
+		assertThat(modelandview.getViewName()).isEqualTo("listaTurnos");
+		
+		
 	}
 	
 }
