@@ -187,5 +187,47 @@ public class ControladorPacientes {
 			return new ModelAndView("redirect:/Iniciar", modelo);
 		}
 	}
+
+	public ServicioEspecialidad getServicioEspecialidad() {
+		return servicioEspecialidad;
+	}
+
+	public void setServicioEspecialidad(ServicioEspecialidad servicioEspecialidad) {
+		this.servicioEspecialidad = servicioEspecialidad;
+	}
+
+	public ServicioTurnos getServicioTurnos() {
+		return servicioTurnos;
+	}
+
+	public void setServicioTurnos(ServicioTurnos servicioTurnos) {
+		this.servicioTurnos = servicioTurnos;
+	}
+
+	public ServicioBuscadorPacientes getServicioBuscadorPacientes() {
+		return servicioBuscadorPacientes;
+	}
+
+	public void setServicioBuscadorPacientes(ServicioBuscadorPacientes servicioBuscadorPacientes) {
+		this.servicioBuscadorPacientes = servicioBuscadorPacientes;
+	}
+
+	public ServicioMedico getServicioMedico() {
+		return servicioMedico;
+	}
+
+	public void setServicioMedico(ServicioMedico servicioMedico) {
+		this.servicioMedico = servicioMedico;
+	}
+
+	public ServicioPaciente getServicioPaciente() {
+		return servicioPaciente;
+	}
+
+	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+		this.servicioPaciente = servicioPaciente;
+	}
+	
+	
 	
 }
