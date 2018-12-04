@@ -64,6 +64,7 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
+<<<<<<< HEAD
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
           <a class="nav-link" href="${context}/Home">
@@ -184,6 +185,138 @@
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
     <script src="${context}/js/filtro-medico-dia.js" type="text/javascript"></script>
+=======
+     <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/Home">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/misTurnos">
+            <i class="fas fa-file-signature"></i>
+            <span> Mis Turnos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span> Historia Clinica</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/derivacion/${usuarioId}">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span>  Derivaciones</span></a>
+        </li>
+      </ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Solicitar Turno</a>
+            </li>
+          </ol>
+          
+          
+          
+          
+          
+          
+
+        <!-- Contenido de la Pagina -->
+        
+        <h1>Especificaciones de su Turno</h1> <br>
+
+    	<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-user-md"></i> <span>  Medico: ${turno.medico.nombre}</span> 
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-briefcase-medical"></i> <span>  Especialidad: ${turno.medico.especialidad.nombreEspecialidad}</span> 
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="far fa-clock"></i> <span>  Horario: ${turno.horario}</span>
+		  </div>
+		</div>
+		
+		<br>
+		
+		<div class="card">
+		  <div class="card-body">
+		    <i class="fas fa-calendar-alt"></i><span>  Fecha: ${turno.fecha}</span>
+		  </div>
+		</div>
+		
+		<br>
+		
+		<a class="btn btn-primary" href="${context}/Home" role="button"> Volver a Inicio </a>
+		
+		
+		
+
+      </div>
+      <!-- /.content-wrapper -->
+	
+	</div>
+	
+	<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:100%">100%</div>
+				    </div>
+				</div>	
+                </footer>
+	
+    </div>
+    <!-- /#wrapper -->
+
+     <!--Boton para ir a arriba-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Modal de cierre de sesio-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
+          </div>
+        </div>
+      </div>
+	</div>	
+	 <!-- Bootstrap core y JavaScript-->
+    <script src="${context}/js/jquery/jquery.min.js"></script>
+    <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!--Jquery-->
+    <script src="${context}/js/jquery-3.3.1.min.js"></script>
+    <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>

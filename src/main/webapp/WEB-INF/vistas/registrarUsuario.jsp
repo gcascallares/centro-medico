@@ -50,6 +50,7 @@
          <br>
          <br>	
         	
+<<<<<<< HEAD
           <form:form action="Iniciar" method="POST" modelAttribute="usuario">
           
             <div class="form-group">
@@ -79,6 +80,32 @@
             
           </form:form>
           
+=======
+		<form action="${context}/Iniciar" method = "POST">          
+            <div class="form-group">
+            
+              <div class="form-row">
+              
+              
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="readonly" class="form-control" value="${usuario.dni}" readonly="readonly"/>
+                    <label for="firstName">Dni</label>
+                  </div>
+                </div>
+                <input type="hidden" value="${usuario.id}" name="id">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="password" id="lastName" class="form-control" name="contrasena" placeholder="Caontraseña" required="required" />
+                    <label for="lastName">Contraseña</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <input type="submit" class="btn btn-primary btn-block" value="Registrarse"></input>
+         </form>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
         </div>
       </div>
     </div>

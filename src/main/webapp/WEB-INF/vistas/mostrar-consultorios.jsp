@@ -38,6 +38,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
+<<<<<<< HEAD
       <a class="navbar-brand mr-1" href="#"><img src="img/logo3.png"></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
@@ -143,6 +144,90 @@
       </div>
       <!-- /.content-wrapper -->
 
+=======
+      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
+
+      
+      <!-- Desplegable del usuario -->
+      <div class="ml-auto">
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+           <i class="fas fa-2x fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">Ajustes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar Sesion</a>
+          </div>
+        </li>
+      </ul>
+	</div>
+    </nav>
+
+    <div id="wrapper">
+
+    
+    <!-- Barra del costado -->
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Inicio</a>
+            </li>
+          </ol>
+          
+          
+          
+          
+          
+          
+
+          <!-- Contenido de la Pagina -->
+        <form:form action="${context}/index-medico/{consultorioId}" method="POST">
+		
+			<h3 class="form-signin-heading">Elija un consultorio</h3>
+			
+			<hr class="colorgraph">
+			
+			<br>
+  
+        	<select id="consultorio">
+        	
+        		
+        	
+				<c:forEach items="${listaConsultorios}" var="Consultorio">
+				
+					<option value="${Consultorio.id}">${Consultorio.numero}</option>
+					
+				</c:forEach>	
+						
+			</select>
+			
+			<br>
+			<div id="mensajeConsultorio" class="errores">Por favor seleccione algun Consultorio</div>
+			<br>
+			
+			<div id="mensajeVacio"></div>
+			<input type="hidden" value="${medicoId}" id="medicoId">
+			
+			<br>
+			
+			<a class="btn btn-lg btn-primary btn-block" id="botonSiguienteConsultorio">Continuar</a>
+			<!--<button class="btn btn-lg btn-primary btn-block" Type="Submit" >Siguiente</button>-->
+			
+ 		</form:form>
+
+      </div>
+      <!-- /.content-wrapper -->
+	
+	</div>
+	
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     </div>
     <!-- /#wrapper -->
 

@@ -69,6 +69,7 @@
             <span>  Inicio</span>
           </a>
         </li>
+<<<<<<< HEAD
         <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fas fa-file-signature"></i>
@@ -286,6 +287,53 @@
       </div>
       <!-- /.content-wrapper -->
 
+=======
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li>
+      </ul>
+      
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Recepcionista</a>
+            </li>
+          </ol>
+          
+          
+
+          <!-- Contenido de la Pagina -->
+        	<div class="jumbotron feature" id="banner">
+        		<div class="container">
+        			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>     		
+			     <!-- Barra de Busqueda -->
+			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/buscarpacientespordni" method="POST">
+			        <div class="input-group">
+			          <input path="dni" name="dni" required type="number" class="form-control" placeholder="Buscar por dni" aria-label="Search" aria-describedby="basic-addon2">
+			          <div class="input-group-append">
+			            <button class="btn btn-primary" type="submit">
+			              <i class="fas fa-search"></i>
+			            </button>
+			          </div>
+			        </div>
+			      </form>
+        		</div>
+        	</div>
+
+      </div>
+      <!-- /.content-wrapper -->
+	
+	</div>
+	
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     </div>
     <!-- /#wrapper -->
 

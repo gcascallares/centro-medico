@@ -22,6 +22,7 @@ public class ServicioRegistroImpl implements ServicioRegistro {
 	
 	@Override
 	public void guardarPaciente (Paciente paciente) {
+<<<<<<< HEAD
 		
 		pacienteDao.guardarPaciente(paciente);
 	}
@@ -30,6 +31,14 @@ public class ServicioRegistroImpl implements ServicioRegistro {
 	public void guardarUsuario (Usuario usuario) {
 		
 		usuarioDao.guardarUsuario(usuario);
+=======
+		pacienteDao.guardarPaciente(paciente);
+	}
+	
+	@Override
+	public Usuario guardarUsuario (Paciente paciente) {
+		return usuarioDao.guardarUsuario(paciente);
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	}
 	
 

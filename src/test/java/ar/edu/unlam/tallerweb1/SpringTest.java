@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+<<<<<<< HEAD
 // Se indica que los test que hereden de esta clase corran con el runner de junit para spring.
 @RunWith(SpringJUnit4ClassRunner.class)
 // Se indica
@@ -20,6 +21,16 @@ public abstract class SpringTest {
     private SessionFactory sessionFactory;
 
     // Metodo para obtener una sesion de base de datos
+=======
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/test-applicationContext.xml"})
+
+public abstract class SpringTest {
+
+    @Inject
+    private SessionFactory sessionFactory;
+
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     protected Session getSession() {
         return this.sessionFactory.getCurrentSession();
     }

@@ -33,6 +33,7 @@
 
 <script> 
 	var context = "${context}";
+<<<<<<< HEAD
 </script>
 
 <body id="page-top">
@@ -169,6 +170,149 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+=======
+	var idPaciente = "${idPaciente}";
+	var especialidadId = "${especialidadId}";
+	
+</script>
+
+<body id="page-top">
+
+
+	      <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
+
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
+      </button>
+      
+      <!-- Desplegable del usuario -->
+      <div class="ml-auto">
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+           <i class="fas fa-2x fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">Ajustes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar Sesion</a>
+          </div>
+        </li>
+      </ul>
+	</div>
+    </nav>
+
+    <div id="wrapper">
+
+      <!-- Barra del costado -->
+      <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/buscadorPaciente">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
+      </ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Recepcionista</a>
+            </li>
+          </ol>
+
+          <!-- Contenido de la Pagina -->
+        	
+
+			        	<form:form action="" method="POST">
+			<h3 class="form-signin-heading">Elija su Medico</h3>
+			<hr class="colorgraph">
+			<br>
+  
+        	<select id="medicos">
+        		<option value="0" disabled selected>Seleccione un opcion</option>
+				<c:forEach items="${listaMedicos}" var="Medico">
+					<option value="${Medico.id}">${Medico.nombre}</option>
+				</c:forEach>			
+			</select>
+			
+			<br>
+			<div id="mensajeMedico" class="errores">Por favor seleccione algunos de los medicos disponibles</div>
+			<br>
+			
+			<br>
+			<br>
+			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
+			<br>
+		
+			</form:form>
+			
+ 			<a href="${context}/sacarTurno/${idPaciente}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+ 			
+ 			
+ 		</div>		
+ 			
+
+      </div>
+      <!-- /.content-wrapper -->
+		
+		<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:25%">25%</div>
+				    </div>
+				</div>	
+        </footer>
+		
+    </div>
+    <!-- /#wrapper -->
+
+   <!--Boton para ir a arriba-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Modal de cierre de sesio-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	
+	 <!-- Bootstrap core y JavaScript-->
+    <script src="${context}/js/jquery/jquery.min.js"></script>
+    <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!--Jquery-->
+    <script src="${context}/js/jquery-3.3.1.min.js"></script>
+    <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+    <script src="${context}/js/recepcionista-medicos.js" type="text/javascript"></script>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>

@@ -65,6 +65,7 @@
 
     <div id="wrapper">
 
+<<<<<<< HEAD
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
        <li class="nav-item">
@@ -176,6 +177,116 @@
     <!--Jquery-->
     <script src="${context}/js/jquery-3.3.1.min.js"></script>
     <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+=======
+       <!-- Barra del costado -->
+      <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/buscadorPaciente">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
+      </ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Recepcionista</a>
+            </li>
+          </ol>
+
+          <!-- Contenido de la Pagina -->
+        	
+		
+			<form:form action="${context}/recepcionistareservarturno/${medico_id}/${paciente_id}" method="POST" modelAttribute = "turno">
+			<h3 class="form-signin-heading">Lista de turnos disponibles para el dia ${fecha}</h3>
+			<hr class="colorgraph">
+			<br>
+				<div class="w-75 p-3 text-center mx-auto" >
+					<c:forEach items="${listaDeTurnos}" var="t">
+						<label class="mr-4"><input type="radio" name="horario" value="${t}" > ${t}</label>
+					</c:forEach>
+				</div>
+			<div> <h2 id="mensajeVacio">  </h2> </div>
+				<input type="hidden" hiddenpath="${fecha}" value="${fecha}" name="fecha">
+				<input type="hidden" hidden path="${medico_id}" value="${medico_id}" name="medico_id">
+				<input type="hidden" hidden path="${especialidadId}" value="${especialidadId}" name="especialidadId">
+				<input type="hidden" hidden path="${paciente_id}"  value="${paciente_id}" name="paciente_id">
+			<br>
+			
+			<div class="text-center">
+				<button class="btn btn-primary" id="reservar" Type="Submit">Reservar</button>
+			</div>
+			
+			<br>
+			<br>
+			
+			</form:form>	
+
+ 			<a href="${context}/elegirdia/${idPaciente}/${especialidadId}/${medicoId}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+ 			
+ 			
+ 			
+ 		</div>		
+
+      </div>
+      <!-- /.content-wrapper -->
+      
+      <footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:75%">75%</div>
+				    </div>
+				</div>	
+      </footer>
+
+    </div>
+    <!-- /#wrapper -->
+
+   <!--Boton para ir a arriba-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Modal de cierre de sesio-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	
+	 <!-- Bootstrap core y JavaScript-->
+    <script src="${context}/js/jquery/jquery.min.js"></script>
+    <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!--Jquery-->
+    <script src="${context}/js/jquery-3.3.1.min.js"></script>
+    <script src="${context}/js/jquery/jquery.easing.min.js"></script>
+    <script src="${context}/js/mostrar-turnos.js" type="text/javascript"></script>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
   	<!-- Estilo que se aplica en todas las vistas-->
     <script src="${context}/js/jquery/sb-admin.min.js"></script>

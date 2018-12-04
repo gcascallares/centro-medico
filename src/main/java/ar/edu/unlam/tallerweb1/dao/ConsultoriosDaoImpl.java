@@ -53,5 +53,21 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 
 	}
 	
+<<<<<<< HEAD
+=======
+	@Override
+	public Consultorio buscarConsultorioPorMedico (Long medicoId) {
+		
+	final Session session = sessionFactory.getCurrentSession();
+	
+	Consultorio consultorioEspecifico = (Consultorio) session.createCriteria (Consultorio.class)
+										.createAlias("medico", "medicoBuscado")
+										.add(Restrictions.eq("medicoBuscado.id",medicoId))
+										.uniqueResult();
+	return consultorioEspecifico;
+
+	}
+	
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
 }

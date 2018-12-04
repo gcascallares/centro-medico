@@ -65,6 +65,7 @@
 
     <div id="wrapper">
 
+<<<<<<< HEAD
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
        <li class="nav-item">
@@ -152,6 +153,103 @@
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             <a class="btn btn-primary" href="/cerrarSesion">Cerrar</a>
+=======
+       <!-- Barra del costado -->
+      <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/buscadorPaciente">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
+      </ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Recepcionista</a>
+            </li>
+          </ol>
+          <!-- Contenido de la Pagina -->
+        	
+        	<div class="container">
+				</div>
+		
+						<h3 class="form-signin-heading">Elija el turno a modificar</h3>
+			
+							<hr class="colorgraph">
+			
+							<br>
+       	
+								<c:forEach items="${listaturnos}" var="turno">
+								
+									 <div class="card w-50 mx-auto mt-4 mb-4">
+												  <h5 class="card-header">Numero de Turno: ${turno.id} </h5>
+												  <div class="card-body">
+							
+												    <h5 class="card-title">Estado: ${turno.estado} </h5>
+												  	<h5 class="card-title">Fecha: ${turno.fecha} </h5>
+												    <h5 class="card-title">Horario: ${turno.horario} </h5>
+												    
+														<div class="d-flex justify-content-center mt-4">
+																
+																<a href="${context}/modificarestadoturno/${turno.id}">
+																	<button class="btn btn-primary mb-5" type="submit" value="${turno.id}" name="id"><i class="fas fa-user-check" style="color: green;"></i> Abonado</button>
+																</a>
+																&nbsp;&nbsp;
+																<a href="${context}/modificarestadoturnorechazado/${turno.id}">
+																	<button class="btn btn-primary mb-5" type="submit" value="${turno.id}" name="id"><i class="fas fa-user-times" style="color: red;"></i> Rechazado</button>
+																</a>
+																
+														</div>
+												
+												</div>
+												
+										</div>
+									
+								</c:forEach>	
+			
+							<br>
+ 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a><br>
+			<a href="${context}/sacarTurno/${idPaciente}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Sacar Turno</button></a>
+      </div>
+      
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+     <!--Boton para ir a arriba-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Modal de cierre de sesio-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
           </div>
         </div>
       </div>

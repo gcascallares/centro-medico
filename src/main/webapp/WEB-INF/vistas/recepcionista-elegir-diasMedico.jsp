@@ -46,6 +46,7 @@
 	
 	var context = "${context}";
 	var pacienteId = ${idPaciente};
+<<<<<<< HEAD
 	var especialidadId =${especialidadId};
 	var medicoId = ${medicoId};
 </script>
@@ -159,6 +160,116 @@
 
       </div>
       <!-- /.content-wrapper -->
+=======
+	var especialidadId = ${especialidadId};
+	var medicoId = ${medicoId};
+</script>
+
+
+<body id="page-top">
+
+
+	      <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
+
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars fa-2x" style="color: white;"></i>
+      </button>
+      
+      <!-- Desplegable del usuario -->
+      <div class="ml-auto">
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+           <i class="fas fa-2x fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">Ajustes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar Sesion</a>
+          </div>
+        </li>
+      </ul>
+	</div>
+    </nav>
+
+    <div id="wrapper">
+
+      <!-- Barra del costado -->
+      <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/buscadorPaciente">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="${context}/datosmedicos">
+            <i class="fas fa-user-md"></i>
+            <span>Medicos</span>
+          </a>
+        </li> 
+      </ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Recepcionista</a>
+            </li>
+          </ol>
+          <!-- Contenido de la Pagina -->
+        	
+		
+			<h3 class="form-signin-heading">Elija El Dia Del Turno</h3>
+			
+			<hr class="colorgraph">
+			
+			<input type="text" id="datepicker">
+				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
+				
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				
+			
+			
+			<br><br>			
+
+ 				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
+
+				<br>
+				<a href="${context}/elegirmedico/${idPaciente}/${especialidadId}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
+
+ 			
+ 		</div>		
+ 			
+
+      </div>
+      <!-- /.content-wrapper -->
+      
+      <footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:50%">50%</div>
+				    </div>
+				</div>	
+      </footer>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
     </div>
     <!-- /#wrapper -->

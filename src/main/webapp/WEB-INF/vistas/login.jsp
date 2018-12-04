@@ -2,6 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<<<<<<< HEAD
+=======
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 <c:set var="context" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -75,8 +79,12 @@
           </form:form>
           
 		  <c:if test="${not empty error}">
+<<<<<<< HEAD
 			     <h4><span>${error}</span></h4>
 			     <br>
+=======
+		  		 <h4 class="text-center mt-5"><span>${error}</span></h4>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 		  </c:if>	
           
           <div class="text-center">

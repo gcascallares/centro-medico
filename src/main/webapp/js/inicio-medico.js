@@ -4,5 +4,11 @@ $(document).ready(function() {
 		alert(id);
 	}
 	
+<<<<<<< HEAD
+=======
+	$("#atras").click(function(){
+		window.history.back();
+	});
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	
 });

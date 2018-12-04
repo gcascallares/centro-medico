@@ -67,6 +67,7 @@
 
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
+<<<<<<< HEAD
       	
       <li class="nav-item">
           <a class="nav-link" href="${context}/Inicio">
@@ -92,6 +93,30 @@
           <a class="nav-link" href="#">
             <i class="fas fa-mobile-alt"></i></i>
             <span>  Contacto</span></a>
+=======
+      <li class="nav-item">
+          <a class="nav-link" href="${context}/Home">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/misTurnos">
+            <i class="fas fa-file-signature"></i>
+            <span> Mis Turnos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarhistoriaclinica">
+            <i class="fas fa-history"></i>
+            <span> Historia Clinica</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/derivacion/${usuarioId}">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span>  Derivaciones</span></a>
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
         </li>
       </ul>
 
@@ -143,7 +168,21 @@
 
       </div>
       <!-- /.content-wrapper -->
+<<<<<<< HEAD
 
+=======
+	
+	</div>
+	
+		<footer class="sticky-footer" >
+				<div class="col-xs-12 col-sm-12 progress-container">
+				    <div class="progress progress-striped active">
+				        <div class="progress-bar progress-bar-success" style="width:48%">48%</div>
+				    </div>
+				</div>	
+        </footer>
+	
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     </div>
     <!-- /#wrapper -->
 

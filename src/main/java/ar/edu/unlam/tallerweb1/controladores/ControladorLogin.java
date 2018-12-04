@@ -66,6 +66,7 @@ public class ControladorLogin {
 
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		
+<<<<<<< HEAD
 		modelo.put("usuario", usuarioBuscado);
 		
 		if (usuarioBuscado != null) {
@@ -105,6 +106,46 @@ public class ControladorLogin {
 			switch(request.getSession().getAttribute("ROL").toString()) {
 			
 			case "paciente": return new ModelAndView("index");
+=======
+		if (usuarioBuscado != null) {
+			
+			modelo.put("usuario", usuarioBuscado);
+			
+			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			request.getSession().setAttribute("ID", usuarioBuscado.getId());
+			
+			switch(usuarioBuscado.getRol()) {
+			
+			case "paciente": return new ModelAndView("index", modelo);
+			
+			case "recepcionista": return new ModelAndView("buscadorPacientes", modelo);
+			
+			case "medico" :	Medico medico = servicioMedico.traerMedicoSegunUsuario(usuarioBuscado);
+							return new ModelAndView("redirect:/"+medico.getId()+"/index-medico");
+			}
+		}
+		 else {
+			modelo.put("error", "Usuario o clave incorrecta");
+		}
+		
+		return new ModelAndView("login", modelo);
+	}
+	
+	@RequestMapping(path = "/Home")
+	public ModelAndView IrAlHome(HttpServletRequest request) {
+		
+		Long idUsuario = (Long)request.getSession().getAttribute("ID");
+		
+		Usuario usuario = servicioLogin.consultarUsuario(idUsuario);
+		
+		ModelMap modelo = new ModelMap();			
+		
+		modelo.put("usuario", usuario);
+		
+			switch(request.getSession().getAttribute("ROL").toString()) {
+			
+			case "paciente": return new ModelAndView("index",modelo);
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 			
 			case "recepcionista": return new ModelAndView("buscadorPacientes");
 			

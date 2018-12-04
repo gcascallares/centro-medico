@@ -67,6 +67,7 @@
 
     <div id="wrapper">
 
+<<<<<<< HEAD
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
        <li class="nav-item">
@@ -290,6 +291,268 @@
 		
 		var medicoADerivar = $("#medico option:selected").val();
 		window.location.href = window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico + "/" + idPaciente + "/" + medicoADerivar;
+=======
+      <ul class="sidebar navbar-nav">
+      	 <li class="nav-item">
+          <a class="nav-link" href="${context}/${medicoId}/index-medico/${consultorioId}">
+            <i class="fas fa-home"></i>
+            <span>  Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosPorDia/${medicoId}/${consultorioId}">
+            <i class="fas fa-file-signature"></i>
+            <span>Todos los Turnos</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${context}/mostrarTurnosDeProximoDiaLaboral/${medicoId}/${consultorioId}">
+           <i class="fas fa-calendar-check"></i>
+            <span>Turnos del Proximo Dia</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="${context}/generarAtencion/${medicoId}/${consultorioId}">
+            <i class="fab fa-creative-commons-nd"></i>
+            <span> Atenciones</span></a>
+        </li>
+      </ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!--Menu Hamburguesa -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Medico</a>
+            </li>
+          </ol>
+         
+          
+          
+          
+          
+          
+
+          <!-- Contenido de la Pagina -->
+        	
+        	<h3 class="form-signin-heading" id="titulo">  Bienvenido Dr. ${medico.nombre}</h3>
+			
+			<hr class="colorgraph">
+			
+			<br>
+  
+  			<c:if test="${fn:length(listaTurnos) != 0}">
+				<h3 class="form-signin-heading text-center" id="sub-titulo">Turnos del dia ${fecha}</h3>
+			</c:if>
+  			
+			<c:if test="${fn:length(listaTurnos) == 0}">
+				<div class="text-center mt-5"><h2>No hay mas turnos por hoy</h2></div>
+			</c:if>
+        	<div id="turnos">
+				<c:forEach items="${listaTurnos}" var="Turnos">
+					<div class="card w-50 mx-auto mt-4 mb-4">
+					  <h5 class="card-header">Numero de turno: <span id="turno-${Turnos.id}">${Turnos.id}</span></h5>
+					  <div class="card-body">
+					    <h5 class="card-title"><a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}/${Turnos.medico.id}/${consultorioId}">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</a></h5>
+					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
+					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
+					
+					<div class="d-flex justify-content-center mt-4">
+					<c:if test = "${Turnos.estudio == null}">
+					<button type="button" class="btn btn-primary mb-5 mr-4" data-toggle="modal" data-target="#turno${Turnos.id}">
+					  Dejar comentario
+					</button>
+					</c:if>
+					<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#derivar">
+					  Derivar
+					</button>
+					</div>
+					
+					<!-- Button trigger modal -->
+					<c:if test = "${Turnos.estado != 'Atendido'}">
+					<div class="text-center">
+						<button class="btn btn-success mb-5" onclick="atender(${Turnos.id},${consultorioId},${medico.id})" id="atendido-${Turnos.id}">Atendido</button>  
+			        </div>
+			        </c:if>
+					
+
+<!-- Modal -->
+					<div class="modal fade" id="turno${Turnos.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="titleTurno${Turnos.id}">Deje su comentario</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					      	<div class="text-center"><h5>Inserta el tipo de estudio / consulta realizada</h5></div>
+								<div class="form-group text-center">
+								
+								  <select id="estudio">
+        		
+						        		<option value="0" selected disabled>Seleccione una opción</option>
+					        		
+										<c:forEach items="${listaEstudios}" var="Estudio">
+										
+											
+											<option value="${Estudio.id}">${Estudio.nombre}</option>
+											
+										</c:forEach>	
+												
+									</select>
+								  
+								  <br><br>
+								
+								  <label for="comment">Descripcion</label>
+								  <textarea class="form-control" rows="5" id="comentario"></textarea>
+								  
+								</div>	
+								
+								<div id="mensajeDescripcion" class="errores">Por favor complete todos los campos</div>				      
+						 </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					        <button type="button" class="btn btn-primary" onclick="guardarComentario(${Turnos.id},${consultorioId},${medico.id})" id="guardar">Guardar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>		
+					
+					</div>
+					</div>
+					
+				
+			
+				<div class="modal fade" id="derivar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="titleTurno${Turnos.id}">Derivar</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+								<div class="form-group text-center">
+								  <label for="comment">Seleccione el medico al que desea derivar</label>
+								  
+        							<select id="medico">
+        		
+        								<option value="0" disabled selected>Seleccione una opción</option>
+        		
+											<c:forEach items="${listaMedicos}" var="medico">
+					
+											<option value="${medico.id}">Dr/a. ${medico.nombre} - ${medico.especialidad.nombreEspecialidad}</option>
+
+					
+											</c:forEach>
+												
+						
+									</select>
+									
+									<div id="mensajeMedico" class="errores">Por favor seleccione algun medico</div>	
+									
+								</div>					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					        <button type="button" class="btn btn-primary" onclick="guardarDerivacion(${Turnos.paciente.id},${consultorioId},${medico.id})" id="guardarDerivacion">Aceptar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>					
+					</c:forEach>		
+					</div>	
+			<br>
+ 			
+ 			
+ 			
+ 		</div> 	
+ 			
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+   <!--Boton para ir a arriba-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Modal de cierre de sesio-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+          </div>
+          <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<script> 
+	
+	function atender(idTurno,idConsultorio,idMedico){
+		
+		window.location.href = window.context+"/turno/atendido/" + idTurno + "/" + idConsultorio + "/" + idMedico;
+		
+	}
+	
+	function guardarComentario(idTurno,idConsultorio,idMedico){
+		
+		var mensaje = $("#comentario").val();
+		var estudio = $("#estudio option:selected").val();
+		
+		
+		 if(mensaje != 0 && estudio != 0){
+	        	
+	        	$("#mensajeDescripcion").fadeOut();
+	            
+	        	window.location.href = window.context+"/turno/guardarComentario/" + idTurno + "/" + idConsultorio + "/" + idMedico+ "/" + estudio + "/" + mensaje;
+	            
+	        	}
+	        
+	        else{
+	            
+	        	$("#mensajeDescripcion").fadeIn("slow");
+	            return false;
+	            
+	            }
+
+	}
+	
+	function guardarDerivacion(idPaciente,idConsultorio,idMedico){
+		
+		var medicoADerivar = $("#medico option:selected").val();
+		
+        if(medicoADerivar != 0){
+        	
+        	$("#mensajeMedico").fadeOut();
+            
+            window.location.assign(window.context+"/turno/guardarDerivacion/" + idConsultorio + "/" + idMedico + "/" + idPaciente + "/" + medicoADerivar);
+            
+        	}
+        
+        else{
+            
+        	$("#mensajeMedico").fadeIn("slow");
+            return false;
+            
+            }
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 		
 	}
 		

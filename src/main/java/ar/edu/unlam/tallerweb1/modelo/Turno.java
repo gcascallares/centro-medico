@@ -26,6 +26,7 @@ public class Turno {
 
 	private String estado;
 	
+<<<<<<< HEAD
 	private String descripcion;
 	
 	private Integer derivado;
@@ -41,6 +42,12 @@ public class Turno {
 		this.descripcion = descripcion;
 	}
 
+=======
+	private Integer derivado;
+	
+	@ManyToOne
+	private Estudio estudio;
+>>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	
 	public Long getId() {
 		return id;
