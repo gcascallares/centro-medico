@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -222,7 +223,9 @@ public class TurnoDaoImpl implements TurnoDao {
 		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
 							.add(Restrictions.like("id", usuarioId))
 							.uniqueResult();
-		List <Turno> listaDeDerivaciones = null;
+		
+		List <Turno> listaDeDerivaciones = new ArrayList<Turno>(); 
+		
 		try {
 		listaDeDerivaciones = session.createCriteria(Turno.class)
 				  .createAlias("paciente", "pacienteBuscado")
@@ -231,7 +234,7 @@ public class TurnoDaoImpl implements TurnoDao {
 				  .list();
 		}
 		catch(Exception e) {
-			
+			listaDeDerivaciones = null;
 		}
 		return listaDeDerivaciones;
 
