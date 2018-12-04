@@ -48,121 +48,6 @@
 
 <body id="page-top">
 
-<<<<<<< HEAD
-
-	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-      <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars fa-2x" style="color: white;"></i>
-      </button>
-      
-      <!-- Desplegable del usuario -->
-      <div class="ml-auto">
-      <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-2x fa-user-circle fa-fw"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Ajustes</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar Sesion</a>
-          </div>
-        </li>
-      </ul>
-	</div>
-    </nav>
-
-    <div id="wrapper">
-
-      <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-      
-      	<li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
-      	
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
-      </ul>
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-          <!--Menu Hamburguesa -->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Solicitar Turno</a>
-            </li>
-          </ol>
-          
-          
-          
-          
-          
-          
-
-          <!-- Contenido de la Pagina -->
-        		
-        		
-		        <input type"hidden" value="${especialidadId}" id="especialidadId" hidden>
-				<input type"hidden" value="${medicoId}" id="medicoId" hidden>
-				<h3 class="form-signin-heading">Elija su Fecha</h3>
-				<br>
-				<br>
-				<br>
-		
-				<input type="text" id="datepicker">
-				
-				<div id="mensajeDia" class="errores">Por favor seleccione alguna de las fechas disponibles</div>
-				
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				
-				<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
-				<br>
-				<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
- 			
-
-
-
-      </div>
-      <!-- /.content-wrapper -->
-
-=======
 	  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="#"><img src="${context}/img/logo3.png"></a>
@@ -281,7 +166,6 @@
 				</div>	
         </footer>
                 
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     </div>
     <!-- /#wrapper -->
 

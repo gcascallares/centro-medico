@@ -22,10 +22,7 @@ public class Paciente {
 	public Long getId() {
 		return id;
 	}
-<<<<<<< HEAD
-=======
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -37,10 +34,7 @@ public class Paciente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-<<<<<<< HEAD
-=======
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	public Long getDni() {
 		return dni;
 	}

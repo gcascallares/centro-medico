@@ -65,95 +65,6 @@
 
     <div id="wrapper">
 
-<<<<<<< HEAD
-      <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/buscadorPaciente">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
-      </ul>
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-          <!--Menu Hamburguesa -->
-
-
-
-
-
-
-          <!-- Contenido de la Pagina -->
-        	
-        	<div class="container">
-				</div>
-		
-						<h3 class="form-signin-heading">Elija el turno a modificar</h3>
-			
-							<hr class="colorgraph">
-			
-							<br>
-       	
-								<c:forEach items="${listaturnos}" var="turno">
-									<h3 class="form-signin-heading">Turno: ${turno.estado} ${turno.fecha} ${turno.horario}</h3>
-									<a href="${context}/modificarestadoturno/${turno.id}"><button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${turno.id}" name="id">Abonado</button></a></br>
-									<a href="${context}/modificarestadoturnorechazado/${turno.id}"><button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${turno.id}" name="id">Rechazado</button></a></br>
-								</c:forEach>	
-			
-							<br>
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
-			<a href="${context}/sacarTurno/${idPaciente}"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Sacar Turno</button></a>
-      </div>
-      
-      
-      
-      
-      
-      <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-     <!--Boton para ir a arriba-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Modal de cierre de sesio-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">x</span>
-            </button>
-          </div>
-          <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="/cerrarSesion">Cerrar</a>
-=======
        <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
@@ -249,7 +160,6 @@
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
           </div>
         </div>
       </div>

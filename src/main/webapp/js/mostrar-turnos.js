@@ -6,8 +6,6 @@ $(document).ready(function() {
 		$('#reservar').css("display","none");
 	}
 		
-<<<<<<< HEAD
-=======
 	
 	$("#reservar").click(function(){
 		
@@ -41,7 +39,6 @@ $(document).ready(function() {
 	            
 		});
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	$("#atras").click(function(){
 		window.history.back();
 	});

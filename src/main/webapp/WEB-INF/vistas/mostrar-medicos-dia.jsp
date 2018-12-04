@@ -68,86 +68,6 @@
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
-<<<<<<< HEAD
-          <a class="nav-link" href="${context}/Inicio">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
-      </ul>
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-          <!--Menu Hamburguesa -->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Solicitar Turno</a>
-            </li>
-          </ol>
-          
-          
-          
-          
-          
-          
-
-          <!-- Contenido de la Pagina -->
-        	
-        	<form:form action="" method="POST">
-			<h3 class="form-signin-heading">Elija su Medico</h3>
-			<hr class="colorgraph">
-			<br>
-  
-        	<select id="medicos">
-        		
-        		<option value="0">Seleccione una opcion </option>
-				<c:forEach items="${listaDeMedicos}" var="Medico">
-					<option value="${Medico.id}">${Medico.nombre}</option>
-				</c:forEach>			
-			</select>
-			
-			<br>
-			<div id="mensajeMedico" class="errores">Por favor seleccione algunos de los medicos disponibles</div>
-			<br>
-			<br>
-			
-			<input type="hidden" value="${fecha}" id="fecha">
-			<input type="hidden" value="${especialidadId}" id="especialidadId">
-			<input type="hidden" value="${diaId}" id="diaId">
-			<br>
-			<a class="btn btn-lg btn-primary btn-block" id="siguiente">Continuar</a>
-			<br>
-			<br>
-			<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
-			</form:form>
-		
-		
-		
-		
-		
-
-      </div>
-      <!-- /.content-wrapper -->
-
-=======
           <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
             <span>  Inicio</span>
@@ -236,7 +156,6 @@
 				</div>	
         </footer>
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     </div>
     <!-- /#wrapper -->
 

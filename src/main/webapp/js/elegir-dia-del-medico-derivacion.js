@@ -25,12 +25,8 @@ $(document).ready(function() {
 				        return [(day == window.dias[0] || day == window.dias[1] || 
 				        		day == window.dias[2] || day == window.dias[3]
 				        		|| day == window.dias[4])];
-<<<<<<< HEAD
-				    } 
-=======
 				    },
 				    minDate: new Date()
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 						
 				});
 				

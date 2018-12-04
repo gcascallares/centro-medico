@@ -65,64 +65,6 @@
 
     <div id="wrapper">
 
-<<<<<<< HEAD
-      <!-- Barra del costado -->
-      <ul class="sidebar navbar-nav">
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/buscadorPaciente">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
-      </ul>
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-          <!--Menu Hamburguesa -->
-
-
-
-          <!-- Contenido de la Pagina -->
-        	
-        	<div class="container">
-				</div>
-					<form:form action="${context}/mostrarTurnosPaciente" method="POST">
-						<h3 class="form-signin-heading">Elija su paciente</h3>
-							<hr class="colorgraph">
-								<br>
-   	
-								<c:forEach items="${listapacientes}" var="paciente">
-				
-									<button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${paciente.id}" name="id">${paciente.nombre} ${paciente.apellido} ${paciente.dni}</button></br>
-					
-								</c:forEach>	
-	
-								<br>
-			
- 					</form:form>
- 			<a href="${context}/buscadorPaciente"><button  class="btn btn-lg btn-primary btn-block" Type="button" >Volver</button></a>
-      </div>
-      <!-- /.content-wrapper -->
-
-=======
   <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
       <li class="nav-item">
@@ -188,7 +130,6 @@
       <!-- /.content-wrapper -->
 	</div>
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     </div>
     <!-- /#wrapper -->
 

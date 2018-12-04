@@ -11,13 +11,9 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
-import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
-=======
 import ar.edu.unlam.tallerweb1.modelo.Atencion;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 import ar.edu.unlam.tallerweb1.modelo.Estudio;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
 import ar.edu.unlam.tallerweb1.modelo.Turno;
@@ -31,20 +27,9 @@ public class TurnoDaoImpl implements TurnoDao {
     private SessionFactory sessionFactory;
 
 	@Override
-<<<<<<< HEAD
-	public void guardarTurno (Turno turno, Long idUsuario) {
-=======
 	public Turno guardarTurno (Turno turno, Long idUsuario) {
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Usuario usuario = (Usuario)session.createCriteria(Usuario.class)
-						  .add(Restrictions.like("id", idUsuario))
-						  .uniqueResult();
-		
-		turno.setEstado("En espera");
-		turno.setPaciente(usuario.getPaciente());
+		final Session session = sessionFactory.getCurrentSession();
 		
 		Usuario usuario = (Usuario)session.createCriteria(Usuario.class)
 						  .add(Restrictions.like("id", idUsuario))
@@ -61,8 +46,6 @@ public class TurnoDaoImpl implements TurnoDao {
 	@Override
 	public void guardarTurnoRecepcionista(Turno turno) {
 		
-<<<<<<< HEAD
-=======
 		final Session session = sessionFactory.getCurrentSession();
 		
 		turno.setEstado("En espera");
@@ -75,21 +58,7 @@ public class TurnoDaoImpl implements TurnoDao {
 	@Override
 	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {
 		
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 		Session session = sessionFactory.getCurrentSession();
-<<<<<<< HEAD
-		turno.setEstado("En espera");
-		
-		session.save(turno);
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Turno> listaTurnosPorMedico(Medico medico, String diaActual) {
-		
-		Session session = sessionFactory.getCurrentSession();
-=======
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 		
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.createAlias("medico","medicoBuscado")
@@ -121,8 +90,6 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		return listaTurnos;
 	}
-<<<<<<< HEAD
-=======
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -382,158 +349,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		Turno turno = (Turno) session.createCriteria(Turno.class)
 					  .add(Restrictions.like("id", turnoId))
 					  .uniqueResult();
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
-<<<<<<< HEAD
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId) {
-		
-		//lista de los dias de los medicos que trabajan en esa especialidad
-		Session session = sessionFactory.getCurrentSession();
-		
-		List <DiasLaborales> lista = session.createCriteria(DiasLaborales.class)
-		.createAlias("Medicos", "Medicos")
-		.createAlias("Medicos.especialidad", "especialidadBuscada")
-		.add(Restrictions.eq("especialidadBuscada.id",especialidadId)).list();
-		
-		return lista;
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Medico> listaDeMedicosDisponibles (Long especialidadId , Long diaId) {
-		
-		//lista de los dias de los medicos que trabajan en esa especialidad
-		Session session = sessionFactory.getCurrentSession();
-		
-		List <Medico> lista = session.createCriteria(Medico.class)
-		.createAlias("especialidad","especialidadBuscada")
-		.add(Restrictions.eq("especialidadBuscada.id", especialidadId))
-		.createAlias("diasLaborales", "diasBuscados")
-		.add(Restrictions.eq("diasBuscados.id", diaId))
-		.list();
-		
-		return lista;
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Turno> mostrarHistoriaClinica(Long id){
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		List <Turno> listaHistorial = session.createCriteria(Turno.class)
-				.createAlias("paciente","pacienteJoin")
-				.add(Restrictions.like("pacienteJoin.id", id))
-				.list();
-		
-		return listaHistorial;
-	}
-	
-	@Override
-	public Paciente mostrarDatosPaciente(Long id) {
-		
-		Session session = sessionFactory.getCurrentSession();
-	
-		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
-							.add(Restrictions.eq("id",id))
-							.uniqueResult();
-	
-		return paciente;
-	}
-
-	@Override
-	public void cambiarEstadoAtendido(Long id) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Turno turno = (Turno)session.createCriteria(Turno.class)
-					  .add(Restrictions.like("id", id))
-		              .uniqueResult();
-		
-		turno.setEstado("Atendido");
-		session.update(turno);
-	}
-
-	@Override
-	public void agregarDescripcion(Long turnoId,String descripcion, Long estudioId) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Estudio estudio = (Estudio)session.createCriteria(Estudio.class)
-				  		  .add(Restrictions.like("id", estudioId))
-				          .uniqueResult();
-	
-		Turno turno = (Turno)session.createCriteria(Turno.class)
-					  .add(Restrictions.like("id", turnoId))
-					  .uniqueResult();
-		
-		turno.setDescripcion(descripcion);
-		turno.setEstudio(estudio);
-		
-		session.update(turno);
-	}
-
-	@Override
-	public void agregarDerivacion(Long pacienteId, Long idMedico) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Paciente paciente = (Paciente)session.createCriteria(Paciente.class)
-		  		  .add(Restrictions.like("id", pacienteId))
-		          .uniqueResult();
-		
-		Medico medico = (Medico)session.createCriteria(Medico.class)
-		  		  .add(Restrictions.like("id", idMedico))
-		          .uniqueResult();
-		
-		Turno turno = new Turno();
-		turno.setEstado("En espera");
-		turno.setDerivado(1);
-		turno.setPaciente(paciente);
-		turno.setMedico(medico);
-		
-		session.save(turno);
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List <Turno> listaDeDerivacion(Long usuarioId) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
-							.add(Restrictions.like("id", usuarioId))
-							.uniqueResult();
-		
-		
-		List <Turno> listaDeDerivaciones = session.createCriteria(Turno.class)
-				  .createAlias("paciente", "pacienteBuscado")
-				  .add(Restrictions.like("pacienteBuscado.id", paciente.getId()))
-				  .add(Restrictions.like("derivado", 1))
-				  .list();
-		
-		return listaDeDerivaciones;
-
-	}
-	
-	@Override
-	public void guardarDerivacion (Turno turno, Long idUsuario) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
-		Usuario usuario = (Usuario)session.createCriteria(Usuario.class)
-						  .add(Restrictions.like("id", idUsuario))
-						  .uniqueResult();
-		
-		turno.setEstado("En espera");
-		turno.setPaciente(usuario.getPaciente());
-		
-		session.update(turno);
-	}
-	
-=======
 		turno.setFecha(fecha);
 		turno.setHorario(horario);
 		
@@ -541,6 +357,5 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		return turno;
 	}
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
 }

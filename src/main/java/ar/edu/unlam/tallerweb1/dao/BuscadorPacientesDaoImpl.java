@@ -74,13 +74,9 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		
 		List <Turno> listaTurnos = session.createCriteria(Turno.class)
 		.createAlias("paciente","pacienteBuscado")
-<<<<<<< HEAD
-		.add(Restrictions.like("pacienteBuscado.id",id)).add(Restrictions.like("estado","en_espera"))
-=======
 		.add(Restrictions.like("pacienteBuscado.id",id))
 		.add(Restrictions.like("estado","en_espera"))
 		.add(Restrictions.like("derivado", 0))
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 		.addOrder(Order.asc("fecha"))
 		.addOrder(Order.asc("horario"))
 		.list();

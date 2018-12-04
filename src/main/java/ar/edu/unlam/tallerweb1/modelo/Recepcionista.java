@@ -7,21 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Recepcionista {
-<<<<<<< HEAD
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nombre;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-=======
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +26,6 @@ public class Recepcionista {
 		return nombre;
 	}
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

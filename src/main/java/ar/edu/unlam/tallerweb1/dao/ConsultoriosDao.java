@@ -12,10 +12,7 @@ public interface ConsultoriosDao {
 
 	void guardarConsultorio(Consultorio consultorio);
 
-<<<<<<< HEAD
-=======
 	Consultorio buscarConsultorioPorMedico(Long medicoId);
 
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	
 }

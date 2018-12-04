@@ -10,8 +10,5 @@ public interface ServicioEspecialidad {
 	List <Especialidad> consultarEspecialidades();
 
 	List<Estudio> listaDeEstudios(Especialidad especialidad);
-<<<<<<< HEAD
-=======
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 }

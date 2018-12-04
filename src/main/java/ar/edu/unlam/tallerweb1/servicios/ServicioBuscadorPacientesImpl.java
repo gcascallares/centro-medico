@@ -10,8 +10,6 @@ import ar.edu.unlam.tallerweb1.dao.BuscadorPacientesDao;
 
 @Service("ServicioBuscadorPacientes")
 @Transactional
-<<<<<<< HEAD
-
 public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes {
 	
 	@Inject
@@ -37,32 +35,4 @@ public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes 
 		return buscadorPacientesDao.listaTurnos(id);
 	}
 
-	
-=======
-public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes {
-	
-	@Inject
-	private BuscadorPacientesDao buscadorPacientesDao;
-	
-	@Override
-	public List <Paciente> listaPacientes(Long dni) {
-			return buscadorPacientesDao.listaPacientes(dni);
-	}
-	
-	@Override
-	public boolean modificarEstadoTurno(Long id) {
-		return buscadorPacientesDao.modificarEstadoTurno(id);
-	}
-	
-	@Override
-	public boolean modificarEstadoTurnoRechazado(Long id) {
-		return buscadorPacientesDao.modificarEstadoTurnoRechazado(id);
-	}
-	
-	@Override
-	public List <Turno> listaTurnos(Long id){
-		return buscadorPacientesDao.listaTurnos(id);
-	}
-
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 }

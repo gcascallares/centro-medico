@@ -66,95 +66,6 @@
     <div id="wrapper">
 
       <!-- Barra del costado -->
-<<<<<<< HEAD
-      <ul class="sidebar navbar-nav">
-       <li class="nav-item">
-          <a class="nav-link" href="${context}/centroMedico">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-        </li>
-      </ul>
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-          <!--Menu Hamburguesa -->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Solicitar Turno</a>
-            </li>
-          </ol>
-          
-          
-          
-          
-          
-          
-
-          <!-- Contenido de la Pagina -->
-        	
-        	<div class="container">
-		
-				<br>
-				<button class="btn btn-lg btn-primary btn-block" id="botonMedico">Elegir por Medico</button>
-				<br>
-				<input type="hidden" value="${especialidadId}" id="especialidadId">
-				<button class="btn btn-lg btn-primary btn-block" id="botonDia">Elegir por Dia</button>
-				<br>
-				<button type="button" class="btn btn-lg btn-primary btn-block" id="atras">Atras</button>
-		
-			</div>
-			
- 			
-
-      </div>
-      <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-     <!--Boton para ir a arriba-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Modal de cierre de sesio-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Seguro que quiere cerrar session</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">x</span>
-            </button>
-          </div>
-          <div class="modal-body">Seleccione la opcion "Cerrar" que esta debajo si esta listo para cerrar su sesion </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-primary" href="${context}/cerrarSesion">Cerrar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-=======
      <ul class="sidebar navbar-nav">
       <li class="nav-item">
           <a class="nav-link" href="${context}/Home">
@@ -222,10 +133,7 @@
 				    </div>
 				</div>	
                 </footer>
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	
-<<<<<<< HEAD
-=======
     </div>
     <!-- /#wrapper -->
 
@@ -261,7 +169,6 @@
 	</script>
 	
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	 <!-- Bootstrap core y JavaScript-->
     <script src="${context}/js/jquery/jquery.min.js"></script>
     <script src="${context}/js/bootstrap/bootstrap.bundle.min.js"></script>

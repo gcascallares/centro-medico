@@ -67,33 +67,6 @@
 
       <!-- Barra del costado -->
       <ul class="sidebar navbar-nav">
-<<<<<<< HEAD
-      	
-      <li class="nav-item">
-          <a class="nav-link" href="${context}/Inicio">
-            <i class="fas fa-home"></i>
-            <span>  Inicio</span>
-          </a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-file-signature"></i>
-            <span>  Turnos</span>
-          </a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fab fa-creative-commons-nd"></i>
-            <span>  Derivaciones</span></a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-mobile-alt"></i></i>
-            <span>  Contacto</span></a>
-=======
       <li class="nav-item">
           <a class="nav-link" href="${context}/Home">
             <i class="fas fa-home"></i>
@@ -116,7 +89,6 @@
           <a class="nav-link" href="${context}/derivacion/${usuarioId}">
             <i class="fab fa-creative-commons-nd"></i>
             <span>  Derivaciones</span></a>
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
         </li>
       </ul>
 
@@ -168,9 +140,6 @@
 
       </div>
       <!-- /.content-wrapper -->
-<<<<<<< HEAD
-
-=======
 	
 	</div>
 	
@@ -182,7 +151,6 @@
 				</div>	
         </footer>
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
     </div>
     <!-- /#wrapper -->
 

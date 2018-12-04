@@ -50,37 +50,6 @@
          <br>
          <br>	
         	
-<<<<<<< HEAD
-          <form:form action="Iniciar" method="POST" modelAttribute="usuario">
-          
-            <div class="form-group">
-            
-              <div class="form-row">
-              
-              	<form:input path="paciente.id" value="${paciente.id}" type="hidden"/>
-              	<form:input path="rol" value="paciente" type="hidden"/>
-              
-                <div class="col-md-6">
-                  <div class="form-label-group">
-                    <form:input type="readonly" class="form-control" value="${paciente.dni}" path="dni" readonly="readonly"/>
-                    <label for="firstName">Dni</label>
-                  </div>
-                </div>
-                
-                <div class="col-md-6">
-                  <div class="form-label-group">
-                    <form:input type="password" id="lastName" class="form-control" placeholder="Caontraseña" required="required" path="password"/>
-                    <label for="lastName">Contraseña</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <input type="submit" class="btn btn-primary btn-block" value="Registrarse"></input>
-            
-          </form:form>
-          
-=======
 		<form action="${context}/Iniciar" method = "POST">          
             <div class="form-group">
             
@@ -105,7 +74,6 @@
             
             <input type="submit" class="btn btn-primary btn-block" value="Registrarse"></input>
          </form>
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
         </div>
       </div>
     </div>

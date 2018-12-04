@@ -26,16 +26,6 @@ public class PacienteDaoImpl  implements PacienteDao{
 		
 	}
 	
-<<<<<<< HEAD
-
-	@Override
-	public Long obtenerIdPaciente(Long id) {
-		final Session session = sessionFactory.getCurrentSession();
-		Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.like("id", id)).uniqueResult();
-		
-		return usuario.getPaciente().getId();
-=======
 	@Override
 	public Long obtenerIdPaciente(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
@@ -69,7 +59,6 @@ public class PacienteDaoImpl  implements PacienteDao{
 		session.update(usuario);
 		
 		return usuario;
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	}
 
 }

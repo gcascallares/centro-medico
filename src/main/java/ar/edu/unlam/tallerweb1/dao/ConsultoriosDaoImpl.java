@@ -53,8 +53,6 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 
 	}
 	
-<<<<<<< HEAD
-=======
 	@Override
 	public Consultorio buscarConsultorioPorMedico (Long medicoId) {
 		
@@ -68,6 +66,5 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 
 	}
 	
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 
 }

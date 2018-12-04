@@ -21,10 +21,6 @@ public class DiasLaborales {
 	
 	private String nombre;
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of https://github.com/ignacrescenzo/centro-medico.git
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "dias_medicos",
 			   joinColumns= {@JoinColumn(name="dia_id")},
