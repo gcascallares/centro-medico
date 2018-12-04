@@ -222,14 +222,17 @@ public class TurnoDaoImpl implements TurnoDao {
 		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
 							.add(Restrictions.like("id", usuarioId))
 							.uniqueResult();
-		
-		
-		List <Turno> listaDeDerivaciones = session.createCriteria(Turno.class)
+		List <Turno> listaDeDerivaciones = null;
+		try {
+		listaDeDerivaciones = session.createCriteria(Turno.class)
 				  .createAlias("paciente", "pacienteBuscado")
 				  .add(Restrictions.like("pacienteBuscado.id", paciente.getId()))
 				  .add(Restrictions.like("derivado", 1))
 				  .list();
-		
+		}
+		catch(Exception e) {
+			
+		}
 		return listaDeDerivaciones;
 
 	}
