@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.dao;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
@@ -26,5 +27,7 @@ public interface MedicoDao {
 	void guardarAtencion(String mensaje, Long pacienteId, Long medicoId, String fecha);
 
 	List<Medico> listaMedicos();
+
+	Consultorio tieneConsultorio(Long medicoId);
 
 }

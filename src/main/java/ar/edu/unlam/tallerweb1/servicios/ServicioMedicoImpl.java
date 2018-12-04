@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.MedicoDao;
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
@@ -43,6 +44,11 @@ public class ServicioMedicoImpl implements ServicioMedico {
 	@Override
 	public List<Medico> listaMedicos(){
 		return medicoDao.listaMedicos();
+	}
+
+	@Override
+	public Consultorio tieneConsultorio(Long medicoId) {
+		return medicoDao.tieneConsultorio(medicoId);
 	}
 
 }

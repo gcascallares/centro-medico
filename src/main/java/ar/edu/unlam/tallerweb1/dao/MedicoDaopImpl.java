@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Atencion;
+import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 import ar.edu.unlam.tallerweb1.modelo.DiasLaborales;
 import ar.edu.unlam.tallerweb1.modelo.Especialidad;
 import ar.edu.unlam.tallerweb1.modelo.Medico;
@@ -142,6 +143,21 @@ public class MedicoDaopImpl implements MedicoDao {
 		final Session session = sessionFactory.getCurrentSession();
 		List <Medico> listaMedicos = session.createCriteria(Medico.class).list();
 		return listaMedicos;
+	}
+
+	@Override
+	public Consultorio tieneConsultorio(Long medicoId) {
+		final Session session = sessionFactory.getCurrentSession();
+		try {
+		Consultorio consultorio = (Consultorio)session.createCriteria(Consultorio.class)
+		.add(Restrictions.like("medico.id", medicoId))
+		.uniqueResult();
+		return consultorio;
+		}
+		catch(Exception e) {
+			return null;
+		}
+		
 	}
 	
 }
