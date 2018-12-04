@@ -137,6 +137,7 @@ public class MedicoDaopImpl implements MedicoDao {
 		session.save(atencion);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medico> listaMedicos(){
 		

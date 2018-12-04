@@ -10,7 +10,6 @@ import ar.edu.unlam.tallerweb1.dao.BuscadorPacientesDao;
 
 @Service("ServicioBuscadorPacientes")
 @Transactional
-
 public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes {
 	
 	@Inject
@@ -36,5 +35,4 @@ public class ServicioBuscadorPacientesImpl implements ServicioBuscadorPacientes 
 		return buscadorPacientesDao.listaTurnos(id);
 	}
 
-	
 }

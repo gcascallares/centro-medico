@@ -25,22 +25,6 @@ public class ControladorRegistro {
 	@Inject
 	private ServicioPaciente servicioPaciente;
 	
-	public ServicioRegistro getServicioRegistro() {
-		return servicioRegistro;
-	}
-
-	public void setServicioRegistro(ServicioRegistro servicioRegistro) {
-		this.servicioRegistro = servicioRegistro;
-	}
-
-	public ServicioPaciente getServicioPaciente() {
-		return servicioPaciente;
-	}
-
-	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
-		this.servicioPaciente = servicioPaciente;
-	}
-
 	//Mando el objeto vacio a la vista registrar en la cual se seteo los valores que tiene
 	@RequestMapping("/Registrar")
 	public ModelAndView iraRegistro(){
@@ -79,5 +63,23 @@ public class ControladorRegistro {
 		return new ModelAndView("login", modelo);
 	}
 
+	
+//	Metodos Getters y Setters
+	
+	public ServicioRegistro getServicioRegistro() {
+		return servicioRegistro;
+	}
+
+	public void setServicioRegistro(ServicioRegistro servicioRegistro) {
+		this.servicioRegistro = servicioRegistro;
+	}
+
+	public ServicioPaciente getServicioPaciente() {
+		return servicioPaciente;
+	}
+
+	public void setServicioPaciente(ServicioPaciente servicioPaciente) {
+		this.servicioPaciente = servicioPaciente;
+	}
 
 }

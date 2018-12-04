@@ -22,13 +22,11 @@ public class ServicioRegistroImpl implements ServicioRegistro {
 	
 	@Override
 	public void guardarPaciente (Paciente paciente) {
-		
 		pacienteDao.guardarPaciente(paciente);
 	}
 	
 	@Override
 	public Usuario guardarUsuario (Paciente paciente) {
-		
 		return usuarioDao.guardarUsuario(paciente);
 	}
 	

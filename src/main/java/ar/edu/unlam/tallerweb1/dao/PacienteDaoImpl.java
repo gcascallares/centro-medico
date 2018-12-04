@@ -26,7 +26,6 @@ public class PacienteDaoImpl  implements PacienteDao{
 		
 	}
 	
-
 	@Override
 	public Long obtenerIdPaciente(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
@@ -58,6 +57,7 @@ public class PacienteDaoImpl  implements PacienteDao{
 		usuario.setPassword(contrasena);
 		
 		session.update(usuario);
+		
 		return usuario;
 	}
 

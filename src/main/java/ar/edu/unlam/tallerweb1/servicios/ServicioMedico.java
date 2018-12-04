@@ -10,7 +10,6 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface ServicioMedico {
 	
-	
 	List <DiasLaborales> buscarDiasLaborales(Long id);
 	
 	Medico  traerMedicoSegunUsuario(Usuario usuario);

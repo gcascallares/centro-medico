@@ -10,4 +10,5 @@ public interface ServicioPaciente {
 	Paciente obtenerPaciente(Long idPaciente);
 
 	Usuario guardarContrasena(Long id, String contrasena);
+	
 }

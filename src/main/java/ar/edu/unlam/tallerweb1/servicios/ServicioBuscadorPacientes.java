@@ -8,7 +8,6 @@ import ar.edu.unlam.tallerweb1.modelo.Turno;
 public interface ServicioBuscadorPacientes {
 	
 	List <Paciente> listaPacientes(Long dni);
-
 	
 	boolean modificarEstadoTurno(Long id);
 	

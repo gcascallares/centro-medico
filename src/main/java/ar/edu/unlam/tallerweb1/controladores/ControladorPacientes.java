@@ -44,6 +44,9 @@ public class ControladorPacientes {
 	@Inject
 	private ServicioPaciente servicioPaciente;
 	
+	
+//	Buscador de Pacientes
+	
 	@RequestMapping("/buscadorPaciente")
 	public ModelAndView buscadorDePacientes(HttpServletRequest request){
 		
