@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -75,8 +76,7 @@
           </form:form>
           
 		  <c:if test="${not empty error}">
-			     <h4><span>${error}</span></h4>
-			     <br>
+		  		 <h4 class="text-center mt-5"><span>${error}</span></h4>
 		  </c:if>	
           
           <div class="text-center">
