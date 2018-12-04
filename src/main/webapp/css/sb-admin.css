@@ -707,5 +707,6 @@ fieldset[disabled] .btn-primary.active {
 .progress.active .progress-bar {
     -webkit-transition: none !important;
     transition: none !important;
+    background-color: #1e9edb;
 }
 

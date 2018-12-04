@@ -66,9 +66,9 @@ public class ControladorLogin {
 
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		
-		modelo.put("usuario", usuarioBuscado);
-		
 		if (usuarioBuscado != null) {
+			
+			modelo.put("usuario", usuarioBuscado);
 			
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
@@ -79,14 +79,11 @@ public class ControladorLogin {
 			
 			case "recepcionista": return new ModelAndView("buscadorPacientes", modelo);
 			
-			case "medico" : 
-				Medico medico = servicioMedico.traerMedicoSegunUsuario(usuarioBuscado);
-				return new ModelAndView("redirect:/"+medico.getId()+"/index-medico");
+			case "medico" :	Medico medico = servicioMedico.traerMedicoSegunUsuario(usuarioBuscado);
+							return new ModelAndView("redirect:/"+medico.getId()+"/index-medico");
 			}
 		}
 		 else {
-			 
-			// si el usuario no existe agrega un mensaje de error en el modelo.
 			modelo.put("error", "Usuario o clave incorrecta");
 		}
 		
