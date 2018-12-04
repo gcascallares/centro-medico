@@ -106,7 +106,9 @@
           </div>
           
           <!-- Contenido de la Pagina -->
-          
+          <c:if test="${fn:length(listaDerivaciones) == 0}">
+				<div class="text-center mt-5"><h2>No hay derivaciones disponibles</h2></div>
+			</c:if>
           <c:forEach items="${listaDerivaciones}" var="Derivacion">
 										
 					<div class="card w-50 mx-auto mt-4 mb-4">
