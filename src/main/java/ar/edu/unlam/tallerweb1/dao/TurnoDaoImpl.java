@@ -220,7 +220,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		
 		final Session session = sessionFactory.getCurrentSession();
 		
-		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
+		Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
 							.add(Restrictions.like("id", usuarioId))
 							.uniqueResult();
 		
@@ -229,7 +229,7 @@ public class TurnoDaoImpl implements TurnoDao {
 		try {
 		listaDeDerivaciones = session.createCriteria(Turno.class)
 				  .createAlias("paciente", "pacienteBuscado")
-				  .add(Restrictions.like("pacienteBuscado.id", paciente.getId()))
+				  .add(Restrictions.like("pacienteBuscado.id", usuario.getPaciente().getId()))
 				  .add(Restrictions.like("derivado", 1))
 				  .list();
 		}
