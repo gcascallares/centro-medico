@@ -106,12 +106,19 @@ public class ControladorMedico {
 		String usuarioRol = (String)request.getSession().getAttribute("ROL");
 		
 		if("medico".equals(usuarioRol)){
+			Consultorio consultorio = servicioMedico.tieneConsultorio(medicoId);
+			if(consultorio == null) {
 			List <Consultorio> listaConsultorios = new ArrayList <Consultorio>();
 			listaConsultorios = servicioConsultorio.listaConsultorios();
 	
 			modelo.put("listaConsultorios", listaConsultorios);
 			modelo.put("medicoId", medicoId);
 			return new ModelAndView("mostrar-consultorios", modelo);
+			}
+			else {
+				return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorio.getId());
+			}
+			
 		}
 		else{
 			return new ModelAndView("redirect:/Iniciar", modelo);
