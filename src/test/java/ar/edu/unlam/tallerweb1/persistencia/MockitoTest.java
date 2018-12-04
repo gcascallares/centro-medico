@@ -8,17 +8,13 @@ import javax.servlet.http.HttpSession;
 
 import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
 import org.junit.Test;
-import org.junit.runner.Request;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.controladores.ControladorLogin;
 import ar.edu.unlam.tallerweb1.controladores.ControladorMedico;
 import ar.edu.unlam.tallerweb1.controladores.ControladorPacientes;
 import ar.edu.unlam.tallerweb1.controladores.ControladorRegistro;
@@ -33,7 +29,6 @@ import ar.edu.unlam.tallerweb1.modelo.Turno;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioConsultorio;
 import ar.edu.unlam.tallerweb1.servicios.ServicioEspecialidad;
-import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 import ar.edu.unlam.tallerweb1.servicios.ServicioMedico;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
 import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
@@ -53,6 +48,7 @@ public class MockitoTest {
 		Long consultorioId = null;
 		Paciente pacienteMock = mock(Paciente.class);
 		HttpSession sessionMock = mock(HttpSession.class);
+		@SuppressWarnings("unused")
 		Usuario usuarioMock = mock(Usuario.class);
 		ControladorMedico controladorMedico = new ControladorMedico();
 		
