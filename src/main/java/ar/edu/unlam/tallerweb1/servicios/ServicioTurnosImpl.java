@@ -36,10 +36,10 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 		//guarda en medico el con lasespecificaciones elegidas pero desde la BD
 		
-		Integer horaDesde = medico.getHoraDesde();
-		Integer horaHasta = medico.getHoraHasta();
-		Integer minutoDesde = medico.getMinutoDesde();
-		Integer minutoHasta = medico.getMinutoHasta();
+		Integer horaDesde = Integer.parseInt(medico.getHoraDesde());
+		Integer horaHasta = Integer.parseInt(medico.getHoraHasta());
+		Integer minutoDesde = Integer.parseInt(medico.getMinutoDesde());
+		Integer minutoHasta = Integer.parseInt(medico.getMinutoHasta());
 		Integer intervalo = medico.getEspecialidad().getIntervalo();
 		
 		List <String> listaHorarios = new ArrayList<String>();
