@@ -108,10 +108,12 @@
 						    <div id="collapse${Medico.id}" class="collapse" aria-labelledby="heading${Medico.id}" data-parent="#accordionExample">
 						      <div class="card-body">
 					  				Especialidad: ${Medico.especialidad.nombreEspecialidad}<br>
-					    			Horario: ${Medico.horaDesde}:${Medico.minutoDesde} hasta ${Medico.horaHasta}:${Medico.minutoHasta}<br>
+					    			Horario: ${Medico.horaDesde}:${Medico.minutoDesde}hs a ${Medico.horaHasta}:${Medico.minutoHasta}hs<br>
 					    			
-					    				Dias: ${Medico.diasLaborales}
-					    			
+					    			Dias laborales: <br>
+					    			<c:forEach items="${Medico.diasLaborales}" var="dia">
+					    			 - ${dia.nombre} <br>
+					    			</c:forEach>
 					    			
 						      </div>
 						  	</div>

@@ -36,10 +36,10 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 		//guarda en medico el con lasespecificaciones elegidas pero desde la BD
 		
-		Integer horaDesde = medico.getHoraDesde();
-		Integer horaHasta = medico.getHoraHasta();
-		Integer minutoDesde = medico.getMinutoDesde();
-		Integer minutoHasta = medico.getMinutoHasta();
+		Integer horaDesde = Integer.parseInt(medico.getHoraDesde());
+		Integer horaHasta = Integer.parseInt(medico.getHoraHasta());
+		Integer minutoDesde = Integer.parseInt(medico.getMinutoDesde());
+		Integer minutoHasta = Integer.parseInt(medico.getMinutoHasta());
 		Integer intervalo = medico.getEspecialidad().getIntervalo();
 		
 		List <String> listaHorarios = new ArrayList<String>();
@@ -53,16 +53,17 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		}
 		return listaHorarios;
 	}
-
+	
+	@Override
 	public List<Medico> consultarMedico(){
 		return servicioMedicoDao.consultarMedico();
 	}
 	
+	@Override
 	public List<Medico> listaDeMedicosPorEspecialidad(Long especialidadId){
 		return servicioMedicoDao.listaDeMedicosPorEspecialidad(especialidadId);
 	}
 	
-
 	@Override
 	public List<DiasLaborales> listaDeDiasDisponibles(Long especialidadId) {
 		return servicioTurnoDao.listaDeDiasDisponibles(especialidadId);
@@ -92,7 +93,8 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 	public List<String> turnosDisponibles(List<String> listaTurnos, Long especialidadId, Long medicoId, String fecha) {
 		return servicioTurnoDao.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
 	}
-
+	
+	@Override
 	public String diaActual(){
 
 		Calendar fecha = new GregorianCalendar();
@@ -106,6 +108,7 @@ public class ServicioTurnosImpl implements ServicioTurnos {
 		
 	}
 	
+	@Override
 	public String diaSiguiente(Medico medico){
 
 		Calendar fecha = new GregorianCalendar();

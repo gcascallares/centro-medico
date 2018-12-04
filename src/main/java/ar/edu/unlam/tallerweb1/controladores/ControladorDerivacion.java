@@ -26,6 +26,7 @@ public class ControladorDerivacion {
 	@Inject
 	private ServicioMedico servicioMedico;
 	
+	
 // 			Derivaciones 
 	
 			@RequestMapping("/derivacion/{usuarioId}")

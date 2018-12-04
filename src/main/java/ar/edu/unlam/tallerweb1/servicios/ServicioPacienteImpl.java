@@ -11,6 +11,7 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 @Service("servicioPaciente")
 @Transactional
 public class ServicioPacienteImpl implements ServicioPaciente {
+	
 	@Inject
     private PacienteDao pacienteDao;
 	
@@ -27,7 +28,6 @@ public class ServicioPacienteImpl implements ServicioPaciente {
 	@Override
 	public Usuario guardarContrasena(Long id, String contrasena) {
 		return pacienteDao.guardarContrasena(id,contrasena);
-		
 	}
 
 }

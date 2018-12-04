@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -106,7 +106,10 @@
           </div>
           
           <!-- Contenido de la Pagina -->
-          
+          <c:if test="${fn:length(listaDerivaciones) == 0}">
+				<div class="text-center mt-5"><h2>No hay derivaciones disponibles</h2></div>
+		</c:if>
+			
           <c:forEach items="${listaDerivaciones}" var="Derivacion">
 										
 					<div class="card w-50 mx-auto mt-4 mb-4">

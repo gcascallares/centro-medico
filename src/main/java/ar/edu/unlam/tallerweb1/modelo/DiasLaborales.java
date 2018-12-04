@@ -21,7 +21,6 @@ public class DiasLaborales {
 	
 	private String nombre;
 
-	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "dias_medicos",
 			   joinColumns= {@JoinColumn(name="dia_id")},

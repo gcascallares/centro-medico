@@ -10,4 +10,5 @@ public interface ServicioEspecialidad {
 	List <Especialidad> consultarEspecialidades();
 
 	List<Estudio> listaDeEstudios(Especialidad especialidad);
+	
 }

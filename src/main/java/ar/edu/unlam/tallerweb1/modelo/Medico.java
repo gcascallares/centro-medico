@@ -22,10 +22,14 @@ public class Medico {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Especialidad especialidad;
-	private Integer horaDesde;
-	private Integer minutoDesde;
-	private Integer horaHasta;
-	private Integer minutoHasta;
+	
+	private String horaDesde;
+	
+	private String minutoDesde;
+	
+	private String horaHasta;
+	
+	private String minutoHasta;
 	
 	@OneToOne
 	private Consultorio consultorio;
@@ -36,54 +40,71 @@ public class Medico {
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 	public Especialidad getEspecialidad() {
 		return especialidad;
 	}
+	
 	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
 	}
-	public Integer getHoraDesde() {
+	
+	public String getHoraDesde() {
 		return horaDesde;
 	}
-	public void setHoraDesde(Integer horaDesde) {
+	
+	public void setHoraDesde(String horaDesde) {
 		this.horaDesde = horaDesde;
 	}
-	public Integer getMinutoDesde() {
+	
+	public String getMinutoDesde() {
 		return minutoDesde;
 	}
-	public void setMinutoDesde(Integer minutoDesde) {
+	
+	public void setMinutoDesde(String minutoDesde) {
 		this.minutoDesde = minutoDesde;
 	}
-	public Integer getHoraHasta() {
+	
+	public String getHoraHasta() {
 		return horaHasta;
 	}
-	public void setHoraHasta(Integer horaHasta) {
+	
+	public void setHoraHasta(String horaHasta) {
 		this.horaHasta = horaHasta;
 	}
-	public Integer getMinutoHasta() {
+	
+	public String getMinutoHasta() {
 		return minutoHasta;
 	}
-	public void setMinutoHasta(Integer minutoHasta) {
+	
+	public void setMinutoHasta(String minutoHasta) {
 		this.minutoHasta = minutoHasta;
 	}
+	
 	public Consultorio getConsultorio() {
 		return consultorio;
 	}
+	
 	public void setConsultorio(Consultorio consultorio) {
 		this.consultorio = consultorio;
 	}
+	
 	public List<DiasLaborales> getDiasLaborales() {
 		return diasLaborales;
 	}
+	
 	public void setDiasLaborales(List<DiasLaborales> diasLaborales) {
 		this.diasLaborales = diasLaborales;
 	}

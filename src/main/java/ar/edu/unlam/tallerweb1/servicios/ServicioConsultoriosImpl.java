@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,19 +12,15 @@ import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 
 @Service("servicioConsultorio")
 @Transactional
-
 public class ServicioConsultoriosImpl implements ServicioConsultorio{
 
 	@Inject
 	private ConsultoriosDao servicioConsultoriosDao;
 	
-	
 	@Override
 	public List<Consultorio> listaConsultorios() {
 			return servicioConsultoriosDao.listaConsultorios();
 	}
-
-
 
 	@Override
 	public Consultorio buscarConsultorioEspecifico(Long consultorioId) {
@@ -34,9 +29,7 @@ public class ServicioConsultoriosImpl implements ServicioConsultorio{
 
 	@Override
 	public void guardarConsultorio(Consultorio consultorio){
-		
 		servicioConsultoriosDao.guardarConsultorio(consultorio);
-		
 	}
 	
 	@Override

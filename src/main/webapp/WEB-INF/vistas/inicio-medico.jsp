@@ -130,7 +130,7 @@
 					<div class="card w-50 mx-auto mt-4 mb-4">
 					  <h5 class="card-header">Numero de turno: <span id="turno-${Turnos.id}">${Turnos.id}</span></h5>
 					  <div class="card-body">
-					    <a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}"><h5 class="card-title">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
+					    <h5 class="card-title"><a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}/${Turnos.medico.id}/${consultorioId}">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</a></h5>
 					    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
 					    <h5 class="card-title">Horario: ${Turnos.horario}</h5>
 					
@@ -187,7 +187,7 @@
 								  
 								</div>	
 								
-								<div id="mensajeDescripcion" class="errores">Por favor agregue una Descripcion</div>				      
+								<div id="mensajeDescripcion" class="errores">Por favor complete todos los campos</div>				      
 						 </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -222,8 +222,10 @@
 											<c:forEach items="${listaMedicos}" var="medico">
 					
 											<option value="${medico.id}">Dr/a. ${medico.nombre} - ${medico.especialidad.nombreEspecialidad}</option>
+
 					
-											</c:forEach>	
+											</c:forEach>
+												
 						
 									</select>
 									
@@ -289,7 +291,8 @@
 		var mensaje = $("#comentario").val();
 		var estudio = $("#estudio option:selected").val();
 		
-		 if(mensaje != 0){
+		
+		 if(mensaje != 0 && estudio != 0){
 	        	
 	        	$("#mensajeDescripcion").fadeOut();
 	            

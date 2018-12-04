@@ -32,47 +32,6 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioTurnos;
 
 public class ControladorMedico {
 	
-	
-
-	public ServicioConsultorio getServicioConsultorio() {
-		return servicioConsultorio;
-	}
-
-
-	public void setServicioConsultorio(ServicioConsultorio servicioConsultorio) {
-		this.servicioConsultorio = servicioConsultorio;
-	}
-
-
-	public ServicioEspecialidad getServicioEspecialidad() {
-		return servicioEspecialidad;
-	}
-
-
-	public void setServicioEspecialidad(ServicioEspecialidad servicioEspecialidad) {
-		this.servicioEspecialidad = servicioEspecialidad;
-	}
-
-
-	public ServicioMedico getServicioMedico() {
-		return servicioMedico;
-	}
-
-
-	public void setServicioMedico(ServicioMedico servicioMedico) {
-		this.servicioMedico = servicioMedico;
-	}
-
-
-	public ServicioBuscadorPacientes getServicioBuscadorPacientes() {
-		return servicioBuscadorPacientes;
-	}
-
-
-	public void setServicioBuscadorPacientes(ServicioBuscadorPacientes servicioBuscadorPacientes) {
-		this.servicioBuscadorPacientes = servicioBuscadorPacientes;
-	}
-
 	@Inject
 	private ServicioConsultorio servicioConsultorio;
 	
@@ -106,12 +65,19 @@ public class ControladorMedico {
 		String usuarioRol = (String)request.getSession().getAttribute("ROL");
 		
 		if("medico".equals(usuarioRol)){
+			Consultorio consultorio = servicioMedico.tieneConsultorio(medicoId);
+			if(consultorio == null) {
 			List <Consultorio> listaConsultorios = new ArrayList <Consultorio>();
 			listaConsultorios = servicioConsultorio.listaConsultorios();
 	
 			modelo.put("listaConsultorios", listaConsultorios);
 			modelo.put("medicoId", medicoId);
 			return new ModelAndView("mostrar-consultorios", modelo);
+			}
+			else {
+				return new ModelAndView("redirect:/"+medicoId+"/index-medico/"+consultorio.getId());
+			}
+			
 		}
 		else{
 			return new ModelAndView("redirect:/Iniciar", modelo);
@@ -162,10 +128,6 @@ public class ControladorMedico {
 	
 	@RequestMapping("/generarAtencion/{medicoId}/{consultorioId}")
 	public ModelAndView buscadorDePacientes(@PathVariable Long medicoId ,@PathVariable Long consultorioId , HttpServletRequest request){
-	
-		//Long medicoId = (Long)request.getSession().getAttribute("ID");
-		//Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
-		//Long consultorioId = consultorio.getId();
 		
 		ModelMap modelo = new ModelMap();
 		
@@ -181,10 +143,6 @@ public class ControladorMedico {
 		
 		ModelMap modelo = new ModelMap();
 		
-		//Long medicoId = (Long)request.getSession().getAttribute("ID");
-		//Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
-		//Long consultorioId = consultorio.getId();
-		
 		modelo.put("medicoId", medicoId);
 		modelo.put("consultorioId", consultorioId);
 		
@@ -198,8 +156,6 @@ public class ControladorMedico {
 	public ModelAndView guardarAtencion(@PathVariable Long medicoId ,@PathVariable Long consultorioId, @PathVariable String mensaje, @PathVariable Long idPaciente , HttpServletRequest request){
 		
 		String fecha = servicioTurnos.diaActual();
-		
-		//Long medicoId = (Long) request.getSession().getAttribute("ID");
 		
 		servicioTurnos.guardarAtencion(mensaje, idPaciente, medicoId, fecha);
 
@@ -247,11 +203,7 @@ public class ControladorMedico {
 	
 	@RequestMapping("/medico/mostrarhistoriaclinica/{pacienteId}/{medicoId}/{consultorioId}")
 	public ModelAndView mostrarHistoriaClinica(@PathVariable Long medicoId ,@PathVariable Long consultorioId, @PathVariable Long pacienteId , HttpServletRequest request){
-		
-		//Long medicoId = (Long)request.getSession().getAttribute("ID");
-		//Consultorio consultorio = servicioConsultorio.buscarConsultorioPorMedico(medicoId);
-		//Long consultorioId = consultorio.getId();
-		
+			
 		ModelMap modelo = new ModelMap();
 		Paciente paciente = servicioTurnos.mostrarDatosPaciente(pacienteId);
 		
@@ -264,6 +216,48 @@ public class ControladorMedico {
 		
 		return new ModelAndView("mostrarHistoriaClinicaDePaciente", modelo);
 		
+	}
+	
+	
+//	Metodos Getters y Setters
+
+	public ServicioConsultorio getServicioConsultorio() {
+		return servicioConsultorio;
+	}
+
+
+	public void setServicioConsultorio(ServicioConsultorio servicioConsultorio) {
+		this.servicioConsultorio = servicioConsultorio;
+	}
+
+
+	public ServicioEspecialidad getServicioEspecialidad() {
+		return servicioEspecialidad;
+	}
+
+
+	public void setServicioEspecialidad(ServicioEspecialidad servicioEspecialidad) {
+		this.servicioEspecialidad = servicioEspecialidad;
+	}
+
+
+	public ServicioMedico getServicioMedico() {
+		return servicioMedico;
+	}
+
+
+	public void setServicioMedico(ServicioMedico servicioMedico) {
+		this.servicioMedico = servicioMedico;
+	}
+
+
+	public ServicioBuscadorPacientes getServicioBuscadorPacientes() {
+		return servicioBuscadorPacientes;
+	}
+
+
+	public void setServicioBuscadorPacientes(ServicioBuscadorPacientes servicioBuscadorPacientes) {
+		this.servicioBuscadorPacientes = servicioBuscadorPacientes;
 	}
 	
 }
