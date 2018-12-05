@@ -105,7 +105,7 @@
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="bannerPrincipal">
         		<div class="container">
-        			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>
+        			<h1 style="color: #1e9edb;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: #1e9edb;"></i>  Centro Medico </h1>
         			<p>Que tu medicina sea tu alimento, y el alimento tu medicina</p>
         			<p><a class="btn btn-primary" href="${context}/turno">Solicitar Turno</a></p>
         		</div>
@@ -181,7 +181,7 @@
 	    </section>
         	
         	<div class="container text-center">
-        		<h1>Horarios de Atencion</h1>
+        		<h1><i class="far fa-clock"></i> Horarios de Atencion</h1>
         		<p class="lead">Lunes: 8:00 a 20:00<br>
         						Martes: 8:00 a 20:00<br>
         						Miercoles: 10:00 a 18:00<br>

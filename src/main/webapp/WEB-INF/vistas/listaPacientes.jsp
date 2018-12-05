@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -102,8 +104,11 @@
 						<h3 class="form-signin-heading">Elija su paciente</h3>
 							<hr class="colorgraph">
 								<br>
+								
+								
    	
 								<c:forEach items="${listapacientes}" var="paciente">
+								
 				
 									<button class="btn btn-lg btn-primary btn-block" type="submit" path="id" value="${paciente.id}" name="id" >
 										  <h5 class="card-header" style="color: black;"><i class="far fa-user fa-2x" style="color: black;"></i></h5>

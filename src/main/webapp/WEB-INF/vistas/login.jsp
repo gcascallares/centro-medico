@@ -58,10 +58,6 @@
               </div>
             </div>
             
-            <small> pss...</small> <br>
-            <small> paciente: 111</small> <br>
-            <small> medico: 222</small> <br>
-            <small> recepcionista: 333</small> <br>
             
             <div class="form-group mt-3">
               <div class="form-label-group">
