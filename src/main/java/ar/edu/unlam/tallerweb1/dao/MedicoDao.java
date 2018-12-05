@@ -30,4 +30,6 @@ public interface MedicoDao {
 
 	Consultorio tieneConsultorio(Long medicoId);
 
+	void sacarConsultorio(Long id);
+
 }
