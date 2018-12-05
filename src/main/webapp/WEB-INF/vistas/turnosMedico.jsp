@@ -106,9 +106,6 @@
          
           
 
-
-          <!-- Contenido de la Pagina -->
-			
 			<c:if test="${fn:length(listaTodosLosTurnos) != 0}">
 				<h3 class="form-signin-heading text-center" id="sub-titulo">Lista de Turnos</h3>
 			</c:if>
@@ -117,6 +114,7 @@
 				<div class="text-center mt-5"><h2>No hay turnos</h2></div>
 			</c:if>
    			<br>
+   			
    			<div class="accordion" id="accordionExample">
 						<c:forEach items="${listaTodosLosTurnos}" var="Turnos">
 						  <div class="card">

@@ -24,8 +24,8 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		List <Paciente> listaPacientes = session.createCriteria(Paciente.class)
-		.add(Restrictions.like("dni",dni))
-		.list();
+										 .add(Restrictions.like("dni",dni))
+										 .list();
 		
 		return listaPacientes;
 	}
@@ -36,10 +36,12 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		Turno miturno = new Turno();
+		
 		miturno = buscarTurnoPorId(id);
 		
 		miturno.setEstado("Abonado");
 		session.update(miturno);
+		
 		return true;
 	}
 	
@@ -53,6 +55,7 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		
 		miturno.setEstado("rechazado");
 		session.update(miturno);
+		
 		return true;
 	}
 	
@@ -61,7 +64,8 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		Turno turnoBuscado = (Turno) session.createCriteria (Turno.class)
-		.add(Restrictions.like("id",id)).uniqueResult();
+							 .add(Restrictions.like("id",id))
+							 .uniqueResult();
 		
 		return (Turno) turnoBuscado;
 	}
@@ -72,14 +76,14 @@ public class BuscadorPacientesDaoImpl implements BuscadorPacientesDao {
 		
 		final Session session = sessionFactory.getCurrentSession();
 		
-		List <Turno> listaTurnos = session.createCriteria(Turno.class)
-		.createAlias("paciente","pacienteBuscado")
-		.add(Restrictions.like("pacienteBuscado.id",id))
-		.add(Restrictions.like("estado","en_espera"))
-		.add(Restrictions.like("derivado", 0))
-		.addOrder(Order.asc("fecha"))
-		.addOrder(Order.asc("horario"))
-		.list();
+		List <Turno> listaTurnos =  session.createCriteria(Turno.class)
+									.createAlias("paciente","pacienteBuscado")
+									.add(Restrictions.like("pacienteBuscado.id",id))
+									.add(Restrictions.like("estado","en_espera"))
+									.add(Restrictions.like("derivado", 0))
+									.addOrder(Order.asc("fecha"))
+									.addOrder(Order.asc("horario"))
+									.list();
 		
 		return listaTurnos;
 	}

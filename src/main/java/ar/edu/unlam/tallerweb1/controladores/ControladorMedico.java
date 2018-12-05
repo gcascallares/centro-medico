@@ -114,6 +114,7 @@ public class ControladorMedico {
 		listaTurnos = servicioTurnos.listaTurnosPorMedico(medico, diaActual);
 		List<Medico> listaMedicos = servicioMedico.getMedicos();
 		
+		modelo.put("diaActual",diaActual);
 		modelo.put("listaTurnos", listaTurnos);
 		modelo.put("medico", medico);
 		modelo.put("fecha",diaActual);
@@ -185,7 +186,7 @@ public class ControladorMedico {
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
 		
 		//Trae el dias Laborales
-		List<DiasLaborales> diasLaborales = servicioMedico.buscarDiasLaborales(medicoId);
+		List <DiasLaborales> diasLaborales = servicioMedico.buscarDiasLaborales(medicoId);
 		medico.setDiasLaborales(diasLaborales);
 		
 		//Trae el dia siguiente
@@ -195,6 +196,7 @@ public class ControladorMedico {
 		
 		listaTurnosProxDiaLaboral = servicioTurnos.listaTurnosProxDiaLaboral(medico,diaSiguiente);
 		
+		modelo.put("diaSiguiente", diaSiguiente);
 		modelo.put("listaTurnosProxDiaLaboral",listaTurnosProxDiaLaboral);
 				
 		return new ModelAndView("turnosDeProximoDiaLaboral", modelo);

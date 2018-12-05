@@ -628,7 +628,7 @@ fieldset[disabled] .btn-primary.active {
 }
 
 #bannerPrincipal{
-   background: url(../img/banner.jpg) no-repeat fixed center;
+   background: url(../img/banner3.jpg) center;
    -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
@@ -648,6 +648,8 @@ fieldset[disabled] .btn-primary.active {
    width: 100% ;
    text-align: center;
 }
+
+#bannerPrincipal h1{}
 
 #banner h1 {
 	font-size: 90px;

@@ -21,4 +21,6 @@ public interface ServicioMedico {
 	List<Medico> listaMedicos();
 
 	Consultorio tieneConsultorio(Long medicoId);
+
+	void sacarConsultorio(Long id);
 }

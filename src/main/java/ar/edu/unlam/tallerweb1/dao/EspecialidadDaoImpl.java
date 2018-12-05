@@ -18,24 +18,28 @@ public class EspecialidadDaoImpl implements EspecialidadDao {
 	@Inject
     private SessionFactory sessionFactory;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List <Especialidad> consultarEspecialidades(){
+		
 		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-		List <Especialidad> listarEspecialidad = session.createCriteria(Especialidad.class).list();
+		
+		List <Especialidad> listarEspecialidad = session.createCriteria(Especialidad.class)
+												 .list();
+		
 		return listarEspecialidad;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List <Estudio> listaDeEstudios (Especialidad especialidad){
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		@SuppressWarnings("unchecked")
 		List <Estudio> listaDeEstudios = session.createCriteria(Estudio.class)
-									 	.createAlias("especialidad","especialidadBuscada")
-									 	.add(Restrictions.eq("especialidadBuscada.id",especialidad.getId()))
-									 	.list();
+									 	 .createAlias("especialidad","especialidadBuscada")
+									 	 .add(Restrictions.eq("especialidadBuscada.id",especialidad.getId()))
+									 	 .list();
 		return listaDeEstudios;
 	}
 	

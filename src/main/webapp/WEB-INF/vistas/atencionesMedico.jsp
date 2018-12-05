@@ -108,7 +108,7 @@
 			     <!-- Barra de Busqueda -->
 			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/atencionpacientespordni/${medicoId}/${consultorioId}" method="POST">
 			        <div class="input-group">
-			          <input name="dni" required type="number" class="form-control" placeholder="Buscar por dni" aria-label="Search" aria-describedby="basic-addon2">
+			          <input name="dni" required type="number" class="form-control" placeholder="Buscador de Pacientes" aria-label="Search" aria-describedby="basic-addon2">
 			          <div class="input-group-append">
 			            <button class="btn btn-primary" type="submit">
 			              <i class="fas fa-search"></i>

@@ -89,6 +89,7 @@ public class MockitoTest {
 		String usuarioRol = "recepcionista";
 		
 		when (requestMock.getSession()).thenReturn(sessionMock);
+		
 		when (requestMock.getSession().getAttribute("ROL")).thenReturn(usuarioRol);
 		
 		ModelAndView modelandview = controladorPaciente.buscadorDePacientes(requestMock);

@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registrarse</title>
+    <title>Iniciar Sesion</title>
 
     <!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -58,10 +58,6 @@
               </div>
             </div>
             
-            <small> pss...</small> <br>
-            <small> paciente: 111</small> <br>
-            <small> medico: 222</small> <br>
-            <small> recepcionista: 333</small> <br>
             
             <div class="form-group mt-3">
               <div class="form-label-group">
@@ -76,7 +72,7 @@
           </form:form>
           
 		  <c:if test="${not empty error}">
-		  		 <h4 class="text-center mt-5"><span>${error}</span></h4>
+		  		 <h4 class="text-center mt-5"><span style="color: red;">${error}</span></h4>
 		  </c:if>	
           
           <div class="text-center">
