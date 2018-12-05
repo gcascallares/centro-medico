@@ -168,5 +168,22 @@ public class MedicoDaopImpl implements MedicoDao {
 		}
 		
 	}
+
+	@Override
+	public void sacarConsultorio(Long id) {
+		final Session session = sessionFactory.getCurrentSession();
+		
+		Usuario usuarioBuscado = (Usuario) session.createCriteria(Usuario.class)
+				 .add(Restrictions.like("id", id))
+				 .uniqueResult();
+		Long idMedico = usuarioBuscado.getMedico().getId();
+		
+		Consultorio consultorio = (Consultorio)session.createCriteria(Consultorio.class)
+				  .add(Restrictions.like("medico.id", idMedico))
+				  .uniqueResult();
+		
+		consultorio.setMedico(null);
+		session.update(consultorio);
+	}
 	
 }

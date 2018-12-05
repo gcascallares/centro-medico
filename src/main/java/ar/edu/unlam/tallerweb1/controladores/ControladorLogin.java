@@ -47,6 +47,10 @@ public class ControladorLogin {
 	@RequestMapping("/cerrarSesion")
 	public ModelAndView cerrarSesion(HttpServletRequest request) {
 		
+		if(request.getSession().getAttribute("ROL").toString().equals("medico")) {
+			Long id = (Long)request.getSession().getAttribute("ID");
+			servicioMedico.sacarConsultorio(id);
+		}
 		request.getSession().removeAttribute("ID");
 		request.getSession().removeAttribute("ROL");
 		

@@ -51,4 +51,10 @@ public class ServicioMedicoImpl implements ServicioMedico {
 		return medicoDao.tieneConsultorio(medicoId);
 	}
 
+	@Override
+	public void sacarConsultorio(Long id) {
+		medicoDao.sacarConsultorio(id);
+		
+	}
+
 }
