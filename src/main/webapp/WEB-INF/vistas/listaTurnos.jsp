@@ -102,9 +102,6 @@
 			
 							<hr class="colorgraph">
 	
-								<c:if test="${fn:length(listaTurnos) == 0}">
-									<div class="text-center mt-5"><h2>No posee ningun Turno</h2></div>
-								</c:if>
        	
 								<c:forEach items="${listaturnos}" var="turno">
 								

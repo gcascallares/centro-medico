@@ -106,11 +106,11 @@
           </ol>
 
  			<c:if test="${fn:length(listaTurnosProxDiaLaboral) != 0}">
-				<h3 class="form-signin-heading text-center" id="sub-titulo">Turnos Mañana</h3>
+				<h3 class="form-signin-heading text-center" id="sub-titulo">Turnos de la Fecha: ${diaSiguiente}</h3>
 			</c:if>
   			
 			<c:if test="${fn:length(listaTurnosProxDiaLaboral) == 0}">
-				<div class="text-center mt-5"><h2>No hay turnos</h2></div>
+				<div class="text-center mt-5"><h2>No hay turnos para la Fecha : ${diaSiguiente}</h2></div>
 			</c:if>
 			   <br>
 			   <c:forEach items="${listaTurnosProxDiaLaboral}" var="Turnos">

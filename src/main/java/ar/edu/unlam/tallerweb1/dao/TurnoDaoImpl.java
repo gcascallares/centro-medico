@@ -277,13 +277,13 @@ public class TurnoDaoImpl implements TurnoDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		List <Turno> listaTodosLosTurnos = session.createCriteria(Turno.class)
-					.createAlias("medico","medicoBuscado")
-				  .add(Restrictions.like("medicoBuscado.id", medico.getId()))
-				  .add(Restrictions.not(Restrictions.like("estado","Abonado")))
-				  .add(Restrictions.not(Restrictions.like("estado","Rechazado")))
-				  .add(Restrictions.isNotNull("fecha"))
-				  .addOrder(Order.asc("fecha"))
-				  .list();
+										   .createAlias("medico","medicoBuscado")
+										   .add(Restrictions.like("medicoBuscado.id", medico.getId()))
+										   .add(Restrictions.not(Restrictions.like("estado","Abonado")))
+										   .add(Restrictions.not(Restrictions.like("estado","Rechazado")))
+										   .add(Restrictions.isNotNull("fecha"))
+										   .addOrder(Order.asc("fecha"))
+										   .list();
 		
 		
 		return listaTodosLosTurnos;
