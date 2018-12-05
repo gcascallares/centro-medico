@@ -100,7 +100,7 @@
           <!--Menu Hamburguesa -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Solicitar Turno</a>
+              <a href="#">Mis Turnos</a>
             </li>
           </ol>
           
@@ -113,7 +113,6 @@
           <!-- Contenido de la Pagina -->
         	<h3 class="form-signin-heading">Lista de Turnos</h3>
 			<hr class="colorgraph">
-			<br>
 			
 			
 			 <c:if test="${fn:length(listaTurnos) == 0}">
