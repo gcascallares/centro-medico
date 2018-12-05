@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Registrarse</title>
+    <title>Iniciar Sesion</title>
 
     <!-- Bootstrap -->
     <link href="${context}/css/bootstrap.min.css" rel="stylesheet">
@@ -72,7 +72,7 @@
           </form:form>
           
 		  <c:if test="${not empty error}">
-		  		 <h4 class="text-center mt-5"><span>${error}</span></h4>
+		  		 <h4 class="text-center mt-5"><span style="color: red;">${error}</span></h4>
 		  </c:if>	
           
           <div class="text-center">

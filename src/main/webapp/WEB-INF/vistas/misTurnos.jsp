@@ -103,12 +103,6 @@
               <a href="#">Mis Turnos</a>
             </li>
           </ol>
-          
-          
-          
-          
-          
-          
 
           <!-- Contenido de la Pagina -->
         	<h3 class="form-signin-heading">Lista de Turnos</h3>
