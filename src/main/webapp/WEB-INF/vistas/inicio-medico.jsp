@@ -146,7 +146,7 @@
 					</div>
 					
 					<!-- Button trigger modal -->
-					<c:if test = "${Turnos.estado != 'Atendido'}">
+					<c:if test = "${not empty Turnos.estudio}">
 					<div class="text-center">
 						<button class="btn btn-success mb-5" onclick="atender(${Turnos.id},${consultorioId},${medico.id})" id="atendido-${Turnos.id}">Atendido</button>  
 			        </div>
