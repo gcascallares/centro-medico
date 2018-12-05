@@ -92,8 +92,7 @@
           
           
           <div class="text-center">
-            <a class="d-block small mt-3" href="#">¿Ya estas registrado?</a>
-            <a class="d-block small" href="#">¿Olvidaste tu contraseña?</a>
+            <a class="d-block small mt-3" href="${context}/Iniciar">¿Ya estas registrado? Inicia sesión</a>
           </div>
         </div>
       </div>

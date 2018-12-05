@@ -77,7 +77,6 @@
           
           <div class="text-center">
             <a class="d-block small mt-3" href="${context}/Registrar">Registrarse</a>
-            <a class="d-block small" href="#">¿Olvidaste tu Contraseña?</a>
           </div>
         </div>
       </div>

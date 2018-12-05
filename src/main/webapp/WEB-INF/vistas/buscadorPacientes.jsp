@@ -28,7 +28,6 @@
     
     <link rel="shortcut icon" type="image/x-icon" href="${context}/img/Logo.ico" />
 
-
 </head>
 	<script> 
 		var context = "${context}";
@@ -94,7 +93,7 @@
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="banner">
         		<div class="container">
-        			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Medico </h1>     		
+        			<h1 style="color: white;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: white;"></i>  Centro Médico </h1>     		
 			     <!-- Barra de Busqueda -->
 			      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="${context}/buscarpacientespordni" method="POST">
 			        <div class="input-group">
