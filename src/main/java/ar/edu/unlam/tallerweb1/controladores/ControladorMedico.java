@@ -186,7 +186,7 @@ public class ControladorMedico {
 		Medico medico = servicioTurnos.buscarMedicoEspecifico(medicoId);
 		
 		//Trae el dias Laborales
-		List<DiasLaborales> diasLaborales = servicioMedico.buscarDiasLaborales(medicoId);
+		List <DiasLaborales> diasLaborales = servicioMedico.buscarDiasLaborales(medicoId);
 		medico.setDiasLaborales(diasLaborales);
 		
 		//Trae el dia siguiente
