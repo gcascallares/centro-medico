@@ -23,14 +23,14 @@ public class PacienteDaoImpl  implements PacienteDao{
 		
 		session.save(paciente);
 		
-		
 	}
 	
 	@Override
 	public Long obtenerIdPaciente(Long id) {
 		final Session session = sessionFactory.getCurrentSession();
 		Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.like("id", id)).uniqueResult();
+						  .add(Restrictions.like("id", id))
+						  .uniqueResult();
 		
 		return usuario.getPaciente().getId();
 	}
@@ -40,7 +40,8 @@ public class PacienteDaoImpl  implements PacienteDao{
 	public Paciente obtenerPaciente(Long idPaciente) {
 		final Session session = sessionFactory.getCurrentSession();
 		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
-				.add(Restrictions.like("id", idPaciente)).uniqueResult();
+							.add(Restrictions.like("id", idPaciente))
+							.uniqueResult();
 		
 		return paciente;
 				
@@ -52,7 +53,8 @@ public class PacienteDaoImpl  implements PacienteDao{
 		final Session session = sessionFactory.getCurrentSession();
 
 		Usuario usuario = (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.like("id", id)).uniqueResult();
+						  .add(Restrictions.like("id", id))
+						  .uniqueResult();
 		
 		usuario.setPassword(contrasena);
 		
