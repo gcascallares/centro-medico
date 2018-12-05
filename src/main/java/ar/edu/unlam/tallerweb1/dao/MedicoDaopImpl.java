@@ -29,19 +29,19 @@ public class MedicoDaopImpl implements MedicoDao {
 		
 	final Session session = sessionFactory.getCurrentSession();
 	
-	List <Medico> listaMedicos = session.createCriteria(Medico.class).list();
+	List <Medico> listaMedicos = session.createCriteria(Medico.class)
+								 .list();
 	
 	return listaMedicos;
 
 	}
 	
-	//Este funciona en caso de que se filtre por fecha
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medico> listaDeMedicosPorEspecialidad (Long especialidadId) {
 		
 	final Session session = sessionFactory.getCurrentSession();
 	
-	@SuppressWarnings("unchecked")
 	List <Medico> listaMedicos = session.createCriteria(Medico.class)
 								 .createAlias("especialidad","especialidadBuscada")
 								 .add(Restrictions.eq("especialidadBuscada.id",especialidadId))
@@ -50,7 +50,6 @@ public class MedicoDaopImpl implements MedicoDao {
 
 	}
 	
-	//En caso de que se filtre por medico
 	@Override
 	public Medico MedicoEspecifico (Long id) {
 		
@@ -70,9 +69,9 @@ public class MedicoDaopImpl implements MedicoDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		List <DiasLaborales> lista = session.createCriteria(DiasLaborales.class)
-		.createAlias("Medicos", "Medicos")
-		.add(Restrictions.eq("Medicos.id",id))
-		.list();
+									 .createAlias("Medicos", "Medicos")
+									 .add(Restrictions.eq("Medicos.id",id))
+									 .list();
 		
 		return lista;
 	}
@@ -84,7 +83,8 @@ public class MedicoDaopImpl implements MedicoDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		Usuario usuarioBuscado = (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.like("id", usuario.getId())).uniqueResult();
+								 .add(Restrictions.like("id", usuario.getId()))
+								 .uniqueResult();
 		
 		return usuarioBuscado.getMedico();
 	}
@@ -142,19 +142,27 @@ public class MedicoDaopImpl implements MedicoDao {
 	public List<Medico> listaMedicos(){
 		
 		final Session session = sessionFactory.getCurrentSession();
-		List <Medico> listaMedicos = session.createCriteria(Medico.class).list();
+		
+		List <Medico> listaMedicos = session.createCriteria(Medico.class)
+									 .list();
+		
 		return listaMedicos;
 	}
 
 	@Override
 	public Consultorio tieneConsultorio(Long medicoId) {
+		
 		final Session session = sessionFactory.getCurrentSession();
+		
 		try {
+			
 		Consultorio consultorio = (Consultorio)session.createCriteria(Consultorio.class)
-		.add(Restrictions.like("medico.id", medicoId))
-		.uniqueResult();
+								  .add(Restrictions.like("medico.id", medicoId))
+								  .uniqueResult();
+		
 		return consultorio;
 		}
+		
 		catch(Exception e) {
 			return null;
 		}

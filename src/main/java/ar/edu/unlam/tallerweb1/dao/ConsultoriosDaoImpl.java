@@ -11,21 +11,20 @@ import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Consultorio;
 
-
 @Repository("consultoriosDao")
 public class ConsultoriosDaoImpl implements ConsultoriosDao {
 	
 	@Inject
     private SessionFactory sessionFactory;
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Consultorio> listaConsultorios() {
 		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
-	
+		
 		List <Consultorio> listaConsultorios = session.createCriteria(Consultorio.class)
-		.add(Restrictions.isNull("medico"))
-		.list();
+											   .add(Restrictions.isNull("medico"))
+										       .list();
 		return listaConsultorios;
 		
 	}
@@ -37,8 +36,9 @@ public class ConsultoriosDaoImpl implements ConsultoriosDao {
 	final Session session = sessionFactory.getCurrentSession();
 	
 	Consultorio consultorioEspecifico = (Consultorio) session.createCriteria (Consultorio.class)
-							  .add(Restrictions.eq("id",consultorioId))
-							  .uniqueResult();
+									    .add(Restrictions.eq("id",consultorioId))
+									    .uniqueResult();
+	
 	return consultorioEspecifico;
 
 	}
