@@ -181,7 +181,7 @@
 	    </section>
         	
         	<div class="container text-center">
-        		<h1>Horarios de Atencion</h1>
+        		<h1><i class="far fa-clock"></i> Horarios de Atencion</h1>
         		<p class="lead">Lunes: 8:00 a 20:00<br>
         						Martes: 8:00 a 20:00<br>
         						Miercoles: 10:00 a 18:00<br>
