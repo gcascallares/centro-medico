@@ -116,7 +116,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <h1 class="text-center">Especialidades</h1>
-                        <p class="lead text-center">Contamos con la ultima tecnologia, un equipo de profecionales que se encargargan 
+                        <p class="lead text-center">Contamos con la última tecnología, un equipo de profesionales que se encargarán 
                         de poder solucionar todos los problemas de nuestros pacientes, pudiendo ofrecer servicios de alta calidad</p>
                     </div>
                 </div>
