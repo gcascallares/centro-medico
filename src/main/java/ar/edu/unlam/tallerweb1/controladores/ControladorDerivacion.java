@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,7 +31,7 @@ public class ControladorDerivacion {
 // 			Derivaciones 
 	
 			@RequestMapping("/derivacion/{usuarioId}")
-			public ModelAndView derivaciones(@PathVariable Long usuarioId){
+			public ModelAndView derivaciones(@PathVariable Long usuarioId, HttpServletRequest request){
 				
 				ModelMap modelo = new ModelMap();
 				
@@ -44,7 +45,7 @@ public class ControladorDerivacion {
 			
 			
 			@RequestMapping("/derivacion/{turnoId}/{especialidadId}/medico/{medicoId}")
-			public ModelAndView elegirFechaParaDerivacion(@PathVariable Long turnoId ,@PathVariable Long especialidadId, @PathVariable Long medicoId) {
+			public ModelAndView elegirFechaParaDerivacion(@PathVariable Long turnoId ,@PathVariable Long especialidadId, @PathVariable Long medicoId, HttpServletRequest request) {
 				
 				ModelMap modelo = new ModelMap();
 				
@@ -58,6 +59,10 @@ public class ControladorDerivacion {
 					idDias.add(dia.getId());
 				}
 				
+				Long usuarioId = (Long)request.getSession().getAttribute("ID");
+				
+				modelo.put("usuarioId", usuarioId);
+				
 				modelo.put("medicoId", medicoId);
 				modelo.put("especialidadId",especialidadId);
 				modelo.put("dias", idDias);
@@ -67,7 +72,7 @@ public class ControladorDerivacion {
 			}
 			
 			@RequestMapping("/derivacion/{turnoId}/{especialidadId}/medico/{medicoId}/{fecha}")
-			public ModelAndView turnosDeLaDerivacion(@PathVariable Long turnoId, @PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha ){
+			public ModelAndView turnosDeLaDerivacion(@PathVariable Long turnoId, @PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, HttpServletRequest request ){
 				
 				ModelMap modelo = new ModelMap();
 				
@@ -75,6 +80,10 @@ public class ControladorDerivacion {
 				
 				List <String> listaTurnos = servicioTurnos.turnosDeMedicoEspecifico(medicoBuscado);
 				List <String> listaTurnosDisponibles = servicioTurnos.turnosDisponibles(listaTurnos,especialidadId,medicoId,fecha);
+				
+				Long usuarioId = (Long)request.getSession().getAttribute("ID");
+				
+				modelo.put("usuarioId", usuarioId);
 				
 				modelo.put("listaDeTurnos", listaTurnosDisponibles);
 				modelo.put("especialidadId", especialidadId);
@@ -87,11 +96,15 @@ public class ControladorDerivacion {
 			}
 			
 			@RequestMapping("/derivacion/{turnoId}/{especialidadId}/medico/{medicoId}/{fecha}/{horario}")
-			public ModelAndView reservarDerivacion(@PathVariable Long turnoId,@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, @PathVariable String horario) {
+			public ModelAndView reservarDerivacion(@PathVariable Long turnoId,@PathVariable Long especialidadId, @PathVariable Long medicoId, @PathVariable String fecha, @PathVariable String horario, HttpServletRequest request) {
 				
 				ModelMap modelo = new ModelMap();
 				
 				Turno turnoDerivado = servicioTurnos.guardarDerivacion(turnoId, fecha, horario, especialidadId, medicoId);
+				
+				Long usuarioId = (Long)request.getSession().getAttribute("ID");
+				
+				modelo.put("usuarioId", usuarioId);
 				
 				modelo.put("turno", turnoDerivado);
 				
