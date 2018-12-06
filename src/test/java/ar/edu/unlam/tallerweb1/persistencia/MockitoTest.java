@@ -283,7 +283,7 @@ public class MockitoTest {
 		
 		ModelAndView modelandview = controladorPacientes.mostrarTurnosPaciente(idTurno, request);
 		
-		assertThat(modelandview.getViewName()).isEqualTo("listaTurnos");
+		assertThat(modelandview.getViewName()).isEqualTo("bb");
 		
 		
 	}
