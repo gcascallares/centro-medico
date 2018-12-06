@@ -98,7 +98,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${context}/derivacion/${usuario.id}">
+          <a class="nav-link" href="${context}/derivacion/${usuarioId}">
             <i class="fab fa-creative-commons-nd"></i>
             <span> Derivaciones</span>
           </a>
