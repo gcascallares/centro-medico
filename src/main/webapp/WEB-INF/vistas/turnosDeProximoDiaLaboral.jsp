@@ -116,7 +116,7 @@
 			   <c:forEach items="${listaTurnosProxDiaLaboral}" var="Turnos">
 			   <div class="card w-10 mx-auto mt-2 mb-2">
 			   
-			   						<a href="${context}/medico/mostrarhistoriaclinica/${paciente.id}"><h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
+			   						<a href="${context}/medico/mostrarhistoriaclinica/${Turnos.paciente.id}/${medicoId}/${consultorioId}"><h5 class="card-header">Paciente: ${Turnos.paciente.nombre} ${Turnos.paciente.apellido}</h5></a>
 			   						 <div class="card-body">
 								    <h5 class="card-title">DNI: ${Turnos.paciente.dni}</h5>
 								    <h5 class="card-title">Fecha: ${Turnos.fecha}</h5>
