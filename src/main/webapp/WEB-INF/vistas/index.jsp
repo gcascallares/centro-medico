@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
@@ -105,7 +104,7 @@
           <!-- Contenido de la Pagina -->
         	<div class="jumbotron feature" id="bannerPrincipal">
         		<div class="container">
-        			<h1 style="color: #1e9edb;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: #1e9edb;"></i>  Centro Medico </h1>
+        			<h1 style="color: #1e9edb;"><span class="glyphicon glyphicon-plus"></span><i class="fas fa-notes-medical" style="color: #1e9edb;"></i>  Centro Médico </h1>
         			<p>Que tu medicina sea tu alimento, y el alimento tu medicina</p>
         			<p><a class="btn btn-primary" href="${context}/turno">Solicitar Turno</a></p>
         		</div>
