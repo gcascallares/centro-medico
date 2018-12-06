@@ -123,7 +123,7 @@
 								
 					<div class="card w-50 mx-auto mt-4 mb-4">
 					  <div class="card-body">
-					    <h5 class="card-title">Paciente: ${paciente.nombre} ${paciente.apellido}</h5>
+					    <a href="${context}/medico/mostrarhistoriaclinica/${paciente.id}/${medicoId}/${consultorioId}"><h5 class="card-title">Paciente: ${paciente.nombre} ${paciente.apellido}</h5></a>
 					    <h5 class="card-title">DNI: ${paciente.dni}</h5>
 
 					
